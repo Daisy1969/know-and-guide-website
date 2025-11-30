@@ -16,19 +16,53 @@
 
         .blog-content h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: var(--text-primary);
         }
 
-        .blog-content .date {
+        .blog-content .meta {
             color: var(--text-secondary);
             margin-bottom: 2rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .blog-content .meta span {
+            margin-right: 1.5rem;
         }
 
         .blog-content p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
             color: var(--text-secondary);
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 300px;
+            background-image: url('https://placehold.co/800x400/2a2a2a/ffffff?text=Project+RAGGY+System');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .return-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--surface-card);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .return-btn:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
         }
     </style>
 </head>
@@ -49,19 +83,43 @@
     </header>
 
     <article class="blog-content">
+        <div class="blog-hero-image"></div>
         <h1>Project RAGGY: Why It Failed</h1>
-        <p class="date">November 2025</p>
+        <div class="meta">
+            <span><strong>Posted:</strong> November 2025</span>
+            <span><strong>Project Started:</strong> September 1, 2025</span>
+        </div>
 
-        <p><em>[Draft Content: This article will analyze the failure of the RAGGY project.]</em></p>
+        <p>In the world of AI, failure is often more instructive than success. <strong>Project RAGGY</strong>
+            (Retrieval-Augmented Generation for General Yield) was our attempt to build a "universal knowledge base"
+            that could instantly answer any question about our internal codebases.</p>
 
-        <h2>The Vision</h2>
-        <p>RAGGY was intended to be...</p>
+        <h2>The Ambition</h2>
+        <p>We wanted to solve the context window problem. Instead of feeding an LLM entire files, RAGGY would index
+            every function, class, and comment in a vector database. The goal was to have an AI that "knew" the entire
+            project history without needing to read it all at once.</p>
 
         <h2>The Roadblocks</h2>
-        <p>We encountered several critical issues...</p>
+        <p>The theory was sound, but the reality was messy. We encountered three fatal flaws:</p>
+        <ol>
+            <li><strong>Stale Data:</strong> Code changes fast. Keeping the vector database in sync with the live repo
+                proved to be a computational nightmare. RAGGY was often confident but wrong, citing code that had been
+                deleted days ago.</li>
+            <li><strong>Context Fragmentation:</strong> By chopping code into small chunks for retrieval, RAGGY lost the
+                "big picture." It could explain a single function perfectly but failed to understand how that function
+                fit into the broader architecture.</li>
+            <li><strong>Cost vs. Value:</strong> The cost of embedding and re-embedding code for every commit outweighed
+                the time saved by using the tool.</li>
+        </ol>
 
         <h2>The Pivot</h2>
-        <p>Ultimately, we decided to...</p>
+        <p>We shut down RAGGY in late October 2025. But the technology wasn't wasted. We realized that instead of a
+            "universal know-it-all," we needed a "current-context expert." This led to the development of the
+            <strong>Context-Aware Monitor</strong> in the AI Manager, which focuses only on the <em>active</em> task and
+            relevant files, rather than trying to memorize the entire history.</p>
+        <p>RAGGY failed so the AI Manager could succeed.</p>
+
+        <a href="../index.html#blog" class="return-btn">&larr; Return to Blog</a>
     </article>
 
     <footer>

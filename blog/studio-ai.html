@@ -16,19 +16,53 @@
 
         .blog-content h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: var(--text-primary);
         }
 
-        .blog-content .date {
+        .blog-content .meta {
             color: var(--text-secondary);
             margin-bottom: 2rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .blog-content .meta span {
+            margin-right: 1.5rem;
         }
 
         .blog-content p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
             color: var(--text-secondary);
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 300px;
+            background-image: url('https://placehold.co/800x400/2a2a2a/ffffff?text=Studio+AI+Architecture');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .return-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--surface-card);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .return-btn:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
         }
     </style>
 </head>
@@ -49,19 +83,37 @@
     </header>
 
     <article class="blog-content">
+        <div class="blog-hero-image"></div>
         <h1>Studio AI: The Great Transfer</h1>
-        <p class="date">November 2025</p>
+        <div class="meta">
+            <span><strong>Posted:</strong> November 2025</span>
+            <span><strong>Project Started:</strong> August 15, 2025</span>
+        </div>
 
-        <p><em>[Draft Content: This article will detail the transfer of the Studio AI project.]</em></p>
+        <p>Studio AI was conceived as the ultimate "Idea-to-Reality" engine. The premise was simple yet ambitious: a
+            unified interface where a user could describe a software application in natural language, and Studio AI
+            would orchestrate a swarm of agents to build, test, and deploy it in real-time.</p>
 
-        <h2>Project Overview</h2>
-        <p>Studio AI was an ambitious initiative designed to...</p>
+        <h2>The Vision</h2>
+        <p>We built the prototype using a multi-agent architecture. One agent handled the frontend design (using a
+            custom component library), another managed the backend schema (generating SQL and API endpoints), and a
+            third acted as the "Product Manager," ensuring the user's requirements were met.</p>
+        <p>For three months, we pushed the boundaries of what autonomous coding agents could do. We successfully
+            generated simple CRUD apps and landing pages with zero human intervention.</p>
 
-        <h2>The Transfer Process</h2>
-        <p>Moving the project required...</p>
+        <h2>The Transfer</h2>
+        <p>However, as the project grew, we realized that the infrastructure required to scale Studio AI was massive. It
+            wasn't just a "project" anymore; it was becoming a platform that needed its own dedicated ecosystem.</p>
+        <p>In November 2025, we made the strategic decision to transfer the core technology of Studio AI to a larger
+            entity better equipped to handle the computational load and security requirements. This wasn't an end, but a
+            graduation. The DNA of Studio AI—specifically its "Manager" agent logic—was extracted and refined to create
+            the <strong>Unified Project Agent (UPA)</strong> that powers this very website today.</p>
 
-        <h2>Lessons Learned</h2>
-        <p>Through this process, we discovered...</p>
+        <h2>Legacy</h2>
+        <p>Studio AI taught us that while AI can write code, the true value lies in <em>architecting</em> the system.
+            That lesson is the foundation of our new mission: turning coders into architects.</p>
+
+        <a href="../index.html#blog" class="return-btn">&larr; Return to Blog</a>
     </article>
 
     <footer>

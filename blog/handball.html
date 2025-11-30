@@ -16,13 +16,20 @@
 
         .blog-content h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: var(--text-primary);
         }
 
-        .blog-content .date {
+        .blog-content .meta {
             color: var(--text-secondary);
             margin-bottom: 2rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .blog-content .meta span {
+            margin-right: 1.5rem;
         }
 
         .blog-content p {
@@ -35,6 +42,23 @@
             margin: 2rem 0;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .return-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--surface-card);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .return-btn:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
         }
     </style>
 </head>
@@ -56,7 +80,10 @@
 
     <article class="blog-content">
         <h1>Experience the Thrill: New Handball Web Game</h1>
-        <p class="date">November 29, 2025</p>
+        <div class="meta">
+            <span><strong>Posted:</strong> November 29, 2025</span>
+            <span><strong>Project Started:</strong> November 10, 2025</span>
+        </div>
 
         <iframe width="100%" height="400" src="https://www.youtube.com/embed/UoZCPq6TTk4" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -84,6 +111,8 @@
         <p>Ready to test your skills? The game is live and free to play.</p>
         <p><a href="https://handball.knowandguide.com/" target="_blank" class="btn primary"
                 style="display: inline-block; text-decoration: none;">Play Now &rarr;</a></p>
+
+        <a href="../index.html#blog" class="return-btn">&larr; Return to Blog</a>
     </article>
 
     <footer>
