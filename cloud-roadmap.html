@@ -68,23 +68,61 @@
          3. "Learning Analytics" (Data Viz): A chart showing the relationship between Project Complexity and Tool Selection (e.g., App Engine vs. GKE).
          4. "Resource Library": A filterable list of specific blog posts and docs mentioned in the prompt context.
          Why: The user prioritized the "Videos" and the "Order of Development". A timeline structure best represents "Order", while the dynamic video panel keeps the interface clean. -->
-    <p class="text-gray-600 leading-relaxed mb-6">
-        You are about to embark on building a Google Cloud Project. This interactive guide structures the vast
-        documentation into a manageable <strong>Video-First Workflow</strong>.
-        Instead of getting lost in text, follow this curated timeline to access the most critical video
-        resources for each stage of development, from initial setup in Google Studio to managing resources.
-    </p>
-    <div class="flex gap-4">
-        <div class="bg-blue-50 px-4 py-2 rounded-lg border border-blue-100">
-            <span class="block text-sm font-semibold text-blue-800">Focus</span>
-            <span class="text-sm text-blue-600">Video Tutorials & Dev Flow</span>
+    <!-- Visualization & Content Choices:
+         1. Timeline Navigation: HTML/JS list. Click updates state. Justification: Linear progression matches "Development Order".
+         2. Complexity Chart: Chart.js Bubble Chart. Goal: Inform/Compare. Shows which tools (Antigravity/Studio equivalents) to use when.
+         3. Video Player Simulation: HTML/CSS card with "Play" overlay. Actual video embedding requires IDs not provided, so this links out.
+         4. CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation / Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <a href="index.html"
+                    class="text-2xl font-bold text-gray-800 no-underline hover:text-blue-600 transition">Know &
+                    Guide</a>
+                <div class="h-6 w-px bg-gray-300 mx-2"></div>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800 tracking-tight">Cloud Dev Launchpad</h1>
+                    <p class="text-xs text-gray-500 uppercase tracking-wide">Video-Guided Project Workflow</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-blue-600 font-medium transition">Home</a>
+                <button onclick="scrollToSection('roadmap')"
+                    class="text-gray-600 hover:text-blue-600 font-medium transition">Roadmap</button>
+                <button onclick="scrollToSection('analytics')"
+                    class="text-gray-600 hover:text-blue-600 font-medium transition">Tool Analysis</button>
+                <button onclick="scrollToSection('resources')"
+                    class="text-gray-600 hover:text-blue-600 font-medium transition">Resources</button>
+            </nav>
         </div>
-        <div class="bg-orange-50 px-4 py-2 rounded-lg border border-orange-100">
-            <span class="block text-sm font-semibold text-orange-800">Primary Source</span>
-            <span class="text-sm text-orange-600">Cloud Documentation & Billing</span>
+    </header>
+
+    <!-- Intro Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Welcome to Your Research Plan</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">
+                You are about to embark on building a Google Cloud Project. This interactive guide structures the vast
+                documentation into a manageable <strong>Video-First Workflow</strong>.
+                Instead of getting lost in text, follow this curated timeline to access the most critical video
+                resources for each stage of development, from initial setup in Google Studio to managing resources.
+            </p>
+            <div class="flex gap-4">
+                <div class="bg-blue-50 px-4 py-2 rounded-lg border border-blue-100">
+                    <span class="block text-sm font-semibold text-blue-800">Focus</span>
+                    <span class="text-sm text-blue-600">Video Tutorials & Dev Flow</span>
+                </div>
+                <div class="bg-orange-50 px-4 py-2 rounded-lg border border-orange-100">
+                    <span class="block text-sm font-semibold text-orange-800">Primary Source</span>
+                    <span class="text-sm text-orange-600">Cloud Documentation & Billing</span>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
     </section>
 
     <!-- MAIN INTERACTIVE SECTION: The Video Roadmap -->
@@ -512,6 +550,6 @@
         window.onload = init;
 
     </script>
-    </body>
+</body>
 
 </html>
