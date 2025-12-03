@@ -294,7 +294,8 @@
                 color: 'bg-purple-100 text-purple-800',
                 desc: 'The Organization node is the "Super-Parent". Policies defined here cascade down to every project. Understand the hierarchy: Organization -> Folders -> Projects -> Resources. This is the backbone of access control and cost tracking.',
                 link: 'https://www.youtube.com/watch?v=G9nGNBOPO88',
-                videoId: 'vid_1'
+                youtubeId: 'G9nGNBOPO88',
+                type: 'video'
             },
             {
                 id: 'billing',
@@ -306,43 +307,45 @@
                 color: 'bg-green-100 text-green-800',
                 desc: 'Set up a budget and define threshold rules (50%, 90%, 100%). Use Pub/Sub for programmatic responses to prevent runaway agent costs. This is your "Circuit Breaker" for autonomous agents.',
                 link: 'https://www.youtube.com/playlist?list=PLIivdWyY5sqKJx6FwJMRcsnFIkkNFtsX9',
-                videoId: 'vid_2'
+                youtubeListId: 'PLIivdWyY5sqKJx6FwJMRcsnFIkkNFtsX9',
+                type: 'playlist'
             },
             {
                 id: 'prototyping',
                 title: '3. AI Studio Prototyping',
                 subtitle: 'Vibe Coding',
                 videoTitle: 'Build Mode in AI Studio',
-                duration: 'Docs',
+                duration: 'Read Docs',
                 tag: 'Prototyping',
                 color: 'bg-blue-100 text-blue-800',
                 desc: 'Use "Build Mode" to generate full-stack apps from natural language. Iterate with "Vibe Coding" and preview changes live. Ground your app with context files like design systems or data.',
                 link: 'https://ai.google.dev/gemini-api/docs/aistudio-build-mode',
-                videoId: 'vid_3'
+                type: 'docs'
             },
             {
                 id: 'antigravity',
                 title: '4. Agentic Development',
                 subtitle: 'Google Antigravity',
                 videoTitle: 'Getting Started with Antigravity',
-                duration: 'Docs',
+                duration: 'Read Docs',
                 tag: 'Agentic',
                 color: 'bg-orange-100 text-orange-800',
                 desc: 'Transition to the Agentic IDE. Orchestrate multiple agents to refine code, write tests, and manage security with Execution Policies. Use the "Browser Sub-Agent" for visual verification.',
                 link: 'https://antigravity.google',
-                videoId: 'vid_4'
+                type: 'docs'
             },
             {
                 id: 'deployment',
                 title: '5. Deployment & Ops',
                 subtitle: 'Production Ready',
                 videoTitle: 'Deploying Apps with AI Studio',
-                duration: 'Video',
+                duration: '10:00',
                 tag: 'Deployment',
                 color: 'bg-red-100 text-red-800',
                 desc: 'Deploy to Cloud Run directly from AI Studio or Antigravity. Verify billing attribution and monitor costs. Ensure your "Landing Zone" governance rules are holding firm.',
                 link: 'https://www.youtube.com/watch?v=X_JBFLs3vAk',
-                videoId: 'vid_5'
+                youtubeId: 'X_JBFLs3vAk',
+                type: 'video'
             }
         ];
 
@@ -428,9 +431,46 @@
             stepBadge.className = `inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase ${step.color}`;
             externalLink.href = step.link;
 
-            // Update Video Visuals (Simulated Color Shift)
-            // Just a subtle background change to indicate context switch
-            videoStage.style.background = `linear-gradient(45deg, #1a202c, ${stringToColor(step.tag)})`;
+            // Update Video Visuals (Embed vs Placeholder)
+            if (step.type === 'video' && step.youtubeId) {
+                videoStage.innerHTML = `
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${step.youtubeId}" 
+                    title="${step.videoTitle}" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+                `;
+                videoStage.style.background = 'black';
+            } else if (step.type === 'playlist' && step.youtubeListId) {
+                videoStage.innerHTML = `
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/videoseries?list=${step.youtubeListId}" 
+                    title="${step.videoTitle}" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+                `;
+                videoStage.style.background = 'black';
+            } else {
+                // Docs or other non-video content
+                videoStage.innerHTML = `
+                    <div class="absolute inset-0 bg-black opacity-40 group-hover:opacity-30 transition"></div>
+                    <div class="z-10 text-center text-white px-4">
+                        <div class="text-5xl mb-4 opacity-90 group-hover:scale-110 transition-transform">📄</div>
+                        <h2 class="text-2xl font-bold">${step.videoTitle}</h2>
+                        <p class="mt-2 text-gray-300">Read Documentation</p>
+                    </div>
+                    <div class="absolute bottom-4 right-4 bg-blue-600 text-white text-xs px-2 py-1 rounded font-bold">
+                        DOCS
+                    </div>
+                `;
+                videoStage.style.background = `linear-gradient(45deg, #1a202c, ${stringToColor(step.tag)})`;
+
+                // Make the whole stage clickable for docs
+                videoStage.onclick = () => window.open(step.link, '_blank');
+            }
+
+            // Remove onclick if it's a video (so play button works)
+            if (step.type === 'video' || step.type === 'playlist') {
+                videoStage.onclick = null;
+            }
 
             // Update Button State
             updateButtonState();
