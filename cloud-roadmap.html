@@ -285,75 +285,75 @@
         // The Roadmap Steps (User Flow)
         const steps = [
             {
-                id: 'research',
-                title: '1. Research & Plan',
-                subtitle: 'Define your scope',
-                videoTitle: 'Google Cloud Platform Fundamentals',
-                duration: '12:45',
-                tag: 'Concept',
+                id: 'governance',
+                title: '1. Governance & Hierarchy',
+                subtitle: 'The Foundation',
+                videoTitle: 'Google Cloud Resource Hierarchy Explained',
+                duration: '39:20',
+                tag: 'Governance',
                 color: 'bg-purple-100 text-purple-800',
-                desc: 'Before coding, understand the landscape. This video covers the core building blocks: Compute, Storage, and Networking. Essential for editing your research plan.',
-                link: 'https://cloud.google.com/docs/overview',
+                desc: 'The Organization node is the "Super-Parent". Policies defined here cascade down to every project. Understand the hierarchy: Organization -> Folders -> Projects -> Resources. This is the backbone of access control and cost tracking.',
+                link: 'https://www.youtube.com/results?search_query=Google+Cloud+Resource+Hierarchy+Explained',
                 videoId: 'vid_1'
             },
             {
-                id: 'setup',
-                title: '2. Console & Billing',
-                subtitle: 'The Foundation',
-                videoTitle: 'Managing Cloud Billing & Budgets',
-                duration: '08:30',
-                tag: 'Setup',
+                id: 'billing',
+                title: '2. Billing & Budgets',
+                subtitle: 'Cost Control',
+                videoTitle: 'Creating budgets and alerts',
+                duration: '05:49',
+                tag: 'Finance',
                 color: 'bg-green-100 text-green-800',
-                desc: 'Even if "billing is not important" for the prototype, you must set it up to enable APIs. This video shows how to create a project, link a billing account, and set budget alerts to prevent surprises.',
-                link: 'https://docs.cloud.google.com/billing/docs', // User provided link
+                desc: 'Set up a budget and define threshold rules (50%, 90%, 100%). Use Pub/Sub for programmatic responses to prevent runaway agent costs. This is your "Circuit Breaker" for autonomous agents.',
+                link: 'https://www.youtube.com/results?search_query=Creating+budgets+and+alerts+for+cost+management+Google+Cloud',
                 videoId: 'vid_2'
             },
             {
-                id: 'studio',
-                title: '3. The Dev Environment',
-                subtitle: 'Studio & Tools',
-                videoTitle: 'Setting up your Cloud Workstation',
-                duration: '15:10',
-                tag: 'Tools',
+                id: 'prototyping',
+                title: '3. AI Studio Prototyping',
+                subtitle: 'Vibe Coding',
+                videoTitle: 'Vibe coding with Gemini 3',
+                duration: '11:00',
+                tag: 'Prototyping',
                 color: 'bg-blue-100 text-blue-800',
-                desc: 'Configure your local environment or use Cloud Shell. Learn how to connect "Google Studio" (Vertex AI or Android Studio) to your backend resources.',
-                link: 'https://cloud.google.com/shell/docs',
+                desc: 'Use "Build Mode" to generate full-stack apps from natural language. Iterate with "Vibe Coding" and preview changes live. Ground your app with context files like design systems or data.',
+                link: 'https://www.youtube.com/results?search_query=Vibe+coding+with+Gemini+3+in+AI+Studio',
                 videoId: 'vid_3'
             },
             {
-                id: 'develop',
-                title: '4. Build & Antigravity',
-                subtitle: 'Core Development',
-                videoTitle: 'Serverless: Run Code without Ops',
-                duration: '18:20',
-                tag: 'Development',
+                id: 'antigravity',
+                title: '4. Agentic Development',
+                subtitle: 'Google Antigravity',
+                videoTitle: 'Getting Started with Antigravity',
+                duration: '15:00',
+                tag: 'Agentic',
                 color: 'bg-orange-100 text-orange-800',
-                desc: 'The "Antigravity" phase: Lift your code to the cloud without managing servers. Focus on Cloud Run and App Engine for rapid deployment of your own projects.',
-                link: 'https://cloud.google.com/run/docs',
+                desc: 'Transition to the Agentic IDE. Orchestrate multiple agents to refine code, write tests, and manage security with Execution Policies. Use the "Browser Sub-Agent" for visual verification.',
+                link: 'https://antigravity.google',
                 videoId: 'vid_4'
             },
             {
-                id: 'monitor',
-                title: '5. Monitor & Scale',
-                subtitle: 'Post-Launch',
-                videoTitle: 'Cloud Operations Suite Demo',
-                duration: '10:05',
-                tag: 'Operations',
+                id: 'deployment',
+                title: '5. Deployment & Ops',
+                subtitle: 'Production Ready',
+                videoTitle: 'Deploying Apps with AI Studio',
+                duration: '10:00',
+                tag: 'Deployment',
                 color: 'bg-red-100 text-red-800',
-                desc: 'Use Cloud Logging and Monitoring to ensure your application stays healthy. This step is crucial for long-term project success.',
-                link: 'https://cloud.google.com/stackdriver/docs',
+                desc: 'Deploy to Cloud Run directly from AI Studio or Antigravity. Verify billing attribution and monitor costs. Ensure your "Landing Zone" governance rules are holding firm.',
+                link: 'https://www.youtube.com/results?search_query=How+I+Deploy+Apps+With+Google+AI+Studio',
                 videoId: 'vid_5'
             }
         ];
 
         // Additional Resources
         const resources = [
-            { type: 'blog', title: '10 Steps to Production', link: '#', desc: 'A written guide to accompany the videos.' },
-            { type: 'video', title: 'Deep Dive: IAM Policies', link: '#', desc: 'Advanced security configurations video.' },
-            { type: 'docs', title: 'Billing API Reference', link: 'https://docs.cloud.google.com/billing/docs', desc: 'The official source text.' },
-            { type: 'blog', title: 'Antigravity: Scaling Up', link: '#', desc: 'Blog post on handling massive traffic spikes.' },
-            { type: 'video', title: 'Database Options Explained', link: '#', desc: 'SQL vs NoSQL video guide.' },
-            { type: 'blog', title: 'Cost Optimization Strategies', link: '#', desc: 'How to reduce your monthly cloud bill.' }
+            { type: 'docs', title: 'Cloud Billing Documentation', link: 'https://cloud.google.com/billing/docs', desc: 'The official source text for financial governance.' },
+            { type: 'video', title: 'Beyond Your Bill Series', link: 'https://www.youtube.com/results?search_query=Beyond+Your+Bill+Google+Cloud', desc: 'Comprehensive video series on cost management.' },
+            { type: 'docs', title: 'Google Antigravity Guide', link: 'https://antigravity.google', desc: 'Official documentation for the Agentic IDE.' },
+            { type: 'blog', title: 'Build with AI Studio', link: 'https://ai.google.dev/build', desc: 'Guide to building apps with Gemini models.' },
+            { type: 'video', title: 'GCP Hierarchy Deep Dive', link: 'https://www.youtube.com/results?search_query=Google+Cloud+Resource+Hierarchy+Explained', desc: 'Detailed explanation of Organization nodes and Folders.' },
+            { type: 'blog', title: 'Agentic Architecture', link: '#', desc: 'The comprehensive guide to Agent-First development.' }
         ];
 
         // State
