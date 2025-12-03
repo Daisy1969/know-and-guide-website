@@ -288,36 +288,36 @@
                 id: 'governance',
                 title: '1. Governance & Hierarchy',
                 subtitle: 'The Foundation',
-                videoTitle: 'Google Cloud Resource Hierarchy Explained',
+                videoTitle: 'GCP Hierarchy Explained',
                 duration: '39:20',
                 tag: 'Governance',
                 color: 'bg-purple-100 text-purple-800',
                 desc: 'The Organization node is the "Super-Parent". Policies defined here cascade down to every project. Understand the hierarchy: Organization -> Folders -> Projects -> Resources. This is the backbone of access control and cost tracking.',
-                link: 'https://www.youtube.com/results?search_query=Google+Cloud+Resource+Hierarchy+Explained',
+                link: 'https://www.youtube.com/watch?v=G9nGNBOPO88',
                 videoId: 'vid_1'
             },
             {
                 id: 'billing',
                 title: '2. Billing & Budgets',
                 subtitle: 'Cost Control',
-                videoTitle: 'Creating budgets and alerts',
-                duration: '05:49',
+                videoTitle: 'Beyond Your Bill Series',
+                duration: 'Playlist',
                 tag: 'Finance',
                 color: 'bg-green-100 text-green-800',
                 desc: 'Set up a budget and define threshold rules (50%, 90%, 100%). Use Pub/Sub for programmatic responses to prevent runaway agent costs. This is your "Circuit Breaker" for autonomous agents.',
-                link: 'https://www.youtube.com/results?search_query=Creating+budgets+and+alerts+for+cost+management+Google+Cloud',
+                link: 'https://www.youtube.com/playlist?list=PLIivdWyY5sqKJx6FwJMRcsnFIkkNFtsX9',
                 videoId: 'vid_2'
             },
             {
                 id: 'prototyping',
                 title: '3. AI Studio Prototyping',
                 subtitle: 'Vibe Coding',
-                videoTitle: 'Vibe coding with Gemini 3',
-                duration: '11:00',
+                videoTitle: 'Build Mode in AI Studio',
+                duration: 'Docs',
                 tag: 'Prototyping',
                 color: 'bg-blue-100 text-blue-800',
                 desc: 'Use "Build Mode" to generate full-stack apps from natural language. Iterate with "Vibe Coding" and preview changes live. Ground your app with context files like design systems or data.',
-                link: 'https://www.youtube.com/results?search_query=Vibe+coding+with+Gemini+3+in+AI+Studio',
+                link: 'https://ai.google.dev/gemini-api/docs/aistudio-build-mode',
                 videoId: 'vid_3'
             },
             {
@@ -325,7 +325,7 @@
                 title: '4. Agentic Development',
                 subtitle: 'Google Antigravity',
                 videoTitle: 'Getting Started with Antigravity',
-                duration: '15:00',
+                duration: 'Docs',
                 tag: 'Agentic',
                 color: 'bg-orange-100 text-orange-800',
                 desc: 'Transition to the Agentic IDE. Orchestrate multiple agents to refine code, write tests, and manage security with Execution Policies. Use the "Browser Sub-Agent" for visual verification.',
@@ -337,23 +337,25 @@
                 title: '5. Deployment & Ops',
                 subtitle: 'Production Ready',
                 videoTitle: 'Deploying Apps with AI Studio',
-                duration: '10:00',
+                duration: 'Video',
                 tag: 'Deployment',
                 color: 'bg-red-100 text-red-800',
                 desc: 'Deploy to Cloud Run directly from AI Studio or Antigravity. Verify billing attribution and monitor costs. Ensure your "Landing Zone" governance rules are holding firm.',
-                link: 'https://www.youtube.com/results?search_query=How+I+Deploy+Apps+With+Google+AI+Studio',
+                link: 'https://www.youtube.com/watch?v=X_JBFLs3vAk',
                 videoId: 'vid_5'
             }
         ];
 
         // Additional Resources
         const resources = [
-            { type: 'docs', title: 'Cloud Billing Documentation', link: 'https://cloud.google.com/billing/docs', desc: 'The official source text for financial governance.' },
-            { type: 'video', title: 'Beyond Your Bill Series', link: 'https://www.youtube.com/results?search_query=Beyond+Your+Bill+Google+Cloud', desc: 'Comprehensive video series on cost management.' },
-            { type: 'docs', title: 'Google Antigravity Guide', link: 'https://antigravity.google', desc: 'Official documentation for the Agentic IDE.' },
-            { type: 'blog', title: 'Build with AI Studio', link: 'https://ai.google.dev/build', desc: 'Guide to building apps with Gemini models.' },
-            { type: 'video', title: 'GCP Hierarchy Deep Dive', link: 'https://www.youtube.com/results?search_query=Google+Cloud+Resource+Hierarchy+Explained', desc: 'Detailed explanation of Organization nodes and Folders.' },
-            { type: 'blog', title: 'Agentic Architecture', link: '#', desc: 'The comprehensive guide to Agent-First development.' }
+            { type: 'docs', title: 'Billing Concepts', link: 'https://docs.cloud.google.com/billing/docs/concepts', desc: 'Official documentation on billing concepts.' },
+            { type: 'docs', title: 'Onboarding Checklist', link: 'https://docs.cloud.google.com/billing/docs/onboarding-checklist', desc: 'Checklist for setting up Google Cloud billing.' },
+            { type: 'video', title: 'Resource Hierarchy', link: 'https://www.youtube.com/watch?v=zeX1_EcuYVM', desc: 'Deep dive into Google Cloud Resource Hierarchy.' },
+            { type: 'video', title: 'Creating Projects', link: 'https://www.youtube.com/watch?v=9yPMlppx7bM', desc: 'Lifecycle management of Google Cloud Projects.' },
+            { type: 'blog', title: 'Control Your Spend', link: 'https://adswerve.com/technical-insights/how-to-control-your-google-cloud-platform-spend', desc: 'Technical insights on controlling GCP spend.' },
+            { type: 'blog', title: 'Build AI App for Free', link: 'https://medium.com/@proflead/build-an-ai-app-for-free-with-the-new-google-ai-studio-cbb2ae9583de', desc: 'Tutorial on building apps with AI Studio.' },
+            { type: 'docs', title: 'Antigravity Codelab', link: 'https://codelabs.developers.google.com/getting-started-google-antigravity', desc: 'Hands-on codelab for Google Antigravity.' },
+            { type: 'blog', title: 'Antigravity Blog', link: 'https://developers.googleblog.com/en/build-with-google-antigravity-our-new-agentic-development-platform/', desc: 'Official announcement and guide for Antigravity.' }
         ];
 
         // State
