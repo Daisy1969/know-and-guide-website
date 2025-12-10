@@ -1,3 +1,5 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 document.addEventListener('DOMContentLoaded', function () {
     // Inject Chatbot HTML
     const chatbotContainer = document.createElement('div');
@@ -34,49 +36,80 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // State
     let isOpen = false;
-    let conversationState = 'INIT'; // INIT, NAME, EMAIL, CHAT
-    let userDetails = { name: '', email: '' };
+    let conversationState = 'INIT'; // INIT, CHAT
 
-    // Knowledge Base
-    const knowledgeBase = {
-        pricing: `Our development services start at a base of <strong>$250 AUD</strong>. <br>
-                  - <strong>AI Tool (3 hours):</strong> Discounted to $200 AUD.<br>
-                  - <strong>Medium Project (3 Days):</strong> $1000 AUD (includes various additions).<br>
-                  - <strong>Enterprise:</strong> Please contact us for a quote.<br>
-                  Hosting: We can host via our domain for 1 year, or use your domain (you pay Google Cloud costs).`,
+    // Initialize Gemini
+    let genAI = null;
+    let model = null;
+    let chatSession = null;
 
-        projects: `We have built several Gemini-powered applications:<br>
-                   - <strong>Maths Penpal:</strong> Voice-activated AI tutor for ACARA v9.0.<br>
-                   - <strong>Handball Game:</strong> Web-based sports game.<br>
-                   - <strong>Studio AI:</strong> Creative workflow automation.<br>
-                   Check our <a href="#blog" style="color:#4f46e5">blog</a> for more details.`,
+    try {
+        if (typeof CONFIG !== 'undefined' && CONFIG.API_KEY) {
+            genAI = new GoogleGenerativeAI(CONFIG.API_KEY);
+            model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        } else {
+            console.error("CONFIG.API_KEY not found.");
+        }
+    } catch (e) {
+        console.error("Error initializing Gemini:", e);
+    }
 
-        dm_aide: `<strong>Advanced DM Aide</strong> is our premier tool for Dungeon Masters.<br>
-                  Access it here: <a href="https://advancedmaide.knowandguide.com/" target="_blank" style="color:#4f46e5">advancedmaide.knowandguide.com</a><br>
-                  <em>Note: Subscription emails contain an activation code and link, valid for 1 year.</em>`,
-
-        contact: `You can reach us at <a href="mailto:winseral@knowandguide.com" style="color:#4f46e5">winseral@knowandguide.com</a> for more information.`,
-
-        default: `I can help you with information about our AI development services, pricing, and projects like Maths Penpal or DM Aide. How can I assist you?`
-    };
+    const systemPrompt = `
+    You are the Know & Guide AI Assistant. You help users with AI development services.
+    
+    Services & Pricing:
+    - Base development: $250 AUD.
+    - AI Tool (3 hours): $200 AUD (Discounted).
+    - Medium Project (3 Days): $1000 AUD.
+    - Hosting: 1 year via our domain or user pays Google Cloud costs.
+    
+    Projects:
+    - Maths Penpal: Voice-activated AI tutor for ACARA v9.0.
+    - Handball Game: Web-based sports game.
+    - Studio AI: Creative workflow automation.
+    - Advanced DM Aide: Tool for Dungeon Masters (advancedmaide.knowandguide.com).
+    
+    Contact: winseral@knowandguide.com.
+    
+    Style: Professional, helpful, concise.
+    `;
 
     // Functions
     function toggleChat() {
         isOpen = !isOpen;
         windowEl.classList.toggle('active', isOpen);
         if (isOpen && messagesEl.children.length === 0) {
-            addBotMessage("Hello! I'm the Know & Guide AI Assistant. I can help you with our services and projects.");
-            setTimeout(() => {
-                addBotMessage("To better assist you and allow us to follow up, could you please tell me your name?");
-                conversationState = 'NAME';
-            }, 500);
+            initChat();
+        }
+    }
+
+    async function initChat() {
+        addBotMessage("✨ Hello! I'm the Know & Guide <strong>Gemini</strong> Assistant.<br>I can help you with pricing, projects, or just chat!");
+
+        if (model) {
+            try {
+                chatSession = model.startChat({
+                    history: [
+                        {
+                            role: "user",
+                            parts: [{ text: systemPrompt + "\n\nHello." }],
+                        },
+                        {
+                            role: "model",
+                            parts: [{ text: "Hello! I am ready to help you with Know & Guide services." }],
+                        },
+                    ],
+                });
+            } catch (e) {
+                addBotMessage("Error initializing AI. Operating in limited mode.");
+            }
         }
     }
 
     function addMessage(text, sender) {
         const msgDiv = document.createElement('div');
         msgDiv.className = `message ${sender}`;
-        msgDiv.innerHTML = text;
+        msgDiv.innerHTML = text; // Allow HTML for links
         messagesEl.appendChild(msgDiv);
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
@@ -89,64 +122,39 @@ document.addEventListener('DOMContentLoaded', function () {
         addMessage(text, 'user');
     }
 
-    function processInput() {
+    async function processInput() {
         const text = inputEl.value.trim();
         if (!text) return;
 
         addUserMessage(text);
         inputEl.value = '';
+        inputEl.disabled = true;
 
-        setTimeout(() => {
-            handleLogic(text);
-        }, 600);
-    }
-
-    function handleLogic(text) {
-        const lowerText = text.toLowerCase();
-
-        if (conversationState === 'NAME') {
-            userDetails.name = text;
-            addBotMessage(`Nice to meet you, ${userDetails.name}. Could you please provide your email address so we can send you feedback or follow up?`);
-            conversationState = 'EMAIL';
-            return;
-        }
-
-        if (conversationState === 'EMAIL') {
-            userDetails.email = text;
-            addBotMessage(`Thank you. I've noted your details. Now, how can I help you today?`);
-            addBotMessage(`<div class="quick-options">
-                <button class="quick-option" onclick="ask('pricing')">Pricing</button>
-                <button class="quick-option" onclick="ask('projects')">Projects</button>
-                <button class="quick-option" onclick="ask('dm aide')">DM Aide</button>
-                <button class="quick-option" onclick="ask('feedback')">Give Feedback</button>
-            </div>`);
-            conversationState = 'CHAT';
-            return;
-        }
-
-        // Chat Logic
-        if (lowerText.includes('price') || lowerText.includes('cost') || lowerText.includes('quote')) {
-            addBotMessage(knowledgeBase.pricing);
-        } else if (lowerText.includes('project') || lowerText.includes('app') || lowerText.includes('built')) {
-            addBotMessage(knowledgeBase.projects);
-        } else if (lowerText.includes('dm') || lowerText.includes('dungeon') || lowerText.includes('aide')) {
-            addBotMessage(knowledgeBase.dm_aide);
-        } else if (lowerText.includes('contact') || lowerText.includes('email')) {
-            addBotMessage(knowledgeBase.contact);
-        } else if (lowerText.includes('feedback')) {
-            const subject = encodeURIComponent(`Feedback from ${userDetails.name}`);
-            const body = encodeURIComponent(`Name: ${userDetails.name}\nEmail: ${userDetails.email}\n\nFeedback:\n[Please type your feedback here]`);
-            addBotMessage(`We value your feedback! Click the link below to send us an email directly via your preferred mail client:<br><br>
-            <a href="mailto:winseral@knowandguide.com?subject=${subject}&body=${body}" style="background:#4f46e5; color:white; padding:8px 16px; border-radius:4px; text-decoration:none; display:inline-block;">Send Feedback Email</a>`);
+        if (chatSession) {
+            try {
+                const result = await chatSession.sendMessage(text);
+                const response = await result.response;
+                const advice = response.text();
+                addBotMessage(marked.parse(advice)); // Use marked if available, otherwise raw text
+            } catch (error) {
+                console.error("Gemini Error:", error);
+                // Fallback logic
+                handleFallback(text);
+            }
         } else {
-            addBotMessage(knowledgeBase.default);
+            handleFallback(text);
         }
+        inputEl.disabled = false;
+        inputEl.focus();
     }
 
-    // Expose ask function for quick options
-    window.ask = function (keyword) {
-        handleLogic(keyword);
-    };
+    function handleFallback(text) {
+        // Simple keywords if AI fails
+        const lower = text.toLowerCase();
+        if (lower.includes('price')) addBotMessage("Our base service starts at $200 AUD for small AI tools.");
+        else if (lower.includes('contact')) addBotMessage("Email us at winseral@knowandguide.com");
+        else addBotMessage("I'm having trouble connecting to the AI brain right now. Please email us at winseral@knowandguide.com");
+    }
 
     // Event Listeners
     toggleBtn.addEventListener('click', toggleChat);
