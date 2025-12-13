@@ -123,6 +123,10 @@ document.addEventListener('DOMContentLoaded', function () {
         addMessage(text, 'user');
     }
 
+    // Models to try in order
+    const MODEL_LIST = ["gemini-1.5-flash", "gemini-pro", "gemini-1.0-pro"];
+    let currentModelIndex = 0;
+
     async function processInput() {
         const text = inputEl.value.trim();
         if (!text) return;
@@ -131,30 +135,57 @@ document.addEventListener('DOMContentLoaded', function () {
         inputEl.value = '';
         inputEl.disabled = true;
 
-        if (chatSession) {
-            try {
-                const result = await chatSession.sendMessage(text);
-                const response = await result.response;
-                const advice = response.text();
-                addBotMessage(marked.parse(advice)); // Use marked if available, otherwise raw text
-            } catch (error) {
-                console.error("Gemini Error:", error);
+        await trySendMessage(text);
 
-                // Detailed Error for User Debugging
-                let errorMessage = error.message || error.toString();
-                if (errorMessage.includes("403")) errorMessage += "<br>(Likely API Key restriction or API not enabled)";
-
-                addBotMessage(`⚠️ <strong>Connection Error:</strong><br>${errorMessage}<br><br>Please check console (F12) for more details.`);
-
-                // Fallback logic
-                handleFallback(text);
-            }
-        } else {
-            addBotMessage("⚠️ <strong>System Error:</strong> AI Model not initialized. Check config.js.");
-            handleFallback(text);
-        }
         inputEl.disabled = false;
         inputEl.focus();
+    }
+
+    async function trySendMessage(text) {
+        if (!genAI) {
+            handleFallback(text);
+            return;
+        }
+
+        try {
+            // Get current model
+            const modelName = MODEL_LIST[currentModelIndex];
+            const model = genAI.getGenerativeModel({ model: modelName });
+
+            // Start fresh chat or use existing if matching model
+            if (!chatSession || chatSession.model !== modelName) {
+                chatSession = model.startChat({
+                    history: [
+                        { role: "user", parts: [{ text: systemPrompt }] },
+                        { role: "model", parts: [{ text: "Hello! I am ready." }] }
+                    ]
+                });
+                chatSession.model = modelName;
+            }
+
+            const result = await chatSession.sendMessage(text);
+            const response = await result.response;
+            const advice = response.text();
+            addBotMessage(marked.parse(advice));
+
+        } catch (error) {
+            console.error(`Error with ${MODEL_LIST[currentModelIndex]}:`, error);
+
+            // Failover Logic
+            if (currentModelIndex < MODEL_LIST.length - 1) {
+                currentModelIndex++;
+                console.log(`Failing over to ${MODEL_LIST[currentModelIndex]}...`);
+                await trySendMessage(text); // Retry with next model
+            } else {
+                // All failed
+                let errorMessage = error.message || error.toString();
+                if (errorMessage.includes("403")) errorMessage += "<br>(Likely API Key restriction or API not enabled)";
+                if (errorMessage.includes("404")) errorMessage += "<br>(Model not available in your region)";
+
+                addBotMessage(`⚠️ <strong>Connection Error:</strong><br>${errorMessage}<br><br>All models failed.`);
+                handleFallback(text);
+            }
+        }
     }
 
     function handleFallback(text) {
