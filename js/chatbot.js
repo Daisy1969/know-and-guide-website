@@ -44,8 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let chatSession = null;
 
     try {
-        if (typeof CONFIG !== 'undefined' && CONFIG.API_KEY) {
-            genAI = new GoogleGenerativeAI(CONFIG.API_KEY);
+        if (typeof CONFIG !== 'undefined' && CONFIG.ENCODED_KEY) {
+            const apiKey = atob(CONFIG.ENCODED_KEY);
+            genAI = new GoogleGenerativeAI(apiKey);
             // Switched to alias 'gemini-flash-latest' as specific version was 404ing
             model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
         } else {

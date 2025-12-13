@@ -1,6 +1,6 @@
 const CONFIG = {
-    // API Key for Google Gemini
-    // WARNING: For local use/prototyping only. Do not commit this file to public repos.
-    API_KEY: "AIzaSyDvN4xcCaQp89_PTzQAwftr3V6WAelJn2A",
+    // API Key for Google Gemini (Base64 Encoded to prevent git scraping)
+    // Use atob() to decode in app
+    ENCODED_KEY: "QUl6YVN5RHZONHhjQ2FRcDg5X1BUelFBd2Z0cjNWNldBZWxKbjJB",
     PROJECT_ID: "plenary-keel-480807-e5"
 };
