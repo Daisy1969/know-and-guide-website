@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
         if (typeof CONFIG !== 'undefined' && CONFIG.API_KEY) {
             genAI = new GoogleGenerativeAI(CONFIG.API_KEY);
-            model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+            // Fallback to gemini-pro if 1.5-flash is not available for this key/region
+            model = genAI.getGenerativeModel({ model: "gemini-pro" });
         } else {
             console.error("CONFIG.API_KEY not found.");
         }
