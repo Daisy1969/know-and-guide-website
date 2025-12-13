@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleBtn.addEventListener('click', toggleChat);
     closeBtn.addEventListener('click', toggleChat);
     sendBtn.addEventListener('click', processInput);
+    if (micBtn) micBtn.addEventListener('click', toggleMic); // Mic Listener
     inputEl.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') processInput();
     });
