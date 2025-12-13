@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
         if (typeof CONFIG !== 'undefined' && CONFIG.API_KEY) {
             genAI = new GoogleGenerativeAI(CONFIG.API_KEY);
-            // Using gemini-1.5-flash as gemini-pro (v1.0) is unavailable/deprecated
-            model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+            // Switched to alias 'gemini-flash-latest' as specific version was 404ing
+            model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
         } else {
             console.error("CONFIG.API_KEY not found.");
         }
