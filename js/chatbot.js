@@ -138,10 +138,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 addBotMessage(marked.parse(advice)); // Use marked if available, otherwise raw text
             } catch (error) {
                 console.error("Gemini Error:", error);
+
+                // Detailed Error for User Debugging
+                let errorMessage = error.message || error.toString();
+                if (errorMessage.includes("403")) errorMessage += "<br>(Likely API Key restriction or API not enabled)";
+
+                addBotMessage(`⚠️ <strong>Connection Error:</strong><br>${errorMessage}<br><br>Please check console (F12) for more details.`);
+
                 // Fallback logic
                 handleFallback(text);
             }
         } else {
+            addBotMessage("⚠️ <strong>System Error:</strong> AI Model not initialized. Check config.js.");
             handleFallback(text);
         }
         inputEl.disabled = false;
