@@ -159,6 +159,53 @@
     fill: white;
 }
 
+.chatbot-mic {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-mic:hover {
+    background-color: #f3f4f6;
+}
+
+.chatbot-mic svg {
+    width: 20px;
+    height: 20px;
+    fill: #6b7280;
+}
+
+.chatbot-mic.listening {
+    background-color: #fee2e2;
+    /* Light red */
+    animation: pulse 1.5s infinite;
+}
+
+.chatbot-mic.listening svg {
+    fill: #ef4444;
+    /* Red */
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
 .quick-options {
     display: flex;
     flex-wrap: wrap;
