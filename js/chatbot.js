@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 <!-- Messages will appear here -->
             </div>
             <div class="chatbot-input-area">
+                <button class="chatbot-mic" id="chatbot-mic" title="Speak">
+                    <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 3.01-2.45 5.46-5.5 5.5S6 14.01 6 11H4c0 3.53 2.61 6.43 6 6.92V21h4v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+                </button>
                 <input type="text" id="chatbot-input" placeholder="Ask me anything...">
                 <button class="chatbot-send" id="chatbot-send">
                     <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
@@ -33,9 +36,71 @@ document.addEventListener('DOMContentLoaded', function () {
     const messagesEl = document.getElementById('chatbot-messages');
     const inputEl = document.getElementById('chatbot-input');
     const sendBtn = document.getElementById('chatbot-send');
+    const micBtn = document.getElementById('chatbot-mic'); // New Mic Button
 
     // State
     let isOpen = false;
+    let isListening = false;
+
+    // Voice Setup
+    const recognition = window.SpeechRecognition || window.webkitSpeechRecognition ? new (window.SpeechRecognition || window.webkitSpeechRecognition)() : null;
+    let synthesis = window.speechSynthesis;
+    let femaleVoice = null;
+
+    if (recognition) {
+        recognition.continuous = false;
+        recognition.lang = 'en-US';
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            inputEl.value = transcript;
+            processInput();
+            micBtn.classList.remove('listening');
+            isListening = false;
+        };
+        recognition.onend = () => {
+            micBtn.classList.remove('listening');
+            isListening = false;
+        };
+    } else {
+        if (micBtn) micBtn.style.display = 'none'; // Hide if not supported
+    }
+
+    function loadVoices() {
+        if (!synthesis) return;
+        const voices = synthesis.getVoices();
+        // Prefer Google US Female, then Microsoft Zira, then any female
+        femaleVoice = voices.find(v => v.name.includes("Google US English") && v.name.includes("Female"))
+            || voices.find(v => v.name.includes("Zira"))
+            || voices.find(v => v.name.toLowerCase().includes("female"))
+            || voices[0];
+    }
+    if (synthesis && synthesis.onvoiceschanged !== undefined) {
+        synthesis.onvoiceschanged = loadVoices;
+    }
+    loadVoices(); // Init immediately too
+
+    function speak(text) {
+        if (!synthesis) return;
+        // Strip HTML tags for clean reading
+        const cleanText = text.replace(/<[^>]*>/g, '');
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        if (femaleVoice) utterance.voice = femaleVoice;
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
+        synthesis.speak(utterance);
+    }
+
+    function toggleMic() {
+        if (!recognition) return;
+        if (isListening) {
+            recognition.stop();
+        } else {
+            recognition.start();
+            micBtn.classList.add('listening');
+            isListening = true;
+        }
+    }
+
     let conversationState = 'INIT'; // INIT, CHAT
 
     // Initialize Gemini
@@ -57,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const systemPrompt = `
-    You are the Know & Guide AI Assistant. You help users with AI development services.
+    You are the Know & Guide AI Assistant. You are a professional, polite, and helpful female expert on AI development services.
     
     Services & Pricing:
     - Base development: $250 AUD.
@@ -73,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     Contact: winseral@knowandguide.com.
     
-    Style: Professional, helpful, concise.
+    Style: Professional, polite, expert, concise. Respond as if speaking clearly.
     `;
 
     // Functions
@@ -86,7 +151,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function initChat() {
-        addBotMessage("✨ Hello! I'm the Know & Guide <strong>Gemini</strong> Assistant.<br>I can help you with pricing, projects, or just chat!");
+        const welcomeText = "✨ Hello! I'm the Know & Guide <strong>Gemini</strong> Assistant.<br>I can help you with pricing, projects, or just chat!";
+        addBotMessage(welcomeText);
+        speak("Hello! I'm the Know and Guide Gemini Assistant. I can help you with pricing, projects, or just chat!");
 
         if (model) {
             try {
@@ -139,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const response = await result.response;
                 const advice = response.text();
                 addBotMessage(marked.parse(advice));
+                speak(advice);
             } catch (error) {
                 console.error("Gemini Error:", error);
 
