@@ -129,8 +129,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof CONFIG !== 'undefined' && CONFIG.ENCODED_KEY) {
             const apiKey = atob(CONFIG.ENCODED_KEY);
             genAI = new GoogleGenerativeAI(apiKey);
-            // Using specific version to avoid 404/405 errors with aliases
-            model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+            // Updated to gemini-2.5-pro as requested by user
+            model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
         } else {
             console.error("CONFIG.API_KEY not found.");
         }
