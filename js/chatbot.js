@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
         </button>
         <div class="chatbot-window" id="chatbot-window">
             <div class="chatbot-header">
-                <h3>Know & Guide AI</h3>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="images/susanna.jpg" alt="Susanna" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+                    <h3>Susanna (AI Expert)</h3>
+                </div>
                 <button class="chatbot-close" id="chatbot-close">&times;</button>
             </div>
             <div class="chatbot-messages" id="chatbot-messages">
@@ -136,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const systemPrompt = `
-    You are the Know & Guide AI Assistant. You are a professional, polite, and helpful female expert on AI development services.
+    You are Susanna, the Know & Guide AI Assistant. You are a professional, polite, and helpful female expert on AI development services.
     
     Services & Pricing:
     - Base development: $250 AUD.
@@ -165,9 +168,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function initChat() {
-        const welcomeText = "✨ Hello! I'm the Know & Guide <strong>Gemini</strong> Assistant.<br>I can help you with pricing, projects, or just chat!";
+        const welcomeText = "✨ Hello! I'm <strong>Susanna</strong>, the Know & Guide AI Assistant.<br>I can help you with pricing, projects, or just chat!";
         addBotMessage(welcomeText);
-        speak("Hello! I'm the Know and Guide Gemini Assistant. I can help you with pricing, projects, or just chat!");
+        speak("Hello! I'm Susanna, the Know and Guide AI Assistant. I can help you with pricing, projects, or just chat!");
 
         if (model) {
             try {
