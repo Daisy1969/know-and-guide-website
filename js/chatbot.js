@@ -65,35 +65,49 @@ document.addEventListener('DOMContentLoaded', function () {
         if (micBtn) micBtn.style.display = 'none'; // Hide if not supported
     }
 
-    function loadVoices() {
-        if (!synthesis) return;
-        const voices = synthesis.getVoices();
-        // Prefer Google US Female, then Microsoft Zira, then any female
-        femaleVoice = voices.find(v => v.name.includes("Google US English") && v.name.includes("Female"))
-            || voices.find(v => v.name.includes("Zira"))
-            || voices.find(v => v.name.toLowerCase().includes("female"))
-            || voices[0];
-    }
-    if (synthesis && synthesis.onvoiceschanged !== undefined) {
-        synthesis.onvoiceschanged = loadVoices;
-    }
-    loadVoices(); // Init immediately too
+    // Word Limit State
+    let totalWordCount = 0;
+    const WORD_LIMIT = 1000;
 
     function speak(text) {
-        if (!synthesis) return;
-        // Strip HTML tags for clean reading
+        if (!text) return;
+        // Strip HTML tags
         const cleanText = text.replace(/<[^>]*>/g, '');
-        const utterance = new SpeechSynthesisUtterance(cleanText);
-        if (femaleVoice) utterance.voice = femaleVoice;
-        utterance.rate = 1.0;
-        utterance.pitch = 1.0;
-        synthesis.speak(utterance);
+
+        // Use Cloud TTS API
+        if (typeof CONFIG !== 'undefined' && CONFIG.ENCODED_KEY) {
+            const apiKey = atob(CONFIG.ENCODED_KEY);
+            const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
+            const data = {
+                input: { text: cleanText },
+                voice: { languageCode: "en-US", name: "en-US-Journey-F" }, // "Journey" is a high-quality creative voice
+                audioConfig: { audioEncoding: "MP3" }
+            };
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(json => {
+                    if (json.audioContent) {
+                        const audio = new Audio("data:audio/mp3;base64," + json.audioContent);
+                        audio.play();
+                    } else {
+                        console.error("TTS Error:", json);
+                    }
+                })
+                .catch(err => console.error("TTS Network Error:", err));
+        }
     }
 
     function toggleMic() {
         if (!recognition) return;
         if (isListening) {
             recognition.stop();
+            micBtn.classList.remove('listening');
+            isListening = false;
         } else {
             recognition.start();
             micBtn.classList.add('listening');
@@ -196,6 +210,19 @@ document.addEventListener('DOMContentLoaded', function () {
         const text = inputEl.value.trim();
         if (!text) return;
 
+        // Check Word Limit
+        const currentWords = text.split(/\s+/).length + (inputEl.dataset.historyWords || 0); // Approximate
+        totalWordCount += text.split(/\s+/).length; // Add user words
+
+        if (totalWordCount >= WORD_LIMIT) {
+            const limitMsg = "I have reached my 1000-word limit for this conversation.<br><br>Please contact <strong>winseral@knowandguide.com</strong> to continue.";
+            addBotMessage(limitMsg);
+            speak("I have reached my limit. Please contact winseral at know and guide dot com.");
+            inputEl.disabled = true;
+            inputEl.placeholder = "Conversation limit reached.";
+            return;
+        }
+
         addUserMessage(text);
         inputEl.value = '';
         inputEl.disabled = true;
@@ -205,6 +232,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 const result = await chatSession.sendMessage(text);
                 const response = await result.response;
                 const advice = response.text();
+
+                // Track bot words too
+                totalWordCount += advice.split(/\s+/).length;
+
                 addBotMessage(marked.parse(advice));
                 speak(advice);
             } catch (error) {
