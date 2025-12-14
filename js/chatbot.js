@@ -129,8 +129,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (typeof CONFIG !== 'undefined' && CONFIG.ENCODED_KEY) {
             const apiKey = atob(CONFIG.ENCODED_KEY);
             genAI = new GoogleGenerativeAI(apiKey);
-            // Switched to alias 'gemini-flash-latest' as specific version was 404ing
-            model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
+            // Using specific version to avoid 404/405 errors with aliases
+            model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
         } else {
             console.error("CONFIG.API_KEY not found.");
         }
