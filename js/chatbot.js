@@ -156,6 +156,11 @@ document.addEventListener('DOMContentLoaded', function () {
     Contact: winseral@knowandguide.com.
     
     Style: Professional, polite, expert, concise. Respond as if speaking clearly.
+    
+    IMPORTANT - EMAILS:
+    If the user asks to send an email or get a quote, DO NOT say "I cannot send emails".
+    Instead, provide a clickable link using the format: <a href="mailto:winseral@knowandguide.com?subject=Subject&body=Body">Click here to send email</a>.
+    You MUST pre-fill the Subject (e.g., "AI Project Quote") and Body (e.g., "Hi, I am interested in...") based on the conversation context.
     `;
 
     // Functions
