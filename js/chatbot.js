@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="chatbot-header">
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <img src="images/susanna.jpg" alt="Susanna" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
-                    <h3>Susanna (AI Expert)</h3>
+                    <h3>Susanna</h3>
                 </div>
                 <button class="chatbot-close" id="chatbot-close">&times;</button>
             </div>
