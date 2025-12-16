@@ -168,9 +168,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function initChat() {
-        const welcomeText = "✨ Hello! I'm <strong>Susanna</strong>, the Know & Guide AI Assistant.<br>I can help you with pricing, projects, or just chat!";
-        addBotMessage(welcomeText);
-        speak("Hello! I'm Susanna, the Know and Guide AI Assistant. I can help you with pricing, projects, or just chat!");
+        const greetings = [
+            "Hello. How may I assist you?",
+            "Hi there! How can I help you today?",
+            "Greetings. What can I do for you?",
+            "Hello! Ready to assist with your AI needs."
+        ];
+        const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+
+        // Add minimal formatting if needed, or keep it plain as requested "Simple"
+        addBotMessage(randomGreeting);
+        speak(randomGreeting);
 
         if (model) {
             try {
