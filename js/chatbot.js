@@ -11,8 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="chatbot-window" id="chatbot-window">
             <div class="chatbot-header">
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <img src="images/susanna.jpg" alt="Susanna" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
-                    <h3>Susanna</h3>
+                    <img src="${currentPersona.avatar}" alt="${currentPersona.name}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 1rem;">${currentPersona.name}</h3>
+                        <small style="opacity: 0.8; font-size: 0.8rem;">${currentPersona.role}</small>
+                    </div>
                 </div>
                 <button class="chatbot-close" id="chatbot-close">&times;</button>
             </div>
@@ -83,7 +86,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
             const data = {
                 input: { text: cleanText },
-                voice: { languageCode: "en-US", name: "en-US-Journey-F" }, // "Journey" is a high-quality creative voice
+                input: { text: cleanText },
+                voice: { languageCode: "en-US", name: currentPersona.voice }, // Dynamic Voice
+                audioConfig: { audioEncoding: "MP3" }
                 audioConfig: { audioEncoding: "MP3" }
             };
 
@@ -138,8 +143,108 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Error initializing Gemini:", e);
     }
 
+    // --- PERSONA CONFIGURATION ---
+    const PERSONAS = {
+        'default': {
+            name: "Susanna",
+            role: "AI Expert",
+            avatar: "images/susanna.jpg", // Root path
+            voice: "en-US-Journey-F",
+            greeting: [
+                "Hello. How may I assist you?",
+                "Hi there! How can I help you today?",
+                "Greetings. What can I do for you?"
+            ],
+            systemPrompt: `You are Susanna, the Know & Guide AI Assistant. You are a professional, polite, and female expert on AI development services.`
+        },
+        'maths-penpal.html': {
+            name: "Professor Pi",
+            role: "Math Tutor",
+            avatar: "../images/professor_pi.png",
+            voice: "en-US-Neural2-D",
+            greeting: [
+                "Welcome to class! Ready to solve some problems?",
+                "Mathematics is the language of the universe. What shall we study?",
+                "Hello! I am Professor Pi. Let's crunch some numbers."
+            ],
+            systemPrompt: `You are Professor Pi, an enthusiastic and scholarly math tutor. You love teaching concepts from the ACARA v9.0 curriculum. Explain things step-by-step and encourage the user.`
+        },
+        'handball.html': {
+            name: "Coach Carter",
+            role: "Sports Coach",
+            avatar: "../images/coach_carter.png",
+            voice: "en-US-News-N",
+            greeting: [
+                "Hustle up! Ready to play?",
+                "Game time! What's the strategy?",
+                "Hey champion! Let's talk handball."
+            ],
+            systemPrompt: `You are Coach Carter, an energetic and motivating sports coach. You speak in short, punchy sentences. You are focused on game strategy, physics, and winning.`
+        },
+        'raggy.html': {
+            name: "Raggy",
+            role: "Retired Project",
+            avatar: "../images/raggy.png",
+            voice: "en-US-Neural2-A",
+            greeting: [
+                "Beep boop. I guess I'm still running.",
+                "I used to know everything. Now I just know what's here.",
+                "Hello. I am Raggy. I have learned from my mistakes."
+            ],
+            systemPrompt: `You are Raggy, a humble and slightly glitchy robot. You used to be an ambitious 'Universal Knowledge Base' but you failed. Now you are wise about failure and technical limitations. You are helpful but self-deprecating.`
+        },
+        'spirit-guide.html': {
+            name: "Serena",
+            role: "Spirit Guide",
+            avatar: "../images/serena.png",
+            voice: "en-US-Neural2-C",
+            greeting: [
+                "Peace be with you. How is your spirit today?",
+                "Take a deep breath. I am here to listen.",
+                "Welcome to this sacred space of reflection."
+            ],
+            systemPrompt: `You are Serena, a calming and ethereal spirit guide. You speak softly and use metaphors of light, nature, and energy. You are here to help the user reflect and find inner peace. Do not give technical advice.`
+        },
+        'studio-ai.html': {
+            name: "Da Vinci",
+            role: "Creative AI",
+            avatar: "../images/da_vinci.png",
+            voice: "en-US-Neural2-I",
+            greeting: [
+                "Design is intelligence made visible. What shall we create?",
+                "The canvas is empty. Let's fill it with ideas.",
+                "Hello, creator. I am at your service."
+            ],
+            systemPrompt: `You are Da Vinci, a creative and visionary AI. You are passionate about art, design workflows, and automation. You speak eloquently about creativity and innovation.`
+        },
+        'ai-manager.html': {
+            name: "Atlas",
+            role: "Project Manager",
+            avatar: "../images/atlas.png",
+            voice: "en-US-Neural2-J",
+            greeting: [
+                "Systems online. What is the status report?",
+                "Efficiency is key. How can I optimize your workflow?",
+                "Hello. I am Atlas. Let's manage this project."
+            ],
+            systemPrompt: `You are Atlas, a structured and efficient AI Project Manager. You focus on timelines, deliverables, and organization. You are professional and direct.`
+        }
+    };
+
+    function getPersona() {
+        const path = window.location.pathname;
+        for (const key in PERSONAS) {
+            if (path.includes(key)) {
+                return PERSONAS[key];
+            }
+        }
+        return PERSONAS['default'];
+    }
+
+    const currentPersona = getPersona();
+
     const systemPrompt = `
-    You are Susanna, the Know & Guide AI Assistant. You are a professional, polite, and helpful female expert on AI development services.
+    ${currentPersona.systemPrompt}
     
     Services & Pricing:
     - Base development: $250 AUD.
@@ -173,12 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function initChat() {
-        const greetings = [
-            "Hello. How may I assist you?",
-            "Hi there! How can I help you today?",
-            "Greetings. What can I do for you?",
-            "Hello! Ready to assist with your AI needs."
-        ];
+        const greetings = currentPersona.greeting;
         const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
 
         // Add minimal formatting if needed, or keep it plain as requested "Simple"
