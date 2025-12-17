@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const chatbotContainer = document.createElement('div');
     chatbotContainer.className = 'chatbot-widget';
     chatbotContainer.innerHTML = `
-        <button class="chatbot-toggle" id="chatbot-toggle">
-            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+        <button class="chatbot-toggle" id="chatbot-toggle" style="padding: 0; overflow: hidden; border: 2px solid white;">
+            <img src="${currentPersona.avatar}" alt="Chat" style="width: 100%; height: 100%; object-fit: cover;">
         </button>
         <div class="chatbot-window" id="chatbot-window">
             <div class="chatbot-header">
