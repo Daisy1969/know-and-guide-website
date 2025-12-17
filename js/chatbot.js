@@ -86,9 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
             const data = {
                 input: { text: cleanText },
-                input: { text: cleanText },
-                voice: { languageCode: "en-US", name: currentPersona.voice }, // Dynamic Voice
-                audioConfig: { audioEncoding: "MP3" }
+                voice: { languageCode: "en-US", name: currentPersona.voice },
                 audioConfig: { audioEncoding: "MP3" }
             };
 
