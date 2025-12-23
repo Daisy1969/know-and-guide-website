@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. K's Mind-Body Curriculum: A Synthesis for Learners & Teachers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;600;700&family=Noto+Serif:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #FDFBF7;
+            color: #2D3748;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif-font {
+            font-family: 'Noto Serif', serif;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .interactive-btn:hover {
+            transform: translateY(-2px);
+            transition: all 0.2s ease;
+        }
+
+        .tab-active {
+            border-bottom: 2px solid #7B341E;
+            color: #7B341E;
+            font-weight: 600;
+        }
+
+        .tab-inactive {
+            color: #718096;
+        }
+
+        .kosha-layer {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .kosha-layer:hover {
+            border-left: 4px solid #7B341E;
+            background-color: #F7F5F0;
+            padding-left: 1rem;
+        }
+
+        /* Custom Scrollbar for discrete sections */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F1F1F1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E0;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A0AEC0;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header Section -->
+    <header class="bg-white border-b border-gray-200 py-6 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto">
+            <!-- Return to Home Link -->
+            <div class="flex justify-between items-center mb-6">
+                <a href="index.html"
+                    class="flex items-center text-gray-600 hover:text-[#7B341E] transition-colors group">
+                    <img src="images/logo.png" alt="Know & Guide Logo"
+                        class="h-8 w-auto mr-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                    <span class="font-serif font-semibold text-sm">Return to Home</span>
+                </a>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-center md:text-left">
+                    <h1 class="text-3xl font-bold text-gray-800">The Integrated Mind: <span
+                            class="text-[#7B341E]">Clinical & Yogic Frameworks</span></h1>
+                    <p class="text-sm text-gray-500 mt-1 uppercase tracking-wide">Synthesized for Learners & Teachers |
+                        Based on the teachings of Dr. Alok Kanojia</p>
+                </div>
+                <div class="flex space-x-4">
+                    <div class="text-right hidden md:block">
+                        <p class="text-xs text-gray-400 font-semibold">CURRENT MODE</p>
+                        <p class="text-sm text-[#7B341E] font-medium">Study & Application</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Controller -->
+    <nav class="sticky top-0 z-50 bg-[#FDFBF7]/95 backdrop-blur border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 overflow-x-auto">
+            <div class="flex space-x-8 min-w-max" id="nav-container">
+                <button onclick="switchTab('neuro')" id="tab-neuro"
+                    class="tab-active py-4 px-2 text-sm focus:outline-none transition-colors">1. Neuroscience of
+                    Meditation</button>
+                <button onclick="switchTab('ayurveda')" id="tab-ayurveda"
+                    class="tab-inactive py-4 px-2 text-sm focus:outline-none transition-colors">2. Ayurvedic
+                    Psychology</button>
+                <button onclick="switchTab('koshas')" id="tab-koshas"
+                    class="tab-inactive py-4 px-2 text-sm focus:outline-none transition-colors">3. Anatomy of Self
+                    (Koshas)</button>
+                <button onclick="switchTab('protocols')" id="tab-protocols"
+                    class="tab-inactive py-4 px-2 text-sm focus:outline-none transition-colors">4. Practice
+                    Prescription</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-6xl mx-auto w-full px-4 py-8">
+
+        <!-- SECTION 1: NEUROSCIENCE -->
+        <section id="section-neuro" class="block animate-fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Text Column -->
+                <div class="lg:col-span-1 space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">The Mechanism of Action</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            Western science explains <strong>how</strong> meditation works physically. Dr. K emphasizes
+                            the <strong>Default Mode Network (DMN)</strong>, a brain network active when we are not
+                            focused on the outside world. It is the seat of the "Ego," rumination, and anxiety.
+                        </p>
+                    </div>
+                    <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-[#7B341E]">
+                        <h3 class="font-bold text-[#7B341E] mb-1">Teacher's Note</h3>
+                        <p class="text-sm text-gray-700">When students say "I can't stop thinking," explain that their
+                            DMN is overactive. Meditation is not "stopping thought," it is switching neural networks.
+                        </p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg card-shadow">
+                        <h3 class="font-bold text-gray-800 mb-2">Key Concepts</h3>
+                        <ul class="list-disc pl-5 space-y-2 text-sm text-gray-600">
+                            <li><strong>DMN (Default Mode Network):</strong> Self-referential processing, past/future
+                                thinking.</li>
+                            <li><strong>TPN (Task Positive Network):</strong> Present-moment focus, "Flow" state.</li>
+                            <li><strong>Mutual Inhibition:</strong> When TPN goes up, DMN goes down. You cannot be fully
+                                present and ruminating simultaneously.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive Column -->
+                <div
+                    class="lg:col-span-2 bg-white p-6 rounded-xl card-shadow flex flex-col items-center justify-center">
+                    <div class="w-full mb-4 flex justify-between items-end">
+                        <h3 class="font-bold text-lg">Interactive Model: Neural Network Balance</h3>
+                        <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-500">Adjust the slider below</span>
+                    </div>
+
+                    <!-- Chart Container -->
+                    <div class="chart-container">
+                        <canvas id="neuroChart"></canvas>
+                    </div>
+
+                    <!-- Slider Control -->
+                    <div class="w-full max-w-md mt-8 p-4 bg-gray-50 rounded-lg">
+                        <label for="meditation-depth" class="block text-sm font-medium text-gray-700 mb-2">Meditation
+                            Depth / Focus Intensity</label>
+                        <input type="range" id="meditation-depth" min="0" max="100" value="20"
+                            class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[#7B341E]">
+                        <div class="flex justify-between text-xs text-gray-500 mt-2">
+                            <span>Distracted (High DMN)</span>
+                            <span>Deep Flow (High TPN)</span>
+                        </div>
+                        <p id="neuro-feedback" class="text-center mt-4 font-semibold text-[#7B341E]">State: Anxious
+                            Rumination</p>
+                        <p id="neuro-desc" class="text-center text-sm text-gray-600">The brain is wandering. The 'Self'
+                            is loud.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: AYURVEDA -->
+        <section id="section-ayurveda" class="hidden animate-fade-in">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Ayurvedic Psychology: The "OS" of the Mind</h2>
+                <p class="text-gray-600 max-w-3xl">
+                    While Neuroscience provides the hardware, Ayurveda describes the software. Dr. K applies the theory
+                    of <strong>Doshas</strong> (Bio-elements) to understand learning styles, emotional processing, and
+                    mental health tendencies.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Vata Card -->
+                <button onclick="selectDosha('vata')"
+                    class="interactive-btn bg-white p-6 rounded-xl card-shadow text-left border-t-4 border-blue-200 hover:border-blue-400 focus:outline-none ring-2 ring-transparent focus:ring-blue-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold font-serif text-gray-800">Vata</h3>
+                        <span class="text-2xl">💨</span>
+                    </div>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Air + Ether</p>
+                    <p class="text-sm text-gray-600 mb-4">Creative, anxious, quick-learning but quick-forgetting.</p>
+                    <div class="text-xs text-blue-600 font-semibold">Click for Strategy →</div>
+                </button>
+
+                <!-- Pitta Card -->
+                <button onclick="selectDosha('pitta')"
+                    class="interactive-btn bg-white p-6 rounded-xl card-shadow text-left border-t-4 border-red-200 hover:border-red-400 focus:outline-none ring-2 ring-transparent focus:ring-red-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold font-serif text-gray-800">Pitta</h3>
+                        <span class="text-2xl">🔥</span>
+                    </div>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Fire + Water</p>
+                    <p class="text-sm text-gray-600 mb-4">Sharp, driven, angry, analytical, focused.</p>
+                    <div class="text-xs text-red-600 font-semibold">Click for Strategy →</div>
+                </button>
+
+                <!-- Kapha Card -->
+                <button onclick="selectDosha('kapha')"
+                    class="interactive-btn bg-white p-6 rounded-xl card-shadow text-left border-t-4 border-green-200 hover:border-green-400 focus:outline-none ring-2 ring-transparent focus:ring-green-100">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold font-serif text-gray-800">Kapha</h3>
+                        <span class="text-2xl">⛰️</span>
+                    </div>
+                    <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Earth + Water</p>
+                    <p class="text-sm text-gray-600 mb-4">Stable, slow, enduring, lethargic, compassionate.</p>
+                    <div class="text-xs text-green-600 font-semibold">Click for Strategy →</div>
+                </button>
+            </div>
+
+            <!-- Dynamic Dosha Detail View -->
+            <div id="dosha-detail" class="bg-white rounded-xl card-shadow p-8 hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 id="dosha-title" class="text-2xl font-serif font-bold text-[#7B341E] mb-4">Select a Dosha
+                            above</h3>
+                        <p id="dosha-desc" class="text-gray-700 mb-6">Choose a constitution to see specific learning and
+                            teaching protocols.</p>
+
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-gray-800 mb-2">Mental Health Correlation</h4>
+                            <p id="dosha-mental" class="text-sm text-gray-600">...</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <h5 class="font-bold text-sm text-gray-500 uppercase">For the Learner</h5>
+                            <p id="dosha-learner" class="text-gray-800 font-medium mt-1">...</p>
+                        </div>
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <h5 class="font-bold text-sm text-gray-500 uppercase">For the Teacher</h5>
+                            <p id="dosha-teacher" class="text-gray-800 font-medium mt-1">...</p>
+                        </div>
+                        <div class="border-l-4 border-gray-300 pl-4 py-2">
+                            <h5 class="font-bold text-sm text-gray-500 uppercase">Recommended Practice</h5>
+                            <p id="dosha-practice" class="text-[#7B341E] font-medium mt-1">...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: KOSHAS -->
+        <section id="section-koshas" class="hidden animate-fade-in">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-4">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Anatomy of the Self: Pancha Koshas</h2>
+                    <p class="text-gray-600 mb-6 text-sm">
+                        Yoga posits that we are not just a body, but 5 concentric layers (sheaths). Most mental health
+                        issues arise from a disconnect between these layers.
+                    </p>
+                    <div class="bg-white p-4 rounded-lg card-shadow border border-gray-100">
+                        <h3 class="font-bold text-[#7B341E] mb-2">Diagnostic Tool</h3>
+                        <p class="text-xs text-gray-600 mb-2">Click the layers on the right to explore where a student
+                            might be "stuck".</p>
+                        <p id="kosha-hint" class="text-sm font-medium text-gray-800 italic mt-4">"The problem is rarely
+                            in the layer where the symptom appears."</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 space-y-2">
+                    <!-- Layer 1 -->
+                    <div onclick="toggleKosha('physical')"
+                        class="kosha-layer bg-white rounded-r-lg shadow-sm p-4 cursor-pointer">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-gray-800">1. Annamaya Kosha (Physical Body)</h3>
+                            <span class="text-gray-400 text-sm">Hardware</span>
+                        </div>
+                        <div id="kosha-physical" class="hidden mt-3 text-sm text-gray-600 border-t pt-3">
+                            <p class="mb-2"><strong>The Flesh & Bone.</strong> Influenced by diet, sleep, and asana.</p>
+                            <p class="text-[#7B341E]"><strong>Teacher Tip:</strong> If a student cannot sit still for
+                                meditation, do not force the mind. Exhaust the body first with intense Asana.</p>
+                        </div>
+                    </div>
+
+                    <!-- Layer 2 -->
+                    <div onclick="toggleKosha('energy')"
+                        class="kosha-layer bg-white rounded-r-lg shadow-sm p-4 cursor-pointer ml-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-gray-800">2. Pranamaya Kosha (Energy Body)</h3>
+                            <span class="text-gray-400 text-sm">Power Supply</span>
+                        </div>
+                        <div id="kosha-energy" class="hidden mt-3 text-sm text-gray-600 border-t pt-3">
+                            <p class="mb-2"><strong>The Breath & Vitality.</strong> Influenced by Pranayama (breathwork)
+                                and emotional arousal.</p>
+                            <p class="text-[#7B341E]"><strong>Teacher Tip:</strong> Anxiety is often an Energy body
+                                disruption. Use slow, rhythmic breathing (e.g., 4-7-8) to hack the nervous system.</p>
+                        </div>
+                    </div>
+
+                    <!-- Layer 3 -->
+                    <div onclick="toggleKosha('mental')"
+                        class="kosha-layer bg-white rounded-r-lg shadow-sm p-4 cursor-pointer ml-8">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-gray-800">3. Manomaya Kosha (Mental Body)</h3>
+                            <span class="text-gray-400 text-sm">Processor</span>
+                        </div>
+                        <div id="kosha-mental" class="hidden mt-3 text-sm text-gray-600 border-t pt-3">
+                            <p class="mb-2"><strong>Emotion & Sensory Input.</strong> This is where 'Mental Noise' and
+                                the DMN live. It processes data but doesn't judge it wisely.</p>
+                            <p class="text-[#7B341E]"><strong>Teacher Tip:</strong> Use Mantra (sound) or Trataka
+                                (sight) to occupy this layer so the deeper self can emerge.</p>
+                        </div>
+                    </div>
+
+                    <!-- Layer 4 -->
+                    <div onclick="toggleKosha('intellect')"
+                        class="kosha-layer bg-white rounded-r-lg shadow-sm p-4 cursor-pointer ml-12">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-gray-800">4. Vijnanamaya Kosha (Intellectual Body)</h3>
+                            <span class="text-gray-400 text-sm">Driver</span>
+                        </div>
+                        <div id="kosha-intellect" class="hidden mt-3 text-sm text-gray-600 border-t pt-3">
+                            <p class="mb-2"><strong>Wisdom & Discrimination (Buddhi).</strong> The ability to step back
+                                and observe thoughts rather than *be* them.</p>
+                            <p class="text-[#7B341E]"><strong>Teacher Tip:</strong> This is cultivated through Swadhyaya
+                                (self-study) and journaling. Ask "Who is listening to the thought?"</p>
+                        </div>
+                    </div>
+
+                    <!-- Layer 5 -->
+                    <div onclick="toggleKosha('bliss')"
+                        class="kosha-layer bg-white rounded-r-lg shadow-sm p-4 cursor-pointer ml-16">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-gray-800">5. Anandamaya Kosha (Bliss Body)</h3>
+                            <span class="text-gray-400 text-sm">Core</span>
+                        </div>
+                        <div id="kosha-bliss" class="hidden mt-3 text-sm text-gray-600 border-t pt-3">
+                            <p class="mb-2"><strong>Connection & Peace.</strong> The state of non-dual awareness. Not
+                                'happiness' as an emotion, but the absence of friction.</p>
+                            <p class="text-[#7B341E]"><strong>Teacher Tip:</strong> Cannot be forced. It is a side
+                                effect of aligning the other four layers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: PROTOCOLS -->
+        <section id="section-protocols" class="hidden animate-fade-in">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">The Prescription Engine</h2>
+                <p class="text-gray-600">Select a current state to receive a Dr. K recommended protocol.</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="flex justify-center space-x-4 mb-8 flex-wrap gap-y-2">
+                <button onclick="filterProtocols('all')"
+                    class="px-4 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-[#7B341E] hover:text-white transition text-sm font-medium">Show
+                    All</button>
+                <button onclick="filterProtocols('anxiety')"
+                    class="px-4 py-2 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-600 hover:text-white transition text-sm font-medium">Anxiety
+                    / Overthinking</button>
+                <button onclick="filterProtocols('fatigue')"
+                    class="px-4 py-2 rounded-full bg-green-100 text-green-800 hover:bg-green-600 hover:text-white transition text-sm font-medium">Fatigue
+                    / Depression</button>
+                <button onclick="filterProtocols('focus')"
+                    class="px-4 py-2 rounded-full bg-purple-100 text-purple-800 hover:bg-purple-600 hover:text-white transition text-sm font-medium">ADHD
+                    / Focus</button>
+            </div>
+
+            <!-- Cards Container -->
+            <div id="protocol-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards injected via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-8 mt-8">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="font-serif italic mb-4">"The goal of Yoga is not to become superhuman, but to realize that being
+                human is super."</p>
+            <div class="text-xs text-gray-500">
+                <p>Synthesis Tool for Educational Purposes.</p>
+                <p>Based on public lectures, Healthy Gamer GG streams, and Ayurvedic Psychiatry principles.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- DATA STORE ---
+        const protocols = [
+            {
+                id: 1,
+                title: "Anulom Vilom",
+                subtitle: "Alternate Nostril Breathing",
+                tags: ["anxiety", "focus"],
+                mechanism: "Balances the Sympathetic (Right Nostril) and Parasympathetic (Left Nostril) nervous systems.",
+                instructions: "Close right nostril, inhale left. Close left, exhale right. Inhale right, close right, exhale left.",
+                difficulty: "Beginner",
+                duration: "5-10 mins"
+            },
+            {
+                id: 2,
+                title: "Kapalbhati",
+                subtitle: "Skull Shining Breath",
+                tags: ["fatigue", "focus"],
+                mechanism: "Rapid exhalations increase oxygenation and stimulate the prefrontal cortex, waking up the mind.",
+                instructions: "Forceful exhalation through nose, passive inhalation. Snap the stomach in on exhale. 3 rounds of 30.",
+                difficulty: "Intermediate",
+                duration: "3 mins"
+            },
+            {
+                id: 3,
+                title: "Trataka",
+                subtitle: "Fixed Gaze Meditation",
+                tags: ["focus", "anxiety"],
+                mechanism: "Stills the eyeballs to still the mind. Directly engages the ocular nerves to reduce visual processing load.",
+                instructions: "Stare at a candle flame or a single dot without blinking until eyes water. Then close eyes and visualize the afterimage.",
+                difficulty: "Intermediate",
+                duration: "10 mins"
+            },
+            {
+                id: 4,
+                title: "Om Chanting",
+                subtitle: "Vibration Therapy",
+                tags: ["anxiety", "fatigue"],
+                mechanism: "Stimulates the Vagus Nerve through vocal cord vibration, promoting relaxation response.",
+                instructions: "Inhale deep. Chant A-U-M. Feel vibration move from belly (A) to chest (U) to head (M).",
+                difficulty: "Beginner",
+                duration: "5 mins"
+            },
+            {
+                id: 5,
+                title: "Tri-Dosha Check-in",
+                subtitle: "Cognitive Reframing",
+                tags: ["focus"],
+                mechanism: "Uses intellect (Vijnanamaya) to observe emotions rather than identify with them.",
+                instructions: "Ask: 'Am I anxious (Vata)? Am I angry (Pitta)? Am I stuck (Kapha)?' Naming the state reduces limbic activation.",
+                difficulty: "Beginner",
+                duration: "Instant"
+            }
+        ];
+
+        const doshaData = {
+            vata: {
+                mental: "High anxiety, racing thoughts, difficulty sleeping. Prone to 'overthinking' loops.",
+                learner: "Learns quickly but forgets quickly. Needs variety and visual stimulation. Struggles with routine.",
+                teacher: "Keep lessons short and engaging. Do not overwhelm with too much detail at once. Encourage grounding.",
+                practice: "Nadi Shuddhi (Alternate Nostril Breathing) to calm the wind."
+            },
+            pitta: {
+                mental: "Irritability, perfectionism, burnout. Prone to self-criticism and judgment.",
+                learner: "Highly analytical. Loves debate and structure. Needs to know 'why' before 'how'. Competitve.",
+                teacher: "Challenge them intellectually. Provide clear logic. Help them accept failure as part of the process.",
+                practice: "Sheetali (Cooling Breath) to reduce the heat."
+            },
+            kapha: {
+                mental: "Lethargy, depression, attachment. Trouble starting tasks (inertia) but great endurance once started.",
+                learner: "Slow and steady. Great memory once learned. Needs motivation to start. Dislikes change.",
+                teacher: "Be energetic. Use deadlines. Get them moving physically before mentally. Repetition helps.",
+                practice: "Kapalbhati (Fire Breath) to stimulate energy."
+            }
+        };
+
+        // --- STATE MANAGEMENT ---
+        let currentTab = 'neuro';
+        let neuroChart = null;
+
+        // --- NAVIGATION LOGIC ---
+        function switchTab(tabId) {
+            // Update Tab UI
+            ['neuro', 'ayurveda', 'koshas', 'protocols'].forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if (t === tabId) {
+                    btn.classList.remove('tab-inactive');
+                    btn.classList.add('tab-active');
+                } else {
+                    btn.classList.add('tab-inactive');
+                    btn.classList.remove('tab-active');
+                }
+
+                // Toggle Sections
+                const section = document.getElementById(`section-${t}`);
+                if (t === tabId) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+
+            currentTab = tabId;
+        }
+
+        // --- NEUROSCIENCE CHART LOGIC ---
+        function initNeuroChart() {
+            const ctx = document.getElementById('neuroChart').getContext('2d');
+
+            neuroChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['0s', '10s', '20s', '30s', '40s', '50s', '60s'],
+                    datasets: [
+                        {
+                            label: 'Default Mode Network (Ego/Noise)',
+                            data: [90, 85, 88, 92, 85, 89, 90], // Initial High Noise
+                            borderColor: '#EF4444', // Red for noise
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Task Positive Network (Focus)',
+                            data: [20, 25, 22, 18, 25, 21, 20], // Initial Low Focus
+                            borderColor: '#10B981', // Green for focus
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { mode: 'index', intersect: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 100, title: { display: true, text: 'Brain Activity Level' } }
+                    },
+                    animation: { duration: 800 }
+                }
+            });
+
+            // Slider Listener
+            document.getElementById('meditation-depth').addEventListener('input', updateNeuroChart);
+        }
+
+        function updateNeuroChart(e) {
+            const depth = parseInt(e.target.value);
+            const noise = 100 - depth; // Inversely proportional
+
+            // Generate some random fluctuation based on depth
+            const generateData = (base) => {
+                return Array(7).fill(0).map(() => Math.max(0, Math.min(100, base + (Math.random() * 10 - 5))));
+            };
+
+            // Update Chart Data
+            neuroChart.data.datasets[0].data = generateData(noise); // DMN
+            neuroChart.data.datasets[1].data = generateData(depth); // TPN
+            neuroChart.update();
+
+            // Update Text Feedback
+            const feedback = document.getElementById('neuro-feedback');
+            const desc = document.getElementById('neuro-desc');
+
+            if (depth < 30) {
+                feedback.innerText = "State: Anxious Rumination";
+                feedback.className = "text-center mt-4 font-semibold text-red-600";
+                desc.innerText = "High DMN activity. The mind is jumping between past and future.";
+            } else if (depth < 70) {
+                feedback.innerText = "State: Focused Attention";
+                feedback.className = "text-center mt-4 font-semibold text-yellow-600";
+                desc.innerText = "Balanced. You are attempting to focus, but 'Self' thoughts intrude.";
+            } else {
+                feedback.innerText = "State: Deep Flow / Dhyana";
+                feedback.className = "text-center mt-4 font-semibold text-green-600";
+                desc.innerText = "DMN is quiet. The 'I' disappears. Pure observation remains.";
+            }
+        }
+
+        // --- AYURVEDA LOGIC ---
+        function selectDosha(type) {
+            const detailPanel = document.getElementById('dosha-detail');
+            const data = doshaData[type];
+
+            // Populate Data
+            document.getElementById('dosha-title').innerText = type.charAt(0).toUpperCase() + type.slice(1);
+            document.getElementById('dosha-mental').innerText = data.mental;
+            document.getElementById('dosha-learner').innerText = data.learner;
+            document.getElementById('dosha-teacher').innerText = data.teacher;
+            document.getElementById('dosha-practice').innerText = data.practice;
+
+            // Show Panel
+            detailPanel.classList.remove('hidden');
+            detailPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Visual Selection highlight
+            document.querySelectorAll('#section-ayurveda button').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-offset-2', 'ring-gray-300');
+            });
+            // (Ideally add logic to highlight specific button clicked, simplified here for length)
+        }
+
+        // --- KOSHA LOGIC ---
+        function toggleKosha(layerId) {
+            const content = document.getElementById(`kosha-${layerId}`);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+            } else {
+                content.classList.add('hidden');
+            }
+        }
+
+        // --- PROTOCOLS LOGIC ---
+        function renderProtocols(filterTag = 'all') {
+            const container = document.getElementById('protocol-container');
+            container.innerHTML = '';
+
+            const filtered = filterTag === 'all'
+                ? protocols
+                : protocols.filter(p => p.tags.includes(filterTag));
+
+            filtered.forEach(p => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-6 rounded-lg card-shadow hover:shadow-md transition-shadow border-t-4 border-[#7B341E]";
+
+                let tagsHtml = p.tags.map(t => `<span class="inline-block bg-gray-100 rounded-full px-2 py-1 text-xs font-semibold text-gray-600 mr-2 mb-2 capitalize">${t}</span>`).join('');
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-gray-800">${p.title}</h3>
+                        <span class="text-xs font-medium bg-gray-100 text-gray-600 px-2 py-1 rounded">${p.duration}</span>
+                    </div>
+                    <p class="text-sm text-[#7B341E] font-medium mb-3">${p.subtitle}</p>
+                    <div class="mb-4">${tagsHtml}</div>
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <p class="text-xs text-gray-400 font-bold uppercase">Mechanism</p>
+                            <p class="text-sm text-gray-600">${p.mechanism}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-400 font-bold uppercase">Instructions</p>
+                            <p class="text-sm text-gray-600 italic bg-gray-50 p-2 rounded">${p.instructions}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterProtocols(tag) {
+            renderProtocols(tag);
+        }
+
+        // --- INITIALIZATION ---
+        window.onload = function () {
+            initNeuroChart();
+            renderProtocols();
+        };
+
+    </script>
+</body>
+
+</html>
