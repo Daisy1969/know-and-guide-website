@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuro-Optimized Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neuro-bg': '#F7F7F5',
+                        'neuro-text': '#1A1A1A',
+                        'neuro-primary': '#0F766E', // Teal 700
+                        'neuro-secondary': '#B45309', // Amber 700
+                        'neuro-accent': '#0E7490', // Cyan 700
+                        'neuro-surface': '#FFFFFF',
+                        'neuro-muted': '#525252',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F7F7F5;
+            color: #1A1A1A;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Custom Scrollbar for inner lists */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-active {
+            border-bottom: 2px solid #0F766E;
+            color: #0F766E;
+            font-weight: 600;
+        }
+
+        .tab-inactive {
+            color: #525252;
+            hover: text-neuro-primary;
+        }
+    </style>
+    <!-- Chosen Palette: "Neuro-Focus" - A warm neutral background (#F7F7F5) with clinical/scientific accents of Deep Teal (#0F766E) and Alertness Amber (#B45309). Designed for low visual stress and high readability. -->
+</head>
+
+<body class="font-sans antialiased">
+
+    <!-- Application Structure Plan:
+         The app is structured as a functional "Learning Cockpit" tailored for students and researchers.
+         1. Protocol Dashboard (Home): The central interaction point. Users input their state (energy, age group, time) to generate a specific, actionable timeline. This synthesizes the "Preparation", "Bout", and "Rest" phases into one linear plan.
+         2. Deep Dive Modules (Tabs):
+            - Phase 1: State & Prep (Mechanisms of alertness/catecholamines).
+            - Phase 2: The Learning Bout (Ultradian rhythms, Gap effect, Random rewards).
+            - Phase 3: Consolidation (Sleep architecture, NSDR).
+         3. Adolescent Context: Throughout the app, specific logic and visual markers highlight the biological differences for teenagers (circadian shift), directly addressing the prompt's requirement.
+         Rationale: Users (students) need immediate actionable advice ("What do I do now?") backed by the "Why" (neuroscience). The dashboard provides the "What", the tabs provide the "Why".
+    -->
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- Header -->
+        <!-- Site Navigation (Tailwind) -->
+        <header
+            class="bg-white/95 backdrop-blur border-b border-gray-200 sticky top-0 z-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 mb-8">
+            <div class="h-16 flex justify-between items-center max-w-6xl mx-auto">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <img src="images/logo.png" alt="Know & Guide" class="h-10 w-auto">
+                </a>
+
+                <!-- Menu -->
+                <nav class="hidden md:flex space-x-6 items-center">
+                    <a href="index.html#home"
+                        class="text-gray-600 hover:text-neuro-primary font-medium text-sm">Home</a>
+                    <a href="index.html#blog"
+                        class="text-gray-600 hover:text-neuro-primary font-medium text-sm">Blog</a>
+                    <a href="dr-k-curriculum.html"
+                        class="text-gray-600 hover:text-neuro-primary font-medium text-sm">Dr. K's</a>
+                    <a href="neuro-hub.html" class="text-neuro-primary font-bold text-sm">Neuro Hub</a>
+                    <a href="cloud-roadmap.html"
+                        class="text-gray-600 hover:text-neuro-primary font-medium text-sm">Roadmap</a>
+                    <a href="https://etherealchronicler.com/page" target="_blank"
+                        class="text-gray-600 hover:text-neuro-primary" aria-label="Shopping Cart">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Page Header -->
+        <div class="mb-8 border-b border-gray-200 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold text-neuro-text tracking-tight">Neuro-Optimized Learning Hub
+                </h1>
+                <p class="text-neuro-muted mt-2 text-lg">Bio-protocols for focus, neuroplasticity, and retention. Based
+                    on Huberman Lab research.</p>
+            </div>
+            <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200">
+                <span class="h-3 w-3 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="text-sm font-medium text-gray-600">System Ready</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex overflow-x-auto gap-8 mb-8 border-b border-gray-200" aria-label="Tabs">
+            <button onclick="switchTab('dashboard')" id="tab-dashboard"
+                class="tab-active pb-3 whitespace-nowrap transition-colors">Protocol Generator</button>
+            <button onclick="switchTab('prep')" id="tab-prep"
+                class="tab-inactive pb-3 whitespace-nowrap transition-colors hover:text-neuro-primary">Phase 1: State &
+                Prep</button>
+            <button onclick="switchTab('focus')" id="tab-focus"
+                class="tab-inactive pb-3 whitespace-nowrap transition-colors hover:text-neuro-primary">Phase 2: The
+                Focus Bout</button>
+            <button onclick="switchTab('rest')" id="tab-rest"
+                class="tab-inactive pb-3 whitespace-nowrap transition-colors hover:text-neuro-primary">Phase 3:
+                Consolidation</button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main id="content-area" class="min-h-[600px]">
+
+            <!-- DASHBOARD / GENERATOR VIEW -->
+            <section id="view-dashboard" class="fade-in block">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-neuro-text mb-2">Protocol Generator</h2>
+                    <p class="text-neuro-muted max-w-3xl">
+                        Neuroplasticity—the brain's ability to rewire itself—requires a specific chemical cocktail. Use
+                        this tool to generate a learning schedule tailored to your current biological state and age
+                        profile. It aligns your study session with your Ultradian Rhythms and Circadian phase.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Input Controls -->
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                            <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                                <span>⚙️</span> Session Parameters
+                            </h3>
+
+                            <!-- User Type -->
+                            <div class="mb-5">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Student Profile</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <button onclick="setProfile('adult')" id="btn-adult"
+                                        class="px-4 py-2 rounded-md border border-neuro-primary bg-neuro-primary text-white text-sm font-medium transition">Adult</button>
+                                    <button onclick="setProfile('teen')" id="btn-teen"
+                                        class="px-4 py-2 rounded-md border border-gray-200 bg-gray-50 text-gray-600 text-sm font-medium hover:bg-gray-100 transition">Adolescent</button>
+                                </div>
+                                <p id="profile-note" class="text-xs text-neuro-muted mt-2 hidden">Adolescent logic
+                                    applied: Circadian phase delay accounted for.</p>
+                            </div>
+
+                            <!-- Current State -->
+                            <div class="mb-5">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Current State</label>
+                                <select id="state-select"
+                                    class="w-full rounded-md border-gray-300 shadow-sm focus:border-neuro-primary focus:ring focus:ring-neuro-primary focus:ring-opacity-50 p-2 border bg-neuro-bg">
+                                    <option value="groggy">Low Energy / Groggy</option>
+                                    <option value="alert" selected>Baseline / Neutral</option>
+                                    <option value="anxious">High Energy / Anxious</option>
+                                </select>
+                            </div>
+
+                            <!-- Duration -->
+                            <div class="mb-6">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Available Time</label>
+                                <input type="range" id="time-range" min="30" max="180" step="30" value="90"
+                                    class="w-full accent-neuro-primary"
+                                    oninput="document.getElementById('time-display').innerText = this.value + ' mins'">
+                                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                    <span>30m</span>
+                                    <span id="time-display" class="font-bold text-neuro-primary">90 mins</span>
+                                    <span>180m</span>
+                                </div>
+                            </div>
+
+                            <button onclick="generateProtocol()"
+                                class="w-full py-3 bg-neuro-text text-white rounded-lg font-bold hover:bg-gray-800 transition shadow-lg transform active:scale-95">
+                                Generate Protocol
+                            </button>
+                        </div>
+
+                        <!-- Quick Tips -->
+                        <div
+                            class="bg-neuro-primary bg-opacity-10 p-5 rounded-xl border border-neuro-primary border-opacity-20">
+                            <h4 class="font-bold text-neuro-primary mb-2 text-sm">Did you know?</h4>
+                            <p id="dynamic-tip" class="text-sm text-neuro-text">Neuroplasticity is triggered by focus
+                                but occurs during deep rest. You are not learning while you study; you are marking
+                                neurons for later upgrades.</p>
+                        </div>
+                    </div>
+
+                    <!-- Output Timeline -->
+                    <div class="lg:col-span-8">
+                        <div class="bg-white rounded-xl shadow-sm border border-gray-200 h-full flex flex-col">
+                            <div
+                                class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-xl">
+                                <h3 class="font-bold text-lg">Your Optimized Timeline</h3>
+                                <span
+                                    class="text-xs font-mono bg-white border px-2 py-1 rounded text-gray-500">Auto-Generated</span>
+                            </div>
+                            <div id="timeline-content"
+                                class="p-6 flex-grow overflow-y-auto custom-scroll max-h-[600px]">
+                                <!-- Empty State -->
+                                <div class="flex flex-col items-center justify-center h-64 text-center opacity-60">
+                                    <div class="text-4xl mb-4">🧠</div>
+                                    <p class="text-gray-500">Select your parameters and click Generate to see your
+                                        neuro-protocol.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PHASE 1: STATE & PREP -->
+            <section id="view-prep" class="fade-in hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+                    <div>
+                        <h2 class="text-2xl font-bold text-neuro-text mb-4">Phase 1: Regulating State</h2>
+                        <p class="text-lg text-neuro-muted mb-6 leading-relaxed">
+                            You cannot force neuroplasticity if your neurochemistry isn't ready. The goal is
+                            <strong>High Alertness + Calm Focus</strong>. This requires managing Catecholamines
+                            (Epinephrine/Norepinephrine) and Acetylcholine.
+                        </p>
+
+                        <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-neuro-secondary mb-6">
+                            <h3 class="font-bold text-neuro-secondary mb-2">The Adolescent Context</h3>
+                            <p class="text-sm text-gray-600">
+                                Teenagers typically experience a "phase delay" in circadian rhythms. Waking up at 7 AM
+                                for a teen is biologically equivalent to an adult waking up at 4 AM.
+                                <br><br>
+                                <strong>Strategy:</strong> If studying early, adolescents require <em>stronger</em>
+                                alertness triggers (Cold/Light) to overcome high morning melatonin.
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="font-bold text-gray-800">Alertness Tools (Triggers)</h3>
+                            <div class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition cursor-pointer group"
+                                onclick="toggleDetail('tool-cold')">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">🥶 Cold Exposure</span>
+                                    <span class="text-xs text-gray-400 group-hover:text-neuro-primary">Details
+                                        &darr;</span>
+                                </div>
+                                <div id="tool-cold" class="hidden mt-3 text-sm text-gray-600 border-t pt-2">
+                                    1-3 minutes of cold shower or face dunking. Increases dopamine and epinephrine for
+                                    hours. Essential for early morning study.
+                                </div>
+                            </div>
+                            <div class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition cursor-pointer group"
+                                onclick="toggleDetail('tool-breath')">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">🫁 Cyclic Hyperventilation</span>
+                                    <span class="text-xs text-gray-400 group-hover:text-neuro-primary">Details
+                                        &darr;</span>
+                                </div>
+                                <div id="tool-breath" class="hidden mt-3 text-sm text-gray-600 border-t pt-2">
+                                    25 deep inhales/exhales, followed by a breath hold. mimics the "fight or flight"
+                                    alertness without the anxiety. Increases adrenaline.
+                                </div>
+                            </div>
+                            <div class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition cursor-pointer group"
+                                onclick="toggleDetail('tool-sound')">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">🎧 40Hz Binaural Beats</span>
+                                    <span class="text-xs text-gray-400 group-hover:text-neuro-primary">Details
+                                        &darr;</span>
+                                </div>
+                                <div id="tool-sound" class="hidden mt-3 text-sm text-gray-600 border-t pt-2">
+                                    Listen for 5 minutes *before* studying or during. Shown to increase focus and
+                                    concentration markers in the brain.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual / Interactive element for Phase 1 could be a simple visualizer or checklist -->
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="font-bold text-gray-800 mb-4 text-center">Your Study Environment Checklist</h3>
+                        <div class="space-y-3">
+                            <label
+                                class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <input type="checkbox"
+                                    class="h-5 w-5 text-neuro-primary rounded focus:ring-neuro-primary">
+                                <span class="text-gray-700">Phone in another room (or off)</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <input type="checkbox"
+                                    class="h-5 w-5 text-neuro-primary rounded focus:ring-neuro-primary">
+                                <span class="text-gray-700">Visual field restricted (hoodie/wall)</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <input type="checkbox"
+                                    class="h-5 w-5 text-neuro-primary rounded focus:ring-neuro-primary">
+                                <span class="text-gray-700">Hydration ready (water/electrolytes)</span>
+                            </label>
+                            <label
+                                class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <input type="checkbox"
+                                    class="h-5 w-5 text-neuro-primary rounded focus:ring-neuro-primary">
+                                <span class="text-gray-700">Caffeine timing check (90m post-wake)</span>
+                            </label>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <p class="text-xs text-neuro-muted italic">"Visual focus drives cognitive focus."</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PHASE 2: FOCUS BOUT -->
+            <section id="view-focus" class="fade-in hidden">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-neuro-text mb-2">Phase 2: The Learning Bout</h2>
+                    <p class="text-neuro-muted max-w-3xl">
+                        Human focus is not linear. It operates in 90-minute waves called Ultradian Cycles. To maximize
+                        learning, you must respect these cycles and utilize "Gaps" (micro-rests) to allow the
+                        hippocampus to replay and encode information.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                    <!-- Chart: Ultradian Rhythm -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="font-bold text-gray-800 mb-2">The Ultradian Focus Wave (90m)</h3>
+                        <div class="chart-container">
+                            <canvas id="ultradianChart"></canvas>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-4 text-center">
+                            Don't panic if the first 10 minutes feel hard. That is the "Agitation" phase caused by
+                            Noradrenaline release. It is necessary to reach flow.
+                        </p>
+                    </div>
+
+                    <!-- Tool: The Gap Effect & Reward -->
+                    <div class="space-y-6">
+                        <!-- Gap Effect -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                            <h3 class="font-bold text-neuro-primary mb-2">The "Gap Effect" Simulator</h3>
+                            <p class="text-sm text-gray-600 mb-4">
+                                Every 10-15 minutes, stop for 10-30 seconds. Do nothing. This triggers rapid neural
+                                replay (20x speed).
+                            </p>
+                            <div
+                                class="bg-gray-100 rounded-lg p-4 text-center relative overflow-hidden h-24 flex items-center justify-center">
+                                <div id="gap-visual"
+                                    class="hidden absolute inset-0 bg-neuro-primary bg-opacity-10 flex items-center justify-center">
+                                    <span class="text-neuro-primary font-bold animate-pulse">REPLAYING NEURAL
+                                        SEQUENCE...</span>
+                                </div>
+                                <span id="gap-instruction" class="text-gray-500 font-mono text-sm">Status:
+                                    Studying...</span>
+                            </div>
+                            <button onclick="triggerGap()"
+                                class="w-full mt-4 py-2 border border-neuro-primary text-neuro-primary rounded hover:bg-neuro-primary hover:text-white transition">
+                                Simulate Gap (Click every ~15 mins)
+                            </button>
+                        </div>
+
+                        <!-- Random Reward -->
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                            <h3 class="font-bold text-neuro-secondary mb-2">Random Intermittent Reward</h3>
+                            <p class="text-sm text-gray-600 mb-4">
+                                To maintain Dopamine baseline, do not reward yourself every time. Keep it unpredictable.
+                            </p>
+                            <div class="flex items-center gap-4">
+                                <button onclick="flipCoin()"
+                                    class="flex-1 py-3 bg-gray-800 text-white rounded hover:bg-black transition">
+                                    Flip Coin
+                                </button>
+                                <div id="coin-result" class="flex-1 text-center font-bold text-lg text-gray-400">
+                                    ?
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PHASE 3: CONSOLIDATION -->
+            <section id="view-rest" class="fade-in hidden">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-neuro-text mb-2">Phase 3: Consolidation (The Rewire)</h2>
+                    <p class="text-neuro-muted max-w-3xl">
+                        The actual changes in the brain (synaptic plasticity) happen during deep rest and sleep, not
+                        during the study session. Skipping this phase negates the effort of studying.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Sleep Architecture Chart -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="font-bold text-gray-800 mb-2">Sleep Needs: Adult vs. Adolescent</h3>
+                        <p class="text-xs text-gray-500 mb-4">Teens need more sleep and have a shifted clock.</p>
+                        <div class="chart-container">
+                            <canvas id="sleepChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- NSDR & Tools -->
+                    <div class="space-y-6">
+                        <div class="bg-neuro-primary text-white p-6 rounded-xl shadow-lg relative overflow-hidden">
+                            <!-- Background decoration -->
+                            <div
+                                class="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-white opacity-10 rounded-full blur-2xl">
+                            </div>
+
+                            <h3 class="font-bold text-xl mb-2 relative z-10">NSDR Protocol</h3>
+                            <p class="text-neuro-bg opacity-90 text-sm mb-6 relative z-10">
+                                Non-Sleep Deep Rest (or Yoga Nidra). 10-20 minutes immediately post-study accelerates
+                                learning and restores dopamine.
+                            </p>
+
+                            <div class="bg-white bg-opacity-20 rounded-lg p-4 mb-4 backdrop-blur-sm relative z-10">
+                                <ol class="list-decimal list-inside space-y-2 text-sm">
+                                    <li>Lie down on back.</li>
+                                    <li>Exhale longer than inhale.</li>
+                                    <li>Mental body scan (focus on sensation).</li>
+                                    <li>Do not look at phone/screens.</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                            <h3 class="font-bold text-gray-800 mb-2">Vestibular Reset</h3>
+                            <p class="text-sm text-gray-600">
+                                Taking a walk or bike ride (forward motion) after studying generates "optic flow," which
+                                quiets the amygdala and helps lock in memory.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-sm text-gray-500">
+            <p>Generated based on Huberman Lab Podcast: "Optimal Protocols for Studying & Learning".</p>
+            <p>This tool is for educational purposes. Consult a medical professional for health advice.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // State
+        const state = {
+            profile: 'adult', // 'adult' or 'teen'
+            feeling: 'alert',
+            duration: 90
+        };
+
+        // Nav Logic
+        function switchTab(tabId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`view-${tabId}`).classList.remove('hidden');
+
+            // Update buttons
+            document.querySelectorAll('nav button').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('tab-inactive');
+            });
+            document.getElementById(`tab-${tabId}`).classList.add('tab-active');
+            document.getElementById(`tab-${tabId}`).classList.remove('tab-inactive');
+
+            // Resize charts if needed
+            if (tabId === 'focus') renderUltradianChart();
+            if (tabId === 'rest') renderSleepChart();
+        }
+
+        // Dashboard Logic
+        function setProfile(type) {
+            state.profile = type;
+            const btnAdult = document.getElementById('btn-adult');
+            const btnTeen = document.getElementById('btn-teen');
+            const note = document.getElementById('profile-note');
+
+            if (type === 'adult') {
+                btnAdult.classList.replace('bg-gray-50', 'bg-neuro-primary');
+                btnAdult.classList.replace('text-gray-600', 'text-white');
+                btnAdult.classList.replace('border-gray-200', 'border-neuro-primary');
+
+                btnTeen.classList.replace('bg-neuro-primary', 'bg-gray-50');
+                btnTeen.classList.replace('text-white', 'text-gray-600');
+                btnTeen.classList.replace('border-neuro-primary', 'border-gray-200');
+
+                note.classList.add('hidden');
+            } else {
+                btnTeen.classList.replace('bg-gray-50', 'bg-neuro-primary');
+                btnTeen.classList.replace('text-gray-600', 'text-white');
+                btnTeen.classList.replace('border-gray-200', 'border-neuro-primary');
+
+                btnAdult.classList.replace('bg-neuro-primary', 'bg-gray-50');
+                btnAdult.classList.replace('text-white', 'text-gray-600');
+                btnAdult.classList.replace('border-neuro-primary', 'border-gray-200');
+
+                note.classList.remove('hidden');
+            }
+        }
+
+        function generateProtocol() {
+            state.feeling = document.getElementById('state-select').value;
+            state.duration = parseInt(document.getElementById('time-range').value);
+
+            const container = document.getElementById('timeline-content');
+            container.innerHTML = ''; // Clear
+
+            const steps = buildTimeline(state);
+
+            steps.forEach((step, index) => {
+                const isLast = index === steps.length - 1;
+                const html = `
+                    <div class="relative pl-8 ${isLast ? '' : 'pb-8'}">
+                        <!-- Timeline Line -->
+                        ${!isLast ? '<div class="absolute top-4 left-[11px] h-full w-0.5 bg-gray-200"></div>' : ''}
+                        
+                        <!-- Dot -->
+                        <div class="absolute top-1 left-0 h-6 w-6 rounded-full border-2 border-white shadow-sm flex items-center justify-center ${step.color}">
+                            <span class="text-[10px] text-white font-bold">${index + 1}</span>
+                        </div>
+                        
+                        <!-- Content -->
+                        <div class="bg-white p-4 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition">
+                            <div class="flex justify-between items-start mb-1">
+                                <h4 class="font-bold text-gray-800">${step.title}</h4>
+                                <span class="text-xs font-mono text-gray-400">${step.time}</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">${step.desc}</p>
+                            ${step.badge ? `<span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded font-medium border border-gray-200">${step.badge}</span>` : ''}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        function buildTimeline(s) {
+            let timeline = [];
+
+            // 1. PREP
+            let prepDesc = "";
+            let prepBadge = "";
+            if (s.feeling === 'groggy') {
+                prepDesc = "Your system is under-aroused. You need Epinephrine. Do 1-3 mins Cold Exposure or 25 reps Tummo breathing.";
+                prepBadge = "Protocol: Alertness";
+            } else if (s.feeling === 'anxious') {
+                prepDesc = "Your system is over-aroused. Do 5 minutes of Physiological Sighs (double inhale, long exhale) to calm down.";
+                prepBadge = "Protocol: Balance";
+            } else {
+                prepDesc = "Warm up focus circuits. Stare at a visual target for 60 seconds without looking away. Limit peripheral vision.";
+                prepBadge = "Protocol: Focus";
+            }
+
+            timeline.push({
+                time: "T-Minus 10m",
+                title: "State Regulation",
+                desc: prepDesc,
+                badge: prepBadge,
+                color: "bg-neuro-secondary"
+            });
+
+            // 2. SETUP
+            timeline.push({
+                time: "T-Minus 5m",
+                title: "Environment Setup",
+                desc: s.profile === 'teen' ? "Phone out of room (Crucial for teens). 40Hz Binaural Beats on. Bright lights overhead." : "Phone away. 40Hz Beats or White Noise. Restrict visual field (hoodie).",
+                color: "bg-gray-400"
+            });
+
+            // 3. THE WORK
+            const cycles = Math.floor(s.duration / 90);
+            if (cycles < 1) {
+                timeline.push({
+                    time: "0 - " + s.duration + "m",
+                    title: "Single Focus Bout",
+                    desc: "Expect 'agitation' for the first 10 minutes. Use the Gap Effect (pause 10s every 10-15m).",
+                    badge: "Deep Work",
+                    color: "bg-neuro-primary"
+                });
+            } else {
+                timeline.push({
+                    time: "0 - 90m",
+                    title: "Ultradian Cycle 1",
+                    desc: "First 10m is warm up. Minutes 10-75 are peak flow. Last 15m is taper.",
+                    badge: "Peak Plasticity",
+                    color: "bg-neuro-primary"
+                });
+                if (cycles >= 2) {
+                    timeline.push({
+                        time: "90m - 105m",
+                        title: "Inter-Cycle Break",
+                        desc: "Do not view phone. Get sunlight or move body. Let dopamine replenish.",
+                        color: "bg-gray-400"
+                    });
+                    timeline.push({
+                        time: "105m - 195m",
+                        title: "Ultradian Cycle 2",
+                        desc: "Repeat focus protocol. Expect slightly lower peak duration.",
+                        badge: "Deep Work",
+                        color: "bg-neuro-primary"
+                    });
+                }
+            }
+
+            // 4. CONSOLIDATION
+            timeline.push({
+                time: "Post-Study",
+                title: "NSDR (Non-Sleep Deep Rest)",
+                desc: "10-20 minutes of Yoga Nidra immediately. This triggers the actual learning/rewiring.",
+                badge: "Crucial Step",
+                color: "bg-neuro-text"
+            });
+
+            if (s.profile === 'teen') {
+                timeline.push({
+                    time: "Evening",
+                    title: "Circadian Management",
+                    desc: "Avoid screens 1hr before bed. Teen melatonin release is delayed; darkness is required to trigger sleepiness.",
+                    badge: "Adolescent Specific",
+                    color: "bg-blue-600"
+                });
+            }
+
+            return timeline;
+        }
+
+        // Toggle Details
+        function toggleDetail(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+
+        // Gap Simulator
+        function triggerGap() {
+            const visual = document.getElementById('gap-visual');
+            const text = document.getElementById('gap-instruction');
+
+            text.innerText = "Status: GAP ACTIVE (Do nothing...)";
+            visual.classList.remove('hidden');
+
+            setTimeout(() => {
+                visual.classList.add('hidden');
+                text.innerText = "Status: Studying...";
+            }, 5000); // 5 sec demo
+        }
+
+        // Coin Flip
+        function flipCoin() {
+            const result = Math.random() < 0.5 ? "HEADS" : "TAILS";
+            const el = document.getElementById('coin-result');
+            el.innerText = result;
+
+            if (result === "HEADS") {
+                el.classList.add('text-neuro-primary');
+                el.classList.remove('text-neuro-secondary', 'text-gray-400');
+                el.innerText += " (Reward!)";
+            } else {
+                el.classList.add('text-neuro-secondary');
+                el.classList.remove('text-neuro-primary', 'text-gray-400');
+                el.innerText += " (No Reward)";
+            }
+        }
+
+        // Chart Rendering
+        let ultradianChart = null;
+        let sleepChart = null;
+
+        function renderUltradianChart() {
+            if (ultradianChart) return;
+            const ctx = document.getElementById('ultradianChart').getContext('2d');
+            ultradianChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [0, 10, 20, 30, 45, 60, 75, 90],
+                    datasets: [{
+                        label: 'Focus Intensity',
+                        data: [20, 35, 60, 85, 100, 90, 60, 30],
+                        borderColor: '#0F766E',
+                        backgroundColor: 'rgba(15, 118, 110, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { display: true, title: { display: true, text: 'Alertness' } },
+                        x: { title: { display: true, text: 'Minutes' } }
+                    }
+                }
+            });
+        }
+
+        function renderSleepChart() {
+            if (sleepChart) return;
+            const ctx = document.getElementById('sleepChart').getContext('2d');
+            sleepChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Adult', 'Adolescent'],
+                    datasets: [
+                        {
+                            label: 'Hours Needed',
+                            data: [7.5, 9.5],
+                            backgroundColor: ['#CBD5E1', '#0F766E']
+                        },
+                        {
+                            label: 'Wake Time (Natural)',
+                            data: [7, 9], // 7am vs 9am
+                            backgroundColor: ['#94A3B8', '#0E7490'],
+                            hidden: true // Just context
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: 'Hours' } }
+                    }
+                }
+            });
+        }
+
+    </script>
+
+    <!-- Visualization & Content Choices:
+         1. Protocol Generator (Dashboard): Chosen as the primary view because users (students) want actionable plans over theory. It synthesizes the 'Phase 1/2/3' logic into a linear list.
+         2. Ultradian Chart (Line): Visualizes the "Agitation" phase (first 10m) to reassure users that difficulty starting is biological, not a failure.
+         3. Gap Simulator: An interactive button simplifies the complex concept of "hippocampal replay" into a tangible action ("Stop doing nothing").
+         4. Sleep Chart (Bar): chosen to starkly contrast Adult vs Teen needs, reinforcing the specific prompt requirement regarding adolescents.
+         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+
+</body>
+
+</html>
