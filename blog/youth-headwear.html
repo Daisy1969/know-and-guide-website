@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cranial Shield: Youth Headwear Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAF9;
+            /* Stone 50 */
+            color: #44403C;
+            /* Stone 700 */
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #FAFAF9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #A8A29E;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #78716C;
+        }
+
+        .tab-active {
+            border-bottom: 2px solid #57534E;
+            color: #1C1917;
+            font-weight: 600;
+        }
+
+        .tab-inactive {
+            color: #A8A29E;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .tab-inactive:hover {
+            color: #57534E;
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals (Stone) with muted accents. Background: #FAFAF9, Text: #44403C. Accents: #D6D3D1 (borders), #78716C (interactive elements). Rationale: Creates a calm, grounded, "monastic" feel aligning with the report's theme of retreat and safety. -->
+    <!-- Application Structure Plan: 
+         1. Hero Section: Executive summary and introduction to the "Technology of the Self".
+         2. Tabbed Navigation: Splits the dense report into three distinct lenses:
+            - Metaphysical (Spirit): Chakras, Aura, Color Physics.
+            - Biological (Body): Hair as Antenna, Noise Simulation.
+            - Neuro-Psych (Mind): DPT, Sensory Gating, Anxiety.
+         3. Interactive Dashboard: "Choose Your Shield" comparison tool allowing users to see how different headwear (Hoodie, Beanie, Cap) functions differently.
+         4. Cultural Matrix: A grid exploring specific subcultural motivations (Pagan, Christian, etc.).
+         Rationale: The report covers disparate fields (yoga, biology, sociology). A tabbed approach prevents information overload, while the dashboard synthesizes the data into actionable insights.
+    -->
+    <!-- Visualization & Content Choices:
+         - Chart.js Radar Chart: To compare qualitative attributes (Sensory Blocking, Comfort, etc.) of different hats. Goal: Compare.
+         - Chart.js Bar Chart: To visualize the "Neurochemical Shift" (Cortisol vs Dopamine) provided by DPT. Goal: Inform/Change.
+         - Custom Canvas Simulation: "Signal to Noise" visualizer. Dots (noise) moving towards a center (head). A toggle adds a barrier (hat). Goal: Conceptualize the "Faraday Cage" effect described in the report. No SVG used.
+         - Interactive Cards: For Cultural Revivals. Click to expand details. Goal: Organize.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-[#FAFAF9]/95 backdrop-blur-sm border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <span class="text-2xl">🛡️</span>
+                    <span class="font-bold text-xl tracking-tight text-stone-800">Cranial Shield Analysis</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('hero')"
+                        class="text-stone-600 hover:text-stone-900 transition-colors">Overview</button>
+                    <button onclick="scrollToSection('analysis-tabs')"
+                        class="text-stone-600 hover:text-stone-900 transition-colors">Analysis Lens</button>
+                    <button onclick="scrollToSection('shield-lab')"
+                        class="text-stone-600 hover:text-stone-900 transition-colors">Shield Lab</button>
+                    <button onclick="scrollToSection('culture-grid')"
+                        class="text-stone-600 hover:text-stone-900 transition-colors">Culture</button>
+                </div>
+                <!-- Mobile Menu Button (simplified logic for SPA) -->
+                <button class="md:hidden text-stone-600"
+                    onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">Menu</button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-stone-50 border-b border-stone-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <button onclick="scrollToSection('hero')"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-stone-700 hover:bg-stone-200 w-full text-left">Overview</button>
+                <button onclick="scrollToSection('analysis-tabs')"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-stone-700 hover:bg-stone-200 w-full text-left">Analysis</button>
+                <button onclick="scrollToSection('shield-lab')"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-stone-700 hover:bg-stone-200 w-full text-left">Shield
+                    Lab</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-12 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-stone-900 mb-6 leading-tight">
+            Technology of the Self
+        </h1>
+        <p class="mt-4 max-w-2xl mx-auto text-xl text-stone-600 leading-relaxed">
+            Headwear in contemporary youth culture has transcended fashion. It is a sophisticated, intuitive strategy
+            for **energetic containment** and **sensory regulation**.
+        </p>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            <div class="bg-white p-6 rounded-lg card-shadow border border-stone-100">
+                <div class="text-3xl mb-3">⚡</div>
+                <h3 class="text-lg font-bold text-stone-800">Metaphysical</h3>
+                <p class="mt-2 text-stone-600 text-sm">Stabilizing the Crown Chakra and containing the "Tenth Gate" to
+                    prevent energetic dissipation.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg card-shadow border border-stone-100">
+                <div class="text-3xl mb-3">🧠</div>
+                <h3 class="text-lg font-bold text-stone-800">Neuro-Biological</h3>
+                <p class="mt-2 text-stone-600 text-sm">Regulating sensory input (SPD) and utilizing Deep Pressure
+                    Therapy to calm the nervous system.</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg card-shadow border border-stone-100">
+                <div class="text-3xl mb-3">👁️</div>
+                <h3 class="text-lg font-bold text-stone-800">Psychological</h3>
+                <p class="mt-2 text-stone-600 text-sm">"Enclothed Cognition" acting as a safety blanket and a shield
+                    against the surveillance gaze.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Analysis Interface -->
+    <section id="analysis-tabs" class="py-12 bg-white border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-stone-900">The Mechanics of the Shield</h2>
+                <p class="mt-3 text-stone-500">Explore the three dimensions of protection defined in the report.</p>
+            </div>
+
+            <!-- Tabs Header -->
+            <div class="flex justify-center mb-8 border-b border-stone-200">
+                <button onclick="switchTab('metaphysical')" id="tab-btn-metaphysical"
+                    class="tab-active px-6 py-3 text-lg focus:outline-none">Metaphysical</button>
+                <button onclick="switchTab('biological')" id="tab-btn-biological"
+                    class="tab-inactive px-6 py-3 text-lg focus:outline-none">Biological</button>
+                <button onclick="switchTab('neurological')" id="tab-btn-neurological"
+                    class="tab-inactive px-6 py-3 text-lg focus:outline-none">Neurological</button>
+            </div>
+
+            <!-- Tab Content: Metaphysical -->
+            <div id="content-metaphysical" class="block">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-stone-800">The Cranial Vacuum & Auric Field</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Esoteric traditions view the head as the seat of the Crown Chakra (Sahasrara). Kundalini
+                            technology asserts that covering the head applies a "cranial adjustment" to the 26 bones of
+                            the skull, stabilizing movement influenced by breath and energy. This mechanical containment
+                            prevents the scattering of focus.
+                        </p>
+                        <div class="bg-stone-50 p-4 rounded border-l-4 border-stone-400">
+                            <h4 class="font-bold text-stone-700">The Physics of Color</h4>
+                            <p class="text-sm text-stone-600 mt-2">
+                                <strong>White:</strong> Expands auric field by ~1 foot. Reflects negativity. Preferred
+                                by Kundalini practitioners.<br>
+                                <strong>Black:</strong> Absorbs light. Acts as an invisibility cloak. Preferred by youth
+                                to dampen the "signal" of the surveillance society.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Chart: Aura Projection -->
+                    <div class="bg-stone-50 rounded-xl p-6 border border-stone-200">
+                        <h4 class="text-center font-bold text-stone-700 mb-4">Auric Field Impact: Color Theory</h4>
+                        <div class="chart-container">
+                            <canvas id="auraChart"></canvas>
+                        </div>
+                        <div class="flex justify-center gap-4 mt-4">
+                            <button onclick="updateAuraChart('white')"
+                                class="px-4 py-2 bg-white border border-stone-300 rounded hover:bg-stone-100 text-sm">Wear
+                                White</button>
+                            <button onclick="updateAuraChart('black')"
+                                class="px-4 py-2 bg-stone-800 text-white border border-stone-900 rounded hover:bg-stone-700 text-sm">Wear
+                                Black</button>
+                        </div>
+                        <p id="aura-desc" class="text-center text-xs text-stone-500 mt-3 italic">
+                            Select a color to see its energetic effect.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Biological -->
+            <div id="content-biological" class="hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="bg-stone-900 rounded-xl p-6 border border-stone-800 text-stone-200">
+                        <h4 class="text-center font-bold text-white mb-4">Simulation: The "Faraday Cage" Effect</h4>
+                        <div
+                            class="chart-container flex items-center justify-center bg-black rounded-lg overflow-hidden border border-stone-700">
+                            <canvas id="noiseCanvas" width="500" height="300"></canvas>
+                        </div>
+                        <div class="flex justify-between items-center mt-4">
+                            <div>
+                                <label class="text-xs text-stone-400 block mb-1">Environmental Noise Level</label>
+                                <input type="range" min="1" max="20" value="10" id="noiseSlider"
+                                    class="w-32 accent-white">
+                            </div>
+                            <button id="toggleHatBtn" onclick="toggleHat()"
+                                class="px-6 py-2 bg-stone-100 text-black font-bold rounded hover:bg-stone-200 transition">
+                                Put Hat On
+                            </button>
+                        </div>
+                        <p class="text-xs text-stone-400 mt-3 text-center">
+                            <strong>Biological Context:</strong> Hair acts as an antenna for "metaphysical noise"
+                            (Wi-Fi, stress, emotions). The hat acts as a dampener, blocking static.
+                        </p>
+                    </div>
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-stone-800">The Antenna vs. The Filter</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            Research suggests hair acts as an extension of the nervous system, picking up subtle
+                            environmental vibrations. In a pre-industrial world, this was advantageous. In the modern
+                            "soup" of electronic and psychic noise, it leads to overwhelm.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="mr-3 text-xl">📡</span>
+                                <div>
+                                    <strong class="text-stone-800">Antenna Theory:</strong> Hair follicles are
+                                    surrounded by sensory nerves. Bending a hair opens ion channels, sending signals to
+                                    the brain.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 text-xl">🔇</span>
+                                <div>
+                                    <strong class="text-stone-800">Signal-to-Noise Management:</strong> Youth cover the
+                                    head not to disconnect from the divine, but to filter out "garbage data" so they can
+                                    hear their internal guidance.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Neurological -->
+            <div id="content-neurological" class="hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-stone-800">The Hoodie as a Medical Device</h3>
+                        <p class="text-stone-600 leading-relaxed">
+                            The "energy" youth are holding is often neural. The hoodie functions as a tool for
+                            <strong>Deep Pressure Therapy (DPT)</strong> and sensory gating.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4 mt-4">
+                            <div class="bg-stone-100 p-4 rounded">
+                                <h5 class="font-bold text-stone-700 text-sm">Visual Gating</h5>
+                                <p class="text-xs text-stone-600 mt-1">Hoods create tunnel vision, reducing peripheral
+                                    processing load.</p>
+                            </div>
+                            <div class="bg-stone-100 p-4 rounded">
+                                <h5 class="font-bold text-stone-700 text-sm">Auditory Muffling</h5>
+                                <p class="text-xs text-stone-600 mt-1">Dampens high-freq noise, creating a portable
+                                    sanctuary.</p>
+                            </div>
+                            <div class="bg-stone-100 p-4 rounded">
+                                <h5 class="font-bold text-stone-700 text-sm">DPT Response</h5>
+                                <p class="text-xs text-stone-600 mt-1">Weight on shoulders mimics a hug, shifting to
+                                    parasympathetic state.</p>
+                            </div>
+                            <div class="bg-stone-100 p-4 rounded">
+                                <h5 class="font-bold text-stone-700 text-sm">Light Shield</h5>
+                                <p class="text-xs text-stone-600 mt-1">Brims block fluorescent lights that trigger
+                                    headaches.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chart: Neurochemistry -->
+                    <div class="bg-white rounded-xl p-6 border border-stone-200 card-shadow">
+                        <h4 class="text-center font-bold text-stone-700 mb-4">Neurochemical Shift: The "Hoodie Effect"
+                        </h4>
+                        <div class="chart-container">
+                            <canvas id="neuroChart"></canvas>
+                        </div>
+                        <div class="flex justify-center gap-4 mt-4">
+                            <button onclick="updateNeuroChart('exposed')"
+                                class="px-4 py-2 bg-stone-200 text-stone-800 rounded hover:bg-stone-300 text-sm">Exposed
+                                Head</button>
+                            <button onclick="updateNeuroChart('covered')"
+                                class="px-4 py-2 bg-stone-600 text-white rounded hover:bg-stone-700 text-sm">Covered
+                                (DPT)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shield Lab Section -->
+    <section id="shield-lab" class="py-16 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-stone-900">Shield Lab: Choose Your Armor</h2>
+                <p class="mt-3 text-stone-600 max-w-2xl mx-auto">
+                    Different headwear offers different protective profiles. Compare the "stats" of common items based
+                    on the report's findings.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Controls -->
+                <div class="md:col-span-1 space-y-4">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <label class="block text-sm font-medium text-stone-700 mb-2">Select Headwear</label>
+                        <select id="headwearSelect" onchange="updateRadarChart()"
+                            class="w-full p-2 border border-stone-300 rounded focus:ring-stone-500 focus:border-stone-500 bg-stone-50">
+                            <option value="hoodie">Oversized Hoodie</option>
+                            <option value="beanie">Tight Beanie</option>
+                            <option value="cap">Baseball Cap</option>
+                            <option value="veil">Ritual Veil</option>
+                        </select>
+                        <div id="headwear-description" class="mt-6 text-sm text-stone-600 leading-relaxed">
+                            <!-- JS populates this -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Radar Chart -->
+                <div class="md:col-span-2 bg-white p-6 rounded-lg shadow-sm">
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Grid Section -->
+    <section id="culture-grid" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-stone-900 mb-10 text-center">Cultural & Spiritual Revivals</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div
+                    class="group border border-stone-200 p-6 rounded-lg hover:shadow-lg transition-all duration-300 bg-stone-50">
+                    <div class="text-3xl mb-4 opacity-70 group-hover:opacity-100 transition-opacity">🌙</div>
+                    <h3 class="font-bold text-lg text-stone-800">The Pagan Veil</h3>
+                    <p class="text-sm text-stone-500 uppercase tracking-wider mb-3">Empathic Management</p>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Used by "WitchTok" communities to close energy centers after rituals. Often consecrated to
+                        "reflect negativity" and separate self-energy from environmental emotions.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="group border border-stone-200 p-6 rounded-lg hover:shadow-lg transition-all duration-300 bg-stone-50">
+                    <div class="text-3xl mb-4 opacity-70 group-hover:opacity-100 transition-opacity">⛪</div>
+                    <h3 class="font-bold text-lg text-stone-800">Christian Veil 2.0</h3>
+                    <p class="text-sm text-stone-500 uppercase tracking-wider mb-3">Divine Intimacy</p>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        A reclamation of the mantilla not for submission, but for "tunnel vision" onto God during
+                        prayer. Blocks distraction and provides protection from spiritual warfare ("because of the
+                        angels").
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="group border border-stone-200 p-6 rounded-lg hover:shadow-lg transition-all duration-300 bg-stone-50">
+                    <div class="text-3xl mb-4 opacity-70 group-hover:opacity-100 transition-opacity">🧢</div>
+                    <h3 class="font-bold text-lg text-stone-800">The Indoor Hat (Men)</h3>
+                    <p class="text-sm text-stone-500 uppercase tracking-wider mb-3">Permanent Shield</p>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Refusal to remove hats indoors signals a refusal to be vulnerable. The hat is a fixture of
+                        identity, maintaining energetic integrity in social spaces.
+                    </p>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="group border border-stone-200 p-6 rounded-lg hover:shadow-lg transition-all duration-300 bg-stone-50">
+                    <div class="text-3xl mb-4 opacity-70 group-hover:opacity-100 transition-opacity">👁️</div>
+                    <h3 class="font-bold text-lg text-stone-800">Spiritual Streetwear</h3>
+                    <p class="text-sm text-stone-500 uppercase tracking-wider mb-3">Talismanic Armor</p>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        Hoodies featuring "Angel Numbers" (444) or the "Evil Eye" (Nazar). Sold as "wearable wards"
+                        against jealousy and the digital gaze.
+                    </p>
+                </div>
+                <!-- Card 5 -->
+                <div
+                    class="group border border-stone-200 p-6 rounded-lg hover:shadow-lg transition-all duration-300 bg-stone-50">
+                    <div class="text-3xl mb-4 opacity-70 group-hover:opacity-100 transition-opacity">✨</div>
+                    <h3 class="font-bold text-lg text-stone-800">Starseed Sensitivity</h3>
+                    <p class="text-sm text-stone-500 uppercase tracking-wider mb-3">Grounding the Sponge</p>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        For "Indigos" with overactive Crown Chakras, the hat prevents "floating away" and helps
+                        integrate high-frequency energy. Crystals like Black Tourmaline are often tucked into brims.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 text-stone-400 py-8 text-center border-t border-stone-800">
+        <p class="text-sm">&copy; 2024 Cranial Shield Analysis Interactive Report.</p>
+        <p class="text-xs mt-2 text-stone-600">Based on anthropological research into contemporary youth culture.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Navigation Logic ---
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function switchTab(tabName) {
+            // Hide all contents
+            ['metaphysical', 'biological', 'neurological'].forEach(t => {
+                document.getElementById(`content-${t}`).classList.add('hidden');
+                document.getElementById(`tab-btn-${t}`).classList.replace('tab-active', 'tab-inactive');
+            });
+            // Show selected
+            document.getElementById(`content-${tabName}`).classList.remove('hidden');
+            document.getElementById(`tab-btn-${tabName}`).classList.replace('tab-inactive', 'tab-active');
+        }
+
+        // --- Chart 1: Aura Projection (Bar Chart) ---
+        const ctxAura = document.getElementById('auraChart').getContext('2d');
+        let auraChart = new Chart(ctxAura, {
+            type: 'bar',
+            data: {
+                labels: ['Projection (Visibility)', 'Absorption (Privacy)', 'Auric Expansion', 'Grounding'],
+                datasets: [{
+                    label: 'White Headwear (Kundalini Standard)',
+                    data: [90, 10, 85, 40],
+                    backgroundColor: 'rgba(231, 229, 228, 0.8)', // Stone 200
+                    borderColor: '#78716C',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, max: 100 }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        function updateAuraChart(color) {
+            const desc = document.getElementById('aura-desc');
+            if (color === 'white') {
+                auraChart.data.datasets[0].label = 'White Headwear';
+                auraChart.data.datasets[0].data = [90, 10, 85, 40];
+                auraChart.data.datasets[0].backgroundColor = 'rgba(231, 229, 228, 0.8)';
+                desc.innerHTML = "<strong>White:</strong> High projection and expansion. Represents amalgamation of all light. Expands aura by ~1 foot.";
+            } else {
+                auraChart.data.datasets[0].label = 'Black Headwear';
+                auraChart.data.datasets[0].data = [20, 95, 30, 80];
+                auraChart.data.datasets[0].backgroundColor = 'rgba(28, 25, 23, 0.8)'; // Stone 900
+                desc.innerHTML = "<strong>Black:</strong> High absorption and privacy. Acts as an 'invisibility cloak' or 'black hole' for attention. Absorbs light.";
+            }
+            auraChart.update();
+        }
+
+        // --- Chart 2: Neurochemistry (Bar Chart) ---
+        const ctxNeuro = document.getElementById('neuroChart').getContext('2d');
+        let neuroChart = new Chart(ctxNeuro, {
+            type: 'bar',
+            data: {
+                labels: ['Cortisol (Stress)', 'Dopamine (Comfort)', 'Serotonin (Calm)', 'Sensory Overwhelm'],
+                datasets: [{
+                    label: 'Neurochemical Levels',
+                    data: [80, 20, 30, 90], // Default: Exposed
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.6)', // Red (Bad)
+                        'rgba(34, 197, 94, 0.6)', // Green
+                        'rgba(34, 197, 94, 0.6)',
+                        'rgba(239, 68, 68, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(239, 68, 68, 1)',
+                        'rgba(34, 197, 94, 1)',
+                        'rgba(34, 197, 94, 1)',
+                        'rgba(239, 68, 68, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, max: 100 }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        function updateNeuroChart(state) {
+            if (state === 'exposed') {
+                neuroChart.data.datasets[0].data = [80, 20, 30, 90];
+            } else {
+                // Covered (Deep Pressure Therapy)
+                neuroChart.data.datasets[0].data = [30, 75, 80, 25];
+            }
+            neuroChart.update();
+        }
+
+        // --- Chart 3: Shield Lab Radar (Radar Chart) ---
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        const headwearData = {
+            hoodie: {
+                data: [90, 85, 95, 60, 40],
+                desc: "<strong>The Hoodie:</strong> The ultimate 'Womb'. Provides Deep Pressure Therapy (DPT), maximum visual/auditory blocking, and high social camouflage. A portable sanctuary."
+            },
+            beanie: {
+                data: [40, 90, 30, 85, 20],
+                desc: "<strong>The Beanie:</strong> The 'Cranial Vacuum'. Offers high physical pressure to stabilize skull plates (26 bones). Excellent for 'holding the head together' but offers less sensory gating than a hoodie."
+            },
+            cap: {
+                data: [70, 30, 20, 50, 90],
+                desc: "<strong>The Cap:</strong> The 'Blinder'. Specialized for visual gating. Protects the Third Eye/Pineal gland from harsh overhead lighting. Less acoustic protection."
+            },
+            veil: {
+                data: [30, 20, 10, 95, 10],
+                desc: "<strong>The Veil:</strong> The 'Filter'. High energetic intent (warding/reflecting) but low physical sensory blocking. Primarily a spiritual boundary marker."
+            }
+        };
+
+        let radarChart = new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Sensory Blocking', 'Comfort (DPT)', 'Social Camouflage', 'Energetic Hold', 'Visual Shield (Light)'],
+                datasets: [{
+                    label: 'Protective Profile',
+                    data: headwearData.hoodie.data,
+                    fill: true,
+                    backgroundColor: 'rgba(87, 83, 78, 0.2)',
+                    borderColor: 'rgb(87, 83, 78)',
+                    pointBackgroundColor: 'rgb(87, 83, 78)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(87, 83, 78)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { display: true },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        });
+
+        function updateRadarChart() {
+            const selected = document.getElementById('headwearSelect').value;
+            const info = headwearData[selected];
+            radarChart.data.datasets[0].data = info.data;
+            radarChart.update();
+            document.getElementById('headwear-description').innerHTML = info.desc;
+        }
+
+        // Initialize description
+        updateRadarChart();
+
+
+        // --- Canvas Animation: Signal-to-Noise ---
+        const canvas = document.getElementById('noiseCanvas');
+        const ctx = canvas.getContext('2d');
+        let hatOn = false;
+        let particles = [];
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const headRadius = 40;
+        const barrierRadius = 80;
+
+        // Initialize Particles
+        for (let i = 0; i < 100; i++) {
+            particles.push(createParticle());
+        }
+
+        function createParticle() {
+            // Spawn random on edge
+            const angle = Math.random() * Math.PI * 2;
+            const dist = Math.max(canvas.width, canvas.height) * 0.8;
+            return {
+                x: centerX + Math.cos(angle) * dist,
+                y: centerY + Math.sin(angle) * dist,
+                vx: (Math.random() - 0.5) * 2,
+                vy: (Math.random() - 0.5) * 2,
+                speed: 1 + Math.random() * 2,
+                angle: angle
+            };
+        }
+
+        function toggleHat() {
+            hatOn = !hatOn;
+            const btn = document.getElementById('toggleHatBtn');
+            btn.innerText = hatOn ? "Take Hat Off" : "Put Hat On";
+            btn.classList.toggle('bg-stone-100');
+            btn.classList.toggle('bg-stone-400'); // simple visual toggle
+        }
+
+        function animate() {
+            // Get slider value for speed/chaos
+            const noiseLevel = document.getElementById('noiseSlider').value;
+
+            // Clear
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw Head
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, headRadius, 0, Math.PI * 2);
+            ctx.fillStyle = '#E7E5E4'; // Stone 200
+            ctx.fill();
+
+            // Draw Brain/Energy Center
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 10, 0, Math.PI * 2);
+            ctx.fillStyle = '#F59E0B'; // Amber
+            ctx.fill();
+
+            // Draw Hat Barrier if on
+            if (hatOn) {
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, barrierRadius, Math.PI, 0); // Semicircle top
+                ctx.lineTo(centerX + barrierRadius, centerY + 20);
+                ctx.lineTo(centerX - barrierRadius, centerY + 20);
+                ctx.strokeStyle = '#38BDF8'; // Blue shield
+                ctx.lineWidth = 4;
+                ctx.stroke();
+
+                // Hat glow
+                ctx.fillStyle = 'rgba(56, 189, 248, 0.2)';
+                ctx.fill();
+            }
+
+            // Update & Draw Particles
+            ctx.fillStyle = '#EF4444'; // Red noise
+            particles.forEach(p => {
+                // Move towards center generally, but with noise
+                const dx = centerX - p.x;
+                const dy = centerY - p.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                // Normalize direction to center
+                const dirX = dx / dist;
+                const dirY = dy / dist;
+
+                // Update position
+                p.x += dirX * p.speed * (noiseLevel / 5);
+                p.y += dirY * p.speed * (noiseLevel / 5);
+
+                // Collision Logic
+                const distanceToCenter = Math.sqrt((p.x - centerX) ** 2 + (p.y - centerY) ** 2);
+
+                // If Hat is ON and particle hits barrier
+                if (hatOn && distanceToCenter < barrierRadius + 5 && p.y < centerY + 20) {
+                    // Bounce back
+                    p.x -= dirX * 50;
+                    p.y -= dirY * 50;
+                }
+
+                // If hits head (absorb/reset)
+                if (distanceToCenter < headRadius) {
+                    // Reset particle
+                    const angle = Math.random() * Math.PI * 2;
+                    const d = Math.max(canvas.width, canvas.height) * 0.7;
+                    p.x = centerX + Math.cos(angle) * d;
+                    p.y = centerY + Math.sin(angle) * d;
+                }
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+    </script>
+</body>
+
+</html>
