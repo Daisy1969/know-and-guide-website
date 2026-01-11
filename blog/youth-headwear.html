@@ -113,6 +113,8 @@
                     </a>
                     <button onclick="scrollToSection('hero')"
                         class="text-stone-600 hover:text-stone-900 transition-colors">Overview</button>
+                    <button onclick="scrollToSection('dossier')"
+                        class="text-stone-600 hover:text-stone-900 transition-colors">Dossier</button>
                     <button onclick="scrollToSection('analysis-tabs')"
                         class="text-stone-600 hover:text-stone-900 transition-colors">Analysis Lens</button>
                     <button onclick="scrollToSection('shield-lab')"
@@ -331,6 +333,40 @@
                                 (DPT)</button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dossier Slideshow Section -->
+    <section id="dossier" class="py-16 bg-white border-b border-stone-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900">The Dossier</h2>
+                <p class="mt-3 text-stone-600">Full analysis report and visual data.</p>
+            </div>
+
+            <div
+                class="relative bg-stone-100 rounded-xl overflow-hidden shadow-lg border border-stone-200 aspect-[16/9]">
+                <!-- Slide Container -->
+                <div id="carousel-track" class="h-full w-full relative">
+                    <!-- Slides injected via JS -->
+                </div>
+
+                <!-- Controls -->
+                <button onclick="prevSlide()"
+                    class="absolute left-4 top-1/2 -translate-y-1/2 bg-stone-800/50 hover:bg-stone-800/80 text-white p-3 rounded-full transition backdrop-blur-sm">
+                    &#10094;
+                </button>
+                <button onclick="nextSlide()"
+                    class="absolute right-4 top-1/2 -translate-y-1/2 bg-stone-800/50 hover:bg-stone-800/80 text-white p-3 rounded-full transition backdrop-blur-sm">
+                    &#10095;
+                </button>
+
+                <!-- Counter -->
+                <div
+                    class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+                    <span id="slide-current">1</span> / <span id="slide-total">15</span>
                 </div>
             </div>
         </div>
@@ -733,6 +769,50 @@
 
         animate();
 
+        // --- Carousel Logic ---
+        const totalSlides = 15;
+        let currentSlide = 1;
+
+        function initCarousel() {
+            const track = document.getElementById('carousel-track');
+            document.getElementById('slide-total').innerText = totalSlides;
+
+            // Generate slides
+            for (let i = 1; i <= totalSlides; i++) {
+                const img = document.createElement('img');
+                img.src = `../images/slides/slide_${i}.png`;
+                img.className = `absolute top-0 left-0 w-full h-full object-contain transition-opacity duration-300 ${i === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`;
+                img.id = `slide-img-${i}`;
+                track.appendChild(img);
+            }
+        }
+
+        function updateCarousel() {
+            for (let i = 1; i <= totalSlides; i++) {
+                const el = document.getElementById(`slide-img-${i}`);
+                if (i === currentSlide) {
+                    el.classList.remove('opacity-0', 'z-0');
+                    el.classList.add('opacity-100', 'z-10');
+                } else {
+                    el.classList.remove('opacity-100', 'z-10');
+                    el.classList.add('opacity-0', 'z-0');
+                }
+            }
+            document.getElementById('slide-current').innerText = currentSlide;
+        }
+
+        function nextSlide() {
+            currentSlide = currentSlide >= totalSlides ? 1 : currentSlide + 1;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = currentSlide <= 1 ? totalSlides : currentSlide - 1;
+            updateCarousel();
+        }
+
+        // Initialize
+        initCarousel();
     </script>
 </body>
 
