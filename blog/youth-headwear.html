@@ -104,11 +104,13 @@
     <nav class="sticky top-0 z-50 bg-[#FAFAF9]/95 backdrop-blur-sm border-b border-stone-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center gap-2">
-                    <span class="text-2xl">🛡️</span>
-                    <span class="font-bold text-xl tracking-tight text-stone-800">Cranial Shield Analysis</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
+                <a href="../index.html" class="flex items-center gap-2 transition-opacity hover:opacity-80">
+                    <img src="../images/logo-snc.png" alt="SNC Logo" class="h-10 w-auto object-contain">
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="transition-opacity hover:opacity-80">
+                        <img src="../images/home-icon.png" alt="Home" class="h-8 w-auto">
+                    </a>
                     <button onclick="scrollToSection('hero')"
                         class="text-stone-600 hover:text-stone-900 transition-colors">Overview</button>
                     <button onclick="scrollToSection('analysis-tabs')"
