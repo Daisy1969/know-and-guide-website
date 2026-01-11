@@ -338,39 +338,7 @@
         </div>
     </section>
 
-    <!-- Dossier Slideshow Section -->
-    <section id="dossier" class="py-16 bg-white border-b border-stone-200">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-stone-900">The Dossier</h2>
-                <p class="mt-3 text-stone-600">Full analysis report and visual data.</p>
-            </div>
 
-            <div
-                class="relative bg-stone-100 rounded-xl overflow-hidden shadow-lg border border-stone-200 aspect-[16/9]">
-                <!-- Slide Container -->
-                <div id="carousel-track" class="h-full w-full relative">
-                    <!-- Slides injected via JS -->
-                </div>
-
-                <!-- Controls -->
-                <button onclick="prevSlide()"
-                    class="absolute left-4 top-1/2 -translate-y-1/2 bg-stone-800/50 hover:bg-stone-800/80 text-white p-3 rounded-full transition backdrop-blur-sm">
-                    &#10094;
-                </button>
-                <button onclick="nextSlide()"
-                    class="absolute right-4 top-1/2 -translate-y-1/2 bg-stone-800/50 hover:bg-stone-800/80 text-white p-3 rounded-full transition backdrop-blur-sm">
-                    &#10095;
-                </button>
-
-                <!-- Counter -->
-                <div
-                    class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
-                    <span id="slide-current">1</span> / <span id="slide-total">15</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Shield Lab Section -->
     <section id="shield-lab" class="py-16 bg-stone-100">
@@ -406,6 +374,42 @@
                     <div class="chart-container">
                         <canvas id="radarChart"></canvas>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dossier Slideshow Section (Moved) -->
+    <section id="dossier" class="py-16 bg-white border-b border-stone-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-stone-900">The Dossier</h2>
+                <p class="mt-3 text-stone-600">Full analysis report and visual data.</p>
+            </div>
+
+            <div class="bg-stone-100 rounded-xl overflow-hidden shadow-lg border border-stone-200">
+                <!-- Slide Container (Aspect Ratio Maintained) -->
+                <div class="relative aspect-[16/9]">
+                    <div id="carousel-track" class="h-full w-full relative">
+                        <!-- Slides injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Controls Bar (Below Image) -->
+                <div class="bg-stone-900 text-white p-4 flex items-center justify-between">
+                    <button onclick="prevSlide()"
+                        class="hover:text-stone-300 transition-colors px-4 py-2 font-bold text-xl">
+                        &#10094;
+                    </button>
+
+                    <div class="text-sm font-mono tracking-wider">
+                        SLIDE <span id="slide-current">1</span> / <span id="slide-total">15</span>
+                    </div>
+
+                    <button onclick="nextSlide()"
+                        class="hover:text-stone-300 transition-colors px-4 py-2 font-bold text-xl">
+                        &#10095;
+                    </button>
                 </div>
             </div>
         </div>
@@ -772,6 +776,7 @@
         // --- Carousel Logic ---
         const totalSlides = 15;
         let currentSlide = 1;
+        let autoScrollTimer = null;
 
         function initCarousel() {
             const track = document.getElementById('carousel-track');
@@ -785,6 +790,7 @@
                 img.id = `slide-img-${i}`;
                 track.appendChild(img);
             }
+            startAutoScroll();
         }
 
         function updateCarousel() {
@@ -801,14 +807,27 @@
             document.getElementById('slide-current').innerText = currentSlide;
         }
 
-        function nextSlide() {
+        function nextSlide(manual = false) {
             currentSlide = currentSlide >= totalSlides ? 1 : currentSlide + 1;
             updateCarousel();
+            if (manual) resetAutoScroll();
         }
 
         function prevSlide() {
             currentSlide = currentSlide <= 1 ? totalSlides : currentSlide - 1;
             updateCarousel();
+            resetAutoScroll();
+        }
+
+        function startAutoScroll() {
+            if (autoScrollTimer) clearInterval(autoScrollTimer);
+            autoScrollTimer = setInterval(() => {
+                nextSlide(false);
+            }, 15000); // 15 seconds
+        }
+
+        function resetAutoScroll() {
+            startAutoScroll();
         }
 
         // Initialize
