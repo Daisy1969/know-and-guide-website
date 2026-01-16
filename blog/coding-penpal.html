@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Coding Penpal: A Compassionate AI Tutor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FAFAF9;
+            /* Stone 50 */
+            color: #44403C;
+            /* Stone 700 */
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #FAFAF9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #A8A29E;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #78716C;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-[#FAFAF9]/95 backdrop-blur-sm border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="../index.html" class="flex items-center gap-2 transition-opacity hover:opacity-80">
+                    <div class="logo"><img src="../images/logo-kg.png" alt="K&G Logo" style="max-height: 90px;"></div>
+                </a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html"
+                        class="text-stone-600 hover:text-stone-900 font-medium transition-colors">Home</a>
+                    <button onclick="scrollToSection('hero')"
+                        class="text-stone-600 hover:text-stone-900 transition-colors">Overview</button>
+                    <button onclick="scrollToSection('features')"
+                        class="text-stone-600 hover:text-stone-900 transition-colors">Features</button>
+                    <button onclick="scrollToSection('tech-stack')"
+                        class="text-stone-600 hover:text-stone-900 transition-colors">Tech Stack</button>
+                    <button onclick="scrollToSection('tutor-mode')"
+                        class="text-stone-600 hover:text-stone-900 transition-colors">Why Tutor Mode?</button>
+                </div>
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-stone-600"
+                    onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">Menu</button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-stone-50 border-b border-stone-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <button onclick="scrollToSection('hero')"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-stone-700 hover:bg-stone-200 w-full text-left">Overview</button>
+                <button onclick="scrollToSection('features')"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-stone-700 hover:bg-stone-200 w-full text-left">Features</button>
+                <button onclick="scrollToSection('tech-stack')"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-stone-700 hover:bg-stone-200 w-full text-left">Tech
+                    Stack</button>
+                <button onclick="scrollToSection('tutor-mode')"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-stone-700 hover:bg-stone-200 w-full text-left">Why
+                    Tutor Mode?</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-12 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+        <div
+            class="inline-block p-2 px-4 rounded-full bg-stone-200 text-stone-700 text-sm font-semibold mb-6 tracking-wide uppercase">
+            New Release: v5.1</div>
+        <h1 class="text-4xl md:text-6xl font-bold text-stone-900 mb-6 leading-tight">
+            Agentic Coding Penpal
+        </h1>
+        <p class="text-2xl md:text-3xl font-light text-stone-500 mb-8 italic">
+            A Compassionate AI Tutor
+        </p>
+        <p class="mt-4 max-w-3xl mx-auto text-xl text-stone-600 leading-relaxed">
+            A unique educational web application designed to be more than just a coding tool—it's a supportive friend.
+            Built to reduce loneliness and foster creativity, it explains concepts and provides code snippets in the
+            chat, encouraging you to "learn by doing".
+        </p>
+        <div class="mt-8">
+            <a href="https://code.knowandguide.com" target="_blank"
+                class="inline-block bg-stone-800 text-white px-8 py-3 rounded-full hover:bg-stone-700 transition-colors text-lg font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
+                Try the Penpal
+            </a>
+        </div>
+    </section>
+
+    <!-- What is it? Section -->
+    <section class="py-16 bg-white border-y border-stone-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-stone-900 mb-8 text-center">What is it?</h2>
+            <div class="prose prose-stone prose-lg mx-auto text-stone-600 leading-relaxed">
+                <p>
+                    The Agentic Coding Penpal is built to reduce loneliness and foster creativity. It pairs students
+                    with a "compassionate AI companion" that teaches them how to code in real-time using voice and text.
+                </p>
+                <p class="mt-4">
+                    Unlike standard code generators that do the work for you, the Penpal operates in <strong>"Tutor
+                        Mode"</strong>. It acts as a guide, explaining concepts and providing code snippets in the chat,
+                    encouraging the student to type the code themselves. It then "reads" the student's work to verify
+                    correctness and offer specific, encouraging feedback.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Grid -->
+    <section id="features" class="py-16 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-stone-900 mb-12 text-center">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-4">🗣️</div>
+                    <h3 class="font-bold text-xl text-stone-800 mb-2">Real-Time Voice</h3>
+                    <p class="text-stone-600">
+                        Talk naturally with the AI using Google's Gemini Multimodal Live API. It feels like a real
+                        conversation, not a command line.
+                    </p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-4">👩‍🏫</div>
+                    <h3 class="font-bold text-xl text-stone-800 mb-2">Tutor Mode</h3>
+                    <p class="text-stone-600">
+                        The AI provides code snippets (Markdown) in the chat window, explaining why the code works
+                        before asking you to try it.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-4">👁️</div>
+                    <h3 class="font-bold text-xl text-stone-800 mb-2">Smart Verification</h3>
+                    <p class="text-stone-600">
+                        The AI can "see" your code editor. After you finish typing, it inspects your work to ensure it's
+                        correct and helps you debug typos.
+                    </p>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-4">🎨</div>
+                    <h3 class="font-bold text-xl text-stone-800 mb-2">Multi-Language</h3>
+                    <p class="text-stone-600">
+                        Build projects in Python, C++, and Web (HTML/CSS/JavaScript). A versatile environment for any
+                        learner.
+                    </p>
+                </div>
+                <!-- Card 5 -->
+                <div
+                    class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-4">😊</div>
+                    <h3 class="font-bold text-xl text-stone-800 mb-2">Compassionate Persona</h3>
+                    <p class="text-stone-600">
+                        Programmed to be warm, playful, and patient, celebrating small wins to build your confidence as
+                        you learn.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Highlights -->
+    <section id="tech-stack" class="py-16 bg-white border-y border-stone-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-stone-900 mb-10 text-center">Technical Highlights</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="p-4">
+                    <div class="text-stone-800 font-bold text-lg mb-2">Frontend</div>
+                    <div class="text-stone-600">React, Vite, Tailwind CSS for a modern, responsive UI.</div>
+                </div>
+                <div class="p-4 md:border-x md:border-stone-200">
+                    <div class="text-stone-800 font-bold text-lg mb-2">AI Core</div>
+                    <div class="text-stone-600">Google Gemini Multimodal Live API via WebSocket for low-latency
+                        voice/video.</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-stone-800 font-bold text-lg mb-2">Infrastructure</div>
+                    <div class="text-stone-600">Dockerized and deployed on Google Cloud Run for scalability.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Tutor Mode -->
+    <section id="tutor-mode" class="py-16 bg-stone-900 text-stone-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Why "Tutor Mode"?</h2>
+            <p class="text-lg leading-relaxed mb-8">
+                In early versions, the AI acted as a "Driver," writing code directly into the editor. However, we found
+                that true learning happens when the student drives.
+            </p>
+            <div class="bg-stone-800 p-8 rounded-2xl border border-stone-700">
+                <p class="text-xl font-medium text-white italic">
+                    "We pivoted to Tutor Mode (v5.1), where the AI guides and verifies, ensuring students build actual
+                    muscle memory and understanding."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-50 text-stone-600 py-12 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-4">
+                <a href="../index.html" class="text-stone-800 font-bold hover:underline">Know & Guide</a>
+            </div>
+            <p class="text-sm">&copy; 2024 Know & Guide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+
+</html>
