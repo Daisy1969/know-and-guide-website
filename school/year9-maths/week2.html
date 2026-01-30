@@ -123,15 +123,40 @@
                     </div>
                 </div>
 
-                <div class="flex space-x-2 text-sm font-medium">
-                    <button onclick="nav('home')" id="btn-home"
-                        class="nav-btn active px-4 py-2 rounded-md hover:bg-slate-800">Overview</button>
-                    <button onclick="nav('length')" id="btn-length"
-                        class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800">1. Length</button>
-                    <button onclick="nav('perimeter')" id="btn-perimeter"
-                        class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800">2. Perimeter</button>
-                    <button onclick="nav('area')" id="btn-area"
-                        class="nav-btn px-4 py-2 rounded-md hover:bg-slate-800">3. Area</button>
+                <!-- Right: Dropdown Menu -->
+                <div class="flex space-x-8 text-sm font-medium items-center">
+                    <a href="week1.html" class="hover:text-stone-300 transition">Dashboard</a>
+
+                    <!-- Week 1 Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center hover:text-stone-300 transition py-2">
+                            Week 1 <span class="ml-1 text-[10px]">▼</span>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-0 w-48 bg-stone-900 rounded-md shadow-xl py-2 hidden group-hover:block border border-stone-800">
+                            <a href="week1.html#real-numbers"
+                                class="block w-full text-left px-4 py-2 hover:bg-stone-800 text-stone-300 hover:text-white">Real
+                                Numbers</a>
+                            <a href="week1.html#exponents"
+                                class="block w-full text-left px-4 py-2 hover:bg-stone-800 text-stone-300 hover:text-white">Exponents</a>
+                        </div>
+                    </div>
+
+                    <!-- Week 2 Dropdown -->
+                    <div class="relative group">
+                        <button class="flex items-center hover:text-stone-300 transition py-2">
+                            Week 2 <span class="ml-1 text-[10px]">▼</span>
+                        </button>
+                        <div
+                            class="absolute left-0 mt-0 w-48 bg-stone-900 rounded-md shadow-xl py-2 hidden group-hover:block border border-stone-800">
+                            <button onclick="nav('length')"
+                                class="block w-full text-left px-4 py-2 hover:bg-stone-800 text-stone-300 hover:text-white">Length</button>
+                            <button onclick="nav('perimeter')"
+                                class="block w-full text-left px-4 py-2 hover:bg-stone-800 text-stone-300 hover:text-white">Perimeter</button>
+                            <button onclick="nav('area')"
+                                class="block w-full text-left px-4 py-2 hover:bg-stone-800 text-stone-300 hover:text-white">Area</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -711,6 +736,12 @@
 
         // Initialize
         hlStep('m');
+
+        // Check hash
+        const hash = window.location.hash.substring(1);
+        if (hash && (hash === 'length' || hash === 'perimeter' || hash === 'area')) {
+            nav(hash);
+        }
     </script>
 </body>
 
