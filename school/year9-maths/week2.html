@@ -424,27 +424,42 @@
                     <h3 class="text-xl font-bold text-slate-800 mb-6">Area Formulas Cheat Sheet</h3>
 
                     <div class="space-y-6">
+                        <!-- Rectangle -->
                         <div class="flex items-center gap-4">
-                            <div class="w-16 h-10 border-2 border-slate-800 bg-amber-50"></div>
+                            <div class="relative w-20 h-14 flex items-center justify-center">
+                                <div class="w-16 h-10 border-2 border-slate-800 bg-amber-50 relative"></div>
+                                <span class="absolute -top-1 font-serif italic text-xs text-amber-700">L</span>
+                                <span class="absolute right-0 font-serif italic text-xs text-amber-700">W</span>
+                            </div>
                             <div>
                                 <div class="font-bold text-slate-700">Rectangle</div>
                                 <div class="math-font text-amber-600">Area = length &times; width</div>
                             </div>
                         </div>
 
+                        <!-- Circle -->
                         <div class="flex items-center gap-4">
-                            <div class="w-16 h-10 border-2 border-slate-800 bg-amber-50 rounded-full"></div>
+                            <div class="w-20 flex justify-center">
+                                <div class="w-12 h-12 border-2 border-slate-800 bg-amber-50 rounded-full"></div>
+                            </div>
                             <div>
                                 <div class="font-bold text-slate-700">Circle</div>
                                 <div class="math-font text-amber-600">Area = &pi;r<sup>2</sup></div>
                             </div>
                         </div>
 
+                        <!-- Triangle -->
                         <div class="flex items-center gap-4">
-                            <div
-                                class="w-0 h-0 border-l-[30px] border-r-[30px] border-b-[50px] border-transparent border-b-amber-50 relative">
-                                <div class="absolute -left-8 top-12 w-16 h-0.5 bg-slate-800"></div>
-                                <!-- base line visual hack -->
+                            <div class="w-20 flex justify-center">
+                                <div
+                                    class="relative w-0 h-0 border-l-[20px] border-r-[20px] border-b-[40px] border-transparent border-b-amber-50">
+                                    <!-- Base line -->
+                                    <div class="absolute -left-5 top-10 w-10 h-0.5 bg-slate-800"></div>
+                                    <!-- Height Line -->
+                                    <div
+                                        class="absolute left-0 top-0 h-10 w-px bg-slate-400 border-l border-dashed border-slate-800">
+                                    </div>
+                                </div>
                             </div>
                             <div class="ml-2">
                                 <div class="font-bold text-slate-700">Triangle</div>
@@ -456,26 +471,24 @@
 
                 <!-- Interactive Composite Problem -->
                 <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
-                    <h3 class="font-bold text-slate-800 mb-4">Composite Shape Challenge</h3>
-                    <p class="text-sm text-slate-600 mb-4">Calculate the area of this "House" shape (Rectangle +
-                        Triangle).</p>
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-bold text-slate-800">Composite Shape Challenge</h3>
+                            <p class="text-sm text-slate-600">Calculate the area of this "House" shape.</p>
+                        </div>
+                        <button onclick="generateRandomHouse()"
+                            class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-2 py-1 rounded transition"
+                            title="New Problem">
+                            &#x21bb; New
+                        </button>
+                    </div>
 
                     <div class="canvas-wrapper mb-4 flex items-center justify-center">
                         <canvas id="areaCanvas" width="400" height="250"></canvas>
                     </div>
 
-                    <div class="bg-amber-50 p-4 rounded border border-amber-100">
-                        <h4 class="font-bold text-amber-800 text-sm mb-2">Strategy: Split the Shape</h4>
-                        <div class="text-sm text-slate-700 space-y-1">
-                            <p>1. <strong>Rectangle Area:</strong> <span class="math-font">10m &times; 6m =
-                                    60m<sup>2</sup></span></p>
-                            <p>2. <strong>Triangle Area:</strong> <span class="math-font">0.5 &times; 10m &times; 4m =
-                                    20m<sup>2</sup></span></p>
-                            <div class="border-t border-amber-200 mt-2 pt-2 font-bold flex justify-between">
-                                <span>Total Area:</span>
-                                <span>80m<sup>2</sup></span>
-                            </div>
-                        </div>
+                    <div id="area-math" class="bg-amber-50 p-4 rounded border border-amber-100">
+                        <!-- Content injected by JS -->
                     </div>
                 </div>
             </div>
@@ -506,7 +519,9 @@
                 setTimeout(drawShape, 100); // Small delay to ensure render
             }
             if (pageId === 'area') {
-                setTimeout(drawAreaShape, 100);
+                setTimeout(() => {
+                    generateRandomHouse();
+                }, 100);
             }
         }
 
@@ -687,51 +702,113 @@
         }
 
         // --- Lesson 6: Area Logic ---
+        // --- Lesson 6: Area Logic ---
+        let houseData = { w: 10, h: 6, roof: 4 };
+
+        function generateRandomHouse() {
+            // Randomize dimensions (Sensible ranges for screen)
+            // Width: 8 to 14
+            // Height: 5 to 8
+            // Roof: 3 to 6
+            houseData.w = Math.floor(Math.random() * 7 + 8);
+            houseData.h = Math.floor(Math.random() * 4 + 5);
+            houseData.roof = Math.floor(Math.random() * 4 + 3);
+
+            drawAreaShape();
+            updateAreaMath();
+        }
+
+        function updateAreaMath() {
+            const { w, h, roof } = houseData;
+            const rectArea = w * h;
+            const triArea = 0.5 * w * roof;
+            const total = rectArea + triArea;
+
+            const html = `
+                <h4 class="font-bold text-amber-800 text-sm mb-2">Strategy: Split the Shape</h4>
+                <div class="text-sm text-slate-700 space-y-1">
+                    <p>1. <strong>Rectangle Area:</strong> <span class="math-font">${w}m &times; ${h}m = ${rectArea}m<sup>2</sup></span></p>
+                    <p>2. <strong>Triangle Area:</strong> <span class="math-font">0.5 &times; ${w}m &times; ${roof}m = ${triArea}m<sup>2</sup></span></p>
+                    <div class="border-t border-amber-200 mt-2 pt-2 font-bold flex justify-between">
+                        <span>Total Area:</span>
+                        <span>${total}m<sup>2</sup></span>
+                    </div>
+                </div>
+            `;
+            document.getElementById('area-math').innerHTML = html;
+        }
+
         function drawAreaShape() {
             const canvas = document.getElementById('areaCanvas');
+            if (!canvas) return;
             const ctx = canvas.getContext('2d');
             const cw = canvas.width;
             const ch = canvas.height;
 
-            // Draw House Shape
-            const houseW = 160;
-            const houseRectH = 100;
-            const roofH = 60;
-            const startX = (cw - houseW) / 2;
-            const startY = ch - 40 - houseRectH;
+            // Clear
+            ctx.clearRect(0, 0, cw, ch);
+
+            // Scale factor (fit to canvas)
+            // Max Width ~250px => 14m * 18px = 252px
+            const scale = 14;
+
+            const pixelW = houseData.w * scale;
+            const pixelH = houseData.h * scale;
+            const pixelRoof = houseData.roof * scale;
+
+            const startX = (cw - pixelW) / 2;
+            const startY = ch - 40 - pixelH; // 40px padding bottom
 
             // Rect (Bottom)
             ctx.fillStyle = '#fffbeb'; // Amber-50
             ctx.strokeStyle = '#b45309'; // Amber-700
             ctx.lineWidth = 2;
 
-            ctx.fillRect(startX, startY, houseW, houseRectH);
-            ctx.strokeRect(startX, startY, houseW, houseRectH);
+            ctx.fillRect(startX, startY, pixelW, pixelH);
+            ctx.strokeRect(startX, startY, pixelW, pixelH);
 
             // Triangle (Roof)
             ctx.beginPath();
             ctx.moveTo(startX, startY);
-            ctx.lineTo(startX + houseW, startY);
-            ctx.lineTo(startX + houseW / 2, startY - roofH);
+            ctx.lineTo(startX + pixelW, startY);
+            ctx.lineTo(startX + pixelW / 2, startY - pixelRoof);
             ctx.closePath();
             ctx.fillStyle = '#fef3c7'; // Amber-100
             ctx.fill();
             ctx.stroke();
 
             // Dimensions
-            ctx.fillStyle = '#000';
-            ctx.font = '12px Inter';
-            ctx.fillText('10m', startX + houseW / 2 - 10, startY + houseRectH + 15); // Width
-            ctx.fillText('6m', startX - 25, startY + houseRectH / 2); // Rect Height
+            ctx.fillStyle = '#0f172a';
+            ctx.font = 'bold 14px Inter';
 
-            // Roof Height Line
+            // Width Label (Bottom)
+            ctx.textAlign = 'center';
+            ctx.fillText(`${houseData.w}m`, startX + pixelW / 2, startY + pixelH + 20);
+
+            // Height Label (Left)
+            ctx.textAlign = 'right';
+            ctx.fillText(`${houseData.h}m`, startX - 8, startY + pixelH / 2 + 5);
+
+            // Roof Height Line & Label
             ctx.beginPath();
-            ctx.moveTo(startX + houseW + 10, startY);
-            ctx.lineTo(startX + houseW + 10, startY - roofH);
+            const dashX = startX + pixelW + 20;
+            ctx.moveTo(startX + pixelW, startY);
+            ctx.lineTo(dashX + 10, startY); // Base ref
+            ctx.moveTo(startX + pixelW / 2, startY - pixelRoof);
+            ctx.lineTo(dashX + 10, startY - pixelRoof); // Top ref
+
+            // Vertical Indicator
+            ctx.moveTo(dashX, startY);
+            ctx.lineTo(dashX, startY - pixelRoof);
+
             ctx.strokeStyle = '#64748b';
-            ctx.setLineDash([2, 2]);
+            ctx.setLineDash([4, 4]);
             ctx.stroke();
-            ctx.fillText('4m', startX + houseW + 15, startY - roofH / 2);
+            ctx.setLineDash([]);
+
+            ctx.textAlign = 'left';
+            ctx.fillStyle = '#64748b';
+            ctx.fillText(`${houseData.roof}m`, dashX + 5, startY - pixelRoof / 2 + 5);
         }
 
         // Initialize
