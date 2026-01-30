@@ -423,47 +423,65 @@
                 <div class="bg-white p-8 rounded-lg shadow-sm border border-slate-200">
                     <h3 class="text-xl font-bold text-slate-800 mb-6">Area Formulas Cheat Sheet</h3>
 
-                    <div class="space-y-6">
+                    <div class="space-y-8">
                         <!-- Rectangle -->
-                        <div class="flex items-center gap-4">
-                            <div class="relative w-20 h-14 flex items-center justify-center">
-                                <div class="w-16 h-10 border-2 border-slate-800 bg-amber-50 relative"></div>
-                                <span class="absolute -top-1 font-serif italic text-xs text-amber-700">L</span>
-                                <span class="absolute right-0 font-serif italic text-xs text-amber-700">W</span>
+                        <div class="flex items-center gap-6">
+                            <div class="relative w-24 h-16 flex items-center justify-center">
+                                <!-- Shape -->
+                                <div class="w-16 h-10 border-2 border-slate-800 bg-amber-200 relative"></div>
+                                <!-- Dimensions -->
+                                <span
+                                    class="absolute -top-4 left-1/2 -translate-x-1/2 font-serif italic text-sm text-slate-700 font-bold">L</span>
+                                <span
+                                    class="absolute -right-2 top-1/2 -translate-y-1/2 font-serif italic text-sm text-slate-700 font-bold">W</span>
                             </div>
                             <div>
-                                <div class="font-bold text-slate-700">Rectangle</div>
-                                <div class="math-font text-amber-600">Area = length &times; width</div>
+                                <div class="font-bold text-slate-800 text-lg">Rectangle</div>
+                                <div class="math-font text-amber-700 text-base">Area = length &times; width</div>
                             </div>
                         </div>
 
                         <!-- Circle -->
-                        <div class="flex items-center gap-4">
-                            <div class="w-20 flex justify-center">
-                                <div class="w-12 h-12 border-2 border-slate-800 bg-amber-50 rounded-full"></div>
+                        <div class="flex items-center gap-6">
+                            <div class="relative w-24 h-16 flex items-center justify-center">
+                                <div
+                                    class="w-14 h-14 border-2 border-slate-800 bg-amber-200 rounded-full relative flex items-center justify-center">
+                                    <!-- Radius Line -->
+                                    <div
+                                        class="absolute w-[50%] h-px bg-slate-800 right-0 top-1/2 transform translate-y-[-50%] origin-left">
+                                    </div>
+                                    <span
+                                        class="absolute top-[35%] right-[10%] font-serif italic text-xs text-slate-800 font-bold">r</span>
+                                    <!-- Center Dot -->
+                                    <div class="w-1 h-1 bg-slate-800 rounded-full"></div>
+                                </div>
                             </div>
                             <div>
-                                <div class="font-bold text-slate-700">Circle</div>
-                                <div class="math-font text-amber-600">Area = &pi;r<sup>2</sup></div>
+                                <div class="font-bold text-slate-800 text-lg">Circle</div>
+                                <div class="math-font text-amber-700 text-base">Area = &pi;r<sup>2</sup></div>
                             </div>
                         </div>
 
                         <!-- Triangle -->
-                        <div class="flex items-center gap-4">
-                            <div class="w-20 flex justify-center">
+                        <div class="flex items-center gap-6">
+                            <div class="relative w-24 h-16 flex items-center justify-center">
                                 <div
-                                    class="relative w-0 h-0 border-l-[20px] border-r-[20px] border-b-[40px] border-transparent border-b-amber-50">
-                                    <!-- Base line -->
-                                    <div class="absolute -left-5 top-10 w-10 h-0.5 bg-slate-800"></div>
+                                    class="relative w-0 h-0 border-l-[24px] border-r-[24px] border-b-[48px] border-transparent border-b-amber-200">
                                     <!-- Height Line -->
                                     <div
-                                        class="absolute left-0 top-0 h-10 w-px bg-slate-400 border-l border-dashed border-slate-800">
+                                        class="absolute left-0 top-0 h-[48px] w-px border-l border-dashed border-slate-800">
                                     </div>
                                 </div>
+                                <!-- Labels -->
+                                <span
+                                    class="absolute bottom-[-20px] left-1/2 -translate-x-1/2 font-serif italic text-sm text-slate-700 font-bold">b</span>
+                                <span
+                                    class="absolute left-[20px] top-4 font-serif italic text-sm text-slate-700 font-bold">h</span>
                             </div>
                             <div class="ml-2">
-                                <div class="font-bold text-slate-700">Triangle</div>
-                                <div class="math-font text-amber-600">Area = &frac12; &times; base &times; height</div>
+                                <div class="font-bold text-slate-800 text-lg">Triangle</div>
+                                <div class="math-font text-amber-700 text-base">Area = &frac12; &times; base &times;
+                                    height</div>
                             </div>
                         </div>
                     </div>
@@ -477,9 +495,9 @@
                             <p class="text-sm text-slate-600">Calculate the area of this "House" shape.</p>
                         </div>
                         <button onclick="generateRandomHouse()"
-                            class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-2 py-1 rounded transition"
+                            class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 px-3 py-2 rounded transition font-bold border border-slate-300"
                             title="New Problem">
-                            &#x21bb; New
+                            &#x21bb; New Problem
                         </button>
                     </div>
 
@@ -487,7 +505,7 @@
                         <canvas id="areaCanvas" width="400" height="250"></canvas>
                     </div>
 
-                    <div id="area-math" class="bg-amber-50 p-4 rounded border border-amber-100">
+                    <div id="area-math" class="bg-amber-50 p-4 rounded border border-amber-100 min-h-[140px]">
                         <!-- Content injected by JS -->
                     </div>
                 </div>
@@ -520,6 +538,9 @@
             }
             if (pageId === 'area') {
                 setTimeout(() => {
+                    // Check if already generated to avoid overwrite on tab switch if we wanted persistence? 
+                    // But user might want refresh. Let's just generate if not present, OR always.
+                    // Actually, let's keep generating on tab switch as a feature "New Problem on entry".
                     generateRandomHouse();
                 }, 100);
             }
@@ -702,7 +723,6 @@
         }
 
         // --- Lesson 6: Area Logic ---
-        // --- Lesson 6: Area Logic ---
         let houseData = { w: 10, h: 6, roof: 4 };
 
         function generateRandomHouse() {
@@ -761,8 +781,8 @@
 
             // Rect (Bottom)
             ctx.fillStyle = '#fffbeb'; // Amber-50
-            ctx.strokeStyle = '#b45309'; // Amber-700
-            ctx.lineWidth = 2;
+            ctx.strokeStyle = '#ef4444'; // Red-500 (Matches Perimeter)
+            ctx.lineWidth = 3;
 
             ctx.fillRect(startX, startY, pixelW, pixelH);
             ctx.strokeRect(startX, startY, pixelW, pixelH);
@@ -778,20 +798,20 @@
             ctx.stroke();
 
             // Dimensions
-            ctx.fillStyle = '#0f172a';
-            ctx.font = 'bold 14px Inter';
+            ctx.fillStyle = '#1e293b'; // Slate-800
+            ctx.font = 'bold 16px Inter';
 
             // Width Label (Bottom)
             ctx.textAlign = 'center';
-            ctx.fillText(`${houseData.w}m`, startX + pixelW / 2, startY + pixelH + 20);
+            ctx.fillText(`${houseData.w}m`, startX + pixelW / 2, startY + pixelH + 25);
 
             // Height Label (Left)
             ctx.textAlign = 'right';
-            ctx.fillText(`${houseData.h}m`, startX - 8, startY + pixelH / 2 + 5);
+            ctx.fillText(`${houseData.h}m`, startX - 10, startY + pixelH / 2 + 5);
 
             // Roof Height Line & Label
             ctx.beginPath();
-            const dashX = startX + pixelW + 20;
+            const dashX = startX + pixelW + 25;
             ctx.moveTo(startX + pixelW, startY);
             ctx.lineTo(dashX + 10, startY); // Base ref
             ctx.moveTo(startX + pixelW / 2, startY - pixelRoof);
@@ -803,12 +823,13 @@
 
             ctx.strokeStyle = '#64748b';
             ctx.setLineDash([4, 4]);
+            ctx.lineWidth = 2;
             ctx.stroke();
             ctx.setLineDash([]);
 
             ctx.textAlign = 'left';
-            ctx.fillStyle = '#64748b';
-            ctx.fillText(`${houseData.roof}m`, dashX + 5, startY - pixelRoof / 2 + 5);
+            ctx.fillStyle = '#475569'; // Slate-600
+            ctx.fillText(`${houseData.roof}m`, dashX + 8, startY - pixelRoof / 2 + 5);
         }
 
         // Initialize
