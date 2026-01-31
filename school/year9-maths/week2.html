@@ -333,14 +333,22 @@
                     <!-- Shape Selector -->
                     <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
                         <h3 class="font-bold text-slate-800 mb-4">1. Select Shape</h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <button onclick="setShape('rect')"
-                                class="p-2 border rounded hover:bg-slate-50 text-sm font-medium focus:ring-2 ring-emerald-500">Rectangle</button>
-                            <button onclick="setShape('circle')"
-                                class="p-2 border rounded hover:bg-slate-50 text-sm font-medium focus:ring-2 ring-emerald-500">Circle</button>
-                            <button onclick="setShape('composite')"
-                                class="p-2 border rounded hover:bg-slate-50 text-sm font-medium focus:ring-2 ring-emerald-500 col-span-2">Composite
-                                (Ice Cream)</button>
+                        <!-- Shape Selectors -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <button onclick="setShape('rect')" id="btn-shape-rect"
+                                class="px-3 py-2 text-sm rounded bg-slate-200 hover:bg-slate-300 font-medium transition">Rectangle</button>
+                            <button onclick="setShape('square')" id="btn-shape-square"
+                                class="px-3 py-2 text-sm rounded bg-white border border-slate-200 hover:bg-slate-50 font-medium transition">Square</button>
+                            <button onclick="setShape('circle')" id="btn-shape-circle"
+                                class="px-3 py-2 text-sm rounded bg-white border border-slate-200 hover:bg-slate-50 font-medium transition">Circle</button>
+                            <button onclick="setShape('tri-right')" id="btn-shape-tri-right"
+                                class="px-3 py-2 text-sm rounded bg-white border border-slate-200 hover:bg-slate-50 font-medium transition">Rt
+                                &Delta;</button>
+                            <button onclick="setShape('tri-iso')" id="btn-shape-tri-iso"
+                                class="px-3 py-2 text-sm rounded bg-white border border-slate-200 hover:bg-slate-50 font-medium transition">Iso
+                                &Delta;</button>
+                            <button onclick="setShape('composite')" id="btn-shape-composite"
+                                class="px-3 py-2 text-sm rounded bg-white border border-slate-200 hover:bg-slate-50 font-medium transition">House</button>
                         </div>
                     </div>
 
@@ -349,7 +357,7 @@
                         <h3 class="font-bold text-slate-800 mb-4">2. Adjust Dimensions</h3>
 
                         <!-- Rect Controls -->
-                        <div id="controls-rect" class="space-y-4">
+                        <div id="controls-rect" class="shape-control space-y-4">
                             <div>
                                 <label class="text-xs font-bold text-slate-500">Length (L)</label>
                                 <input type="range" id="rect-l" min="50" max="250" value="150" class="w-full"
@@ -362,8 +370,17 @@
                             </div>
                         </div>
 
+                        <!-- Square Controls -->
+                        <div id="controls-square" class="shape-control space-y-4 hidden">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500">Side (s)</label>
+                                <input type="range" id="sq-s" min="50" max="200" value="120" class="w-full"
+                                    oninput="drawShape()">
+                            </div>
+                        </div>
+
                         <!-- Circle Controls -->
-                        <div id="controls-circle" class="space-y-4 hidden">
+                        <div id="controls-circle" class="shape-control space-y-4 hidden">
                             <div>
                                 <label class="text-xs font-bold text-slate-500">Radius (r)</label>
                                 <input type="range" id="circ-r" min="30" max="100" value="70" class="w-full"
@@ -371,9 +388,37 @@
                             </div>
                         </div>
 
+                        <!-- Right Triangle Controls -->
+                        <div id="controls-tri-right" class="shape-control space-y-4 hidden">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500">Base (b)</label>
+                                <input type="range" id="tri-r-b" min="50" max="200" value="120" class="w-full"
+                                    oninput="drawShape()">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500">Height (h)</label>
+                                <input type="range" id="tri-r-h" min="50" max="150" value="90" class="w-full"
+                                    oninput="drawShape()">
+                            </div>
+                        </div>
+
+                        <!-- Iso Triangle Controls -->
+                        <div id="controls-tri-iso" class="shape-control space-y-4 hidden">
+                            <div>
+                                <label class="text-xs font-bold text-slate-500">Base (b)</label>
+                                <input type="range" id="tri-i-b" min="50" max="200" value="100" class="w-full"
+                                    oninput="drawShape()">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-slate-500">Side (s)</label>
+                                <input type="range" id="tri-i-s" min="60" max="200" value="130" class="w-full"
+                                    oninput="drawShape()">
+                            </div>
+                        </div>
+
                         <!-- Composite Controls -->
-                        <div id="controls-composite" class="space-y-4 hidden">
-                            <p class="text-xs text-slate-400">Fixed composite shape for demonstration.</p>
+                        <div id="controls-composite" class="shape-control space-y-4 hidden">
+                            <p class="text-xs text-slate-400">Fixed composite shape (House) for demonstration.</p>
                         </div>
                     </div>
 
@@ -393,15 +438,22 @@
 
                     <div class="mt-6 bg-white p-6 rounded-lg border border-slate-200">
                         <h3 class="font-bold text-lg mb-2">Key Formulas</h3>
-                        <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                             <div>
                                 <strong class="block text-slate-700">Rectangle</strong>
                                 <span class="math-font text-slate-500">P = 2(l + w)</span>
                             </div>
                             <div>
-                                <strong class="block text-slate-700">Circle (Circumference)</strong>
-                                <span class="math-font text-slate-500">C = 2&pi;r</span> or <span
-                                    class="math-font text-slate-500">C = &pi;d</span>
+                                <strong class="block text-slate-700">Square</strong>
+                                <span class="math-font text-slate-500">P = 4s</span>
+                            </div>
+                            <div>
+                                <strong class="block text-slate-700">Triangle</strong>
+                                <span class="math-font text-slate-500">P = a + b + c</span>
+                            </div>
+                            <div>
+                                <strong class="block text-slate-700">Circle</strong>
+                                <span class="math-font text-slate-500">C = 2&pi;r</span>
                             </div>
                         </div>
                     </div>
@@ -612,12 +664,31 @@
 
         function setShape(shape) {
             currentShape = shape;
-            // Toggle controls
-            document.getElementById('controls-rect').classList.add('hidden');
-            document.getElementById('controls-circle').classList.add('hidden');
-            document.getElementById('controls-composite').classList.add('hidden');
 
+            // Hide all controls
+            document.querySelectorAll('.shape-control').forEach(el => el.classList.add('hidden'));
             document.getElementById(`controls-${shape}`).classList.remove('hidden');
+
+            // Reset buttons
+            const buttons = [
+                'rect', 'square', 'circle', 'tri-right', 'tri-iso', 'composite'
+            ];
+
+            buttons.forEach(btn => {
+                const el = document.getElementById(`btn-shape-${btn}`);
+                if (el) {
+                    el.classList.remove('bg-slate-200', 'border-transparent');
+                    el.classList.add('bg-white', 'border-slate-200');
+                }
+            });
+
+            // Active button
+            const activeBtn = document.getElementById(`btn-shape-${shape}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'border-slate-200');
+                activeBtn.classList.add('bg-slate-200', 'border-transparent');
+            }
+
             drawShape();
         }
 
@@ -635,6 +706,7 @@
             ctx.strokeStyle = '#ef4444'; // Red for perimeter
             ctx.fillStyle = '#f1f5f9'; // Fill
             ctx.lineWidth = 4;
+            ctx.lineJoin = 'round';
 
             if (currentShape === 'rect') {
                 const l = parseInt(document.getElementById('rect-l').value);
@@ -642,7 +714,6 @@
                 const startX = (cw - l) / 2;
                 const startY = (ch - w) / 2;
 
-                // Draw
                 ctx.fillRect(startX, startY, l, w);
                 ctx.strokeRect(startX, startY, l, w);
 
@@ -652,15 +723,26 @@
                 ctx.fillText(`L = ${l}`, startX + l / 2 - 20, startY - 10);
                 ctx.fillText(`W = ${w}`, startX + l + 10, startY + w / 2);
 
-                // Math
-                mathBox.innerHTML = `Perimeter = 2 × (Length + Width)<br>
-                                     P = 2 × (${l} + ${w})<br>
-                                     P = 2 × ${l + w}<br>
-                                     <strong>P = ${(l + w) * 2} units</strong>`;
+                mathBox.innerHTML = `Perimeter = 2 × (Length + Width) = 2(${l} + ${w}) = <strong>${(l + w) * 2}</strong>`;
+            }
+            else if (currentShape === 'square') {
+                const s = parseInt(document.getElementById('sq-s').value);
+                const startX = (cw - s) / 2;
+                const startY = (ch - s) / 2;
+
+                ctx.fillRect(startX, startY, s, s);
+                ctx.strokeRect(startX, startY, s, s);
+
+                // Labels
+                ctx.fillStyle = '#0f172a';
+                ctx.font = "14px Inter";
+                ctx.fillText(`s = ${s}`, startX + s / 2 - 20, startY - 10);
+                ctx.fillText(`s`, startX - 15, startY + s / 2);
+
+                mathBox.innerHTML = `Perimeter = 4 × Side = 4 × ${s} = <strong>${4 * s}</strong>`;
             }
             else if (currentShape === 'circle') {
                 const r = parseInt(document.getElementById('circ-r').value);
-
                 ctx.beginPath();
                 ctx.arc(cw / 2, ch / 2, r, 0, 2 * Math.PI);
                 ctx.fill();
@@ -677,48 +759,132 @@
                 ctx.fillStyle = '#0f172a';
                 ctx.fillText(`r = ${r}`, cw / 2 + r / 2 - 15, ch / 2 - 5);
 
-                // Math
                 const c = (2 * Math.PI * r).toFixed(1);
-                mathBox.innerHTML = `Circumference = 2 × π × r<br>
-                                     C = 2 × 3.14159 × ${r}<br>
-                                     <strong>C ≈ ${c} units</strong>`;
+                mathBox.innerHTML = `Circumference = 2 × π × r = 2 × 3.14 × ${r} ≈ <strong>${c}</strong>`;
             }
-            else if (currentShape === 'composite') {
-                // Fixed Composite Shape (Rectangle with Semicircle top)
-                const w = 100; // width of rect
-                const h = 120; // height of rect
-                const r = w / 2;
-                const cx = cw / 2;
-                const cy = ch / 2 + 20;
+            else if (currentShape === 'tri-right') {
+                const b = parseInt(document.getElementById('tri-r-b').value);
+                const h = parseInt(document.getElementById('tri-r-h').value);
+                const hypot = Math.sqrt(b * b + h * h);
+
+                const startX = (cw - b) / 2;
+                const startY = (ch + h) / 2 - 20;
 
                 ctx.beginPath();
-                // Bottom Left
-                ctx.moveTo(cx - w / 2, cy + h / 2);
-                // Bottom Right
-                ctx.lineTo(cx + w / 2, cy + h / 2);
-                // Top Right (start of arc)
-                ctx.lineTo(cx + w / 2, cy - h / 2);
-                // Top Arc
-                ctx.arc(cx, cy - h / 2, r, 0, Math.PI, true);
-                // Top Left (end of arc) to Bottom Left
-                ctx.lineTo(cx - w / 2, cy + h / 2);
-
+                ctx.moveTo(startX, startY);             // Bottom Left
+                ctx.lineTo(startX + b, startY);         // Bottom Right
+                ctx.lineTo(startX, startY - h);         // Top Left
+                ctx.closePath();
                 ctx.fill();
                 ctx.stroke();
 
-                // Dotted line for internal edge
+                // Right Angle Marker
                 ctx.beginPath();
-                ctx.setLineDash([5, 5]);
-                ctx.moveTo(cx - w / 2, cy - h / 2);
-                ctx.lineTo(cx + w / 2, cy - h / 2);
-                ctx.strokeStyle = '#94a3b8';
+                ctx.moveTo(startX + 10, startY);
+                ctx.lineTo(startX + 10, startY - 10);
+                ctx.lineTo(startX, startY - 10);
+                ctx.strokeStyle = '#0f172a';
+                ctx.lineWidth = 1;
                 ctx.stroke();
-                ctx.setLineDash([]); // Reset
 
-                mathBox.innerHTML = `Composite: 3 sides of rectangle + semi-circle arc<br>
-                                     Sides: 120 + 100 + 120 = 340<br>
-                                     Arc: (π × 100) ÷ 2 ≈ 157.1<br>
-                                     <strong>Total ≈ 497.1 units</strong>`;
+                // Labels
+                ctx.fillStyle = '#0f172a';
+                ctx.fillText(`b = ${b}`, startX + b / 2 - 20, startY + 20);
+                ctx.fillText(`h = ${h}`, startX - 45, startY - h / 2);
+                ctx.fillText(`c ≈ ${hypot.toFixed(1)}`, startX + b / 2 + 5, startY - h / 2 - 5);
+
+                const p = (b + h + hypot).toFixed(1);
+                mathBox.innerHTML = `Hypotenuse (c)² = ${b}² + ${h}² &rarr; c ≈ ${hypot.toFixed(1)}<br>
+                                     Perimeter = b + h + c = ${b} + ${h} + ${hypot.toFixed(1)} ≈ <strong>${p}</strong>`;
+            }
+            else if (currentShape === 'tri-iso') {
+                const b = parseInt(document.getElementById('tri-i-b').value);
+                const s = parseInt(document.getElementById('tri-i-s').value);
+
+                // Calculate height for drawing: h = sqrt(s^2 - (b/2)^2)
+                // If s < b/2, triangle is impossible, clamp it visually or math?
+                const halfB = b / 2;
+                let h = 0;
+                let valid = true;
+
+                if (s > halfB) {
+                    h = Math.sqrt(s * s - halfB * halfB);
+                } else {
+                    valid = false;
+                }
+
+                if (valid) {
+                    const startX = (cw - b) / 2;
+                    const startY = (ch + h) / 2 - 20;
+
+                    ctx.beginPath();
+                    ctx.moveTo(startX, startY);             // Bottom Left
+                    ctx.lineTo(startX + b, startY);         // Bottom Right
+                    ctx.lineTo(startX + halfB, startY - h); // Top Middle
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.stroke();
+
+                    // Labels
+                    ctx.fillStyle = '#0f172a';
+                    ctx.fillText(`b = ${b}`, startX + halfB - 20, startY + 20);
+                    ctx.fillText(`s = ${s}`, startX - 25, startY - h / 2);
+                    ctx.fillText(`s = ${s}`, startX + b + 5, startY - h / 2);
+
+                    const p = b + 2 * s;
+                    mathBox.innerHTML = `Perimeter = base + 2 × side = ${b} + 2(${s}) = <strong>${p}</strong>`;
+                } else {
+                    ctx.fillStyle = '#ef4444';
+                    ctx.fillText("Impossible Triangle (Side too short)", cw / 2 - 80, ch / 2);
+                    mathBox.innerHTML = `<span class="text-red-600">Side (${s}) must be longer than half the base (${halfB}).</span>`;
+                }
+            }
+            else if (currentShape === 'composite') {
+                // House Shape logic for Perimeter (Sum of external sides)
+                const w = 120;
+                const h_wall = 100;
+                const roof_s = 80;
+                // Note: Isosceles roof. Base w=120. Half=60. Side=80 => h = sqrt(80^2 - 60^2) = sqrt(6400-3600) = sqrt(2800) ~52.9
+                const roof_h = Math.sqrt(roof_s * roof_s - (w / 2) * (w / 2));
+
+                const startX = (cw - w) / 2;
+                const startY = (ch + h_wall) / 2;
+
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);                 // Bottom Left
+                ctx.lineTo(startX + w, startY);             // Bottom Right
+                ctx.lineTo(startX + w, startY - h_wall);    // Top Right Wall
+                ctx.lineTo(startX + w / 2, startY - h_wall - roof_h); // Peak
+                ctx.lineTo(startX, startY - h_wall);        // Top Left Wall
+                ctx.closePath();
+
+                ctx.fill();
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = '#ef4444';
+                ctx.stroke();
+
+                // Internal Dotted Line (Ceiling) - not part of perimeter
+                ctx.beginPath();
+                ctx.moveTo(startX, startY - h_wall);
+                ctx.lineTo(startX + w, startY - h_wall);
+                ctx.strokeStyle = '#94a3b8';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([5, 5]);
+                ctx.stroke();
+                ctx.setLineDash([]);
+
+                // Labels
+                ctx.fillStyle = '#0f172a';
+                ctx.font = "14px Inter";
+                ctx.fillText(`120`, startX + 45, startY + 20); // Base
+                ctx.fillText(`100`, startX - 30, startY - h_wall / 2); // Wall L
+                ctx.fillText(`100`, startX + w + 10, startY - h_wall / 2); // Wall R
+                ctx.fillText(`80`, startX - 20, startY - h_wall - 10); // Roof L
+                ctx.fillText(`80`, startX + w + 5, startY - h_wall - 10); // Roof R
+
+                const p = 120 + 100 + 100 + 80 + 80;
+                mathBox.innerHTML = `Perimeter = Sum of external sides (Walls + Floor + Roof)<br>
+                                     P = 120 + 100 + 100 + 80 + 80 = <strong>${p}</strong>`;
             }
         }
 
