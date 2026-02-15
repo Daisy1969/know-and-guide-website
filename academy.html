@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Know & Guide Academy: Whole Human Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap');
+
+        :root {
+            --color-sand: #f3f0e6;
+            --color-sage: #8da399;
+            --color-clay: #c78d75;
+            --color-charcoal: #2c3e50;
+            --color-cream: #faf9f6;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: var(--color-sand);
+            color: var(--color-charcoal);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Custom Scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #e8e4d9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #b0b0b0;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8da399;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .active-tab {
+            border-bottom: 3px solid var(--color-clay);
+            color: var(--color-charcoal);
+            font-weight: 700;
+        }
+
+        .tab-hover:hover {
+            color: var(--color-clay);
+            background-color: rgba(199, 141, 117, 0.1);
+        }
+
+        .interactive-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo Section Updated for Branding Consistency -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/logo.png" alt="Know & Guide" style="max-height: 50px;">
+                    </a>
+                    <span class="font-bold text-2xl tracking-tight text-gray-800">Know & Guide <span
+                            class="text-[#c78d75]">Academy</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="index.html" class="text-gray-600 hover:text-[#c78d75] transition font-medium">Home</a>
+                    <button onclick="scrollToSection('vision')"
+                        class="text-gray-600 hover:text-[#c78d75] transition">Vision</button>
+                    <button onclick="scrollToSection('curriculum')"
+                        class="text-gray-600 hover:text-[#c78d75] transition">The Curriculum</button>
+                    <button onclick="scrollToSection('outcomes')"
+                        class="text-gray-600 hover:text-[#c78d75] transition">Outcomes</button>
+                    <button onclick="scrollToSection('pathway')"
+                        class="text-gray-600 hover:text-[#c78d75] transition">Student Pathway</button>
+                </div>
+                <!-- Mobile menu button placeholder -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                        class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        ☰
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 w-full text-left">Home</a>
+                <button onclick="scrollToSection('vision')"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 w-full text-left">Vision</button>
+                <button onclick="scrollToSection('curriculum')"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 w-full text-left">The
+                    Curriculum</button>
+                <button onclick="scrollToSection('outcomes')"
+                    class="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 w-full text-left">Outcomes</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="vision" class="relative bg-[#f3f0e6] py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6">
+                Education for the <span class="text-[#8da399]">Whole Human</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-xl text-gray-600 mb-10 leading-relaxed">
+                A new school model synthesizing <strong>Clinical Psychology</strong>, <strong>Yogic Science</strong>,
+                and <strong>Nutritional Biology</strong>.
+                We move beyond rote memorization to teach the mechanics of Being.
+            </p>
+            <div class="flex justify-center gap-4">
+                <button onclick="scrollToSection('curriculum')"
+                    class="bg-[#2c3e50] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#34495e] transition shadow-lg">
+                    Explore the Model
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Curriculum Section -->
+    <section id="curriculum" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">The Integrated Triad</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Based on the teachings of <strong>Dr. Alok Kanojia</strong>, <strong>Sadhguru</strong>, and
+                    <strong>Dr. Berg</strong>, our curriculum addresses the three dimensions of the student. Click a
+                    pillar below to explore.
+                </p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="flex flex-wrap justify-center mb-8 border-b border-gray-200">
+                <button onclick="loadModule('body')" id="tab-body"
+                    class="active-tab tab-hover px-6 py-4 text-lg font-medium focus:outline-none transition-colors">
+                    The Body (Nutrition)
+                </button>
+                <button onclick="loadModule('mind')" id="tab-mind"
+                    class="tab-hover px-6 py-4 text-lg font-medium focus:outline-none transition-colors">
+                    The Mind (Psychology)
+                </button>
+                <button onclick="loadModule('being')" id="tab-being"
+                    class="tab-hover px-6 py-4 text-lg font-medium focus:outline-none transition-colors">
+                    The Being (Yoga)
+                </button>
+            </div>
+
+            <!-- Dynamic Content Area -->
+            <div id="module-content"
+                class="bg-[#faf9f6] rounded-2xl p-6 md:p-10 shadow-sm border border-gray-100 min-h-[500px] fade-in">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Comparison Section -->
+    <section id="outcomes" class="py-16 bg-[#f3f0e6]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                <!-- Text Context -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Why This Approach Works</h2>
+                    <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                        Traditional education focuses almost exclusively on <strong>Intellectual Accumulation</strong>
+                        (data storage). The Know & Guide model balances this with <strong>Emotional Resilience</strong>
+                        and <strong>Physiological Stability</strong>.
+                    </p>
+                    <p class="text-gray-700 text-lg mb-8 leading-relaxed">
+                        By integrating Dr. Berg's nutritional protocols (reducing insulin spikes) with Dr. K's
+                        "Integrated Mind" framework, we see drastic improvements in sustained attention and emotional
+                        regulation compared to standard schooling environments.
+                    </p>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="font-bold text-lg mb-2 text-[#2c3e50]">Key Metrics</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <span class="h-3 w-3 rounded-full bg-[#8da399] mr-3"></span>
+                                <span><strong>Anxiety Reduction:</strong> Tools to manage the "Chitta" (Memory bank of
+                                    emotion).</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="h-3 w-3 rounded-full bg-[#c78d75] mr-3"></span>
+                                <span><strong>Cognitive Endurance:</strong> Fueling with fats/proteins, not
+                                    sugar.</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="h-3 w-3 rounded-full bg-[#2c3e50] mr-3"></span>
+                                <span><strong>Self-Direction:</strong> Moving from external validation to internal
+                                    "Dharma".</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Radar Chart Container -->
+                <div class="bg-white p-6 rounded-2xl shadow-md flex flex-col items-center">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Student Vitality Index</h3>
+                    <div class="chart-container">
+                        <canvas id="outcomesChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-sm text-gray-500 text-center">
+                        Comparison of projected outcomes: Traditional School vs. Know & Guide Model.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Pathway / Timeline -->
+    <section id="pathway" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">A Day in the Life</h2>
+                <p class="text-lg text-gray-600">How theory translates into daily practice.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Vertical line for mobile, Horizontal for desktop -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
+                    <!-- Step 1 -->
+                    <div
+                        class="bg-[#f3f0e6] p-6 rounded-lg border border-gray-200 hover:border-[#8da399] transition interactive-card">
+                        <div
+                            class="w-10 h-10 bg-[#8da399] text-white rounded-full flex items-center justify-center font-bold mb-4 mx-auto md:mx-0">
+                            1</div>
+                        <h4 class="font-bold text-lg mb-2">07:00 AM - Body Activation</h4>
+                        <p class="text-sm text-gray-600">Surya Kriya (Solar Practice) & Fasting window maintenance
+                            (Autophagy) as per Sadhguru/Berg.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div
+                        class="bg-[#f3f0e6] p-6 rounded-lg border border-gray-200 hover:border-[#c78d75] transition interactive-card">
+                        <div
+                            class="w-10 h-10 bg-[#c78d75] text-white rounded-full flex items-center justify-center font-bold mb-4 mx-auto md:mx-0">
+                            2</div>
+                        <h4 class="font-bold text-lg mb-2">09:00 AM - Deep Work</h4>
+                        <p class="text-sm text-gray-600">Academic blocks aligned with peak cortisol/focus windows. No
+                            processed carbs to ensure steady glucose.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div
+                        class="bg-[#f3f0e6] p-6 rounded-lg border border-gray-200 hover:border-[#2c3e50] transition interactive-card">
+                        <div
+                            class="w-10 h-10 bg-[#2c3e50] text-white rounded-full flex items-center justify-center font-bold mb-4 mx-auto md:mx-0">
+                            3</div>
+                        <h4 class="font-bold text-lg mb-2">01:00 PM - Mind Integration</h4>
+                        <p class="text-sm text-gray-600">Group sessions applying Dr. K's framework. Discussing
+                            "Samskaras" (habits) and emotional processing.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div
+                        class="bg-[#f3f0e6] p-6 rounded-lg border border-gray-200 hover:border-gray-500 transition interactive-card">
+                        <div
+                            class="w-10 h-10 bg-gray-600 text-white rounded-full flex items-center justify-center font-bold mb-4 mx-auto md:mx-0">
+                            4</div>
+                        <h4 class="font-bold text-lg mb-2">04:00 PM - Service & Play</h4>
+                        <p class="text-sm text-gray-600">Physical activity and community service. Applying "Karma Yoga"
+                            (Action without attachment).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#2c3e50] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-2xl font-bold font-serif mb-4">Know & Guide</h3>
+            <p class="text-gray-400 max-w-md mx-auto mb-8">
+                Building the next generation of conscious humans through integrated science and wisdom.
+            </p>
+            <div class="text-sm text-gray-500">
+                <p>&copy; 2024 Know & Guide Concept. Based on teachings of Sadhguru, Dr. Berg, & Dr. K.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // State management
+        let currentChart = null;
+        let outcomesChartInstance = null;
+
+        // Content Data
+        const modules = {
+            body: {
+                title: "The Body: Fueling Potential",
+                subtitle: "Insights from Dr. Eric Berg",
+                description: `
+                    <p class="mb-4">Standard school lunches (high carb, processed) create massive insulin spikes, leading to the "afternoon crash" and brain fog. Our nutritional model focuses on <strong>Nutrient Density</strong> and <strong>Metabolic Stability</strong>.</p>
+                    <ul class="list-disc pl-5 mb-6 space-y-2">
+                        <li><strong>Intermittent Fasting (Age Appropriate):</strong> Allowing the gut to rest and repair.</li>
+                        <li><strong>Ketones for Brain Fuel:</strong> Prioritizing healthy fats which burn cleaner than glucose.</li>
+                        <li><strong>Micronutrients:</strong> Focus on potassium and magnesium for nervous system health.</li>
+                    </ul>
+                `,
+                chartTitle: "Glucose Response: Standard vs. Know & Guide Diet",
+                chartType: "line",
+                chartData: {
+                    labels: ['8am', '10am', '12pm (Lunch)', '2pm', '4pm', '6pm'],
+                    datasets: [
+                        {
+                            label: 'Standard Diet (High Sugar/Carb)',
+                            data: [100, 180, 80, 160, 60, 140],
+                            borderColor: '#ef4444',
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Know & Guide (Complex Fats/Protein)',
+                            data: [90, 95, 100, 105, 100, 95],
+                            borderColor: '#8da399',
+                            backgroundColor: 'rgba(141, 163, 153, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                }
+            },
+            mind: {
+                title: "The Mind: Clinical & Yogic Integration",
+                subtitle: "Insights from Dr. Alok Kanojia (Dr. K)",
+                description: `
+                    <p class="mb-4">We do not just treat symptoms; we understand the architecture of the mind. Using Dr. K's "Integrated Mind" model, students learn to distinguish between their thoughts and their identity.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-[#c78d75]">
+                            <strong>Ahamkara (Ego):</strong> "I am." The sense of identity. We teach students to detach 'I am' from 'My grades' or 'My failures'.
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-[#c78d75]">
+                            <strong>Buddhi (Intellect):</strong> The discerning mind. Strengthening the ability to judge what is true vs what is felt.
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-[#c78d75]">
+                            <strong>Manas (Sensory Mind):</strong> Processing input. Training attention control against digital overstimulation.
+                        </div>
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-[#c78d75]">
+                            <strong>Chitta (Memory):</strong> The emotional database. Using samskara (impression) processing to heal trauma.
+                        </div>
+                    </div>
+                `,
+                chartTitle: "Mental Component Balance",
+                chartType: "doughnut",
+                chartData: {
+                    labels: ['Ahamkara (Identity)', 'Buddhi (Intellect)', 'Manas (Sensory)', 'Chitta (Emotion)'],
+                    datasets: [{
+                        data: [20, 30, 25, 25],
+                        backgroundColor: ['#2c3e50', '#c78d75', '#8da399', '#f3f0e6'],
+                        borderWidth: 0
+                    }]
+                }
+            },
+            being: {
+                title: "The Being: Inner Engineering",
+                subtitle: "Practices from Sadhguru",
+                description: `
+                    <p class="mb-4">Education usually ignores the subject (the student) and focuses on the object (the world). We turn the focus inward. "Being" is about the quality of your existence independent of external circumstances.</p>
+                    <p class="mb-4"><strong>Daily Practice (Sadhana):</strong></p>
+                    <ul class="list-disc pl-5 mb-6 space-y-2">
+                        <li><strong>Yoga Namaskar:</strong> Activation of the lumbar region and strengthening the spine.</li>
+                        <li><strong>Isha Kriya:</strong> A tool to create distance between "Self" and "Mind".</li>
+                        <li><strong>Shambhavi Mahamudra:</strong> A kriya to align the energy system for perception.</li>
+                    </ul>
+                `,
+                chartTitle: "Impact of Practice Duration on Stress",
+                chartType: "bar",
+                chartData: {
+                    labels: ['No Practice', '15 Mins', '30 Mins', '60 Mins'],
+                    datasets: [{
+                        label: 'Stress Levels (Cortisol)',
+                        data: [90, 60, 35, 20],
+                        backgroundColor: '#8da399',
+                        borderRadius: 5
+                    }, {
+                        label: 'Clarity Index',
+                        data: [20, 50, 75, 95],
+                        backgroundColor: '#c78d75',
+                        borderRadius: 5
+                    }]
+                }
+            }
+        };
+
+        // Initialize Section
+        function init() {
+            loadModule('body'); // Load default
+            renderOutcomesChart();
+        }
+
+        // Navigation Scroll
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Module Loader
+        function loadModule(key) {
+            // Update Tabs
+            document.querySelectorAll('button[id^="tab-"]').forEach(btn => {
+                btn.classList.remove('active-tab');
+            });
+            document.getElementById(`tab-${key}`).classList.add('active-tab');
+
+            // Get Data
+            const data = modules[key];
+
+            // Update HTML
+            const contentDiv = document.getElementById('module-content');
+
+            // Fade effect
+            contentDiv.classList.remove('fade-in');
+            void contentDiv.offsetWidth; // trigger reflow
+            contentDiv.classList.add('fade-in');
+
+            contentDiv.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-xs font-bold uppercase tracking-wide mb-3">
+                            ${data.subtitle}
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-6 font-serif">${data.title}</h3>
+                        <div class="text-gray-700 text-lg leading-relaxed">
+                            ${data.description}
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-center bg-white p-6 rounded-xl shadow-sm">
+                        <h4 class="text-lg font-semibold mb-4 text-center text-gray-800">${data.chartTitle}</h4>
+                        <div class="chart-container">
+                            <canvas id="moduleChart"></canvas>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-sm text-gray-500 italic">Data visualization based on framework principles.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Render Chart
+            renderModuleChart(data.chartType, data.chartData);
+        }
+
+        function renderModuleChart(type, data) {
+            if (currentChart) {
+                currentChart.destroy();
+            }
+
+            const ctx = document.getElementById('moduleChart').getContext('2d');
+
+            // Chart Configuration
+            currentChart = new Chart(ctx, {
+                type: type,
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { family: "'Nunito Sans', sans-serif" }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(44, 62, 80, 0.9)',
+                            padding: 10,
+                            bodyFont: { family: "'Nunito Sans', sans-serif" }
+                        }
+                    },
+                    scales: type !== 'doughnut' ? {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#f3f0e6' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    } : {}
+                }
+            });
+        }
+
+        function renderOutcomesChart() {
+            const ctx = document.getElementById('outcomesChart').getContext('2d');
+            outcomesChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Emotional Regulation', 'Physical Health', 'Academic Retention', 'Social Empathy', 'Stress Resilience', 'Self-Direction'],
+                    datasets: [{
+                        label: 'Know & Guide Academy',
+                        data: [95, 90, 85, 92, 95, 88],
+                        fill: true,
+                        backgroundColor: 'rgba(141, 163, 153, 0.5)', // Sage
+                        borderColor: '#8da399',
+                        pointBackgroundColor: '#8da399',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#8da399'
+                    }, {
+                        label: 'Traditional Schooling',
+                        data: [40, 50, 75, 50, 30, 45],
+                        fill: true,
+                        backgroundColor: 'rgba(199, 141, 117, 0.2)', // Clay
+                        borderColor: '#c78d75',
+                        pointBackgroundColor: '#c78d75',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: '#c78d75'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: { borderWidth: 3 }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: '#e5e7eb' },
+                            grid: { color: '#e5e7eb' },
+                            pointLabels: {
+                                font: {
+                                    size: 12,
+                                    family: "'Nunito Sans', sans-serif",
+                                    weight: 'bold'
+                                },
+                                color: '#2c3e50'
+                            },
+                            ticks: { display: false, backdropColor: 'transparent' },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        // Run Init
+        window.addEventListener('DOMContentLoaded', init);
+
+    </script>
+</body>
+
+</html>
