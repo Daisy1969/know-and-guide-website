@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Know & Guide Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .admin-wrap { max-width: 1100px; margin: 120px auto 48px; padding: 0 20px; }
+    .admin-card { background:#fff; border:1px solid #e7e5e4; border-radius:14px; padding:20px; box-shadow:0 6px 20px rgba(0,0,0,.05); margin-bottom:18px; }
+    .admin-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+    .metric h3 { margin:0 0 8px; font-size:1rem; }
+    .bar { height:10px; border-radius:999px; background:#f3f4f6; overflow:hidden; }
+    .fill { height:100%; background:#10b981; }
+    .fill.warn { background:#f59e0b; }
+    .status { font-weight:700; }
+    .timeline li { margin-bottom:8px; }
+    .small { color:#6b7280; font-size:.9rem; }
+    .login-row { display:grid; gap:10px; max-width:420px; }
+    input { padding:10px 12px; border:1px solid #d6d3d1; border-radius:8px; font-size:1rem; }
+    button { background:#111827; color:#fff; border:none; border-radius:8px; padding:10px 14px; cursor:pointer; }
+    button:hover { opacity:.9; }
+    .hidden { display:none; }
+    .pill { display:inline-block; padding:4px 10px; border-radius:999px; background:#eef2ff; color:#3730a3; font-weight:600; font-size:.85rem; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo"><img src="images/logo.png" alt="Know & Guide" style="max-height: 90px;"></div>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="academy.html">Academy</a></li>
+        <li><a href="admin.html" aria-current="page">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="admin-wrap">
+    <section class="admin-card" id="loginCard">
+      <h1>Admin Login</h1>
+      <p class="small">Access is restricted. Use your authorized email and admin passphrase.</p>
+      <div class="login-row">
+        <input id="email" type="email" placeholder="Email" value="michaeljharvey1@gmail.com" />
+        <input id="passphrase" type="password" placeholder="Admin passphrase" />
+        <button id="loginBtn">Sign in</button>
+        <p id="loginMsg" class="small"></p>
+      </div>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="admin-card">
+        <h2>🌅 OpenClaw Morning Brief</h2>
+        <p><span class="pill" id="datePill"></span> <span class="small" id="windowTxt"></span></p>
+      </div>
+
+      <div class="admin-card">
+        <h3>1) System Health Dashboard</h3>
+        <div class="admin-grid" id="healthGrid"></div>
+      </div>
+
+      <div class="admin-card">
+        <h3>2) Overnight Timeline</h3>
+        <ul class="timeline" id="timeline"></ul>
+      </div>
+
+      <div class="admin-card">
+        <h3>3) Agent Org Chart + Tasks</h3>
+        <ul id="agents"></ul>
+      </div>
+
+      <div class="admin-card">
+        <h3>4) Release Gate Panel</h3>
+        <p id="releaseGate"></p>
+      </div>
+
+      <div class="admin-card">
+        <h3>5) Top Priorities</h3>
+        <ol id="priorities"></ol>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/admin-dashboard.js"></script>
+</body>
+
+</html>
