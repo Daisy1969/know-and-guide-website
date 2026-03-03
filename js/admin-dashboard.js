@@ -9,14 +9,22 @@
   const msg = document.getElementById("loginMsg");
   const dashboard = document.getElementById("dashboard");
   const loginCard = document.getElementById("loginCard");
+  const togglePassBtn = document.getElementById("togglePass");
 
   function nowIso() {
     return new Date().toLocaleString("en-AU", { timeZone: "Australia/Brisbane" });
   }
 
+  function morningStamp() {
+    const d = new Date(new Date().toLocaleString("en-US", { timeZone: "Australia/Brisbane" }));
+    const day = d.toISOString().slice(0, 10);
+    return `${day} 03:00 AEST`;
+  }
+
   function buildReport() {
     const report = {
       generatedAt: nowIso(),
+      morningReportAt: morningStamp(),
       window: "Overnight window: 19:00–03:00 AEST",
       health: [
         { name: "Gateway", pct: 100, status: "🟢" },
@@ -51,7 +59,7 @@
 
   function render(report) {
     document.getElementById("datePill").textContent = `Generated: ${report.generatedAt}`;
-    document.getElementById("windowTxt").textContent = report.window;
+    document.getElementById("windowTxt").textContent = `${report.window} • Morning report: ${report.morningReportAt}`;
 
     const healthGrid = document.getElementById("healthGrid");
     healthGrid.innerHTML = report.health
@@ -69,6 +77,13 @@
     document.getElementById("releaseGate").textContent = report.releaseGate;
     document.getElementById("priorities").innerHTML = report.priorities.map(i => `<li>${i}</li>`).join("");
   }
+
+  togglePassBtn?.addEventListener("click", () => {
+    const isHidden = passInput.type === "password";
+    passInput.type = isHidden ? "text" : "password";
+    togglePassBtn.textContent = isHidden ? "🙈" : "👁️";
+    togglePassBtn.setAttribute("aria-label", isHidden ? "Hide password" : "Show password");
+  });
 
   loginBtn.addEventListener("click", () => {
     const email = (emailInput.value || "").trim().toLowerCase();

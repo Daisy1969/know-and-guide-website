@@ -18,8 +18,11 @@
     .timeline li { margin-bottom:8px; }
     .small { color:#6b7280; font-size:.9rem; }
     .login-row { display:grid; gap:10px; max-width:420px; }
+    .pass-wrap { display:flex; gap:8px; align-items:center; }
+    .pass-wrap input { flex:1; }
     input { padding:10px 12px; border:1px solid #d6d3d1; border-radius:8px; font-size:1rem; }
     button { background:#111827; color:#fff; border:none; border-radius:8px; padding:10px 14px; cursor:pointer; }
+    .eye-btn { background:#e5e7eb; color:#111827; border:1px solid #d1d5db; padding:10px 12px; min-width:48px; }
     button:hover { opacity:.9; }
     .hidden { display:none; }
     .pill { display:inline-block; padding:4px 10px; border-radius:999px; background:#eef2ff; color:#3730a3; font-weight:600; font-size:.85rem; }
@@ -45,7 +48,10 @@
       <p class="small">Access is restricted. Use your authorized email and admin passphrase.</p>
       <div class="login-row">
         <input id="email" type="email" placeholder="Email" value="michaeljharvey1@gmail.com" />
-        <input id="passphrase" type="password" placeholder="Admin passphrase" />
+        <div class="pass-wrap">
+          <input id="passphrase" type="password" placeholder="Admin passphrase" />
+          <button id="togglePass" type="button" class="eye-btn" aria-label="Show password">👁️</button>
+        </div>
         <button id="loginBtn">Sign in</button>
         <p id="loginMsg" class="small"></p>
       </div>
