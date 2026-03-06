@@ -1,5 +1,5 @@
 {
-  "generatedAt": "07/03/2026, 8:40:00 am",
+  "generatedAt": "07/03/2026, 8:58:00 am",
   "morningReportAt": "2026-03-07 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
@@ -55,5 +55,28 @@
     "Auth: OpenAI/Codex logged in with valid refresh token (no refresh_token_reused errors).",
     "Channels: Telegram linked for brief delivery.",
     "Workspace configured at ~/.openclaw/workspace with _control and memory files available."
+  ],
+  "agentToday": [
+    "Bob — complete final watch-route wiring and E2E smoke test (ETA today 14:00)",
+    "Nikey — validate live event ordering and reconnect edge cases (ETA today 15:00)",
+    "Phil — final spectator UI polish + error states (ETA today 13:00)",
+    "Jake — reliability verification + rollback rehearsal (ETA today 16:00)",
+    "Bill — refresh KPI and admin metrics sync (ETA today 12:30)",
+    "Jane — sponsor/comms sequencing updates (ETA today 17:00)",
+    "Ella — sponsor outreach support assets (ETA today 17:30)",
+    "Claire — orchestration, release decisions, morning/admin sync (continuous)",
+    "James — audit checks + pass/fail decisions (rolling today)"
+  ],
+  "jamesDecisions": [
+    "PASS — Admin dashboard content update — Reason: Mike-only visibility, no public risk, JSON load and fallback validated.",
+    "PASS — Admin dashboard structure expansion — Reason: Added non-destructive display sections; login/auth path unchanged.",
+    "PENDING — Public P0 handball internet release — Reason: awaiting final E2E reconnect verification and full audit gate closure."
+  ],
+  "orgAreas": [
+    "Leadership & Governance — Mike, Claire",
+    "Engineering Delivery — Bob, Nikey, Phil, Jake",
+    "Audit & Release Gate — James",
+    "Growth & Revenue — Jane, Ella",
+    "Operations & Reporting — Bill"
   ]
 }

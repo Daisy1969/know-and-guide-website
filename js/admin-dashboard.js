@@ -77,6 +77,30 @@
         "OpenAI/Codex authentication completed and refresh-token valid",
         "Chat channel connected (Telegram) for morning brief delivery",
         "Workspace path configured: ~/.openclaw/workspace"
+      ],
+      agentToday: [
+        "Bob — complete final watch-route wiring and E2E smoke test (ETA today 14:00)",
+        "Nikey — validate live event ordering and reconnect edge cases (ETA today 15:00)",
+        "Phil — final spectator UI polish + error states (ETA today 13:00)",
+        "Jake — reliability verification + rollback rehearsal (ETA today 16:00)",
+        "Bill — refresh KPI and admin metrics sync (ETA today 12:30)",
+        "Jane — sponsor/comms sequencing updates (ETA today 17:00)",
+        "Ella — sponsor outreach support assets (ETA today 17:30)",
+        "Claire — orchestration, release decisions, morning/admin sync (continuous)",
+        "James — audit checks + pass/fail decisions (rolling today)"
+      ],
+      jamesDecisions: [
+        "Sample format: PASS — <item> — Reason: <why passed>",
+        "Sample format: FAIL — <item> — Reason: <why failed> / Required fix: <action>",
+        "Public releases require explicit James decision with reasons.",
+        "Admin content updates (Mike-only) are exception and do not require James sign-off."
+      ],
+      orgAreas: [
+        "Leadership & Governance — Mike, Claire",
+        "Engineering Delivery — Bob, Nikey, Phil, Jake",
+        "Audit & Release Gate — James",
+        "Growth & Revenue — Jane, Ella",
+        "Operations & Reporting — Bill"
       ]
     };
 
@@ -112,6 +136,15 @@
 
     const setupRequirements = document.getElementById("setupRequirements");
     if (setupRequirements) setupRequirements.innerHTML = (report.setupRequirements || []).map(i => `<li>${i}</li>`).join("");
+
+    const agentToday = document.getElementById("agentToday");
+    if (agentToday) agentToday.innerHTML = (report.agentToday || []).map(i => `<li>${i}</li>`).join("");
+
+    const jamesDecisions = document.getElementById("jamesDecisions");
+    if (jamesDecisions) jamesDecisions.innerHTML = (report.jamesDecisions || []).map(i => `<li>${i}</li>`).join("");
+
+    const orgAreas = document.getElementById("orgAreas");
+    if (orgAreas) orgAreas.innerHTML = (report.orgAreas || []).map(i => `<li>${i}</li>`).join("");
   }
 
   togglePassBtn?.addEventListener("click", () => {
