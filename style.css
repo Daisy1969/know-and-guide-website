@@ -28,6 +28,27 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1rem;
+    background: var(--dark);
+    color: var(--white);
+    border-radius: 0.5rem;
+    z-index: 1000;
+}
+
 header {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -100,6 +121,55 @@ nav {
     color: var(--gray-600);
     max-width: 600px;
     margin: 0 auto 2.5rem;
+}
+
+.hero-kicker {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid #c7d2fe;
+    border-radius: 999px;
+    font-size: 0.85rem !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #3730a3 !important;
+    background: #eef2ff;
+}
+
+.hero-points {
+    list-style: none;
+    margin: 1.25rem auto 0;
+    padding: 0;
+    max-width: 700px;
+    display: grid;
+    gap: 0.45rem;
+    color: var(--gray-600);
+}
+
+.hero-points li::before {
+    content: "✓";
+    color: var(--primary);
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+
+.trust-strip {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.trust-item {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 0.75rem;
+    padding: 0.85rem 1rem;
+    color: var(--gray-600);
+    font-size: 0.95rem;
 }
 
 .cta-buttons {
@@ -340,6 +410,16 @@ footer {
 
     .hero h1 {
         font-size: 2rem;
+    }
+
+    .hero-points {
+        text-align: left;
+        padding: 0 0.5rem;
+    }
+
+    .trust-strip {
+        grid-template-columns: 1fr;
+        padding: 0 1rem 2rem;
     }
 
     .cta-buttons {

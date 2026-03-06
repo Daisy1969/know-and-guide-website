@@ -4,14 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Know & Guide | AI Tools & Resources</title>
+    <title>Know & Guide | AI Learning Tools, Curriculum, and Practical Resources</title>
+    <meta name="description" content="Know & Guide helps students, educators, and builders with AI learning tools, structured curriculum pathways, and practical resources for focused growth.">
+    <meta property="og:title" content="Know & Guide | AI Learning Tools, Curriculum, and Practical Resources">
+    <meta property="og:description" content="Explore Maths Penpal, curriculum pathways, and practical resources designed for clear, structured learning.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://knowandguide.com/">
+    <link rel="canonical" href="https://knowandguide.com/">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header>
-        <nav>
+        <nav aria-label="Primary navigation">
             <div class="logo"><img src="images/logo.png" alt="Know & Guide" style="max-height: 90px;"></div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -26,7 +33,7 @@
                 <li><a href="cloud-roadmap.html">Roadmap</a></li>
                 <li><a href="admin.html">Admin</a></li>
                 <li>
-                    <a href="https://etherealchronicler.com/page" target="_blank" class="cart-link"
+                    <a href="https://etherealchronicler.com/page" target="_blank" rel="noopener noreferrer" class="cart-link"
                         aria-label="Shopping Cart">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -40,16 +47,28 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
+    <main id="main-content">
+    <section id="home" class="hero" aria-labelledby="home-title">
         <div class="hero-content">
-            <h1>Structured learning that actually sticks</h1>
-            <p>Start with the free <strong>Maths Penpal App</strong> or read our latest updates. The book purchase option is shown below in a separate section.</p>
+            <p class="hero-kicker">AI learning tools • curriculum pathways • practical resources</p>
+            <h1 id="home-title">Structured learning that actually sticks</h1>
+            <p>Use our free <strong>Maths Penpal App</strong>, explore classroom-ready curriculum pages, and follow practical updates from the Know &amp; Guide team.</p>
             <div class="cta-buttons">
-                <a href="https://mathspenpal.knowandguide.com/" target="_blank" class="btn primary">Open Maths Penpal App (Free)</a>
-                <a href="#blog" class="btn secondary">Read Latest Blog Updates</a>
+                <a href="https://mathspenpal.knowandguide.com/" target="_blank" rel="noopener noreferrer" class="btn primary">Open Maths Penpal App (Free)</a>
+                <a href="#blog" class="btn secondary">Read Latest Updates</a>
             </div>
-            <p style="margin-top: 12px; font-size: 0.95rem; opacity: 0.92;">Clear pathways: app learning first, book purchase in the dedicated section below.</p>
+            <ul class="hero-points" aria-label="What you'll find here">
+                <li>Clear pathways for students, families, and educators</li>
+                <li>Practical AI tools with transparent implementation detail</li>
+                <li>Learning-first focus before product purchase prompts</li>
+            </ul>
         </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Trust and orientation">
+        <div class="trust-item"><strong>Primary path:</strong> Learn with Maths Penpal</div>
+        <div class="trust-item"><strong>Secondary path:</strong> Explore curriculum + updates</div>
+        <div class="trust-item"><strong>Optional:</strong> Browse books and curated gear</div>
     </section>
 
     <section id="blog" class="blog-section">
@@ -156,6 +175,7 @@
             <!-- Handball Card -->
             <div class="blog-card">
                 <iframe width="100%" height="315" src="https://www.youtube.com/embed/UoZCPq6TTk4" frameborder="0"
+                    title="Handball Web Game demo video" loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
                 <h3><a href="blog/handball.html" style="text-decoration: none; color: inherit;">Experience the Thrill:
@@ -328,10 +348,33 @@
             </a>
         </div>
     </section>
+    </main>
 
     <footer>
         <p>&copy; 2025 Know & Guide. All rights reserved.</p>
     </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Know & Guide",
+      "url": "https://knowandguide.com/",
+      "logo": "https://knowandguide.com/images/logo.png",
+      "sameAs": [
+        "https://mathspenpal.knowandguide.com/"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Know & Guide",
+      "url": "https://knowandguide.com/",
+      "description": "AI learning tools, curriculum pathways, and practical resources for students, educators, and builders."
+    }
+    </script>
 
     <script src="script.js"></script>
     <link rel="stylesheet" href="css/chatbot.css">
