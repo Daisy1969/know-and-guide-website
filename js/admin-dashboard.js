@@ -53,6 +53,30 @@
         "Sync morning brief JSON before 06:00 AEST",
         "Keep project %/delta current",
         "Update sponsor pipeline daily"
+      ],
+      fileDirectory: [
+        "admin.html — admin dashboard page container and layout",
+        "js/admin-dashboard.js — login + dashboard render logic",
+        "admin-brief.json — morning brief data source",
+        "handball-watch.html — public spectator watch interface",
+        "_control/MORNING_BRIEF_CHECKLIST.md — mandatory daily update checklist",
+        "_control/SPONSOR_OUTREACH_PIPELINE_TRACKER_2026-03-05.md — sponsor pipeline tracker"
+      ],
+      rebuildPlan: [
+        "Clone know-and-guide-website repo and install any required tooling",
+        "Restore key admin files: admin.html, js/admin-dashboard.js, admin-brief.json",
+        "Validate login flow and JSON load in browser",
+        "Run OpenClaw morning brief and regenerate admin-brief.json",
+        "Commit/push to main and verify live site propagation",
+        "If failure persists, rollback to last known good commit"
+      ],
+      setupRequirements: [
+        "macOS/Linux host with git, node, npm/pnpm, and stable internet",
+        "GitHub access to Daisy1969/know-and-guide-website with push permission",
+        "OpenClaw installed and gateway healthy (openclaw status)",
+        "OpenAI/Codex authentication completed and refresh-token valid",
+        "Chat channel connected (Telegram) for morning brief delivery",
+        "Workspace path configured: ~/.openclaw/workspace"
       ]
     };
 
@@ -75,10 +99,19 @@
       `)
       .join("");
 
-    document.getElementById("timeline").innerHTML = report.timeline.map(i => `<li>${i}</li>`).join("");
-    document.getElementById("agents").innerHTML = report.agents.map(i => `<li>${i}</li>`).join("");
-    document.getElementById("releaseGate").textContent = report.releaseGate;
-    document.getElementById("priorities").innerHTML = report.priorities.map(i => `<li>${i}</li>`).join("");
+    document.getElementById("timeline").innerHTML = (report.timeline || []).map(i => `<li>${i}</li>`).join("");
+    document.getElementById("agents").innerHTML = (report.agents || []).map(i => `<li>${i}</li>`).join("");
+    document.getElementById("releaseGate").textContent = report.releaseGate || "N/A";
+    document.getElementById("priorities").innerHTML = (report.priorities || []).map(i => `<li>${i}</li>`).join("");
+
+    const fileDirectory = document.getElementById("fileDirectory");
+    if (fileDirectory) fileDirectory.innerHTML = (report.fileDirectory || []).map(i => `<li>${i}</li>`).join("");
+
+    const rebuildPlan = document.getElementById("rebuildPlan");
+    if (rebuildPlan) rebuildPlan.innerHTML = (report.rebuildPlan || []).map(i => `<li>${i}</li>`).join("");
+
+    const setupRequirements = document.getElementById("setupRequirements");
+    if (setupRequirements) setupRequirements.innerHTML = (report.setupRequirements || []).map(i => `<li>${i}</li>`).join("");
   }
 
   togglePassBtn?.addEventListener("click", () => {

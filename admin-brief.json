@@ -1,6 +1,6 @@
 {
-  "generatedAt": "06/03/2026, 5:25:00 am",
-  "morningReportAt": "2026-03-06 03:00 AEST",
+  "generatedAt": "07/03/2026, 8:40:00 am",
+  "morningReportAt": "2026-03-07 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
     { "name": "Gateway", "pct": 100, "status": "🟢" },
@@ -9,26 +9,51 @@
     { "name": "Jobs/Cron", "pct": 92, "status": "🟢" }
   ],
   "timeline": [
-    "✅ P0 live-feed implementation tranche shipped (Bob/Nikey/Phil/Jake)",
-    "✅ Spectator watch UI updated with live timeline + reconnect states",
-    "✅ Sponsor outreach pack, target list, and personalized messages prepared",
-    "✅ Morning management preference synced: admin website update required with brief"
+    "✅ Admin dashboard now reads from admin-brief.json",
+    "✅ P0 handball spectator work consolidated (backend + frontend + reliability)",
+    "✅ Sponsor outreach pack, messages, and tracker prepared",
+    "✅ Morning brief/admin sync process formalized"
   ],
   "agents": [
-    "🧭 Claire — orchestration, governance, strategic routing",
-    "🧪 James — mandatory audit gate and release sign-off",
+    "🧭 Claire — orchestration, governance, release decisions",
+    "🧪 James — audit gate for public releases",
     "🛠️ Bob — implementation lead (watch route + engine fixes)",
     "👨‍💻 Nikey — backend stream/auth/event pipeline",
-    "👨‍💻 Phil — spectator frontend and live UX",
-    "🧑‍💻 Jake — integration reliability and runbook",
-    "📝 Jane — promo/comms execution",
-    "📊 Bill — reporting, CRO and dashboard summaries",
-    "🛍️ Ella — launch/revenue positioning and growth"
+    "👨‍💻 Phil — spectator UI/live watch UX",
+    "🧑‍💻 Jake — integration reliability and test/runbook",
+    "📝 Jane — comms and promo content",
+    "📊 Bill — reporting, CRO and metrics",
+    "🛍️ Ella — launch/revenue strategy"
   ],
-  "releaseGate": "James approval required before internet deploy/upload: YES",
+  "releaseGate": "Admin content updates: Mike-only, no James sign-off required. Public internet releases: James gate still required.",
   "priorities": [
-    "Complete final endpoint wiring + E2E reconnect verification",
-    "Sync project percentage + agent contribution into admin each morning",
-    "Start sponsor outreach execution and track replies/meetings"
+    "Keep daily morning brief + admin sync by 06:00 AEST",
+    "Complete final P0 live-feed E2E validation",
+    "Run sponsor outreach sends and track responses"
+  ],
+  "fileDirectory": [
+    "admin.html — admin dashboard layout and section containers",
+    "js/admin-dashboard.js — login/auth and rendering logic",
+    "admin-brief.json — single source of morning briefing data",
+    "handball-watch.html — public spectator page for live matches",
+    "_control/MORNING_BRIEF_CHECKLIST.md — daily mandatory process",
+    "_control/DIRECTORY_MAP.md — backup/archive directory map",
+    "_control/SPONSOR_OUTREACH_PIPELINE_TRACKER_2026-03-05.md — sponsorship CRM tracker"
+  ],
+  "rebuildPlan": [
+    "1) Clone repo Daisy1969/know-and-guide-website into a clean workspace.",
+    "2) Restore admin stack files: admin.html, js/admin-dashboard.js, admin-brief.json.",
+    "3) Validate login + dashboard rendering locally (ensure JSON fetch succeeds).",
+    "4) Run OpenClaw morning brief and refresh admin-brief.json content.",
+    "5) Commit and push to main; verify live propagation on knowandguide.com/admin.html.",
+    "6) If broken, rollback to last known-good commit and re-run stepwise verification."
+  ],
+  "setupRequirements": [
+    "Host prerequisites: macOS/Linux, git, node >= 20, npm/pnpm, reliable network.",
+    "GitHub: push access to Daisy1969/know-and-guide-website.",
+    "OpenClaw: installed and healthy (openclaw status shows Gateway OK).",
+    "Auth: OpenAI/Codex logged in with valid refresh token (no refresh_token_reused errors).",
+    "Channels: Telegram linked for brief delivery.",
+    "Workspace configured at ~/.openclaw/workspace with _control and memory files available."
   ]
 }
