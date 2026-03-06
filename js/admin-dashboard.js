@@ -21,7 +21,7 @@
     return `${day} 03:00 AEST`;
   }
 
-  function buildReport() {
+  function buildFallbackReport() {
     const report = {
       generatedAt: nowIso(),
       morningReportAt: morningStamp(),
@@ -29,27 +29,30 @@
       health: [
         { name: "Gateway", pct: 100, status: "🟢" },
         { name: "Telegram Link", pct: 100, status: "🟢" },
-        { name: "Agent Runtime", pct: 86, status: "🟡" },
-        { name: "Jobs/Cron", pct: 74, status: "🟡" }
+        { name: "Agent Runtime", pct: 90, status: "🟢" },
+        { name: "Jobs/Cron", pct: 90, status: "🟢" }
       ],
       timeline: [
-        "✅ Repo audit updated",
-        "✅ Agent structure synced (Claire, Jane, Bob, James, Bill)",
-        "✅ Admin dashboard plan committed",
-        "⚠️ Cron report automation pending gateway scheduler auth"
+        "✅ Admin brief loaded (fallback mode)",
+        "✅ Core dashboard cards available",
+        "⚠️ Latest JSON brief not found — using fallback data"
       ],
       agents: [
-        "🧭 Claire — Orchestrator, governance, strategic routing",
-        "📝 Jane — Blog manager / 2IC",
-        "🛠️ Bob — Master coder, implementation owner",
-        "🧪 James — Mandatory code auditor and release gate",
-        "📊 Bill — Operations reporting and dashboard summaries"
+        "🧭 Claire — orchestration and governance",
+        "🧪 James — audit gate",
+        "🛠️ Bob — implementation lead",
+        "👨‍💻 Nikey — backend pipeline",
+        "👨‍💻 Phil — frontend spectator UX",
+        "🧑‍💻 Jake — integration reliability",
+        "📝 Jane — comms",
+        "📊 Bill — reporting",
+        "🛍️ Ella — growth"
       ],
       releaseGate: "James approval required before internet deploy/upload: YES",
       priorities: [
-        "Implement server-side auth for /admin",
-        "Connect dashboard data to live OpenClaw status source",
-        "Enable 3:00am Telegram delivery scheduler"
+        "Sync morning brief JSON before 06:00 AEST",
+        "Keep project %/delta current",
+        "Update sponsor pipeline daily"
       ]
     };
 
@@ -85,7 +88,7 @@
     togglePassBtn.setAttribute("aria-label", isHidden ? "Hide password" : "Show password");
   });
 
-  loginBtn.addEventListener("click", () => {
+  loginBtn.addEventListener("click", async () => {
     const email = (emailInput.value || "").trim().toLowerCase();
     const pass = passInput.value || "";
 
@@ -99,7 +102,17 @@
     }
 
     msg.textContent = "Login successful. Loading latest dashboard…";
-    const report = buildReport();
+
+    let report;
+    try {
+      const res = await fetch("./admin-brief.json", { cache: "no-store" });
+      if (!res.ok) throw new Error(`brief fetch failed: ${res.status}`);
+      report = await res.json();
+      localStorage.setItem("kgAdminReport", JSON.stringify(report));
+    } catch (e) {
+      report = buildFallbackReport();
+    }
+
     render(report);
     loginCard.classList.add("hidden");
     dashboard.classList.remove("hidden");

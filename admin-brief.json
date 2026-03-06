@@ -1,0 +1,34 @@
+{
+  "generatedAt": "06/03/2026, 5:25:00 am",
+  "morningReportAt": "2026-03-06 03:00 AEST",
+  "window": "Overnight window: 19:00–03:00 AEST",
+  "health": [
+    { "name": "Gateway", "pct": 100, "status": "🟢" },
+    { "name": "Telegram Link", "pct": 100, "status": "🟢" },
+    { "name": "Agent Runtime", "pct": 95, "status": "🟢" },
+    { "name": "Jobs/Cron", "pct": 92, "status": "🟢" }
+  ],
+  "timeline": [
+    "✅ P0 live-feed implementation tranche shipped (Bob/Nikey/Phil/Jake)",
+    "✅ Spectator watch UI updated with live timeline + reconnect states",
+    "✅ Sponsor outreach pack, target list, and personalized messages prepared",
+    "✅ Morning management preference synced: admin website update required with brief"
+  ],
+  "agents": [
+    "🧭 Claire — orchestration, governance, strategic routing",
+    "🧪 James — mandatory audit gate and release sign-off",
+    "🛠️ Bob — implementation lead (watch route + engine fixes)",
+    "👨‍💻 Nikey — backend stream/auth/event pipeline",
+    "👨‍💻 Phil — spectator frontend and live UX",
+    "🧑‍💻 Jake — integration reliability and runbook",
+    "📝 Jane — promo/comms execution",
+    "📊 Bill — reporting, CRO and dashboard summaries",
+    "🛍️ Ella — launch/revenue positioning and growth"
+  ],
+  "releaseGate": "James approval required before internet deploy/upload: YES",
+  "priorities": [
+    "Complete final endpoint wiring + E2E reconnect verification",
+    "Sync project percentage + agent contribution into admin each morning",
+    "Start sponsor outreach execution and track replies/meetings"
+  ]
+}
