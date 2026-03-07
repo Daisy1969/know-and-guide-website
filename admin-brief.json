@@ -1,6 +1,6 @@
 {
-  "generatedAt": "07/03/2026, 8:58:00 am",
-  "morningReportAt": "2026-03-07 03:00 AEST",
+  "generatedAt": "08/03/2026, 6:51:00 am",
+  "morningReportAt": "2026-03-08 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
     { "name": "Gateway", "pct": 100, "status": "🟢" },
@@ -9,10 +9,10 @@
     { "name": "Jobs/Cron", "pct": 92, "status": "🟢" }
   ],
   "timeline": [
-    "✅ Admin dashboard now reads from admin-brief.json",
-    "✅ P0 handball spectator work consolidated (backend + frontend + reliability)",
-    "✅ Sponsor outreach pack, messages, and tracker prepared",
-    "✅ Morning brief/admin sync process formalized"
+    "✅ No critical overnight incidents detected in OpenClaw status/events",
+    "✅ Gateway + Telegram channel remained healthy and reachable",
+    "✅ No new overnight deploy commits landed in know-and-guide-website/main",
+    "✅ Release gate state unchanged: admin updates open, public release still audit-gated"
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release decisions",
@@ -30,6 +30,29 @@
     "Keep daily morning brief + admin sync by 06:00 AEST",
     "Complete final P0 live-feed E2E validation",
     "Run sponsor outreach sends and track responses"
+  ],
+  "agentToday": [
+    "Bob — complete final watch-route wiring and E2E smoke test (ETA today 14:00)",
+    "Nikey — validate live event ordering and reconnect edge cases (ETA today 15:00)",
+    "Phil — final spectator UI polish + error states (ETA today 13:00)",
+    "Jake — reliability verification + rollback rehearsal (ETA today 16:00)",
+    "Bill — refresh KPI and admin metrics sync (ETA today 12:30)",
+    "Jane — sponsor/comms sequencing updates (ETA today 17:00)",
+    "Ella — sponsor outreach support assets (ETA today 17:30)",
+    "Claire — orchestration, release decisions, morning/admin sync (continuous)",
+    "James — audit checks + pass/fail decisions (rolling today)"
+  ],
+  "jamesDecisions": [
+    "PASS — Admin dashboard content update — Reason: Mike-only visibility, no public risk, JSON load and fallback validated.",
+    "PASS — Admin dashboard structure expansion — Reason: Added non-destructive display sections; login/auth path unchanged.",
+    "PENDING — Public P0 handball internet release — Reason: awaiting final E2E reconnect verification and full audit gate closure."
+  ],
+  "orgAreas": [
+    "Leadership & Governance — Mike, Claire",
+    "Engineering Delivery — Bob, Nikey, Phil, Jake",
+    "Audit & Release Gate — James",
+    "Growth & Revenue — Jane, Ella",
+    "Operations & Reporting — Bill"
   ],
   "fileDirectory": [
     "admin.html — admin dashboard layout and section containers",
@@ -55,28 +78,5 @@
     "Auth: OpenAI/Codex logged in with valid refresh token (no refresh_token_reused errors).",
     "Channels: Telegram linked for brief delivery.",
     "Workspace configured at ~/.openclaw/workspace with _control and memory files available."
-  ],
-  "agentToday": [
-    "Bob — complete final watch-route wiring and E2E smoke test (ETA today 14:00)",
-    "Nikey — validate live event ordering and reconnect edge cases (ETA today 15:00)",
-    "Phil — final spectator UI polish + error states (ETA today 13:00)",
-    "Jake — reliability verification + rollback rehearsal (ETA today 16:00)",
-    "Bill — refresh KPI and admin metrics sync (ETA today 12:30)",
-    "Jane — sponsor/comms sequencing updates (ETA today 17:00)",
-    "Ella — sponsor outreach support assets (ETA today 17:30)",
-    "Claire — orchestration, release decisions, morning/admin sync (continuous)",
-    "James — audit checks + pass/fail decisions (rolling today)"
-  ],
-  "jamesDecisions": [
-    "PASS — Admin dashboard content update — Reason: Mike-only visibility, no public risk, JSON load and fallback validated.",
-    "PASS — Admin dashboard structure expansion — Reason: Added non-destructive display sections; login/auth path unchanged.",
-    "PENDING — Public P0 handball internet release — Reason: awaiting final E2E reconnect verification and full audit gate closure."
-  ],
-  "orgAreas": [
-    "Leadership & Governance — Mike, Claire",
-    "Engineering Delivery — Bob, Nikey, Phil, Jake",
-    "Audit & Release Gate — James",
-    "Growth & Revenue — Jane, Ella",
-    "Operations & Reporting — Bill"
   ]
 }
