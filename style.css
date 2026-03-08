@@ -379,6 +379,26 @@ footer {
 }
 
 /* Mobile Responsiveness */
+.team-photo-section {
+    max-width: 1100px;
+    margin: 0 auto 2.5rem;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.team-photo-caption {
+    color: #57534e;
+    margin-bottom: 1rem;
+}
+
+.team-photo-image {
+    width: 100%;
+    max-width: 980px;
+    border-radius: 16px;
+    border: 1px solid #e7e5e4;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
