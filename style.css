@@ -391,12 +391,29 @@ footer {
     margin-bottom: 1rem;
 }
 
-.team-photo-image {
-    width: 100%;
+.team-photo-shell {
     max-width: 980px;
+    margin: 0 auto;
     border-radius: 16px;
     border: 1px solid #e7e5e4;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.team-photo-image {
+    width: 100%;
+    display: block;
+}
+
+.progressive-image {
+    opacity: 0;
+    transition: opacity 280ms ease;
+}
+
+.progressive-image.is-loaded {
+    opacity: 1;
 }
 
 @media (max-width: 768px) {
