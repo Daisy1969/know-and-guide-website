@@ -1,51 +1,51 @@
 {
-  "generatedAt": "09/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-09 03:00 AEST",
+  "generatedAt": "10/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-10 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
     { "name": "Gateway", "pct": 100, "status": "🟢" },
     { "name": "Telegram Link", "pct": 100, "status": "🟢" },
     { "name": "Agent Runtime", "pct": 95, "status": "🟢" },
-    { "name": "Jobs/Cron", "pct": 92, "status": "🟢" }
+    { "name": "Jobs/Cron", "pct": 94, "status": "🟢" }
   ],
   "timeline": [
-    "✅ OpenClaw status healthy: Gateway reachable, Telegram linked, no active platform events",
-    "✅ Overnight repo activity: no new main-branch deploy commits in know-and-guide-website",
-    "⚠️ Security audit still shows 2 warnings (trusted proxy headers + ineffective denyCommands entries)",
-    "✅ Release policy unchanged: admin dashboard updates allowed; public release remains James-gated"
+    "✅ OpenClaw status healthy at 03:00: Gateway reachable, Telegram channel OK, no active events",
+    "✅ Overnight repo activity: no new main-branch commits detected in know-and-guide-website during 19:00–03:00 window",
+    "⚠️ Security audit unchanged: 2 warnings remain (trusted proxy headers + ineffective denyCommands entries)",
+    "✅ James audit state: PASS recorded for team-photo website release scope (2026-03-09); public release gate remains evidence-based"
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release decisions",
-    "🧪 James — audit gate for public releases",
+    "🧪 James — audit gate and release safety sign-off",
     "🛠️ Bob — implementation lead (watch route + engine fixes)",
     "👨‍💻 Nikey — backend stream/auth/event pipeline",
     "👨‍💻 Phil — spectator UI/live watch UX",
     "🧑‍💻 Jake — integration reliability and test/runbook",
-    "📝 Jane — comms and promo content",
-    "📊 Bill — reporting, CRO and metrics",
-    "🛍️ Ella — launch/revenue strategy"
+    "📝 Jane — comms and sponsor messaging",
+    "📊 Bill — reporting, CRO and KPI cadence",
+    "🛍️ Ella — launch/revenue execution"
   ],
-  "releaseGate": "Admin content updates: Mike-only, no James sign-off required. Public internet releases: James gate still required.",
+  "releaseGate": "Admin content updates: Mike-only, no James sign-off required. Public internet releases: James gate required and currently conditional on final reconnect E2E evidence + closure verification.",
   "priorities": [
-    "Close remaining P0 live-feed E2E reconnect validation",
-    "Keep morning brief + admin dashboard sync reliable at 03:00 AEST",
-    "Advance sponsor outreach execution and response tracking"
+    "Close final reconnect E2E evidence for public handball release readiness",
+    "Keep 03:00 AEST morning brief + admin JSON sync deterministic and verifiable",
+    "Advance sponsor outreach execution with response tracking and follow-up sequencing"
   ],
   "agentToday": [
-    "Bob — complete final watch-route wiring and E2E smoke test",
+    "Bob — complete final watch-route wiring and E2E smoke validation",
     "Nikey — validate live event ordering and reconnect edge cases",
     "Phil — finalize spectator UI polish and error-state coverage",
     "Jake — run reliability verification and rollback rehearsal",
-    "Bill — refresh KPI snapshot and admin metrics sync",
+    "Bill — publish morning dashboard brief + KPI/admin sync",
     "Jane — execute sponsor/comms sequencing updates",
     "Ella — prepare sponsor outreach support assets",
     "Claire — run orchestration, gate checks, and reporting cadence",
-    "James — issue pass/fail audit decisions for public release readiness"
+    "James — maintain pass/fail release decisions for public release requests"
   ],
   "jamesDecisions": [
-    "PASS — Admin dashboard content updates — Mike-only visibility, no public risk, JSON path validated.",
-    "PASS — Admin dashboard structure expansion — non-destructive sections, auth/login path unchanged.",
-    "PENDING — Public P0 handball internet release — awaiting final reconnect E2E evidence + complete audit closure."
+    "PASS — Team photo website release scope audit (index.html, style.css, image asset) dated 2026-03-09.",
+    "PASS — Prior website patch audit (index.html + style.css) dated 2026-03-07.",
+    "PENDING — Public P0 handball internet release remains gated pending final reconnect E2E evidence and closure verification."
   ],
   "orgAreas": [
     "Leadership & Governance — Mike, Claire",
@@ -59,8 +59,8 @@
     "js/admin-dashboard.js — login/auth and rendering logic",
     "admin-brief.json — single source of morning briefing data",
     "handball-watch.html — public spectator page for live matches",
-    "_control/MORNING_BRIEF_CHECKLIST.md — daily mandatory process",
-    "_control/DIRECTORY_MAP.md — backup/archive directory map",
+    "_control/JAMES_AUDIT_TEAM_PHOTO_RELEASE_2026-03-09.md — latest audit decision",
+    "_control/JAMES_WEBSITE_PATCH_AUDIT_2026-03-07.md — prior audit decision",
     "_control/SPONSOR_OUTREACH_PIPELINE_TRACKER_2026-03-05.md — sponsorship CRM tracker"
   ],
   "rebuildPlan": [
