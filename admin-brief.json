@@ -1,6 +1,6 @@
 {
-  "generatedAt": "10/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-10 03:00 AEST",
+  "generatedAt": "11/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-11 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
     { "name": "Gateway", "pct": 100, "status": "🟢" },
@@ -9,10 +9,10 @@
     { "name": "Jobs/Cron", "pct": 94, "status": "🟢" }
   ],
   "timeline": [
-    "✅ OpenClaw status healthy at 03:00: Gateway reachable, Telegram channel OK, no active events",
-    "✅ Overnight repo activity: no new main-branch commits detected in know-and-guide-website during 19:00–03:00 window",
-    "⚠️ Security audit unchanged: 2 warnings remain (trusted proxy headers + ineffective denyCommands entries)",
-    "✅ James audit state: PASS recorded for team-photo website release scope (2026-03-09); public release gate remains evidence-based"
+    "✅ OpenClaw status healthy at 03:00: Gateway reachable, Telegram channel OK, no active events.",
+    "✅ Overnight repo activity: no new main-branch commits detected in know-and-guide-website during 19:00–03:00 window.",
+    "⚠️ Security audit unchanged: 2 warnings remain (trusted proxy headers + ineffective denyCommands entries).",
+    "✅ James release-gate state unchanged: latest decisions remain PASS for website patch (2026-03-07) and team-photo release scope (2026-03-09); public handball release remains evidence-gated."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release decisions",
