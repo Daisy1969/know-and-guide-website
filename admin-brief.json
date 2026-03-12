@@ -1,18 +1,18 @@
 {
-  "generatedAt": "12/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-12 03:00 AEST",
+  "generatedAt": "13/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-13 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
-    { "name": "Gateway", "pct": 96, "status": "🟢" },
-    { "name": "Telegram Link", "pct": 100, "status": "🟢" },
-    { "name": "Agent Runtime", "pct": 95, "status": "🟢" },
-    { "name": "Jobs/Cron", "pct": 94, "status": "🟢" }
+    { "name": "Gateway", "pct": 97, "status": "🟢" },
+    { "name": "Telegram Link", "pct": 92, "status": "🟡" },
+    { "name": "Agent Runtime", "pct": 96, "status": "🟢" },
+    { "name": "Jobs/Cron", "pct": 95, "status": "🟢" }
   ],
   "timeline": [
-    "✅ 03:00 AEST check complete: gateway RPC probe OK and runtime active on 127.0.0.1:18789.",
-    "⚠️ OpenClaw doctor warning persists: gateway LaunchAgent config flagged as out-of-date/non-standard (recommended reinstall/doctor repair).",
+    "✅ 03:00 AEST check complete: gateway runtime active (PID 44523), RPC probe OK on ws://127.0.0.1:18789.",
+    "⚠️ Doctor warning: Telegram groupPolicy is allowlist with empty groupAllowFrom/allowFrom; inbound group messages will be dropped until allowlist is populated or policy changed.",
     "✅ Overnight repo activity: no new main-branch commits detected in know-and-guide-website during 19:00–03:00 window.",
-    "✅ James release decisions unchanged: latest audited website release scopes remain PASS; public handball release remains evidence-gated."
+    "✅ James release decisions unchanged: audited website release scopes remain PASS; public handball release remains evidence-gated."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release decisions",
@@ -29,7 +29,7 @@
   "priorities": [
     "Close final reconnect E2E evidence for public handball release readiness",
     "Keep 03:00 AEST morning brief + admin JSON sync deterministic and verifiable",
-    "Advance sponsor outreach execution with response tracking and follow-up sequencing"
+    "Resolve Telegram group allowlist configuration risk to prevent silent group-message drops"
   ],
   "agentToday": [
     "Bob — complete final watch-route wiring and E2E smoke validation",
