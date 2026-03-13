@@ -1,18 +1,18 @@
 {
-  "generatedAt": "13/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-13 03:00 AEST",
+  "generatedAt": "14/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-14 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
-    { "name": "Gateway", "pct": 97, "status": "🟢" },
+    { "name": "Gateway", "pct": 98, "status": "🟢" },
     { "name": "Telegram Link", "pct": 92, "status": "🟡" },
     { "name": "Agent Runtime", "pct": 96, "status": "🟢" },
     { "name": "Jobs/Cron", "pct": 95, "status": "🟢" }
   ],
   "timeline": [
-    "✅ 03:00 AEST check complete: gateway runtime active (PID 44523), RPC probe OK on ws://127.0.0.1:18789.",
-    "⚠️ Doctor warning: Telegram groupPolicy is allowlist with empty groupAllowFrom/allowFrom; inbound group messages will be dropped until allowlist is populated or policy changed.",
+    "✅ 03:00 AEST check complete: gateway runtime active (PID 59646), RPC probe OK on ws://127.0.0.1:18789.",
+    "⚠️ Doctor warning persists: Telegram groupPolicy is allowlist with empty groupAllowFrom/allowFrom; inbound group messages will be dropped until allowlist is populated or policy changed.",
     "✅ Overnight repo activity: no new main-branch commits detected in know-and-guide-website during 19:00–03:00 window.",
-    "✅ James release decisions unchanged: audited website release scopes remain PASS; public handball release remains evidence-gated."
+    "✅ Release gate unchanged overnight: prior James website audits remain PASS; public handball release remains evidence-gated pending reconnect E2E closure proof."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release decisions",
@@ -60,8 +60,7 @@
     "admin-brief.json — single source of morning briefing data",
     "handball-watch.html — public spectator page for live matches",
     "_control/JAMES_AUDIT_TEAM_PHOTO_RELEASE_2026-03-09.md — latest audit decision",
-    "_control/JAMES_WEBSITE_PATCH_AUDIT_2026-03-07.md — prior audit decision",
-    "_control/SPONSOR_OUTREACH_PIPELINE_TRACKER_2026-03-05.md — sponsorship CRM tracker"
+    "_control/JAMES_WEBSITE_PATCH_AUDIT_2026-03-07.md — prior audit decision"
   ],
   "rebuildPlan": [
     "1) Clone repo Daisy1969/know-and-guide-website into a clean workspace.",
