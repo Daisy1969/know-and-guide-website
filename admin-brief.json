@@ -31,6 +31,50 @@
     "Keep 03:00 AEST morning brief + admin JSON sync deterministic and verifiable",
     "Resolve Telegram group allowlist configuration risk to prevent silent group-message drops"
   ],
+  "projectBoard": [
+    {
+      "project": "Handball Live Game (website release)",
+      "complete": "95%",
+      "delta": "+7%",
+      "eta": "Today",
+      "agents": "Claire, James, Bob, Nikey, Phil, Jake"
+    },
+    {
+      "project": "Website Admin + Morning Brief Automation",
+      "complete": "97%",
+      "delta": "+1%",
+      "eta": "1-2 days",
+      "agents": "Claire, Bill"
+    },
+    {
+      "project": "Maths Penpal Growth + Outreach",
+      "complete": "74%",
+      "delta": "+2%",
+      "eta": "5-10 days",
+      "agents": "Jane, Ella, Bill"
+    },
+    {
+      "project": "Zodiac Consensus Engine (secondary)",
+      "complete": "48%",
+      "delta": "+10%",
+      "eta": "2-3 weeks",
+      "agents": "Claire, Bob, Nikey, Phil, Jake, Jane"
+    },
+    {
+      "project": "Web Controller v2",
+      "complete": "10%",
+      "delta": "+10%",
+      "eta": "3-5 weeks",
+      "agents": "Claire (lead), Bob, Jake"
+    },
+    {
+      "project": "OpenClaw Setup Service APAC",
+      "complete": "8%",
+      "delta": "+8%",
+      "eta": "1 week planning pack",
+      "agents": "Ella (lead), Bill, Jane, Bob, Nikey, Jake, James"
+    }
+  ],
   "agentToday": [
     "Bob — complete final watch-route wiring and E2E smoke validation",
     "Nikey — validate live event ordering and reconnect edge cases",

@@ -54,6 +54,13 @@
         "Keep project %/delta current",
         "Update sponsor pipeline daily"
       ],
+      projectBoard: [
+        { project: "Handball Live Game", complete: "95%", delta: "+7%", eta: "Today", agents: "Claire, James, Bob, Nikey, Phil, Jake" },
+        { project: "Website Admin + Morning Brief", complete: "97%", delta: "+1%", eta: "1–2 days", agents: "Claire, Bill" },
+        { project: "Maths Penpal Growth", complete: "74%", delta: "+2%", eta: "5–10 days", agents: "Jane, Ella, Bill" },
+        { project: "Zodiac Consensus Engine", complete: "48%", delta: "+10%", eta: "2–3 weeks", agents: "Claire, Bob, Nikey, Phil, Jake, Jane" },
+        { project: "Web Controller v2", complete: "10%", delta: "+10%", eta: "3–5 weeks", agents: "Claire (lead), Bob, Jake" }
+      ],
       fileDirectory: [
         "admin.html — admin dashboard page container and layout",
         "js/admin-dashboard.js — login + dashboard render logic",
@@ -126,6 +133,20 @@
     document.getElementById("timeline").innerHTML = (report.timeline || []).map(i => `<li>${i}</li>`).join("");
     document.getElementById("agents").innerHTML = (report.agents || []).map(i => `<li>${i}</li>`).join("");
     document.getElementById("releaseGate").textContent = report.releaseGate || "N/A";
+
+    const projectBoard = document.getElementById("projectBoard");
+    if (projectBoard) {
+      projectBoard.innerHTML = (report.projectBoard || []).map(p => `
+        <tr>
+          <td style="padding:8px; border-bottom:1px solid #f1f5f9;">${p.project || ""}</td>
+          <td style="padding:8px; border-bottom:1px solid #f1f5f9;">${p.complete || ""}</td>
+          <td style="padding:8px; border-bottom:1px solid #f1f5f9;">${p.delta || ""}</td>
+          <td style="padding:8px; border-bottom:1px solid #f1f5f9;">${p.eta || ""}</td>
+          <td style="padding:8px; border-bottom:1px solid #f1f5f9;">${p.agents || ""}</td>
+        </tr>
+      `).join("");
+    }
+
     document.getElementById("priorities").innerHTML = (report.priorities || []).map(i => `<li>${i}</li>`).join("");
 
     const fileDirectory = document.getElementById("fileDirectory");
