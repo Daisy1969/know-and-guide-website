@@ -3,48 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Handball League — Live Watch</title>
+  <title>Handball League — Live Game Watch</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .watch-shell { max-width: 980px; margin: 120px auto 60px; padding: 0 20px; }
-    .watch-head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
-    .badge { display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; font-size:13px; font-weight:700; }
-    .badge.live { background:#dcfce7; color:#166534; }
-    .badge.waiting { background:#e2e8f0; color:#334155; }
-    .badge.final { background:#dbeafe; color:#1e3a8a; }
-    .badge.conn.connected { background:#dcfce7; color:#166534; }
-    .badge.conn.connecting, .badge.conn.reconnecting { background:#fef3c7; color:#92400e; }
-    .badge.conn.offline { background:#fee2e2; color:#991b1b; }
-    .watch-grid { display:grid; grid-template-columns: 1fr 1fr; gap:16px; margin-top:18px; }
-    @media (max-width: 820px) { .watch-grid { grid-template-columns: 1fr; } }
-    .card { background:#fff; border:1px solid #e7e5e4; border-radius:12px; padding:16px; }
-    .scoreline { display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; gap:12px; margin-top:10px; }
-    .team { border:1px solid #e5e7eb; border-radius:10px; padding:14px; }
-    .team.leading { border-color:#10b981; box-shadow: inset 0 0 0 1px #10b981; }
-    .team .label { font-size:12px; color:#64748b; text-transform:uppercase; letter-spacing:.04em; }
-    .team .score { font-size:44px; line-height:1; font-weight:800; margin-top:6px; }
-    .vs { color:#64748b; font-size:14px; }
-    .meta { margin-top:12px; color:#475569; font-size:14px; display:flex; gap:14px; flex-wrap:wrap; }
-    .timeline { list-style:none; padding:0; margin:0; max-height:460px; overflow:auto; }
-    .timeline li { border-bottom:1px solid #f1f5f9; padding:10px 0; }
-    .timeline li:last-child { border-bottom:0; }
-    .ev-top { display:flex; justify-content:space-between; gap:8px; align-items:center; margin-bottom:4px; }
-    .pill { font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px; }
-    .pill.info { background:#e2e8f0; color:#334155; }
-    .pill.warn { background:#fef3c7; color:#92400e; }
-    .pill.score { background:#dcfce7; color:#166534; }
-    .pill.success { background:#dbeafe; color:#1e3a8a; }
-    .ev-time { font-size:12px; color:#64748b; }
-    .ev-text { font-size:14px; color:#0f172a; }
-    .conn-banner { margin-top:12px; border-radius:10px; padding:10px 12px; font-size:14px; }
-    .conn-banner.connected { background:#f0fdf4; color:#166534; }
-    .conn-banner.connecting, .conn-banner.reconnecting { background:#fffbeb; color:#92400e; }
-    .conn-banner.offline { background:#fef2f2; color:#991b1b; }
-    .share-row { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
-    .share-row button { border:0; border-radius:8px; background:#0f172a; color:#fff; font-weight:700; padding:10px 14px; cursor:pointer; }
-    .share-row button.secondary { background:#334155; }
-    .copy-field { width:100%; border:1px solid #cbd5e1; border-radius:8px; padding:9px 10px; font-size:14px; }
-    .subtle { color:#64748b; font-size:13px; }
+    .watch-wrap { max-width: 1200px; margin: 110px auto 40px; padding: 0 20px; }
+    .watch-card { background:#fff; border:1px solid #e7e5e4; border-radius:14px; padding:16px; box-shadow:0 6px 20px rgba(0,0,0,.05); }
+    .watch-header { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+    .badge { display:inline-block; padding:6px 10px; border-radius:999px; background:#dbeafe; color:#1e3a8a; font-weight:700; font-size:12px; }
+    .hint { color:#64748b; font-size:14px; margin-top:6px; }
+    .game-frame { width:100%; height:min(78vh,860px); border:0; border-radius:12px; margin-top:14px; background:#0b1020; }
+    .toolbar { margin-top:10px; display:flex; gap:10px; flex-wrap:wrap; }
+    .toolbar a { display:inline-block; padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:700; }
+    .btn-primary { background:#111827; color:#fff; }
+    .btn-secondary { background:#e5e7eb; color:#111827; }
   </style>
 </head>
 <body>
@@ -58,345 +29,23 @@
     </nav>
   </header>
 
-  <main class="watch-shell">
-    <div class="watch-head">
-      <div>
-        <h1 style="margin:0 0 8px;">Handball Live Watch</h1>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <span id="phaseBadge" class="badge waiting">WAITING</span>
-          <span id="connBadge" class="badge conn connecting">CONNECTING</span>
+  <main class="watch-wrap">
+    <section class="watch-card">
+      <div class="watch-header">
+        <div>
+          <h1 style="margin:0;">Handball — Live Game Screen</h1>
+          <div class="hint">This mirrors the original game experience (same game look/feel). Agent-autoplay overlay is the next step.</div>
         </div>
-      </div>
-      <div class="card" style="min-width:260px; padding:12px 14px;">
-        <div><strong>Match ID:</strong> <span id="matchIdText">-</span></div>
-        <div class="subtle" style="margin-top:4px;">Live feed auto-recovers after disconnects.</div>
-      </div>
-    </div>
-
-    <div id="connBanner" class="conn-banner connecting">Connecting to live feed…</div>
-
-    <section class="watch-grid">
-      <div class="card">
-        <h3 style="margin-top:0;">Scoreboard</h3>
-        <div class="scoreline">
-          <div id="teamA" class="team">
-            <div class="label">Team A</div>
-            <div id="scoreA" class="score">0</div>
-          </div>
-          <div class="vs">VS</div>
-          <div id="teamB" class="team">
-            <div class="label">Team B</div>
-            <div id="scoreB" class="score">0</div>
-          </div>
-        </div>
-        <div class="meta">
-          <div>Turn: <strong id="turnNumber">1</strong></div>
-          <div>Acting: <strong id="actingPlayer">-</strong></div>
-          <div>Win @ <strong id="winningScore">-</strong></div>
-        </div>
+        <span class="badge">LIVE GAME VIEW</span>
       </div>
 
-      <div class="card">
-        <h3 style="margin-top:0;">Share</h3>
-        <div class="share-row">
-          <button id="copyShareBtn">Copy share message</button>
-          <button id="copyLinkBtn" class="secondary">Copy link only</button>
-        </div>
-        <input id="shareUrlInput" class="copy-field" readonly style="margin-top:10px;" />
-        <div id="copyStatus" class="subtle" style="margin-top:8px;">Shareable watch link is ready.</div>
-      </div>
-    </section>
+      <iframe class="game-frame" src="https://handball.knowandguide.com/" title="Handball Live Game"></iframe>
 
-    <section class="card" style="margin-top:16px;">
-      <h3 style="margin-top:0;">Event Timeline</h3>
-      <ul id="timeline" class="timeline"></ul>
-      <div class="subtle" style="margin-top:8px;">Showing latest 100 events (newest first).</div>
+      <div class="toolbar">
+        <a class="btn-primary" href="https://handball.knowandguide.com/" target="_blank" rel="noopener noreferrer">Open Fullscreen Game ↗</a>
+        <a class="btn-secondary" href="index.html#blog">Back to Blog</a>
+      </div>
     </section>
   </main>
-
-  <script>
-    const MAX_EVENTS = 100;
-    const API_BASE = (() => {
-      const p = new URLSearchParams(window.location.search);
-      const fromQuery = p.get('backend');
-      if (!fromQuery) return '';
-      try { return new URL(fromQuery).origin; } catch { return ''; }
-    })();
-
-    function api(path) {
-      return `${API_BASE}${path}`;
-    }
-
-    const state = {
-      matchId: null,
-      snapshotSeq: 0,
-      events: [],
-      game: {
-        status: 'waiting',
-        score: { A: 0, B: 0 },
-        turn: { turnNumber: 1, actingPlayerId: '-' },
-        settings: { winningScore: 5 },
-        winnerTeamId: null,
-      },
-      connection: { status: 'connecting', attempts: 0, retryInMs: 0 },
-      es: null,
-      reconnectTimer: null,
-      demoMode: false,
-      demoTick: null,
-      seq: 0,
-    };
-
-    function getMatchId() {
-      const path = window.location.pathname || '';
-      const watchMatch = path.match(/\/watch\/([^/]+)/i);
-      const queryId = new URLSearchParams(window.location.search).get('matchId');
-      const fallback = API_BASE ? 'm1' : 'demo-match-001';
-      return decodeURIComponent((watchMatch && watchMatch[1]) || queryId || fallback);
-    }
-
-    function makeWatchUrl(matchId) {
-      const u = new URL(window.location.href);
-      u.pathname = '/handball-watch.html';
-      u.search = '?matchId=' + encodeURIComponent(matchId);
-      u.hash = '';
-      return u.toString();
-    }
-
-    function connectionBannerText(c) {
-      if (c.status === 'connected') return 'Connected';
-      if (c.status === 'connecting') return 'Connecting to live feed…';
-      if (c.status === 'offline') return 'Offline. Live updates paused.';
-      const sec = Math.max(1, Math.ceil((c.retryInMs || 0) / 1000));
-      return `Connection lost. Retrying in ${sec}s`;
-    }
-
-    function nextDelay(attempt) {
-      const base = 500;
-      const max = 10000;
-      const jitterRatio = 0.2;
-      const exp = Math.min(max, base * (2 ** Math.max(0, attempt - 1)));
-      const jitter = exp * jitterRatio;
-      return Math.max(base, Math.floor(exp + (Math.random() * 2 - 1) * jitter));
-    }
-
-    function summarize(ev) {
-      const p = ev.payload || {};
-      switch (ev.type) {
-        case 'match.created': return 'Match created';
-        case 'match.started': return 'Match started';
-        case 'turn.started': return `Turn ${p.turnNumber || '?'} started`;
-        case 'action.accepted': return `${p.playerId || 'Player'} action accepted`;
-        case 'action.rejected': return `${p.playerId || 'Player'} action rejected: ${p.reason || 'unknown reason'}`;
-        case 'score.changed': return `Score: A ${p.scoreA ?? '?'} - B ${p.scoreB ?? '?'}`;
-        case 'ball.moved': return `Ball moved to ${p.toSquareId || 'unknown square'}`;
-        case 'match.finished': return `Match finished. Winner: Team ${p.winnerTeamId || '?'}`;
-        default: return ev.type;
-      }
-    }
-
-    function kindFor(type) {
-      if (type === 'action.rejected') return 'warn';
-      if (type === 'score.changed') return 'score';
-      if (type === 'match.finished') return 'success';
-      return 'info';
-    }
-
-    function applyEvent(ev) {
-      const p = ev.payload || {};
-      if (ev.type === 'match.started') state.game.status = 'active';
-      if (ev.type === 'turn.started') {
-        state.game.turn.turnNumber = Number(p.turnNumber || state.game.turn.turnNumber || 1);
-        state.game.turn.actingPlayerId = String(p.actingPlayerId || state.game.turn.actingPlayerId || '-');
-      }
-      if (ev.type === 'score.changed') {
-        state.game.score.A = Number(p.scoreA ?? state.game.score.A);
-        state.game.score.B = Number(p.scoreB ?? state.game.score.B);
-      }
-      if (ev.type === 'match.finished') {
-        state.game.status = 'finished';
-        state.game.winnerTeamId = p.winnerTeamId || null;
-      }
-      state.events.push(ev);
-      if (state.events.length > MAX_EVENTS) state.events = state.events.slice(-MAX_EVENTS);
-      state.snapshotSeq = Math.max(state.snapshotSeq, Number(ev.seq || 0));
-    }
-
-    function render() {
-      document.getElementById('matchIdText').textContent = state.matchId;
-
-      const phase = state.game.status === 'active' ? 'live' : (state.game.status === 'finished' ? 'final' : 'waiting');
-      const phaseLabel = phase === 'live' ? 'LIVE' : (phase === 'final' ? 'FINAL' : 'WAITING');
-      const phaseBadge = document.getElementById('phaseBadge');
-      phaseBadge.className = `badge ${phase}`;
-      phaseBadge.textContent = phaseLabel;
-
-      const conn = document.getElementById('connBadge');
-      conn.className = `badge conn ${state.connection.status}`;
-      conn.textContent = state.connection.status.toUpperCase();
-
-      const banner = document.getElementById('connBanner');
-      banner.className = `conn-banner ${state.connection.status}`;
-      banner.textContent = connectionBannerText(state.connection);
-
-      const a = state.game.score.A || 0;
-      const b = state.game.score.B || 0;
-      document.getElementById('scoreA').textContent = a;
-      document.getElementById('scoreB').textContent = b;
-      document.getElementById('teamA').classList.toggle('leading', a > b);
-      document.getElementById('teamB').classList.toggle('leading', b > a);
-      document.getElementById('turnNumber').textContent = state.game.turn.turnNumber || '-';
-      document.getElementById('actingPlayer').textContent = state.game.turn.actingPlayerId || '-';
-      document.getElementById('winningScore').textContent = state.game.settings?.winningScore || '-';
-
-      const timeline = document.getElementById('timeline');
-      const items = [...state.events].sort((x, y) => Number(y.seq || 0) - Number(x.seq || 0));
-      timeline.innerHTML = items.map(ev => {
-        const d = new Date(Number(ev.ts || Date.now()));
-        return `<li>
-          <div class="ev-top">
-            <span class="pill ${kindFor(ev.type)}">${kindFor(ev.type).toUpperCase()}</span>
-            <span class="ev-time">#${ev.seq} · ${d.toLocaleTimeString()}</span>
-          </div>
-          <div class="ev-text">${summarize(ev)}</div>
-        </li>`;
-      }).join('') || '<li><div class="ev-text">No events yet.</div></li>';
-    }
-
-    async function copyText(value) {
-      try {
-        if (navigator.clipboard?.writeText) {
-          await navigator.clipboard.writeText(value);
-          return true;
-        }
-      } catch (_) {}
-      return false;
-    }
-
-    function wireShare() {
-      const url = makeWatchUrl(state.matchId);
-      const input = document.getElementById('shareUrlInput');
-      input.value = url;
-      const status = document.getElementById('copyStatus');
-
-      document.getElementById('copyShareBtn').addEventListener('click', async () => {
-        const msg = `Watch live match ${state.matchId}: ${url}`;
-        const ok = await copyText(msg);
-        status.textContent = ok ? 'Share message copied.' : 'Clipboard blocked. Copy from input field below.';
-      });
-
-      document.getElementById('copyLinkBtn').addEventListener('click', async () => {
-        const ok = await copyText(url);
-        status.textContent = ok ? 'Watch link copied.' : 'Clipboard blocked. Copy from input field below.';
-        input.focus();
-        input.select();
-      });
-    }
-
-    async function fetchSnapshot() {
-      const res = await fetch(api(`/matches/${encodeURIComponent(state.matchId)}/snapshot`), { cache: 'no-store' });
-      if (!res.ok) throw new Error(`snapshot_${res.status}`);
-      const snap = await res.json();
-      state.snapshotSeq = Number(snap.snapshotSeq || 0);
-      state.game = snap.state || state.game;
-    }
-
-    async function fetchBackfill(afterSeq) {
-      const res = await fetch(api(`/matches/${encodeURIComponent(state.matchId)}/backfill?afterSeq=${Number(afterSeq || 0)}`), { cache: 'no-store' });
-      if (!res.ok) return;
-      const data = await res.json();
-      if (data?.gapDetected) {
-        await fetchSnapshot();
-        state.events = [];
-      }
-      (data?.events || []).forEach(applyEvent);
-    }
-
-    function openStream() {
-      if (state.es) state.es.close();
-      const url = api(`/matches/${encodeURIComponent(state.matchId)}/events/stream?afterSeq=${state.snapshotSeq}`);
-      state.connection.status = state.connection.attempts > 0 ? 'reconnecting' : 'connecting';
-      render();
-
-      const es = new EventSource(url);
-      state.es = es;
-
-      es.onopen = () => {
-        state.connection = { status: 'connected', attempts: 0, retryInMs: 0 };
-        render();
-      };
-
-      es.onmessage = (msg) => {
-        try {
-          const ev = JSON.parse(msg.data);
-          applyEvent(ev);
-          render();
-        } catch (_) {}
-      };
-
-      es.onerror = async () => {
-        es.close();
-        state.connection.attempts += 1;
-        const retryInMs = nextDelay(state.connection.attempts);
-        state.connection = { status: state.connection.attempts > 8 ? 'offline' : 'reconnecting', attempts: state.connection.attempts, retryInMs };
-        render();
-        if (state.connection.status === 'offline') return;
-        clearTimeout(state.reconnectTimer);
-        state.reconnectTimer = setTimeout(async () => {
-          await fetchBackfill(state.snapshotSeq).catch(() => {});
-          openStream();
-        }, retryInMs);
-      };
-    }
-
-    function startDemoMode() {
-      state.demoMode = true;
-      state.connection = { status: 'connected', attempts: 0, retryInMs: 0 };
-      state.game = {
-        status: 'active',
-        score: { A: 0, B: 0 },
-        turn: { turnNumber: 1, actingPlayerId: 'agent-A1' },
-        settings: { winningScore: 5 },
-        winnerTeamId: null,
-      };
-      state.events = [];
-      applyEvent({ id: crypto.randomUUID(), seq: ++state.seq, ts: Date.now(), type: 'match.started', matchId: state.matchId, payload: {} });
-      render();
-
-      clearInterval(state.demoTick);
-      state.demoTick = setInterval(() => {
-        const t = state.game.turn.turnNumber + 1;
-        const actor = t % 2 === 0 ? 'agent-B1' : 'agent-A1';
-        applyEvent({ id: crypto.randomUUID(), seq: ++state.seq, ts: Date.now(), type: 'turn.started', matchId: state.matchId, payload: { turnNumber: t, actingPlayerId: actor } });
-        if (Math.random() > 0.45) {
-          const nextA = state.game.score.A + (Math.random() > 0.55 ? 1 : 0);
-          const nextB = state.game.score.B + (nextA === state.game.score.A && Math.random() > 0.55 ? 1 : 0);
-          applyEvent({ id: crypto.randomUUID(), seq: ++state.seq, ts: Date.now(), type: 'score.changed', matchId: state.matchId, payload: { scoreA: nextA, scoreB: nextB } });
-          if (nextA >= state.game.settings.winningScore || nextB >= state.game.settings.winningScore) {
-            applyEvent({ id: crypto.randomUUID(), seq: ++state.seq, ts: Date.now(), type: 'match.finished', matchId: state.matchId, payload: { winnerTeamId: nextA > nextB ? 'A' : 'B' } });
-            clearInterval(state.demoTick);
-          }
-        }
-        render();
-      }, 3000);
-
-      document.getElementById('copyStatus').textContent = 'Demo mode active (backend not connected).';
-    }
-
-    async function init() {
-      state.matchId = getMatchId();
-      wireShare();
-      render();
-      try {
-        await fetchSnapshot();
-        await fetchBackfill(state.snapshotSeq);
-        render();
-        openStream();
-      } catch (e) {
-        startDemoMode();
-      }
-    }
-
-    init();
-  </script>
 </body>
 </html>
