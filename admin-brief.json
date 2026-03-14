@@ -1,18 +1,18 @@
 {
-  "generatedAt": "14/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-14 03:00 AEST",
+  "generatedAt": "15/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-15 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
     { "name": "Gateway", "pct": 98, "status": "🟢" },
-    { "name": "Telegram Link", "pct": 92, "status": "🟡" },
+    { "name": "Telegram Link", "pct": 88, "status": "🟡" },
     { "name": "Agent Runtime", "pct": 96, "status": "🟢" },
     { "name": "Jobs/Cron", "pct": 95, "status": "🟢" }
   ],
   "timeline": [
     "✅ 03:00 AEST check complete: gateway runtime active (PID 59646), RPC probe OK on ws://127.0.0.1:18789.",
-    "⚠️ Doctor warning persists: Telegram groupPolicy is allowlist with empty groupAllowFrom/allowFrom; inbound group messages will be dropped until allowlist is populated or policy changed.",
-    "✅ Overnight repo activity: no new main-branch commits detected in know-and-guide-website during 19:00–03:00 window.",
-    "✅ Release gate unchanged overnight: prior James website audits remain PASS; public handball release remains evidence-gated pending reconnect E2E closure proof."
+    "⚠️ Doctor warning still active: Telegram groupPolicy is allowlist with empty groupAllowFrom/allowFrom; inbound group messages will be dropped until allowlist is populated or policy is changed.",
+    "🚀 Overnight delivery burst in know-and-guide-website: 13 main-branch commits landed in the 19:00–03:00 window, focused on handball watch reliability, gameplay tuning, backend URL support, and security cleanup.",
+    "🧪 Release gate unchanged overnight: James PASS records remain valid for prior website scopes; public handball release remains evidence-gated pending final reconnect E2E closure proof."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release decisions",
@@ -28,20 +28,20 @@
   "releaseGate": "Admin content updates: Mike-only, no James sign-off required. Public internet releases: James gate required and currently conditional on final reconnect E2E evidence + closure verification.",
   "priorities": [
     "Close final reconnect E2E evidence for public handball release readiness",
-    "Keep 03:00 AEST morning brief + admin JSON sync deterministic and verifiable",
-    "Resolve Telegram group allowlist configuration risk to prevent silent group-message drops"
+    "Harden Telegram group allowlist configuration to prevent silent group-message drops",
+    "Stabilize overnight handball watch changes with regression checks before public release"
   ],
   "projectBoard": [
     {
       "project": "Handball Live Game (website release)",
-      "complete": "95%",
-      "delta": "+7%",
+      "complete": "96%",
+      "delta": "+1%",
       "eta": "Today",
       "agents": "Claire, James, Bob, Nikey, Phil, Jake"
     },
     {
       "project": "Website Admin + Morning Brief Automation",
-      "complete": "97%",
+      "complete": "98%",
       "delta": "+1%",
       "eta": "1-2 days",
       "agents": "Claire, Bill"
@@ -49,42 +49,42 @@
     {
       "project": "Maths Penpal Growth + Outreach",
       "complete": "74%",
-      "delta": "+2%",
+      "delta": "+0%",
       "eta": "5-10 days",
       "agents": "Jane, Ella, Bill"
     },
     {
       "project": "Zodiac Consensus Engine (secondary)",
       "complete": "48%",
-      "delta": "+10%",
+      "delta": "+0%",
       "eta": "2-3 weeks",
       "agents": "Claire, Bob, Nikey, Phil, Jake, Jane"
     },
     {
       "project": "Web Controller v2",
       "complete": "10%",
-      "delta": "+10%",
+      "delta": "+0%",
       "eta": "3-5 weeks",
       "agents": "Claire (lead), Bob, Jake"
     },
     {
       "project": "OpenClaw Setup Service APAC",
       "complete": "8%",
-      "delta": "+8%",
+      "delta": "+0%",
       "eta": "1 week planning pack",
       "agents": "Ella (lead), Bill, Jane, Bob, Nikey, Jake, James"
     }
   ],
   "agentToday": [
-    "Bob — complete final watch-route wiring and E2E smoke validation",
-    "Nikey — validate live event ordering and reconnect edge cases",
-    "Phil — finalize spectator UI polish and error-state coverage",
-    "Jake — run reliability verification and rollback rehearsal",
-    "Bill — publish morning dashboard brief + KPI/admin sync",
-    "Jane — execute sponsor/comms sequencing updates",
-    "Ella — prepare sponsor outreach support assets",
-    "Claire — run orchestration, gate checks, and reporting cadence",
-    "James — maintain pass/fail release decisions for public release requests"
+    "Bob — complete final watch-route wiring and reconnect-path smoke validation",
+    "Nikey — verify event ordering + reconnect edge cases under load",
+    "Phil — finalize spectator UI polish and degraded-state behavior",
+    "Jake — execute reliability runbook and rollback rehearsal",
+    "Bill — publish morning brief, sync admin JSON, and confirm commit traceability",
+    "Jane — sequence sponsor/comms updates against release timing",
+    "Ella — prepare outreach and monetisation support assets",
+    "Claire — enforce release gates, coordinate priorities, and unblock delivery",
+    "James — maintain pass/fail release decisions for any public internet deploy request"
   ],
   "jamesDecisions": [
     "PASS — Team photo website release scope audit (index.html, style.css, image asset) dated 2026-03-09.",
