@@ -265,8 +265,8 @@
       // In 6-square mode, hide legacy large rank watermark text from base renderer
       if (getMode(this) === MODE_6) {
         cfg.centerSquares.forEach((s) => {
-          const w = (s.bounds.maxX - s.bounds.minX) * 0.65;
-          const h = 52;
+          const w = (s.bounds.maxX - s.bounds.minX) * 0.8;
+          const h = 86;
           ctx.fillStyle = '#16213e';
           ctx.fillRect(s.centerX - (w / 2), s.centerY - (h / 2), w, h);
         });
@@ -283,7 +283,7 @@
 
       cfg.centerSquares.forEach((s) => {
         const text = getMode(this) === MODE_6
-          ? `${byRank[s.rank] || '-'}`
+          ? (s.rank === 1 ? `ACE · ${byRank[s.rank] || '-'}` : `${byRank[s.rank] || '-'}`)
           : `${s.label} — ${byRank[s.rank] || '-'}`;
         const w = Math.min(260, Math.max(120, (s.bounds.maxX - s.bounds.minX) - 12));
         const x = s.centerX;
