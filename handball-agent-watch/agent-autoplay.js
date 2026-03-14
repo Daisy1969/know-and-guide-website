@@ -85,6 +85,10 @@
     ai.rank = old.rank;
     ai.angle = old.angle || 0;
     ai.serveTimer = old.serveTimer || 0;
+    // Make Jake as responsive as other agents (and not legacy-human sluggish)
+    ai.mastery = 1;
+    ai.speed = Math.max(ai.speed || 0, 820);
+    ai.reactionDelay = 0.02;
 
     const idx = game.players.findIndex(p => p.id === 'human');
     if (idx >= 0) game.players[idx] = ai;
@@ -151,6 +155,12 @@
   function beginNextMatch(game) {
     const s = game.__stats;
     Object.keys(s.matchAceSecondsByAgent).forEach(k => { s.matchAceSecondsByAgent[k] = 0; });
+    // Reset skill and ACE timers back to baseline each new match
+    Object.values(s.perAgent).forEach(a => {
+      a.aceSecondsTotal = 0;
+      a.skillPercent = START_SKILL_PERCENT;
+    });
+
     s.currentAceAgent = null;
     s.currentAceSeconds = 0;
     s.matchInProgress = true;
@@ -159,6 +169,51 @@
     game.resetGame();
     setAgentNames(game);
     convertHumanToAIAgent(game);
+  }
+
+  function playWinSound() {
+    try {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) return;
+      const ctx = new Ctx();
+      const o1 = ctx.createOscillator();
+      const o2 = ctx.createOscillator();
+      const g = ctx.createGain();
+      o1.type = 'triangle';
+      o2.type = 'sine';
+      o1.frequency.setValueAtTime(523.25, ctx.currentTime);
+      o2.frequency.setValueAtTime(783.99, ctx.currentTime + 0.08);
+      g.gain.setValueAtTime(0.0001, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.18, ctx.currentTime + 0.03);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.45);
+      o1.connect(g); o2.connect(g); g.connect(ctx.destination);
+      o1.start(); o2.start(ctx.currentTime + 0.08);
+      o1.stop(ctx.currentTime + 0.45); o2.stop(ctx.currentTime + 0.45);
+    } catch {}
+  }
+
+  function showWinnerBanner(name, matchNo) {
+    let el = document.getElementById('winner-banner');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'winner-banner';
+      el.style.position = 'fixed';
+      el.style.top = '16px';
+      el.style.left = '50%';
+      el.style.transform = 'translateX(-50%)';
+      el.style.zIndex = '9999';
+      el.style.padding = '12px 18px';
+      el.style.borderRadius = '12px';
+      el.style.background = 'rgba(15,23,42,0.92)';
+      el.style.color = '#fff';
+      el.style.font = '700 16px Outfit, sans-serif';
+      el.style.border = '1px solid #22c55e';
+      document.body.appendChild(el);
+    }
+    el.textContent = `🏆 Match ${matchNo} Winner: ${name}`;
+    el.style.display = 'block';
+    clearTimeout(window.__winnerBannerTimer);
+    window.__winnerBannerTimer = setTimeout(() => { el.style.display = 'none'; }, 2500);
   }
 
   function patchTrackingLogic(game) {
@@ -206,6 +261,8 @@
           s.perAgent[name].matches += 1;
           Object.values(s.perAgent).forEach(a => a.games += 1);
           logEvent(this, `🏆 Match ${s.matchCounter} won by ${name} (${WIN_ACE_SECONDS}s total in ACE)`);
+          showWinnerBanner(name, s.matchCounter);
+          playWinSound();
           s.matchCounter += 1;
 
           setTimeout(() => beginNextMatch(this), 900);
@@ -256,6 +313,23 @@
     const keys = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d'];
     keys.forEach(k => { g.input.keys[k] = false; });
     g.input.clicked = false;
+
+    // Ensure Jake (human slot) actively reacts when ball is in JACK square
+    const jack = (g.players || []).find(p => p.id === 'human') || g.humanPlayer;
+    if (jack && g.ball && jack.rank === 4) {
+      const inJackSquare = g.ball.x > 400 && g.ball.y > 400;
+      const dist = Math.hypot(g.ball.x - jack.x, g.ball.y - jack.y);
+
+      if (inJackSquare && !g.ball.heldBy && g.ball.bounceCount >= 2 && dist < 95) {
+        jack.angle = Math.atan2(260 - jack.y, 480 - jack.x);
+        g.performHit(jack);
+      }
+
+      if (g.ball.heldBy === jack && Number(jack.serveTimer || 0) > 0.45) {
+        jack.angle = Math.atan2(260 - jack.y, 480 - jack.x);
+        g.performHit(jack);
+      }
+    }
 
     // keep all players in their rank squares every tick
     for (const p of g.players || []) {
