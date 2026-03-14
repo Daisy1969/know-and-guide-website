@@ -15,10 +15,10 @@ body {
 }
 
 .watch-layout {
-    max-width: 1520px;
+    max-width: 1180px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 300px 840px 300px;
+    grid-template-columns: 840px 300px;
     gap: 18px;
     align-items: start;
 }

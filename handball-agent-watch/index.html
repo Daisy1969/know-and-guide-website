@@ -17,42 +17,6 @@
 
 <body>
     <div class="watch-layout">
-        <aside class="side-panel">
-            <h2>Match Rules</h2>
-            <div class="mode-switch" role="group" aria-label="Court mode">
-                <button id="mode-4-btn" class="mode-btn active" type="button">4-Square</button>
-                <button id="mode-6-btn" class="mode-btn" type="button">6-Square</button>
-            </div>
-            <div id="mode-indicator" class="mode-indicator">Mode: 4-Square Classic</div>
-            <ul class="rules-list" id="rules-list-base">
-                <li>Match winner: hold <strong>Ace</strong> for <strong>40s</strong>.</li>
-                <li>Skill growth: <strong>+3%</strong> every <strong>3s</strong> in Ace.</li>
-                <li>Square ownership rotates when a square owner gets out.</li>
-                <li>Autoplay mode: no human input in this watch screen.</li>
-            </ul>
-            <div id="rules-6square" class="rules-6square hidden">
-                <div class="rules-6square-title">Quick 6-Square Rules</div>
-                <ul class="rules-list">
-                    <li>6-square lane: <strong>Ace → King → Queen → Jack → Duke → Rookie</strong>.</li>
-                    <li>When someone gets out, everyone below them moves up one rank.</li>
-                    <li>The out player goes to <strong>Rookie</strong>.</li>
-                    <li>Side lanes (<strong>Duke</strong>/<strong>Rookie</strong>) re-enter central court via rotation.</li>
-                </ul>
-            </div>
-            <div class="panel-block">
-                <div class="panel-label">Current Match</div>
-                <div id="current-match-status" class="panel-value">Running</div>
-            </div>
-            <div class="panel-block">
-                <div class="panel-label">Current Ace Holder</div>
-                <div id="current-ace-holder" class="panel-value">-</div>
-            </div>
-            <div class="panel-block">
-                <div class="panel-label">Ace Progress</div>
-                <div id="current-ace-progress" class="panel-value">0 / 40s</div>
-            </div>
-        </aside>
-
         <main class="center-column">
             <div id="top-bar">
                 <div class="stat-group">
