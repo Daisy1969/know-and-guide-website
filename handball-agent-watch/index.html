@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schoolyard Handball</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        window.onerror = function (msg, url, line, col, error) {
+            console.error("Global Error:", msg, "\nURL:", url, "\nLine:", line, "\nCol:", col, "\nError:", error);
+        };
+        console.log("Index.html loaded, waiting for game.js...");
+    </script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCBbUZAPPsmKjuTZOv0ntKrI6jnpWF3Ur0",
+        authDomain: "handball-bb706.firebaseapp.com",
+        projectId: "handball-bb706",
+        storageBucket: "handball-bb706.firebasestorage.app",
+        messagingSenderId: "786792388090",
+        appId: "1:786792388090:web:cf05dbeb12f5e53bccc043",
+        measurementId: "G-6P2TG4F417"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      console.log("Firebase Initialized (Modular SDK)");
+    </script>
+</head>
+
+<body>
+    <div id="top-bar">
+        <div class="stat-group">
+            <div class="stat-box">
+                <span class="label">Rank</span>
+                <span id="player-rank" class="value">Jack</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">Ace Time</span>
+                <span id="ace-time" class="value">00:00</span>
+            </div>
+        </div>
+
+        <button id="change-name-btn" class="small-btn">Change Name</button>
+
+        <div class="stat-box">
+            <span class="label">Best Time</span>
+            <span id="best-time" class="value">--:--</span>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <h1>Handball</h1>
+            <p>Use WASD or Arrow Keys to Move</p>
+            <p>Click or Space to Hit</p>
+            <p>Don't let the ball bounce twice in your square!</p>
+            <input type="text" id="player-name-input" placeholder="Enter Your Name" maxlength="10">
+            <button id="start-btn">Play Game</button>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="screen hidden">
+            <h1>Game Over</h1>
+            <p>Your Final Rank: <span id="final-rank">Jack</span></p>
+            <button id="restart-btn">Play Again</button>
+        </div>
+    </div>
+    <script src="game_v14.js"></script>
+    <script src="agent-autoplay.js"></script>
+</body>
+
+</html>
