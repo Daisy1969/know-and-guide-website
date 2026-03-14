@@ -317,8 +317,12 @@
     s.matchInProgress = true;
     s.pendingReset = false;
 
+    // Randomize 4/6 square mode each new match
+    game.__watchMode = randomMode();
+
     game.resetGame();
     setAgentNames(game);
+    logEvent(game, `🎲 Auto mode for Match ${s.matchCounter}: ${getConfig(game).title}`);
   }
 
   function renderPanels(game) {
@@ -411,25 +415,14 @@
     };
   }
 
+  function randomMode() {
+    return Math.random() < 0.5 ? MODE_4 : MODE_6;
+  }
+
   function bindModeToggle() {
-    const b4 = document.getElementById('mode-4-btn');
-    const b6 = document.getElementById('mode-6-btn');
-    if (!b4 || !b6 || window.__modeToggleBound) return;
-    window.__modeToggleBound = true;
-
-    const setMode = (mode) => {
-      const game = window.game;
-      window.__pendingWatchMode = mode;
-      b4.classList.toggle('active', mode === MODE_4);
-      b6.classList.toggle('active', mode === MODE_6);
-      if (!game) return;
-      game.__watchMode = mode;
-      beginNextMatch(game);
-      logEvent(game, `Switched to ${MODE_CONFIG[mode].title}`);
-    };
-
-    b4.addEventListener('click', () => setMode(MODE_4));
-    b6.addEventListener('click', () => setMode(MODE_6));
+    // Human mode switching disabled by request; mode randomizes per match.
+    const switchWrap = document.querySelector('.mode-switch');
+    if (switchWrap) switchWrap.style.display = 'none';
   }
 
   function startWhenReady() {
@@ -447,7 +440,7 @@
     const g = window.game;
     if (!g || !g.humanPlayer || !g.ball || !g.input) return;
 
-    if (!g.__watchMode) g.__watchMode = window.__pendingWatchMode || MODE_4;
+    if (!g.__watchMode) g.__watchMode = randomMode();
     disableHumanMouse(g);
     convertHumanToAIAgent(g);
     patchGameModeMethods(g);
