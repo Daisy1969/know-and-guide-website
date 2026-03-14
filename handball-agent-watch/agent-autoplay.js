@@ -254,23 +254,58 @@
 
     const originalDraw = game.draw.bind(game);
     game.draw = function patchedDraw() {
-      originalDraw();
+      const mode = getMode(this);
       const ctx = this.ctx;
       const cfg = getConfig(this);
       const byRank = {};
       for (const p of this.players || []) byRank[p.rank] = p.agentName || p.id || 'Agent';
 
-      ctx.save();
+      if (mode === MODE_6) {
+        // Full custom draw for 6-square mode to avoid legacy 4-square artifacts.
+        ctx.fillStyle = '#16213e';
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-      // In 6-square mode, hide legacy large rank watermark text from base renderer
-      if (getMode(this) === MODE_6) {
+        ctx.strokeStyle = '#e94560';
+        ctx.lineWidth = 4;
         cfg.centerSquares.forEach((s) => {
-          const w = (s.bounds.maxX - s.bounds.minX) * 0.8;
-          const h = 86;
-          ctx.fillStyle = '#16213e';
-          ctx.fillRect(s.centerX - (w / 2), s.centerY - (h / 2), w, h);
+          ctx.strokeRect(s.bounds.minX, s.bounds.minY, s.bounds.maxX - s.bounds.minX, s.bounds.maxY - s.bounds.minY);
         });
+
+        // Draw entities
+        this.players.forEach(p => p.draw(ctx));
+        if (this.ball) this.ball.draw(ctx);
+
+        // Overlay labels (agent name only; ACE keeps prefix)
+        ctx.save();
+        ctx.font = 'bold 15px Outfit, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        cfg.centerSquares.forEach((s) => {
+          const text = s.rank === 1 ? `ACE · ${byRank[s.rank] || '-'}` : `${byRank[s.rank] || '-'}`;
+          const w = Math.min(240, Math.max(120, (s.bounds.maxX - s.bounds.minX) - 12));
+          const x = s.centerX;
+          const y = s.bounds.minY + 28;
+          ctx.fillStyle = 'rgba(2, 6, 23, 0.72)';
+          ctx.fillRect(x - (w / 2), y - 14, w, 28);
+          ctx.fillStyle = '#f8fafc';
+          ctx.fillText(text, x, y);
+        });
+
+        ctx.font = 'bold 14px Outfit, sans-serif';
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
+        ctx.fillRect(12, 10, 290, 30);
+        ctx.fillStyle = '#93c5fd';
+        ctx.textAlign = 'left';
+        ctx.fillText(`Mode: ${cfg.title}`, 20, 26);
+        ctx.restore();
+        return;
       }
+
+      // 4-square mode keeps base draw and readability overlays
+      originalDraw();
+
+      ctx.save();
       ctx.lineWidth = 3;
       ctx.strokeStyle = '#f43f5e';
       cfg.centerSquares.forEach((s) => {
@@ -282,9 +317,7 @@
       ctx.textBaseline = 'middle';
 
       cfg.centerSquares.forEach((s) => {
-        const text = getMode(this) === MODE_6
-          ? (s.rank === 1 ? `ACE · ${byRank[s.rank] || '-'}` : `${byRank[s.rank] || '-'}`)
-          : `${s.label} — ${byRank[s.rank] || '-'}`;
+        const text = `${s.label} — ${byRank[s.rank] || '-'}`;
         const w = Math.min(260, Math.max(120, (s.bounds.maxX - s.bounds.minX) - 12));
         const x = s.centerX;
         const y = s.bounds.minY + 28;
