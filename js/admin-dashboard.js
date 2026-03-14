@@ -75,7 +75,8 @@
         "Validate login flow and JSON load in browser",
         "Run OpenClaw morning brief and regenerate admin-brief.json",
         "Commit/push to main and verify live site propagation",
-        "If failure persists, rollback to last known good commit"
+        "If failure persists, rollback to last known good commit",
+        "OAuth fix (openai-codex): if 401 refresh_token_reused appears, run 'openclaw onboard --auth-choice openai-codex', then 'openclaw gateway restart', then verify with 'openclaw status'"
       ],
       setupRequirements: [
         "macOS/Linux host with git, node, npm/pnpm, and stable internet",

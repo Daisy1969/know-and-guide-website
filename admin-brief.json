@@ -112,7 +112,8 @@
     "3) Validate login + dashboard rendering locally (ensure JSON fetch succeeds).",
     "4) Run OpenClaw morning brief and refresh admin-brief.json content.",
     "5) Commit and push to main; verify live propagation on knowandguide.com/admin.html.",
-    "6) If broken, rollback to last known-good commit and re-run stepwise verification."
+    "6) If broken, rollback to last known-good commit and re-run stepwise verification.",
+    "7) OAuth auth-fix runbook (openai-codex): if logs show 401 refresh_token_reused, run `openclaw onboard --auth-choice openai-codex`, then `openclaw gateway restart`, then verify with `openclaw status`."
   ],
   "setupRequirements": [
     "Host prerequisites: macOS/Linux, git, node >= 20, npm/pnpm, reliable network.",
