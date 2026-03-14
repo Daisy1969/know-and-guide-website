@@ -34,12 +34,12 @@
       rankNames: ['Ace', 'King', 'Queen', 'Jack', 'Duke', 'Rookie'],
       // Equal-size 3x2 grid (all six squares same size)
       centerSquares: [
-        { rank: 5, label: 'DUKE',   bounds: { minX: 0,   maxX: 266, minY: 0,   maxY: 400 }, centerX: 133, centerY: 200 },
-        { rank: 2, label: 'KING',   bounds: { minX: 266, maxX: 533, minY: 0,   maxY: 400 }, centerX: 399, centerY: 200 },
-        { rank: 1, label: 'ACE',    bounds: { minX: 533, maxX: 800, minY: 0,   maxY: 400 }, centerX: 666, centerY: 200 },
-        { rank: 3, label: 'QUEEN',  bounds: { minX: 0,   maxX: 266, minY: 400, maxY: 800 }, centerX: 133, centerY: 600 },
-        { rank: 4, label: 'JACK',   bounds: { minX: 266, maxX: 533, minY: 400, maxY: 800 }, centerX: 399, centerY: 600 },
-        { rank: 6, label: 'ROOKIE', bounds: { minX: 533, maxX: 800, minY: 400, maxY: 800 }, centerX: 666, centerY: 600 },
+        { rank: 5, label: 'DUKE',   bounds: { minX: 0,   maxX: 267, minY: 0,   maxY: 400 }, centerX: 133.5, centerY: 200 },
+        { rank: 2, label: 'KING',   bounds: { minX: 267, maxX: 534, minY: 0,   maxY: 400 }, centerX: 400.5, centerY: 200 },
+        { rank: 1, label: 'ACE',    bounds: { minX: 534, maxX: 800, minY: 0,   maxY: 400 }, centerX: 667, centerY: 200 },
+        { rank: 3, label: 'QUEEN',  bounds: { minX: 0,   maxX: 267, minY: 400, maxY: 800 }, centerX: 133.5, centerY: 600 },
+        { rank: 4, label: 'JACK',   bounds: { minX: 267, maxX: 534, minY: 400, maxY: 800 }, centerX: 400.5, centerY: 600 },
+        { rank: 6, label: 'ROOKIE', bounds: { minX: 534, maxX: 800, minY: 400, maxY: 800 }, centerX: 667, centerY: 600 },
       ],
     },
   };
@@ -261,6 +261,16 @@
       for (const p of this.players || []) byRank[p.rank] = p.agentName || p.id || 'Agent';
 
       ctx.save();
+
+      // In 6-square mode, hide legacy large rank watermark text from base renderer
+      if (getMode(this) === MODE_6) {
+        cfg.centerSquares.forEach((s) => {
+          const w = (s.bounds.maxX - s.bounds.minX) * 0.65;
+          const h = 52;
+          ctx.fillStyle = '#16213e';
+          ctx.fillRect(s.centerX - (w / 2), s.centerY - (h / 2), w, h);
+        });
+      }
       ctx.lineWidth = 3;
       ctx.strokeStyle = '#f43f5e';
       cfg.centerSquares.forEach((s) => {
@@ -272,10 +282,12 @@
       ctx.textBaseline = 'middle';
 
       cfg.centerSquares.forEach((s) => {
-        const text = `${s.label} — ${byRank[s.rank] || '-'}`;
+        const text = getMode(this) === MODE_6
+          ? `${byRank[s.rank] || '-'}`
+          : `${s.label} — ${byRank[s.rank] || '-'}`;
         const w = Math.min(260, Math.max(120, (s.bounds.maxX - s.bounds.minX) - 12));
         const x = s.centerX;
-        const y = s.rank <= 2 ? 70 : s.rank <= 4 ? 730 : 400;
+        const y = s.bounds.minY + 28;
         ctx.fillStyle = 'rgba(2, 6, 23, 0.7)';
         ctx.fillRect(x - (w / 2), y - 14, w, 28);
         ctx.fillStyle = '#f8fafc';
