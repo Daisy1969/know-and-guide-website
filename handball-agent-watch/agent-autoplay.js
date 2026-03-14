@@ -32,13 +32,14 @@
     [MODE_6]: {
       title: '6-Square Extended',
       rankNames: ['Ace', 'King', 'Queen', 'Jack', 'Duke', 'Rookie'],
+      // Equal-size 3x2 grid (all six squares same size)
       centerSquares: [
-        { rank: 2, label: 'KING', bounds: { minX: 134, maxX: 400, minY: 0, maxY: 400 }, centerX: 267, centerY: 200 },
-        { rank: 1, label: 'ACE', bounds: { minX: 400, maxX: 666, minY: 0, maxY: 400 }, centerX: 533, centerY: 200 },
-        { rank: 3, label: 'QUEEN', bounds: { minX: 134, maxX: 400, minY: 400, maxY: 800 }, centerX: 267, centerY: 600 },
-        { rank: 4, label: 'JACK', bounds: { minX: 400, maxX: 666, minY: 400, maxY: 800 }, centerX: 533, centerY: 600 },
-        { rank: 5, label: 'DUKE', bounds: { minX: 0, maxX: 134, minY: 0, maxY: 800 }, centerX: 67, centerY: 400 },
-        { rank: 6, label: 'ROOKIE', bounds: { minX: 666, maxX: 800, minY: 0, maxY: 800 }, centerX: 733, centerY: 400 },
+        { rank: 5, label: 'DUKE',   bounds: { minX: 0,   maxX: 266, minY: 0,   maxY: 400 }, centerX: 133, centerY: 200 },
+        { rank: 2, label: 'KING',   bounds: { minX: 266, maxX: 533, minY: 0,   maxY: 400 }, centerX: 399, centerY: 200 },
+        { rank: 1, label: 'ACE',    bounds: { minX: 533, maxX: 800, minY: 0,   maxY: 400 }, centerX: 666, centerY: 200 },
+        { rank: 3, label: 'QUEEN',  bounds: { minX: 0,   maxX: 266, minY: 400, maxY: 800 }, centerX: 133, centerY: 600 },
+        { rank: 4, label: 'JACK',   bounds: { minX: 266, maxX: 533, minY: 400, maxY: 800 }, centerX: 399, centerY: 600 },
+        { rank: 6, label: 'ROOKIE', bounds: { minX: 533, maxX: 800, minY: 400, maxY: 800 }, centerX: 666, centerY: 600 },
       ],
     },
   };
