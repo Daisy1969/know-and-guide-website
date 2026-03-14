@@ -34,11 +34,62 @@ body {
 
 .side-panel h2, .side-panel h3 { margin: 0 0 10px; }
 
+.mode-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.mode-btn {
+    border: 1px solid #475569;
+    background: #1e293b;
+    color: #e2e8f0;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+.mode-btn.active {
+    background: #0f3460;
+    border-color: #e94560;
+    color: #fff;
+}
+
+.mode-indicator {
+    background: #0b1220;
+    border: 1px solid #334155;
+    color: #93c5fd;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+}
+
 .rules-list {
     margin: 0 0 12px 18px;
     padding: 0;
 }
 .rules-list li { margin-bottom: 8px; color: #dbeafe; }
+
+.rules-6square {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.rules-6square-title {
+    font-size: 12px;
+    color: #fbbf24;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+#rules-6square.hidden { display: none; }
 
 .panel-block {
     background: #1f2937;

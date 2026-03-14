@@ -19,12 +19,26 @@
     <div class="watch-layout">
         <aside class="side-panel">
             <h2>Match Rules</h2>
-            <ul class="rules-list">
+            <div class="mode-switch" role="group" aria-label="Court mode">
+                <button id="mode-4-btn" class="mode-btn active" type="button">4-Square</button>
+                <button id="mode-6-btn" class="mode-btn" type="button">6-Square</button>
+            </div>
+            <div id="mode-indicator" class="mode-indicator">Mode: 4-Square Classic</div>
+            <ul class="rules-list" id="rules-list-base">
                 <li>Match winner: hold <strong>Ace</strong> for <strong>40s</strong>.</li>
-                <li>Skill growth: <strong>+1%</strong> every <strong>3s</strong> in Ace.</li>
-                <li>Square ownership rotates by normal out/rotation logic.</li>
+                <li>Skill growth: <strong>+3%</strong> every <strong>3s</strong> in Ace.</li>
+                <li>Square ownership rotates when a square owner gets out.</li>
                 <li>Autoplay mode: no human input in this watch screen.</li>
             </ul>
+            <div id="rules-6square" class="rules-6square hidden">
+                <div class="rules-6square-title">Quick 6-Square Rules</div>
+                <ul class="rules-list">
+                    <li>6-square lane: <strong>Ace → King → Queen → Jack → Duke → Rookie</strong>.</li>
+                    <li>When someone gets out, everyone below them moves up one rank.</li>
+                    <li>The out player goes to <strong>Rookie</strong>.</li>
+                    <li>Side lanes (<strong>Duke</strong>/<strong>Rookie</strong>) re-enter central court via rotation.</li>
+                </ul>
+            </div>
             <div class="panel-block">
                 <div class="panel-label">Current Match</div>
                 <div id="current-match-status" class="panel-value">Running</div>
@@ -83,7 +97,7 @@
             <h2>Team Tracking</h2>
             <table class="score-table">
                 <thead>
-                    <tr><th>Agent</th><th>Matches</th><th>Time in ACE</th><th>Skill</th></tr>
+                    <tr><th>Agent</th><th>Matches</th><th>Time in ACE</th><th>Skill</th><th>Rank</th></tr>
                 </thead>
                 <tbody id="agent-scoreboard"></tbody>
             </table>
