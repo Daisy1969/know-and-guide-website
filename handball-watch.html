@@ -144,8 +144,8 @@
 
     function makeWatchUrl(matchId) {
       const u = new URL(window.location.href);
-      u.pathname = '/watch/' + encodeURIComponent(matchId);
-      u.search = '';
+      u.pathname = '/handball-watch.html';
+      u.search = '?matchId=' + encodeURIComponent(matchId);
       u.hash = '';
       return u.toString();
     }
