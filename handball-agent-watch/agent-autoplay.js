@@ -1,9 +1,16 @@
 (() => {
-  const AGENT_BY_RANK = {
-    1: 'Nikey (Ace)',
-    2: 'Bob (King)',
-    3: 'Phil (Queen)',
-    4: 'Jake (Jack)'
+  const AGENT_BY_ID = {
+    human: 'Jake',
+    ai1: 'Nikey',
+    ai2: 'Bob',
+    ai3: 'Phil'
+  };
+
+  const RANK_LABEL = {
+    1: 'ACE',
+    2: 'KING',
+    3: 'QUEEN',
+    4: 'JACK'
   };
 
   function constrainToJackSquare(player) {
@@ -29,12 +36,12 @@
   function setAgentNames(game) {
     if (!game || !Array.isArray(game.players)) return;
     game.players.forEach((p) => {
-      p.agentName = AGENT_BY_RANK[p.rank] || p.id || 'Agent';
+      p.agentName = AGENT_BY_ID[p.id] || p.id || 'Agent';
     });
 
     // Update HUD player rank display so viewers know this is agent-controlled
     if (game.ui?.playerRank) {
-      game.ui.playerRank.innerText = 'Jack (Agent)';
+      game.ui.playerRank.innerText = 'Agent-Controlled';
     }
   }
 
@@ -52,12 +59,17 @@
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
-      // Square labels + assigned agents (top-left King, top-right Ace, bottom-left Queen, bottom-right Jack)
+      // Dynamic square labels based on current rank ownership (moves when ranks rotate)
+      const byRank = {};
+      for (const p of this.players || []) {
+        byRank[p.rank] = p.agentName || p.id || 'Agent';
+      }
+
       const labels = [
-        { x: 200, y: 80, text: `KING — ${AGENT_BY_RANK[2]}` },
-        { x: 600, y: 80, text: `ACE — ${AGENT_BY_RANK[1]}` },
-        { x: 200, y: 720, text: `QUEEN — ${AGENT_BY_RANK[3]}` },
-        { x: 600, y: 720, text: `JACK — ${AGENT_BY_RANK[4]}` }
+        { x: 200, y: 80, text: `KING — ${byRank[2] || '-'}` },
+        { x: 600, y: 80, text: `ACE — ${byRank[1] || '-'}` },
+        { x: 200, y: 720, text: `QUEEN — ${byRank[3] || '-'}` },
+        { x: 600, y: 720, text: `JACK — ${byRank[4] || '-'}` }
       ];
 
       labels.forEach((l) => {
@@ -66,16 +78,6 @@
         ctx.fillStyle = '#f8fafc';
         ctx.fillText(l.text, l.x, l.y);
       });
-
-      // Small floating labels above each hand
-      for (const p of this.players || []) {
-        if (!p?.agentName) continue;
-        ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
-        ctx.fillRect(p.x - 55, p.y - 45, 110, 20);
-        ctx.fillStyle = '#fff';
-        ctx.font = 'bold 12px Outfit, sans-serif';
-        ctx.fillText(p.agentName.split(' ')[0], p.x, p.y - 35);
-      }
 
       ctx.restore();
     };
