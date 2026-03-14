@@ -116,6 +116,17 @@
 
   <script>
     const MAX_EVENTS = 100;
+    const API_BASE = (() => {
+      const p = new URLSearchParams(window.location.search);
+      const fromQuery = p.get('backend');
+      if (!fromQuery) return '';
+      try { return new URL(fromQuery).origin; } catch { return ''; }
+    })();
+
+    function api(path) {
+      return `${API_BASE}${path}`;
+    }
+
     const state = {
       matchId: null,
       snapshotSeq: 0,
@@ -139,7 +150,8 @@
       const path = window.location.pathname || '';
       const watchMatch = path.match(/\/watch\/([^/]+)/i);
       const queryId = new URLSearchParams(window.location.search).get('matchId');
-      return decodeURIComponent((watchMatch && watchMatch[1]) || queryId || 'demo-match-001');
+      const fallback = API_BASE ? 'm1' : 'demo-match-001';
+      return decodeURIComponent((watchMatch && watchMatch[1]) || queryId || fallback);
     }
 
     function makeWatchUrl(matchId) {
@@ -281,7 +293,7 @@
     }
 
     async function fetchSnapshot() {
-      const res = await fetch(`/api/matches/${encodeURIComponent(state.matchId)}/snapshot`, { cache: 'no-store' });
+      const res = await fetch(api(`/matches/${encodeURIComponent(state.matchId)}/snapshot`), { cache: 'no-store' });
       if (!res.ok) throw new Error(`snapshot_${res.status}`);
       const snap = await res.json();
       state.snapshotSeq = Number(snap.snapshotSeq || 0);
@@ -289,7 +301,7 @@
     }
 
     async function fetchBackfill(afterSeq) {
-      const res = await fetch(`/api/matches/${encodeURIComponent(state.matchId)}/backfill?afterSeq=${Number(afterSeq || 0)}`, { cache: 'no-store' });
+      const res = await fetch(api(`/matches/${encodeURIComponent(state.matchId)}/backfill?afterSeq=${Number(afterSeq || 0)}`), { cache: 'no-store' });
       if (!res.ok) return;
       const data = await res.json();
       if (data?.gapDetected) {
@@ -301,7 +313,7 @@
 
     function openStream() {
       if (state.es) state.es.close();
-      const url = `/api/matches/${encodeURIComponent(state.matchId)}/events/stream?afterSeq=${state.snapshotSeq}`;
+      const url = api(`/matches/${encodeURIComponent(state.matchId)}/events/stream?afterSeq=${state.snapshotSeq}`);
       state.connection.status = state.connection.attempts > 0 ? 'reconnecting' : 'connecting';
       render();
 
