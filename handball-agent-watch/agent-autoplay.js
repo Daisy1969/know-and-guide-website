@@ -404,6 +404,10 @@
       originalUpdate(dt);
 
       const s = this.__stats;
+
+      // Lock top bar mode text so base game HUD cannot overwrite with player/rank text
+      if (this.ui?.playerRank) this.ui.playerRank.innerText = getConfig(this).title;
+
       const ace = (this.players || []).find(p => p.rank === 1);
 
       if (ace && this.roundActive && s.matchInProgress) {
