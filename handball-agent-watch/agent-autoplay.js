@@ -10,6 +10,8 @@
   const SKILL_STEP_SECONDS = 3;
   const SKILL_STEP_PERCENT = 3;
   const ACE_SERVE_LIMIT_SECONDS = 3;
+  const START_SKILL_PERCENT = 120; // requested +20% start baseline
+  const SPEED_BOOST_MULTIPLIER = 1.2; // requested +20% agent speed
 
   function fmt(seconds) {
     const m = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -40,7 +42,7 @@
         games: 0,
         matches: 0,
         aceSecondsTotal: 0,
-        skillPercent: 100,
+        skillPercent: START_SKILL_PERCENT,
       };
       matchAce[name] = 0;
     });
@@ -60,7 +62,7 @@
   function logEvent(game, text) {
     const s = game.__stats;
     s.matchLog.unshift(`${new Date().toLocaleTimeString('en-AU', { hour12: false })} — ${text}`);
-    s.matchLog = s.matchLog.slice(0, 20);
+    s.matchLog = s.matchLog.slice(0, 2);
   }
 
   function disableHumanMouse(game) {
@@ -103,6 +105,10 @@
     if (!game || !Array.isArray(game.players)) return;
     game.players.forEach((p) => {
       p.agentName = AGENT_BY_ID[p.id] || p.id || 'Agent';
+      if (!p.__speedBoostApplied && typeof p.speed === 'number') {
+        p.speed = p.speed * SPEED_BOOST_MULTIPLIER;
+        p.__speedBoostApplied = true;
+      }
     });
     if (game.ui?.playerRank) game.ui.playerRank.innerText = 'Agent Watch';
   }
@@ -186,7 +192,7 @@
         s.perAgent[name].aceSecondsTotal += dt;
 
         const skillBoost = Math.floor(s.perAgent[name].aceSecondsTotal / SKILL_STEP_SECONDS) * SKILL_STEP_PERCENT;
-        s.perAgent[name].skillPercent = 100 + skillBoost;
+        s.perAgent[name].skillPercent = START_SKILL_PERCENT + skillBoost;
 
         if (this.ui?.aceTime) this.ui.aceTime.innerText = `${name} ${fmt(s.currentAceSeconds)}`;
 
@@ -228,7 +234,7 @@
     const tbody = document.getElementById('agent-scoreboard');
     if (tbody) {
       tbody.innerHTML = Object.entries(s.perAgent)
-        .map(([name, v]) => `<tr><td>${name}</td><td>${v.matches}</td><td>${v.games}</td><td>${v.skillPercent}%</td></tr>`)
+        .map(([name, v]) => `<tr><td>${name}</td><td>${v.matches}</td><td>${fmt(v.aceSecondsTotal)}</td><td>${v.skillPercent}%</td></tr>`)
         .join('');
     }
 
