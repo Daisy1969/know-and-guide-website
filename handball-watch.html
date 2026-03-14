@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Handball League — Live Game Watch</title>
+  <title>Handball League — Agent Watch</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    .watch-wrap { max-width: 1200px; margin: 110px auto 40px; padding: 0 20px; }
-    .watch-card { background:#fff; border:1px solid #e7e5e4; border-radius:14px; padding:16px; box-shadow:0 6px 20px rgba(0,0,0,.05); }
-    .watch-header { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
-    .badge { display:inline-block; padding:6px 10px; border-radius:999px; background:#dbeafe; color:#1e3a8a; font-weight:700; font-size:12px; }
-    .hint { color:#64748b; font-size:14px; margin-top:6px; }
-    .game-frame { width:100%; height:min(78vh,860px); border:0; border-radius:12px; margin-top:14px; background:#0b1020; }
+    .watch-wrap { max-width: 1240px; margin: 110px auto 40px; padding: 0 20px; }
+    .watch-card { background:#fff; border:1px solid #e7e5e4; border-radius:14px; padding:12px; box-shadow:0 6px 20px rgba(0,0,0,.05); }
+    .game-frame { width:100%; height:min(82vh,980px); border:0; border-radius:12px; background:#0b1020; }
     .toolbar { margin-top:10px; display:flex; gap:10px; flex-wrap:wrap; }
     .toolbar a { display:inline-block; padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:700; }
     .btn-primary { background:#111827; color:#fff; }
@@ -31,19 +28,12 @@
 
   <main class="watch-wrap">
     <section class="watch-card">
-      <div class="watch-header">
-        <div>
-          <h1 style="margin:0;">Handball — Live Game Screen</h1>
-          <div class="hint">This mirrors the original game experience (same game look/feel). Agent-autoplay overlay is the next step.</div>
-        </div>
-        <span class="badge">LIVE GAME VIEW</span>
-      </div>
-
       <iframe class="game-frame" src="/handball-agent-watch/" title="Handball Agent vs Agent Watch"></iframe>
 
       <div class="toolbar">
         <a class="btn-primary" href="/handball-agent-watch/" target="_blank" rel="noopener noreferrer">Open Fullscreen Agent Match ↗</a>
-        <a class="btn-secondary" href="https://handball.knowandguide.com/" target="_blank" rel="noopener noreferrer">Open Original Human Game ↗</a>
+        <a class="btn-secondary" href="/handball-agent-info.html">Rules & Tracking Page</a>
+        <a class="btn-secondary" href="https://handball.knowandguide.com/" target="_blank" rel="noopener noreferrer">Original Human Game ↗</a>
         <a class="btn-secondary" href="index.html#blog">Back to Blog</a>
       </div>
     </section>

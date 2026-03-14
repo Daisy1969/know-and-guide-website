@@ -8,7 +8,8 @@
 
   const WIN_ACE_SECONDS = 40;
   const SKILL_STEP_SECONDS = 3;
-  const SKILL_STEP_PERCENT = 1;
+  const SKILL_STEP_PERCENT = 3;
+  const ACE_SERVE_LIMIT_SECONDS = 3;
 
   function fmt(seconds) {
     const m = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -33,6 +34,7 @@
   function ensureStats(game) {
     if (game.__stats) return;
     const stats = {};
+    const matchAce = {};
     Object.values(AGENT_BY_ID).forEach(name => {
       stats[name] = {
         games: 0,
@@ -40,16 +42,18 @@
         aceSecondsTotal: 0,
         skillPercent: 100,
       };
+      matchAce[name] = 0;
     });
 
     game.__stats = {
       perAgent: stats,
+      matchAceSecondsByAgent: matchAce,
       currentAceAgent: null,
       currentAceSeconds: 0,
       matchInProgress: true,
       matchLog: [],
-      lastAceRankOwner: null,
       matchCounter: 1,
+      pendingReset: false,
     };
   }
 
@@ -64,6 +68,26 @@
     game.__mouseDisabled = true;
     game.canvas.style.pointerEvents = 'none';
     if (game.ui?.changeNameBtn) game.ui.changeNameBtn.style.display = 'none';
+  }
+
+  function convertHumanToAIAgent(game) {
+    if (!game || game.__humanConverted) return;
+    if (typeof AIPlayer !== 'function') return;
+    if (!game.humanPlayer || game.humanPlayer instanceof AIPlayer) {
+      game.__humanConverted = true;
+      return;
+    }
+
+    const old = game.humanPlayer;
+    const ai = new AIPlayer('human', old.x, old.y, old.color || '#4ecca3');
+    ai.rank = old.rank;
+    ai.angle = old.angle || 0;
+    ai.serveTimer = old.serveTimer || 0;
+
+    const idx = game.players.findIndex(p => p.id === 'human');
+    if (idx >= 0) game.players[idx] = ai;
+    game.humanPlayer = ai;
+    game.__humanConverted = true;
   }
 
   function startWhenReady() {
@@ -118,6 +142,19 @@
     };
   }
 
+  function beginNextMatch(game) {
+    const s = game.__stats;
+    Object.keys(s.matchAceSecondsByAgent).forEach(k => { s.matchAceSecondsByAgent[k] = 0; });
+    s.currentAceAgent = null;
+    s.currentAceSeconds = 0;
+    s.matchInProgress = true;
+    s.pendingReset = false;
+
+    game.resetGame();
+    setAgentNames(game);
+    convertHumanToAIAgent(game);
+  }
+
   function patchTrackingLogic(game) {
     if (!game || game.__trackingPatched) return;
     game.__trackingPatched = true;
@@ -130,16 +167,22 @@
       const s = this.__stats;
       const ace = (this.players || []).find(p => p.rank === 1);
 
-      if (ace && this.roundActive) {
+      if (ace && this.roundActive && s.matchInProgress) {
         const name = ace.agentName || ace.id || 'Agent';
 
         if (s.currentAceAgent !== name) {
           s.currentAceAgent = name;
-          s.currentAceSeconds = 0;
           logEvent(this, `${name} moved into ACE square`);
         }
 
-        s.currentAceSeconds += dt;
+        // Strict serve rule in ACE: serve within 3s or rotate out to Jack
+        if (this.ball?.heldBy === ace && Number(ace.serveTimer || 0) > ACE_SERVE_LIMIT_SECONDS) {
+          logEvent(this, `⏱️ ${name} exceeded 3s serve limit in ACE → rotated to JACK`);
+          this.handleOut(ace);
+        }
+
+        s.matchAceSecondsByAgent[name] += dt;
+        s.currentAceSeconds = s.matchAceSecondsByAgent[name];
         s.perAgent[name].aceSecondsTotal += dt;
 
         const skillBoost = Math.floor(s.perAgent[name].aceSecondsTotal / SKILL_STEP_SECONDS) * SKILL_STEP_PERCENT;
@@ -147,25 +190,19 @@
 
         if (this.ui?.aceTime) this.ui.aceTime.innerText = `${name} ${fmt(s.currentAceSeconds)}`;
 
-        // best time label = best agent skill snapshot leader by ace total
         const best = Object.entries(s.perAgent).sort((a,b)=>b[1].aceSecondsTotal-a[1].aceSecondsTotal)[0];
         if (this.ui?.bestTime && best) this.ui.bestTime.innerText = `${best[0]} ${fmt(best[1].aceSecondsTotal)}`;
 
-        if (s.currentAceSeconds >= WIN_ACE_SECONDS && s.matchInProgress) {
+        // Match win when any agent reaches 40s total in ACE this match
+        if (s.currentAceSeconds >= WIN_ACE_SECONDS && !s.pendingReset) {
           s.matchInProgress = false;
+          s.pendingReset = true;
           s.perAgent[name].matches += 1;
           Object.values(s.perAgent).forEach(a => a.games += 1);
-          logEvent(this, `🏆 Match ${s.matchCounter} won by ${name} (40s in ACE)`);
+          logEvent(this, `🏆 Match ${s.matchCounter} won by ${name} (${WIN_ACE_SECONDS}s total in ACE)`);
           s.matchCounter += 1;
 
-          // restart clean match after short delay
-          setTimeout(() => {
-            this.resetGame();
-            setAgentNames(this);
-            s.currentAceAgent = null;
-            s.currentAceSeconds = 0;
-            s.matchInProgress = true;
-          }, 900);
+          setTimeout(() => beginNextMatch(this), 900);
         }
       }
 
@@ -196,9 +233,7 @@
     }
 
     const log = document.getElementById('match-log');
-    if (log) {
-      log.innerHTML = s.matchLog.map(i => `<li>${i}</li>`).join('');
-    }
+    if (log) log.innerHTML = s.matchLog.map(i => `<li>${i}</li>`).join('');
   }
 
   function autopilotTick() {
@@ -207,37 +242,19 @@
 
     disableHumanMouse(g);
     setAgentNames(g);
+    convertHumanToAIAgent(g);
     patchDrawForSquareLabels(g);
     patchTrackingLogic(g);
 
+    // no human inputs in watch mode
     const keys = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d'];
     keys.forEach(k => { g.input.keys[k] = false; });
     g.input.clicked = false;
 
-    const p = g.humanPlayer;
-    const b = g.ball;
-
-    const inJackSquare = (b.x > 400 && b.y > 400);
-    const targetX = inJackSquare ? b.x : 600;
-    const targetY = inJackSquare ? b.y : 600;
-
-    const dx = targetX - p.x;
-    const dy = targetY - p.y;
-    const deadzone = 16;
-
-    if (dy < -deadzone) { g.input.keys['ArrowUp'] = true; g.input.keys['w'] = true; }
-    if (dy > deadzone) { g.input.keys['ArrowDown'] = true; g.input.keys['s'] = true; }
-    if (dx < -deadzone) { g.input.keys['ArrowLeft'] = true; g.input.keys['a'] = true; }
-    if (dx > deadzone) { g.input.keys['ArrowRight'] = true; g.input.keys['d'] = true; }
-
-    // fixed aim (mouse disabled)
-    g.input.mouseX = 460;
-    g.input.mouseY = 280;
-
-    const nearBall = Math.hypot(b.x - p.x, b.y - p.y) < 68;
-    if (nearBall && !b.heldBy && inJackSquare) g.input.clicked = true;
-
-    clampToRankSquare(p);
+    // keep all players in their rank squares every tick
+    for (const p of g.players || []) {
+      clampToRankSquare(p);
+    }
   }
 
   function boot() {
