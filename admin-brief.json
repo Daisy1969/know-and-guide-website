@@ -1,6 +1,6 @@
 {
-  "generatedAt": "15/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-15 03:00 AEST",
+  "generatedAt": "16/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-16 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
     { "name": "Gateway", "pct": 98, "status": "🟢" },
@@ -9,10 +9,10 @@
     { "name": "Jobs/Cron", "pct": 95, "status": "🟢" }
   ],
   "timeline": [
-    "✅ 03:00 AEST check complete: gateway runtime active (PID 59646), RPC probe OK on ws://127.0.0.1:18789.",
-    "⚠️ Doctor warning still active: Telegram groupPolicy is allowlist with empty groupAllowFrom/allowFrom; inbound group messages will be dropped until allowlist is populated or policy is changed.",
-    "🚀 Overnight delivery burst in know-and-guide-website: 13 main-branch commits landed in the 19:00–03:00 window, focused on handball watch reliability, gameplay tuning, backend URL support, and security cleanup.",
-    "🧪 Release gate unchanged overnight: James PASS records remain valid for prior website scopes; public handball release remains evidence-gated pending final reconnect E2E closure proof."
+    "✅ 03:00 AEST check complete: gateway runtime active (PID 88065), RPC probe OK on ws://127.0.0.1:18789.",
+    "⚠️ Doctor warning remains active: Telegram groupPolicy is allowlist with empty groupAllowFrom/allowFrom; inbound group messages will be silently dropped until allowlist is populated or policy is changed.",
+    "🌙 Overnight execution was stable and quiet: no new main-branch commits landed in know-and-guide-website during 19:00–03:00 AEST.",
+    "🧪 Release gate unchanged: James decision for public handball internet release remains NO-SHIP/FAIL pending served-runtime gap guard implementation and fresh E2E closure evidence."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release decisions",
@@ -25,25 +25,25 @@
     "📊 Bill — reporting, CRO and KPI cadence",
     "🛍️ Ella — launch/revenue execution"
   ],
-  "releaseGate": "Admin content updates: Mike-only, no James sign-off required. Public internet releases: James gate required and currently conditional on final reconnect E2E evidence + closure verification.",
+  "releaseGate": "Admin content updates: Mike-only, no James sign-off required. Public internet releases: James gate required and currently FAIL/NO-SHIP until served-runtime sequence-gap guard + reconnect E2E closure evidence are attached.",
   "priorities": [
-    "Close final reconnect E2E evidence for public handball release readiness",
-    "Harden Telegram group allowlist configuration to prevent silent group-message drops",
-    "Stabilize overnight handball watch changes with regression checks before public release"
+    "Implement and verify served-runtime sequence-gap guard (`gap.detected` + forced close on mismatch)",
+    "Produce final reconnect E2E evidence bundle and re-submit for James gate review",
+    "Fix Telegram group allowlist configuration to prevent silent group-message drops"
   ],
   "projectBoard": [
     {
       "project": "Handball Live Game (website release)",
       "complete": "96%",
-      "delta": "+1%",
-      "eta": "Today",
+      "delta": "+0%",
+      "eta": "Today (gate-dependent)",
       "agents": "Claire, James, Bob, Nikey, Phil, Jake"
     },
     {
       "project": "Website Admin + Morning Brief Automation",
-      "complete": "98%",
+      "complete": "99%",
       "delta": "+1%",
-      "eta": "1-2 days",
+      "eta": "Today",
       "agents": "Claire, Bill"
     },
     {
@@ -76,20 +76,20 @@
     }
   ],
   "agentToday": [
-    "Bob — complete final watch-route wiring and reconnect-path smoke validation",
-    "Nikey — verify event ordering + reconnect edge cases under load",
-    "Phil — finalize spectator UI polish and degraded-state behavior",
-    "Jake — execute reliability runbook and rollback rehearsal",
+    "Bob — implement served-runtime expected-seq guard and verify reconnect correctness",
+    "Nikey — close stream-seq invariant gaps and attach runtime evidence logs",
+    "Phil — validate spectator degraded-state UX on reconnect/gap control events",
+    "Jake — rerun integration gate checks on current head and publish corrected artifact",
     "Bill — publish morning brief, sync admin JSON, and confirm commit traceability",
-    "Jane — sequence sponsor/comms updates against release timing",
-    "Ella — prepare outreach and monetisation support assets",
+    "Jane — stage sponsor/comms timing based on gate outcome",
+    "Ella — prepare monetisation/outreach assets aligned to release timing",
     "Claire — enforce release gates, coordinate priorities, and unblock delivery",
     "James — maintain pass/fail release decisions for any public internet deploy request"
   ],
   "jamesDecisions": [
-    "PASS — Team photo website release scope audit (index.html, style.css, image asset) dated 2026-03-09.",
-    "PASS — Prior website patch audit (index.html + style.css) dated 2026-03-07.",
-    "PENDING — Public P0 handball internet release remains gated pending final reconnect E2E evidence and closure verification."
+    "FAIL — Handball public internet release gate (2026-03-14 reconciled): NO-SHIP pending served-runtime gap guard proof.",
+    "CONDITIONAL PASS — Final ship audit set (2026-03-13) with same-day corrective conditions.",
+    "PASS — Team photo website release scope audit (2026-03-09)."
   ],
   "orgAreas": [
     "Leadership & Governance — Mike, Claire",
@@ -103,8 +103,8 @@
     "js/admin-dashboard.js — login/auth and rendering logic",
     "admin-brief.json — single source of morning briefing data",
     "handball-watch.html — public spectator page for live matches",
-    "_control/JAMES_AUDIT_TEAM_PHOTO_RELEASE_2026-03-09.md — latest audit decision",
-    "_control/JAMES_WEBSITE_PATCH_AUDIT_2026-03-07.md — prior audit decision"
+    "_control/JAMES_HANDBALL_RECONCILED_GATE_NOW.md — current release gate decision",
+    "_control/JAMES_HANDBALL_FINAL_SHIP_DECISION_TODAY.md — prior conditional pass context"
   ],
   "rebuildPlan": [
     "1) Clone repo Daisy1969/know-and-guide-website into a clean workspace.",
