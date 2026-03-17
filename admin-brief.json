@@ -1,6 +1,6 @@
 {
-  "generatedAt": "17/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-17 03:00 AEST",
+  "generatedAt": "18/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-18 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
     { "name": "Gateway", "pct": 97, "status": "🟢" },
@@ -9,10 +9,10 @@
     { "name": "Jobs/Cron", "pct": 95, "status": "🟢" }
   ],
   "timeline": [
-    "✅ 03:00 AEST status check complete: Gateway LaunchAgent running (PID 88065), Telegram channel ON/OK.",
-    "⚠️ Memory semantic search remains unavailable (local embeddings dependency missing), fallback memory path in effect.",
-    "🌙 Overnight execution was stable: no new main-branch commits landed in know-and-guide-website during 19:00–03:00 AEST.",
-    "🧪 Release gate unchanged: James public handball internet-release decision remains FAIL / NO-SHIP until served-runtime sequence-gap guard and fresh closure evidence are delivered."
+    "✅ 03:00 AEST status check complete: Gateway LaunchAgent running (PID 29050), Telegram channel ON/OK.",
+    "⚠️ Gateway doctor warning persists: Telegram groupPolicy is allowlist with empty allowlist; group messages may be silently dropped.",
+    "🌙 Overnight repo activity: no new main-branch commits landed in know-and-guide-website during 19:00–03:00 AEST.",
+    "🧪 Release gate unchanged: James handball internet-release verdict remains FAIL / NO-SHIP pending served-runtime sequence-gap guard + reconnect evidence closure."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release decisions",
@@ -30,43 +30,6 @@
     "Advance OpenClaw Setup Service APAC planning pack into executable KPI/dashboard rollout (Priority #1 monetisation lane)",
     "Close handball served-runtime sequence-gap guard + reconnect E2E evidence bundle for James re-review",
     "Remediate Telegram group allowlist policy gap to prevent silent group-message drops"
-  ],
-  "projectBoard": [
-    {
-      "project": "OpenClaw Setup Service APAC",
-      "complete": "12%",
-      "delta": "+4%",
-      "eta": "This week (planning pack to operating dashboard)",
-      "agents": "Ella (lead), Bill, Jane, Bob, Nikey, Jake, James"
-    },
-    {
-      "project": "Handball Live Game (website release)",
-      "complete": "96%",
-      "delta": "+0%",
-      "eta": "Today (gate-dependent)",
-      "agents": "Claire, James, Bob, Nikey, Phil, Jake"
-    },
-    {
-      "project": "Website Admin + Morning Brief Automation",
-      "complete": "99%",
-      "delta": "+0%",
-      "eta": "Today",
-      "agents": "Claire, Bill"
-    },
-    {
-      "project": "Maths Penpal Growth + Outreach",
-      "complete": "74%",
-      "delta": "+0%",
-      "eta": "5-10 days",
-      "agents": "Jane, Ella, Bill"
-    },
-    {
-      "project": "Zodiac Consensus Engine (secondary)",
-      "complete": "48%",
-      "delta": "+0%",
-      "eta": "2-3 weeks",
-      "agents": "Claire, Bob, Nikey, Phil, Jake, Jane"
-    }
   ],
   "agentToday": [
     "Ella — convert APAC service planning pack into launch execution checklist + offer sequencing",
