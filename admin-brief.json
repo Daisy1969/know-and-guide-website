@@ -1,16 +1,16 @@
 {
-  "generatedAt": "18/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-18 03:00 AEST",
+  "generatedAt": "19/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-19 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
     { "name": "Gateway", "pct": 97, "status": "🟢" },
-    { "name": "Telegram Link", "pct": 91, "status": "🟢" },
+    { "name": "Telegram Link", "pct": 92, "status": "🟢" },
     { "name": "Agent Runtime", "pct": 95, "status": "🟢" },
     { "name": "Jobs/Cron", "pct": 95, "status": "🟢" }
   ],
   "timeline": [
     "✅ 03:00 AEST status check complete: Gateway LaunchAgent running (PID 29050), Telegram channel ON/OK.",
-    "⚠️ Gateway doctor warning persists: Telegram groupPolicy is allowlist with empty allowlist; group messages may be silently dropped.",
+    "✅ openclaw doctor completed cleanly: no channel security warnings detected.",
     "🌙 Overnight repo activity: no new main-branch commits landed in know-and-guide-website during 19:00–03:00 AEST.",
     "🧪 Release gate unchanged: James handball internet-release verdict remains FAIL / NO-SHIP pending served-runtime sequence-gap guard + reconnect evidence closure."
   ],
@@ -29,7 +29,7 @@
   "priorities": [
     "Advance OpenClaw Setup Service APAC planning pack into executable KPI/dashboard rollout (Priority #1 monetisation lane)",
     "Close handball served-runtime sequence-gap guard + reconnect E2E evidence bundle for James re-review",
-    "Remediate Telegram group allowlist policy gap to prevent silent group-message drops"
+    "Keep daily admin briefing sync + commit pipeline green for leadership visibility"
   ],
   "agentToday": [
     "Ella — convert APAC service planning pack into launch execution checklist + offer sequencing",
