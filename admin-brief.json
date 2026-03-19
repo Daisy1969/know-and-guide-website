@@ -1,51 +1,51 @@
 {
-  "generatedAt": "19/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-19 03:00 AEST",
+  "generatedAt": "20/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-20 03:00 AEST",
   "window": "Overnight window: 19:00–03:00 AEST",
   "health": [
-    { "name": "Gateway", "pct": 97, "status": "🟢" },
+    { "name": "Gateway Service", "pct": 97, "status": "🟢" },
     { "name": "Telegram Link", "pct": 92, "status": "🟢" },
     { "name": "Agent Runtime", "pct": 95, "status": "🟢" },
-    { "name": "Jobs/Cron", "pct": 95, "status": "🟢" }
+    { "name": "Security/Doctor", "pct": 88, "status": "🟡" }
   ],
   "timeline": [
-    "✅ 03:00 AEST status check complete: Gateway LaunchAgent running (PID 29050), Telegram channel ON/OK.",
-    "✅ openclaw doctor completed cleanly: no channel security warnings detected.",
-    "🌙 Overnight repo activity: no new main-branch commits landed in know-and-guide-website during 19:00–03:00 AEST.",
-    "🧪 Release gate unchanged: James handball internet-release verdict remains FAIL / NO-SHIP pending served-runtime sequence-gap guard + reconnect evidence closure."
+    "✅ 03:00 AEST check complete: OpenClaw LaunchAgent running (pid 29050), Telegram channel ON/OK.",
+    "✅ Overnight git activity in know-and-guide-website: no new main commits after the 2026-03-19 03:01 AEST morning-brief sync commit.",
+    "⚠️ Doctor warning: Telegram groupPolicy allowlist currently has no allowed senders configured (group messages would be dropped).",
+    "🧪 Release gate unchanged: James reconciled handball public internet release as FAIL / NO-SHIP until served-runtime sequence-gap guard + reconnect evidence closure."
   ],
   "agents": [
-    "🧭 Claire — orchestration, governance, release decisions",
-    "🧪 James — audit gate and release safety sign-off",
-    "🛠️ Bob — implementation lead (watch route + engine fixes)",
-    "👨‍💻 Nikey — backend stream/auth/event pipeline",
-    "👨‍💻 Phil — spectator UI/live watch UX",
-    "🧑‍💻 Jake — integration reliability and test/runbook",
-    "📝 Jane — comms and sponsor messaging",
-    "📊 Bill — reporting, CRO and KPI cadence",
-    "🛍️ Ella — launch/revenue execution"
+    "🧭 Claire — orchestration, governance, release control",
+    "🧪 James — audit gate and release sign-off authority",
+    "🛠️ Bob — implementation lead (runtime gap guard + integration fixes)",
+    "👨‍💻 Nikey — backend stream/auth/event pipeline correctness",
+    "👨‍💻 Phil — spectator UX and reconnect/degraded-state behavior",
+    "🧑‍💻 Jake — integration reliability, runbook, and retest evidence",
+    "📝 Jane — comms and sponsor/market messaging",
+    "📊 Bill — reporting, KPI cadence, admin sync",
+    "🛍️ Ella — launch packaging and revenue execution"
   ],
-  "releaseGate": "Admin content updates: Mike-only, no James sign-off required. Public internet releases: James gate required and currently FAIL/NO-SHIP until served-runtime sequence-gap guard + reconnect E2E closure evidence are attached.",
+  "releaseGate": "Admin dashboard content updates (Mike-only) do not require James sign-off. Public internet releases remain James-gated and currently FAIL/NO-SHIP on reconciled handball decision pending served-runtime sequence-gap guard + reconnect E2E evidence.",
   "priorities": [
-    "Advance OpenClaw Setup Service APAC planning pack into executable KPI/dashboard rollout (Priority #1 monetisation lane)",
-    "Close handball served-runtime sequence-gap guard + reconnect E2E evidence bundle for James re-review",
-    "Keep daily admin briefing sync + commit pipeline green for leadership visibility"
+    "OpenClaw Setup Service APAC (Priority #1): move planning-pack economics into executable KPI + operating dashboard rollout",
+    "Close handball served-runtime sequence-gap guard and attach proof bundle for James re-review",
+    "Keep daily admin briefing sync + commit trail healthy for leadership visibility"
   ],
   "agentToday": [
-    "Ella — convert APAC service planning pack into launch execution checklist + offer sequencing",
-    "Bill — publish morning brief, sync admin JSON, and maintain KPI/reporting traceability",
-    "Bob — implement served-runtime expected-seq guard and verify reconnect correctness",
-    "Nikey — close stream-seq invariant gaps and attach runtime evidence logs",
-    "Phil — validate spectator degraded-state UX on reconnect/gap control events",
-    "Jake — rerun integration gate checks on current head and publish corrected artifact",
-    "Jane — stage sponsor/comms timing based on gate outcome",
-    "Claire — enforce release gates, coordinate priorities, and unblock delivery",
-    "James — maintain pass/fail release decisions for any public internet deploy request"
+    "Claire — enforce release governance, sequence priorities, and unblock critical workstreams",
+    "James — hold release gate at NO-SHIP/PASS decisions based on evidence",
+    "Bob — land served-runtime expected-seq guard and verify reconnect behavior",
+    "Nikey — close sequence invariant gaps and attach backend runtime evidence",
+    "Phil — validate spectator UX response to gap.detected/reconnect conditions",
+    "Jake — rerun integration gate checks and publish corrected artifacts",
+    "Jane — align sponsor and market communications with gate state",
+    "Bill — deliver morning brief, sync admin JSON, maintain KPI/reporting continuity",
+    "Ella — convert APAC offer model into launch execution checklist and sequencing"
   ],
   "jamesDecisions": [
-    "FAIL — Handball public internet release gate (2026-03-14 reconciled): NO-SHIP pending served-runtime gap guard proof.",
-    "CONDITIONAL PASS — Final ship audit set (2026-03-13) with same-day corrective conditions.",
-    "PASS — Team photo website release scope audit (2026-03-09)."
+    "FAIL — Handball reconciled gate (2026-03-14): NO-SHIP until served-runtime sequence-gap guard + reconnect proof are complete.",
+    "CONDITIONAL PASS — Handball final ship audit set (2026-03-13) with same-day corrective conditions.",
+    "PASS — Team photo website release audit (2026-03-09)."
   ],
   "orgAreas": [
     "Leadership & Governance — Mike, Claire",
@@ -55,28 +55,28 @@
     "Operations & Reporting — Bill"
   ],
   "fileDirectory": [
-    "admin.html — admin dashboard layout and section containers",
-    "js/admin-dashboard.js — login/auth and rendering logic",
-    "admin-brief.json — single source of morning briefing data",
-    "handball-watch.html — public spectator page for live matches",
-    "_control/JAMES_HANDBALL_RECONCILED_GATE_NOW.md — current release gate decision",
-    "_control/OPENCLAW_SETUP_SERVICE_APAC_EXEC_Bill.md — APAC financial model baseline"
+    "admin.html — admin dashboard shell",
+    "js/admin-dashboard.js — auth + rendering logic",
+    "admin-brief.json — dashboard morning brief data source",
+    "handball-watch.html — public spectator experience",
+    "_control/JAMES_HANDBALL_RECONCILED_GATE_NOW.md — current release gate authority",
+    "_control/OPENCLAW_SETUP_SERVICE_APAC_EXEC_Bill.md — APAC economic baseline"
   ],
   "rebuildPlan": [
-    "1) Clone repo Daisy1969/know-and-guide-website into a clean workspace.",
+    "1) Clone Daisy1969/know-and-guide-website to clean workspace.",
     "2) Restore admin stack files: admin.html, js/admin-dashboard.js, admin-brief.json.",
-    "3) Validate login + dashboard rendering locally (ensure JSON fetch succeeds).",
-    "4) Run OpenClaw morning brief and refresh admin-brief.json content.",
-    "5) Commit and push to main; verify live propagation on knowandguide.com/admin.html.",
-    "6) If broken, rollback to last known-good commit and re-run stepwise verification.",
-    "7) OAuth auth-fix runbook (openai-codex): if logs show 401 refresh_token_reused, run `openclaw onboard --auth-choice openai-codex`, then `openclaw gateway restart`, then verify with `openclaw status`."
+    "3) Validate login + dashboard render locally (JSON fetch + field mapping).",
+    "4) Run morning brief generation and refresh admin-brief.json.",
+    "5) Commit and push to main, then verify live admin propagation.",
+    "6) If regression occurs, rollback to last known-good commit and re-verify stepwise.",
+    "7) If auth token errors appear (e.g. refresh_token_reused), run openclaw onboard, restart gateway, then re-check status."
   ],
   "setupRequirements": [
-    "Host prerequisites: macOS/Linux, git, node >= 20, npm/pnpm, reliable network.",
-    "GitHub: push access to Daisy1969/know-and-guide-website.",
-    "OpenClaw: installed and healthy (openclaw status shows Gateway service active).",
-    "Auth: OpenAI/Codex logged in with valid refresh token (no refresh_token_reused errors).",
-    "Channels: Telegram linked for brief delivery.",
-    "Workspace configured at ~/.openclaw/workspace with _control and memory files available."
+    "Host: macOS/Linux with git + node >= 20 and stable network",
+    "Repo access: push rights to Daisy1969/know-and-guide-website",
+    "OpenClaw healthy: gateway service active in openclaw status",
+    "Valid model auth/session (no refresh token reuse faults)",
+    "Telegram channel linked for morning brief delivery",
+    "Workspace includes memory + _control execution files"
   ]
 }
