@@ -1,18 +1,35 @@
 {
-  "generatedAt": "20/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-20 03:00 AEST",
-  "window": "Overnight window: 19:00–03:00 AEST",
+  "generatedAt": "21/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-21 03:00 AEST",
+  "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
-    { "name": "Gateway Service", "pct": 97, "status": "🟢" },
-    { "name": "Telegram Link", "pct": 92, "status": "🟢" },
-    { "name": "Agent Runtime", "pct": 95, "status": "🟢" },
-    { "name": "Security/Doctor", "pct": 88, "status": "🟡" }
+    {
+      "name": "Gateway Service",
+      "pct": 97,
+      "status": "🟢"
+    },
+    {
+      "name": "Telegram Link",
+      "pct": 92,
+      "status": "🟢"
+    },
+    {
+      "name": "Agent Runtime",
+      "pct": 93,
+      "status": "🟢"
+    },
+    {
+      "name": "Security/Doctor",
+      "pct": 88,
+      "status": "🟡"
+    }
   ],
   "timeline": [
-    "✅ 03:00 AEST check complete: OpenClaw LaunchAgent running (pid 29050), Telegram channel ON/OK.",
-    "✅ Overnight git activity in know-and-guide-website: no new main commits after the 2026-03-19 03:01 AEST morning-brief sync commit.",
-    "⚠️ Doctor warning: Telegram groupPolicy allowlist currently has no allowed senders configured (group messages would be dropped).",
-    "🧪 Release gate unchanged: James reconciled handball public internet release as FAIL / NO-SHIP until served-runtime sequence-gap guard + reconnect evidence closure."
+    "✅ 03:00 AEST check complete: OpenClaw LaunchAgent running (pid 29050), RPC probe OK.",
+    "✅ Repo sync baseline intact: latest main morning-brief commit is 5bff25f (2026-03-20 03:02 AEST).",
+    "🛠️ Overnight workspace activity detected in handball-agent-watch (agent-autoplay.js, game_v14.js, index.html) awaiting gate review.",
+    "⚠️ Doctor warning persists: Telegram groupPolicy allowlist has no allowed senders configured (group messages would be dropped).",
+    "🧪 James release gate remains FAIL / NO-SHIP until served-runtime sequence-gap guard + reconnect evidence closure."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release control",
