@@ -68,11 +68,28 @@
 
             <h3>Recent Match Events</h3>
             <ul id="match-log" class="match-log"></ul>
+
+            <h3>Rules (Current)</h3>
+            <ol class="match-log">
+                <li><strong>Grid:</strong> 4-square only (Ace, King, Queen, Jack).</li>
+                <li><strong>Rank flow:</strong> out player drops to Jack; lower ranks move up.</li>
+                <li><strong>Ace serve:</strong> must bounce once in Ace square before travel.</li>
+                <li><strong>Serve faults:</strong> serve line hit = fault/re-serve; 2 consecutive faults = Ace out.</li>
+                <li><strong>Full rule:</strong> no own-square first bounce after hit = hitter out.</li>
+                <li><strong>Single-bounce play:</strong> receiver must play after first bounce; double bounce in square = out.</li>
+                <li><strong>No volleying:</strong> early touch before legal bounce is out.</li>
+                <li><strong>Lines:</strong> any non-serve line bounce = hitter out.</li>
+                <li><strong>Out of bounds:</strong> last hitter is out.</li>
+                <li><strong>Poaching:</strong> touching from another player's square = out.</li>
+                <li><strong>Double touch:</strong> same player cannot strike twice in succession.</li>
+                <li><strong>Serve targeting:</strong> serves are directed toward other agents.</li>
+                <li><strong>Hit variance:</strong> each hit speed has ±10% random variance.</li>
+            </ol>
         </aside>
     </div>
 
-    <script src="game_v14.js"></script>
-    <script src="agent-autoplay.js"></script>
+    <script src="game_v14.js?v=20260321a"></script>
+    <script src="agent-autoplay.js?v=20260321a"></script>
 </body>
 
 </html>

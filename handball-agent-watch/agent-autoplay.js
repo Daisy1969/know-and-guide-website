@@ -292,12 +292,6 @@
           ctx.fillText(text, x, y);
         });
 
-        ctx.font = 'bold 14px Outfit, sans-serif';
-        ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
-        ctx.fillRect(12, 10, 290, 30);
-        ctx.fillStyle = '#93c5fd';
-        ctx.textAlign = 'left';
-        ctx.fillText(`Mode: ${cfg.title}`, 20, 26);
         ctx.restore();
         return;
       }
@@ -306,6 +300,12 @@
       originalDraw();
 
       ctx.save();
+      // Highlight ownership zones in yellow so square boundaries are visually explicit.
+      cfg.centerSquares.forEach((s) => {
+        ctx.fillStyle = 'rgba(255, 221, 87, 0.18)';
+        ctx.fillRect(s.bounds.minX, s.bounds.minY, s.bounds.maxX - s.bounds.minX, s.bounds.maxY - s.bounds.minY);
+      });
+
       ctx.lineWidth = 3;
       ctx.strokeStyle = '#f43f5e';
       cfg.centerSquares.forEach((s) => {
@@ -327,12 +327,6 @@
         ctx.fillText(text, x, y);
       });
 
-      ctx.font = 'bold 14px Outfit, sans-serif';
-      ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
-      ctx.fillRect(12, 10, 290, 30);
-      ctx.fillStyle = '#93c5fd';
-      ctx.textAlign = 'left';
-      ctx.fillText(`Mode: ${cfg.title}`, 20, 26);
       ctx.restore();
     };
   }
@@ -350,12 +344,12 @@
     s.matchInProgress = true;
     s.pendingReset = false;
 
-    // Randomize 4/6 square mode each new match
+    // Force 4-square mode until 6-square lane is revisited.
     game.__watchMode = randomMode();
 
     game.resetGame();
     setAgentNames(game);
-    logEvent(game, `🎲 Auto mode for Match ${s.matchCounter}: ${getConfig(game).title}`);
+    logEvent(game, `🧱 Fixed mode for Match ${s.matchCounter}: ${getConfig(game).title}`);
   }
 
   function renderPanels(game) {
@@ -453,11 +447,12 @@
   }
 
   function randomMode() {
-    return Math.random() < 0.5 ? MODE_4 : MODE_6;
+    // Temporary product decision: 4-square only.
+    return MODE_4;
   }
 
   function bindModeToggle() {
-    // Human mode switching disabled by request; mode randomizes per match.
+    // Human mode switching disabled by request; game is fixed to 4-square for now.
     const switchWrap = document.querySelector('.mode-switch');
     if (switchWrap) switchWrap.style.display = 'none';
   }
@@ -477,7 +472,8 @@
     const g = window.game;
     if (!g || !g.humanPlayer || !g.ball || !g.input) return;
 
-    if (!g.__watchMode) g.__watchMode = randomMode();
+    // Hard lock mode every tick to prevent stale 6-square state from older scripts/cached pages.
+    g.__watchMode = MODE_4;
     disableHumanMouse(g);
     convertHumanToAIAgent(g);
     patchGameModeMethods(g);

@@ -271,6 +271,8 @@ class Ball {
         this.bounceCount = 0;
         this.lastHitter = null; // Track who hit it last
         this.heldBy = null; // Player holding the ball
+        this.isServeSequence = false; // true for first strike after Ace hold
+        this.requiredReturnPlayer = null; // player who must return after first bounce in their square
         this.game = game;
     }
 
@@ -308,6 +310,16 @@ class Ball {
                 this.bounceCount++;
                 this.game.playSound('bounce');
 
+                // Line rule: line bounce is fault on serve, otherwise hitter is out.
+                if (this.game.isOnCourtLine(this.x, this.y)) {
+                    if (this.bounceCount === 1 && this.isServeSequence && this.lastHitter && this.lastHitter.rank === 1) {
+                        this.game.handleServeFault(this.lastHitter);
+                    } else if (this.lastHitter) {
+                        this.game.handleOut(this.lastHitter);
+                    }
+                    return;
+                }
+
                 // Check "Bounce in Own Square First" Rule
                 // If this is the FIRST bounce after a hit (bounceCount === 1)
                 // It MUST be in the hitter's square.
@@ -316,7 +328,19 @@ class Ball {
                     if (bouncer !== this.lastHitter) {
                         console.log("Fault! Did not bounce in own square first.");
                         this.game.handleOut(this.lastHitter);
+                        return;
                     }
+
+                    // Serve validated after legal first bounce in Ace square.
+                    if (this.isServeSequence && this.lastHitter.rank === 1) {
+                        this.game.clearServeFault(this.lastHitter);
+                        this.isServeSequence = false;
+                    }
+                }
+
+                // After second bounce, receiver must return before next bounce.
+                if (this.bounceCount === 2) {
+                    this.requiredReturnPlayer = this.game.getPlayerInSquare(this.x, this.y);
                 }
             }
 
@@ -389,6 +413,7 @@ class Game {
         this.ball = null;
         this.aceScore = 0; // Time in seconds as Ace
         this.roundActive = false; // Timer only runs when round is active
+        this.serveFaultStreakByPlayerId = {};
 
         this.playerName = "Player";
         this.bestAceTime = 0;
@@ -718,21 +743,65 @@ class Game {
     }
 
     performHit(player) {
+        // Detect serve before release
+        const isServe = this.ball.heldBy === player;
+
+        // Poaching rule: you must play the ball from your own square.
+        const strikerSquare = this.getPlayerInSquare(player.x, player.y);
+        if (strikerSquare !== player) {
+            this.handleOut(player);
+            return;
+        }
+
+        // Volley + Full rule: non-serve contact before legal bounce is out.
+        if (!isServe && this.ball.bounceCount < 2) {
+            this.handleOut(player);
+            return;
+        }
+
+        // Double-touch rule: cannot strike twice in succession.
+        if (!isServe && this.ball.lastHitter === player) {
+            this.handleOut(player);
+            return;
+        }
+
         // Release ball if held
         this.ball.heldBy = null;
         player.serveTimer = 0; // Reset serve timer
 
-        // Calculate hit direction based on Player Angle
+        // Calculate hit direction
         let hitVx = Math.cos(player.angle);
         let hitVy = Math.sin(player.angle);
 
+        // Serve hard rule: always aim toward another agent/opponent square.
+        if (isServe) {
+            const opponents = (this.players || []).filter(p => p && p !== player);
+            if (opponents.length > 0) {
+                const target = opponents[Math.floor(Math.random() * opponents.length)];
+                const jitterX = (Math.random() - 0.5) * 40;
+                const jitterY = (Math.random() - 0.5) * 40;
+                const tx = target.x + jitterX;
+                const ty = target.y + jitterY;
+                const dx = tx - player.x;
+                const dy = ty - player.y;
+                const len = Math.sqrt(dx * dx + dy * dy) || 1;
+                hitVx = dx / len;
+                hitVy = dy / len;
+            }
+        }
+
         const hitPower = 600;
-        this.ball.vx = hitVx * hitPower;
-        this.ball.vy = hitVy * hitPower;
-        this.ball.vz = -300; // HIT DOWN!
+        const hitSpeedVariance = 0.10; // ±10%
+        const hitPowerMultiplier = 1 + ((Math.random() * 2 - 1) * hitSpeedVariance);
+        const adjustedHitPower = hitPower * hitPowerMultiplier;
+        this.ball.vx = hitVx * adjustedHitPower;
+        this.ball.vy = hitVy * adjustedHitPower;
+        this.ball.vz = -300 * hitPowerMultiplier; // keep downward force aligned with speed variation
 
         this.ball.bounceCount = 0; // Reset bounce count
         this.ball.lastHitter = player;
+        this.ball.isServeSequence = isServe && player.rank === 1;
+        this.ball.requiredReturnPlayer = null;
 
         // If Ace serves, start the round timer
         if (player.rank === 1) {
@@ -757,8 +826,8 @@ class Game {
 
         if (this.ball.bounceCount >= 3) {
             console.log("Double Bounce! Out!");
-            // Who is out? The owner of the square where it bounced.
-            outPlayer = this.getPlayerInSquare(this.ball.x, this.ball.y);
+            // If receiver did not return after first bounce in their square, that receiver is out.
+            outPlayer = this.ball.requiredReturnPlayer || this.getPlayerInSquare(this.ball.x, this.ball.y);
             if (outPlayer) {
                 this.handleOut(outPlayer);
                 return;
@@ -790,6 +859,33 @@ class Game {
         if (x < 400 && y > 400) return this.players.find(p => p.rank === 3);
         if (x > 400 && y > 400) return this.players.find(p => p.rank === 4);
         return null;
+    }
+
+    isOnCourtLine(x, y, tolerance = 10) {
+        const onOuter = x <= tolerance || x >= 800 - tolerance || y <= tolerance || y >= 800 - tolerance;
+        const onInner = Math.abs(x - 400) <= tolerance || Math.abs(y - 400) <= tolerance;
+        return onOuter || onInner;
+    }
+
+    clearServeFault(player) {
+        if (!player) return;
+        this.serveFaultStreakByPlayerId[player.id] = 0;
+    }
+
+    handleServeFault(player) {
+        if (!player) return;
+        const id = player.id;
+        const streak = (this.serveFaultStreakByPlayerId[id] || 0) + 1;
+        this.serveFaultStreakByPlayerId[id] = streak;
+
+        if (streak >= 2) {
+            this.handleOut(player);
+            this.serveFaultStreakByPlayerId[id] = 0;
+            return;
+        }
+
+        // First fault: replay serve, same Ace serves again.
+        this.resetRound();
     }
 
     handleOut(outPlayer) {
