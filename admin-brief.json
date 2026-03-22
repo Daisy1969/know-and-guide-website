@@ -1,6 +1,6 @@
 {
-  "generatedAt": "22/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-22 03:00 AEST",
+  "generatedAt": "23/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-23 03:00 AEST",
   "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
     { "name": "Gateway Service", "pct": 97, "status": "🟢" },
@@ -10,8 +10,8 @@
   ],
   "timeline": [
     "✅ 03:00 AEST morning run executed and admin brief regenerated.",
-    "✅ Overnight commits landed on main: 77960c1 (4-square lock), 5f2e786 (splash removal/cache-bust), 4892615 (watch-mode splash hidden).",
-    "🛠️ Handball watch/runtime edits are active; no overnight rollback events detected.",
+    "✅ No new production commits landed in the 20:00–03:00 AEST window; main remains stable at 9da82d6.",
+    "🛠️ Prior handball runtime updates remain active (4-square lock + splash removal + watch-mode defaults).",
     "⚠️ Public release gate remains constrained by James decision: NO-SHIP until served-runtime sequence-gap guard + reconnect evidence closure.",
     "ℹ️ Admin dashboard content refresh is Mike-only and permitted without James release sign-off."
   ],
