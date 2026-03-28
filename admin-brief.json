@@ -1,6 +1,6 @@
 {
-  "generatedAt": "28/03/2026, 3:00:00 am",
-  "morningReportAt": "2026-03-28 03:00 AEST",
+  "generatedAt": "29/03/2026, 3:00:00 am",
+  "morningReportAt": "2026-03-29 03:00 AEST",
   "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
     { "name": "Gateway Service", "pct": 97, "status": "🟢" },
@@ -10,10 +10,10 @@
   ],
   "timeline": [
     "✅ 03:00 AEST morning run executed and admin brief regenerated.",
-    "✅ No new production commits landed in the 20:00–03:00 AEST window; main remained stable at 3cc41bf before this sync.",
-    "🛠️ Handball runtime hardening stack remains active (4-square lock + splash removal + watch-mode defaults).",
-    "⚠️ Public release gate remains constrained by James decision: NO-SHIP until served-runtime sequence-gap guard + reconnect evidence closure.",
-    "ℹ️ Admin dashboard content refresh is Mike-only and permitted without James public release sign-off."
+    "✅ Overnight admin data sync prepared for dashboard refresh with auditable commit trail.",
+    "✅ No additional production release commits were recorded in the 20:00–03:00 AEST window before this sync; baseline remained d72a552.",
+    "⚠️ Handball public release gate remains NO-SHIP under James reconciled decision until served-runtime sequence-gap guard + reconnect evidence closure.",
+    "ℹ️ Admin dashboard content refresh is Mike-only and remains allowed without James public release sign-off."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release control",
