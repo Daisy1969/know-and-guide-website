@@ -1,0 +1,10 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 520'>
+<rect width='420' height='520' fill='#f2fff5'/>
+<circle cx='210' cy='120' r='55' fill='#d3f1d9' stroke='#2c6b3a' stroke-width='4'/>
+<rect x='160' y='180' width='100' height='170' rx='20' fill='#58a76a' stroke='#2c6b3a' stroke-width='4'/>
+<line x1='160' y1='230' x2='105' y2='300' stroke='#2c6b3a' stroke-width='10'/>
+<line x1='260' y1='230' x2='315' y2='300' stroke='#2c6b3a' stroke-width='10'/>
+<line x1='195' y1='350' x2='165' y2='440' stroke='#2c6b3a' stroke-width='10'/>
+<line x1='225' y1='350' x2='245' y2='430' stroke='#2c6b3a' stroke-width='10'/>
+<text x='28' y='36' font-size='30' fill='#2c6b3a' font-family='Inter, sans-serif'>Green Gene (Z-Type)</text>
+</svg>

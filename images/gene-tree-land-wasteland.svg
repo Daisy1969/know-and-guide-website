@@ -1,0 +1,8 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'>
+<rect width='800' height='500' fill='#f4efe6'/>
+<path d='M0 360 Q150 300 320 360 T800 350 V500 H0Z' fill='#d9c9aa'/>
+<path d='M90 330 l30 -120 l10 110 l40 -70 l-15 80 z' fill='none' stroke='#57493d' stroke-width='6'/>
+<path d='M620 340 l-20 -130 l-20 90 l-50 -60 l25 90 z' fill='none' stroke='#57493d' stroke-width='6'/>
+<circle cx='690' cy='90' r='42' fill='none' stroke='#8a7864' stroke-width='5'/>
+<text x='30' y='40' font-size='28' fill='#3d342c' font-family='Inter, sans-serif'>Gene Tree — Wasteland Sketch</text>
+</svg>

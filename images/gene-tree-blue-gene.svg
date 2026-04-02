@@ -1,0 +1,12 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 520'>
+<rect width='420' height='520' fill='#f3f9ff'/>
+<circle cx='210' cy='120' r='55' fill='#d4e5f6' stroke='#2a4f7c' stroke-width='4'/>
+<polygon points='170,80 185,35 210,75' fill='#2a4f7c'/>
+<polygon points='250,80 235,35 210,75' fill='#2a4f7c'/>
+<rect x='150' y='180' width='120' height='170' rx='24' fill='#4f7fb8' stroke='#2a4f7c' stroke-width='4'/>
+<line x1='150' y1='230' x2='90' y2='300' stroke='#2a4f7c' stroke-width='10'/>
+<line x1='270' y1='230' x2='330' y2='300' stroke='#2a4f7c' stroke-width='10'/>
+<line x1='185' y1='350' x2='155' y2='440' stroke='#2a4f7c' stroke-width='10'/>
+<line x1='235' y1='350' x2='265' y2='440' stroke='#2a4f7c' stroke-width='10'/>
+<text x='32' y='36' font-size='30' fill='#2a4f7c' font-family='Inter, sans-serif'>Blue Gene (Lycanthrope)</text>
+</svg>
