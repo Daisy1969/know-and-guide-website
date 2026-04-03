@@ -26,12 +26,46 @@
 
     <h2>Visual sketches (prototype mood)</h2>
     <p>These are first-pass concept sketches for world/character communication with builders.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
-      <figure><img src="../images/gene-tree-land-wasteland-real.jpg" alt="Gene Tree wasteland concept art" style="width:100%;border:1px solid #ddd;border-radius:8px"><figcaption>The Wasteland</figcaption></figure>
-      <figure><img src="../images/gene-tree-land-necropolis-real.jpg" alt="Gene Tree necropolis concept art" style="width:100%;border:1px solid #ddd;border-radius:8px"><figcaption>Necropolis Fringe</figcaption></figure>
-      <figure><img src="../images/gene-tree-red-gene-real.jpg" alt="Red gene concept art" style="width:100%;border:1px solid #ddd;border-radius:8px"><figcaption>Red Gene (Vamprik)</figcaption></figure>
-      <figure><img src="../images/gene-tree-blue-gene-real.jpg" alt="Blue gene concept art" style="width:100%;border:1px solid #ddd;border-radius:8px"><figcaption>Blue Gene (Lycanthrope)</figcaption></figure>
-      <figure><img src="../images/gene-tree-green-gene-real.jpg" alt="Green gene concept art" style="width:100%;border:1px solid #ddd;border-radius:8px"><figcaption>Green Gene (Z-Type)</figcaption></figure>
+    <style>
+      .gene-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .gene-gallery figure {
+        margin: 0;
+        position: relative;
+        z-index: 1;
+      }
+      .gene-gallery img {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        transition: transform 220ms ease, box-shadow 220ms ease;
+        transform-origin: center center;
+      }
+      .gene-gallery figure:hover,
+      .gene-gallery figure:focus-within {
+        z-index: 20;
+      }
+      .gene-gallery figure:hover img,
+      .gene-gallery figure:focus-within img {
+        transform: scale(1.35);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.28);
+      }
+      @media (max-width: 900px) {
+        .gene-gallery figure:hover img,
+        .gene-gallery figure:focus-within img {
+          transform: scale(1.18);
+        }
+      }
+    </style>
+    <div class="gene-gallery">
+      <figure><img src="../images/gene-tree-land-wasteland-real.jpg" alt="Gene Tree wasteland concept art" tabindex="0"><figcaption>The Wasteland</figcaption></figure>
+      <figure><img src="../images/gene-tree-land-necropolis-real.jpg" alt="Gene Tree necropolis concept art" tabindex="0"><figcaption>Necropolis Fringe</figcaption></figure>
+      <figure><img src="../images/gene-tree-red-gene-real.jpg" alt="Red gene concept art" tabindex="0"><figcaption>Red Gene (Vamprik)</figcaption></figure>
+      <figure><img src="../images/gene-tree-blue-gene-real.jpg" alt="Blue gene concept art" tabindex="0"><figcaption>Blue Gene (Lycanthrope)</figcaption></figure>
+      <figure><img src="../images/gene-tree-green-gene-real.jpg" alt="Green gene concept art" tabindex="0"><figcaption>Green Gene (Z-Type)</figcaption></figure>
     </div>
 
     <h2>What happens next</h2>
