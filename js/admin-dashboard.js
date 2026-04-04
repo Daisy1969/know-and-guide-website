@@ -116,6 +116,20 @@
     return report;
   }
 
+  function defaultProjectBoard() {
+    return [
+      { project: "OpenClaw Setup Service APAC", complete: "27%", delta: "+3%", eta: "Active", agents: "Claire, Ella, Bill, Jane, Bob, Nikey, Jake, James" },
+      { project: "Handball Live Game + Public Release", complete: "99%", delta: "0%", eta: "Gate closure", agents: "Claire, James, Bob, Nikey, Phil, Jake" },
+      { project: "Admin Dashboard + Morning Brief", complete: "42%", delta: "+2%", eta: "Active", agents: "Claire, Bill, Bob, James" },
+      { project: "LinkedIn Ops + Weekly Cadence", complete: "49%", delta: "+4%", eta: "Active", agents: "Claire, Jane, Ella" },
+      { project: "Gemini Live Compatibility Fix", complete: "32%", delta: "+2%", eta: "Stabilization", agents: "Claire, Bob, Nikey, Jake, James" },
+      { project: "Sales Company Spin-up (agentops)", complete: "30%", delta: "+30%", eta: "Build lane", agents: "Claire, Ella, Bill, Jane, Bob" },
+      { project: "Gene Tree MMO Prototype", complete: "22%", delta: "+22%", eta: "Prototype", agents: "Claire, Bob, Nikey, Phil, Jake, Jane" },
+      { project: "Maths Penpal Growth", complete: "25%", delta: "0%", eta: "In progress", agents: "Claire, Jane, Bill, Ella" },
+      { project: "Zodiac Consensus Engine", complete: "20%", delta: "0%", eta: "Secondary lane", agents: "Claire, Bob, Nikey, Phil, Jake, Jane, Bill, Ella" }
+    ];
+  }
+
   function render(report) {
     document.getElementById("datePill").textContent = `Generated: ${report.generatedAt}`;
     document.getElementById("windowTxt").textContent = `${report.window} • Morning report: ${report.morningReportAt}`;
@@ -137,7 +151,11 @@
 
     const projectBoard = document.getElementById("projectBoard");
     if (projectBoard) {
-      projectBoard.innerHTML = (report.projectBoard || []).map(p => `
+      const rows = Array.isArray(report.projectBoard) && report.projectBoard.length > 0
+        ? report.projectBoard
+        : defaultProjectBoard();
+
+      projectBoard.innerHTML = rows.map(p => `
         <tr>
           <td style="padding:8px; border-bottom:1px solid #f1f5f9;">${p.project || ""}</td>
           <td style="padding:8px; border-bottom:1px solid #f1f5f9;">${p.complete || ""}</td>
