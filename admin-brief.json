@@ -1,6 +1,6 @@
 {
-  "generatedAt": "07/04/2026, 3:00:00 am",
-  "morningReportAt": "2026-04-07 03:00 AEST",
+  "generatedAt": "08/04/2026, 3:00:00 am",
+  "morningReportAt": "2026-04-08 03:00 AEST",
   "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
     {
@@ -27,7 +27,7 @@
   "timeline": [
     "✅ 03:00 AEST morning run executed and admin brief regenerated.",
     "✅ Admin dashboard JSON refreshed for the current reporting window with auditable git trace.",
-    "ℹ️ No new production website release observed in know-and-guide-website during 20:00–03:00 AEST; baseline remains ad149da prior to this refresh.",
+    "ℹ️ No new production website release observed in know-and-guide-website during 20:00–03:00 AEST; baseline remained 4e06247 before this refresh.",
     "⚠️ Handball public release gate remains NO-SHIP under James reconciled decision until served-runtime sequence-gap guard + reconnect evidence closure.",
     "ℹ️ Admin dashboard content refresh is Mike-only and remains allowed without James public release sign-off."
   ],
