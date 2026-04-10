@@ -1,6 +1,6 @@
 {
-  "generatedAt": "10/04/2026, 3:00:00 am",
-  "morningReportAt": "2026-04-10 03:00 AEST",
+  "generatedAt": "11/04/2026, 3:00:00 am",
+  "morningReportAt": "2026-04-11 03:00 AEST",
   "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
     {
@@ -35,9 +35,9 @@
     "🧭 Claire — orchestration, governance, release control",
     "🧪 James — audit gate and release sign-off authority",
     "🛠️ Bob — implementation lead (runtime gap guard + integration fixes)",
-    "👨💻 Nikey — backend stream/auth/event pipeline correctness",
-    "👨💻 Phil — spectator UX and reconnect/degraded-state behavior",
-    "🧑💻 Jake — integration reliability, runbook, and retest evidence",
+    "👨‍💻 Nikey — backend stream/auth/event pipeline correctness",
+    "👨‍💻 Phil — spectator UX and reconnect/degraded-state behavior",
+    "🧑‍💻 Jake — integration reliability, runbook, and retest evidence",
     "📝 Jane — comms and sponsor/market messaging",
     "📊 Bill — reporting, KPI cadence, admin sync",
     "🛍️ Ella — launch packaging and revenue execution"
