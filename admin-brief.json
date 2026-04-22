@@ -1,11 +1,11 @@
 {
-  "generatedAt": "23/04/2026, 3:00:00 am",
+  "generatedAt": "23/04/2026, 6:32:00 am",
   "morningReportAt": "2026-04-23 03:00 AEST",
   "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
     {
       "name": "Gateway Service",
-      "pct": 98,
+      "pct": 100,
       "status": "🟢"
     },
     {
@@ -25,11 +25,11 @@
     }
   ],
   "timeline": [
-    "✅ 03:00 AEST morning run executed and admin brief regenerated.",
-    "✅ Admin dashboard JSON refreshed for the current reporting window with auditable git trace.",
-    "ℹ️ No new know-and-guide-website commits detected during 20:00–03:00 AEST; overnight posture unchanged.",
-    "⚠️ Public handball release gate remains NO-SHIP under James pending served-runtime sequence-gap guard + reconnect E2E evidence closure.",
-    "ℹ️ Admin dashboard content refresh is Mike-only and remains allowed without James public release sign-off."
+    "✅ 03:00 AEST morning run baseline confirmed for today.",
+    "✅ Admin dashboard JSON refreshed in this run.",
+    "ℹ️ No new repository commits detected in know-and-guide-website during 20:00–03:00 AEST.",
+    "⚠️ Public handball release gate remains NO-SHIP until served-runtime sequence-gap guard + reconnect E2E evidence closure.",
+    "ℹ️ Admin dashboard content refresh remains Mike-only and allowed without James public release sign-off."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release control",
