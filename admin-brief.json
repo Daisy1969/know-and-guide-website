@@ -1,6 +1,6 @@
 {
-  "generatedAt": "12/04/2026, 3:00:00 am",
-  "morningReportAt": "2026-04-12 03:00 AEST",
+  "generatedAt": "23/04/2026, 3:00:00 am",
+  "morningReportAt": "2026-04-23 03:00 AEST",
   "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
     {
@@ -10,7 +10,7 @@
     },
     {
       "name": "Telegram Link",
-      "pct": 95,
+      "pct": 96,
       "status": "🟢"
     },
     {
@@ -20,15 +20,15 @@
     },
     {
       "name": "Security/Doctor",
-      "pct": 89,
+      "pct": 90,
       "status": "🟡"
     }
   ],
   "timeline": [
     "✅ 03:00 AEST morning run executed and admin brief regenerated.",
     "✅ Admin dashboard JSON refreshed for the current reporting window with auditable git trace.",
-    "ℹ️ No new production website release observed in know-and-guide-website during 20:00–03:00 AEST; overnight posture unchanged.",
-    "⚠️ Handball public release gate remains NO-SHIP under James reconciled decision until served-runtime sequence-gap guard + reconnect evidence closure.",
+    "ℹ️ No new know-and-guide-website commits detected during 20:00–03:00 AEST; overnight posture unchanged.",
+    "⚠️ Public handball release gate remains NO-SHIP under James pending served-runtime sequence-gap guard + reconnect E2E evidence closure.",
     "ℹ️ Admin dashboard content refresh is Mike-only and remains allowed without James public release sign-off."
   ],
   "agents": [
