@@ -1,6 +1,6 @@
 {
-  "generatedAt": "24/04/2026, 3:00:56 am",
-  "morningReportAt": "2026-04-24 03:00 AEST",
+  "generatedAt": "26/04/2026, 3:00:00 am",
+  "morningReportAt": "2026-04-26 03:00 AEST",
   "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
     {
@@ -25,16 +25,16 @@
     }
   ],
   "timeline": [
-    "✅ 03:00 AEST morning run baseline confirmed for today.",
-    "✅ Admin dashboard JSON refreshed in this run.",
-    "ℹ️ No new repository commits detected in know-and-guide-website during 20:00–03:00 AEST.",
-    "⚠️ Public handball release gate remains NO-SHIP until served-runtime sequence-gap guard + reconnect E2E evidence closure.",
-    "ℹ️ Admin dashboard content refresh remains Mike-only and allowed without James public release sign-off."
+    "✅ 03:00 AEST morning run executed on schedule.",
+    "✅ Gateway service is loaded, running, and passed local connectivity probe.",
+    "ℹ️ No new know-and-guide-website commits were detected during the 20:00–03:00 AEST overnight window.",
+    "⚠️ Public handball release gate remains NO-SHIP until served-runtime sequence-gap guard + reconnect E2E evidence are closed.",
+    "✅ Admin dashboard JSON refreshed for Mike’s morning view in this run."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release control",
     "🧪 James — audit gate and release sign-off authority",
-    "🛠️ Bob — implementation lead (runtime gap guard + integration fixes)",
+    "🛠️ Bob — implementation lead for runtime guard and integration fixes",
     "👨‍💻 Nikey — backend stream/auth/event pipeline correctness",
     "👨‍💻 Phil — spectator UX and reconnect/degraded-state behavior",
     "🧑‍💻 Jake — integration reliability, runbook, and retest evidence",
@@ -44,20 +44,20 @@
   ],
   "releaseGate": "James approval state: FAIL / NO-SHIP for public handball release pending served-runtime sequence-gap guard + reconnect E2E evidence. Admin dashboard content updates (Mike-only) remain exempt and can ship.",
   "priorities": [
-    "OpenClaw Setup Service APAC (Priority #1): convert planning-pack economics into weekly KPI + execution dashboard operations",
-    "Close served-runtime sequence-gap guard with proof bundle and trigger James re-audit loop",
-    "Maintain daily admin brief sync with auditable commit trail to main"
+    "OpenClaw Setup Service APAC (Priority #1): move planning-pack economics into weekly KPI and launch operations.",
+    "Close served-runtime sequence-gap guard with proof bundle and trigger James re-audit loop.",
+    "Maintain the daily admin brief sync with an auditable commit trail to main."
   ],
   "agentToday": [
-    "Claire — enforce release governance, sequence priorities, unblock critical workstreams",
-    "James — keep release gate at PASS/NO-SHIP based on objective evidence",
-    "Bob — land expected-seq guard and verify reconnect behavior end-to-end",
-    "Nikey — close backend sequence invariant gaps and attach runtime evidence",
-    "Phil — validate spectator UX under gap.detected/reconnect states",
-    "Jake — rerun integration checks and publish corrected artifacts",
-    "Jane — align sponsor/market messaging with current gate state",
-    "Bill — deliver morning brief, sync admin JSON, preserve reporting continuity",
-    "Ella — move APAC offer model into launch checklist + monetisation sequencing"
+    "Claire — enforce release governance, sequence priorities, and unblock critical workstreams.",
+    "James — keep release gate at PASS/NO-SHIP based on objective evidence.",
+    "Bob — land expected-seq guard and verify reconnect behavior end-to-end.",
+    "Nikey — close backend sequence invariant gaps and attach runtime evidence.",
+    "Phil — validate spectator UX under gap.detected and reconnect states.",
+    "Jake — rerun integration checks and publish corrected artifacts.",
+    "Jane — align sponsor and market messaging with current gate state.",
+    "Bill — deliver morning brief, sync admin JSON, preserve reporting continuity.",
+    "Ella — move APAC offer model into launch checklist and monetisation sequencing."
   ],
   "jamesDecisions": [
     "FAIL — Handball reconciled gate (2026-03-14): NO-SHIP until served-runtime sequence-gap guard + reconnect proof are complete.",
