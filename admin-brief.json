@@ -1,6 +1,6 @@
 {
-  "generatedAt": "26/04/2026, 3:00:00 am",
-  "morningReportAt": "2026-04-26 03:00 AEST",
+  "generatedAt": "27/04/2026, 3:00:00 am",
+  "morningReportAt": "2026-04-27 03:00 AEST",
   "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
     {
@@ -9,60 +9,62 @@
       "status": "🟢"
     },
     {
-      "name": "Telegram Link",
-      "pct": 96,
+      "name": "Browser Automation",
+      "pct": 100,
       "status": "🟢"
     },
     {
       "name": "Agent Runtime",
-      "pct": 95,
+      "pct": 96,
       "status": "🟢"
     },
     {
-      "name": "Security/Doctor",
-      "pct": 90,
+      "name": "Service Config",
+      "pct": 86,
       "status": "🟡"
     }
   ],
   "timeline": [
     "✅ 03:00 AEST morning run executed on schedule.",
-    "✅ Gateway service is loaded, running, and passed local connectivity probe.",
-    "ℹ️ No new know-and-guide-website commits were detected during the 20:00–03:00 AEST overnight window.",
-    "⚠️ Public handball release gate remains NO-SHIP until served-runtime sequence-gap guard + reconnect E2E evidence are closed.",
-    "✅ Admin dashboard JSON refreshed for Mike’s morning view in this run."
+    "✅ OpenClaw gateway is loaded, running, and passed the local connectivity probe.",
+    "✅ Browser automation health checks passed with CDP HTTP/WebSocket reachable.",
+    "ℹ️ No new know-and-guide-website commits landed during the 20:00–03:00 AEST overnight window; local content drafts remain unshipped in the repo worktree.",
+    "⚠️ Gateway service config still reports a non-standard PATH warning; doctor/repair remains queued.",
+    "⚠️ James public release gate is unchanged: handball stays NO-SHIP until served-runtime sequence-gap guard and reconnect E2E proof are evidenced.",
+    "✅ Admin dashboard JSON refreshed for Mike in this run."
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release control",
     "🧪 James — audit gate and release sign-off authority",
-    "🛠️ Bob — implementation lead for runtime guard and integration fixes",
-    "👨‍💻 Nikey — backend stream/auth/event pipeline correctness",
-    "👨‍💻 Phil — spectator UX and reconnect/degraded-state behavior",
-    "🧑‍💻 Jake — integration reliability, runbook, and retest evidence",
-    "📝 Jane — comms and sponsor/market messaging",
+    "🛠️ Bob — implementation lead for runtime-critical fixes",
+    "👨‍💻 Nikey — backend stream/auth correctness",
+    "👨‍💻 Phil — UX, degraded-state, and app polish",
+    "🧑‍💻 Jake — integration reliability and retest evidence",
+    "📝 Jane — comms, sponsor, and market narrative",
     "📊 Bill — reporting, KPI cadence, admin sync",
     "🛍️ Ella — launch packaging and revenue execution"
   ],
-  "releaseGate": "James approval state: FAIL / NO-SHIP for public handball release pending served-runtime sequence-gap guard + reconnect E2E evidence. Admin dashboard content updates (Mike-only) remain exempt and can ship.",
+  "releaseGate": "James approval state: FAIL / NO-SHIP for public handball release pending served-runtime sequence-gap guard evidence plus reconnect E2E proof. Admin dashboard content updates (Mike-only) remain exempt and can ship.",
   "priorities": [
-    "OpenClaw Setup Service APAC (Priority #1): move planning-pack economics into weekly KPI and launch operations.",
-    "Close served-runtime sequence-gap guard with proof bundle and trigger James re-audit loop.",
-    "Maintain the daily admin brief sync with an auditable commit trail to main."
+    "OpenClaw Setup Service APAC (Priority #1): turn the offer into weekly KPI, pricing, and launch operations movement.",
+    "India Travel Assistant: finish auth/storage hardening so Mike's itinerary stays private and stable ahead of travel.",
+    "Keep the handball public release frozen until James receives a complete proof bundle and can re-audit to PASS."
   ],
   "agentToday": [
-    "Claire — enforce release governance, sequence priorities, and unblock critical workstreams.",
-    "James — keep release gate at PASS/NO-SHIP based on objective evidence.",
-    "Bob — land expected-seq guard and verify reconnect behavior end-to-end.",
-    "Nikey — close backend sequence invariant gaps and attach runtime evidence.",
-    "Phil — validate spectator UX under gap.detected and reconnect states.",
-    "Jake — rerun integration checks and publish corrected artifacts.",
-    "Jane — align sponsor and market messaging with current gate state.",
-    "Bill — deliver morning brief, sync admin JSON, preserve reporting continuity.",
-    "Ella — move APAC offer model into launch checklist and monetisation sequencing."
+    "Claire — sequence priorities, protect release governance, and keep daily admin visibility current.",
+    "James — hold public ship gate at PASS/NO-SHIP based on evidence only; re-audit fast when a fix bundle arrives.",
+    "Bob — close the served-runtime gap guard implementation/evidence bundle for handball.",
+    "Nikey — verify backend runtime correctness across handball stream logic and India app auth/storage paths.",
+    "Phil — validate degraded-state UX and travel app user-facing auth behaviour.",
+    "Jake — rerun reconnect/integration checks and archive corrected evidence once fixes land.",
+    "Jane — align APAC positioning and sponsor/market messaging with current gate state.",
+    "Bill — deliver morning brief, sync admin JSON, and preserve reporting continuity.",
+    "Ella — move APAC monetisation packaging into executable launch steps."
   ],
   "jamesDecisions": [
-    "FAIL — Handball reconciled gate (2026-03-14): NO-SHIP until served-runtime sequence-gap guard + reconnect proof are complete.",
-    "CONDITIONAL PASS — Handball final ship audit set (2026-03-13) with same-day corrective conditions.",
-    "PASS — Team photo website release audit (2026-03-09)."
+    "FAIL — Handball reconciled release gate (2026-03-14): NO-SHIP until served-runtime live sequence-gap guard is implemented and evidenced.",
+    "FAIL — Handball postfix re-gate (2026-03-14): baseline tests/smoke pass, but command evidence still did not prove gap.detected + close-on-mismatch behaviour in served runtime.",
+    "EXEMPTION — Mike-only admin dashboard content updates can ship without James sign-off."
   ],
   "orgAreas": [
     "Leadership & Governance — Mike, Claire",
