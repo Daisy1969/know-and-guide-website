@@ -1,6 +1,6 @@
 {
-  "generatedAt": "27/04/2026, 3:00:00 am",
-  "morningReportAt": "2026-04-27 03:00 AEST",
+  "generatedAt": "28/04/2026, 3:00:00 am",
+  "morningReportAt": "2026-04-28 03:00 AEST",
   "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
     {
@@ -25,12 +25,12 @@
     }
   ],
   "timeline": [
-    "✅ 03:00 AEST morning run executed on schedule.",
+    "✅ 03:00 AEST morning run recorded for today's dashboard window.",
     "✅ OpenClaw gateway is loaded, running, and passed the local connectivity probe.",
-    "✅ Browser automation health checks passed with CDP HTTP/WebSocket reachable.",
-    "ℹ️ No new know-and-guide-website commits landed during the 20:00–03:00 AEST overnight window; local content drafts remain unshipped in the repo worktree.",
-    "⚠️ Gateway service config still reports a non-standard PATH warning; doctor/repair remains queued.",
-    "⚠️ James public release gate is unchanged: handball stays NO-SHIP until served-runtime sequence-gap guard and reconnect E2E proof are evidenced.",
+    "✅ Browser automation started cleanly and CDP HTTP/WebSocket are reachable.",
+    "ℹ️ No new know-and-guide-website commits landed during the 20:00–03:00 AEST overnight window; repo head stayed at fbb30ea from yesterday's admin sync.",
+    "⚠️ Gateway service config still reports a non-standard PATH warning for /Users/claire/.nix-profile/bin; doctor/repair remains queued.",
+    "⚠️ James public release gate is unchanged: handball stays NO-SHIP until served-runtime sequence-gap guard evidence plus reconnect E2E proof are produced.",
     "✅ Admin dashboard JSON refreshed for Mike in this run."
   ],
   "agents": [
@@ -46,24 +46,24 @@
   ],
   "releaseGate": "James approval state: FAIL / NO-SHIP for public handball release pending served-runtime sequence-gap guard evidence plus reconnect E2E proof. Admin dashboard content updates (Mike-only) remain exempt and can ship.",
   "priorities": [
-    "OpenClaw Setup Service APAC (Priority #1): turn the offer into weekly KPI, pricing, and launch operations movement.",
-    "India Travel Assistant: finish auth/storage hardening so Mike's itinerary stays private and stable ahead of travel.",
+    "OpenClaw Setup Service APAC (Priority #1): convert the planning pack into weekly KPI, pricing, pilot, and launch operations movement.",
+    "India Travel Assistant: complete custom-domain cutover and auth/storage hardening before Mike's India move.",
     "Keep the handball public release frozen until James receives a complete proof bundle and can re-audit to PASS."
   ],
   "agentToday": [
     "Claire — sequence priorities, protect release governance, and keep daily admin visibility current.",
-    "James — hold public ship gate at PASS/NO-SHIP based on evidence only; re-audit fast when a fix bundle arrives.",
+    "James — hold the public ship gate on evidence only; re-audit fast when a fix bundle arrives.",
     "Bob — close the served-runtime gap guard implementation/evidence bundle for handball.",
     "Nikey — verify backend runtime correctness across handball stream logic and India app auth/storage paths.",
     "Phil — validate degraded-state UX and travel app user-facing auth behaviour.",
     "Jake — rerun reconnect/integration checks and archive corrected evidence once fixes land.",
-    "Jane — align APAC positioning and sponsor/market messaging with current gate state.",
-    "Bill — deliver morning brief, sync admin JSON, and preserve reporting continuity.",
+    "Jane — align APAC positioning and sponsor/market messaging with the current gate state.",
+    "Bill — deliver the morning brief, sync admin JSON, and preserve reporting continuity.",
     "Ella — move APAC monetisation packaging into executable launch steps."
   ],
   "jamesDecisions": [
     "FAIL — Handball reconciled release gate (2026-03-14): NO-SHIP until served-runtime live sequence-gap guard is implemented and evidenced.",
-    "FAIL — Handball postfix re-gate (2026-03-14): baseline tests/smoke pass, but command evidence still did not prove gap.detected + close-on-mismatch behaviour in served runtime.",
+    "FAIL — Handball postfix re-gate (2026-03-14): baseline tests/smoke passed, but command evidence still did not prove gap.detected + close-on-mismatch behaviour in served runtime.",
     "EXEMPTION — Mike-only admin dashboard content updates can ship without James sign-off."
   ],
   "orgAreas": [
@@ -85,9 +85,9 @@
     "1) Clone Daisy1969/know-and-guide-website to a clean workspace.",
     "2) Restore admin stack files: admin.html, js/admin-dashboard.js, admin-brief.json.",
     "3) Validate login + dashboard rendering locally (JSON fetch + field mapping).",
-    "4) Regenerate morning brief and refresh admin-brief.json for the current 03:00 AEST run.",
+    "4) Regenerate the morning brief and refresh admin-brief.json for the current 03:00 AEST run.",
     "5) Commit and push to main, then verify live admin propagation.",
-    "6) If regression appears, rollback to last known-good commit and re-verify incrementally.",
+    "6) If regression appears, rollback to the last known-good commit and re-verify incrementally.",
     "7) If auth/session faults appear, run OpenClaw onboarding/health checks then retry deployment."
   ],
   "setupRequirements": [
