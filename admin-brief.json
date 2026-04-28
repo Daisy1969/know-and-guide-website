@@ -1,6 +1,6 @@
 {
-  "generatedAt": "28/04/2026, 3:00:00 am",
-  "morningReportAt": "2026-04-28 03:00 AEST",
+  "generatedAt": "29/04/2026, 3:00:00 am",
+  "morningReportAt": "2026-04-29 03:00 AEST",
   "window": "Overnight window: 20:00–03:00 AEST",
   "health": [
     {
@@ -27,11 +27,12 @@
   "timeline": [
     "✅ 03:00 AEST morning run recorded for today's dashboard window.",
     "✅ OpenClaw gateway is loaded, running, and passed the local connectivity probe.",
-    "✅ Browser automation started cleanly and CDP HTTP/WebSocket are reachable.",
-    "ℹ️ No new know-and-guide-website commits landed during the 20:00–03:00 AEST overnight window; repo head stayed at fbb30ea from yesterday's admin sync.",
+    "✅ Browser automation remains healthy with CDP HTTP/WebSocket reachable.",
+    "ℹ️ No new know-and-guide-website commits landed during the 20:00–03:00 AEST overnight window; repo head remained at yesterday's admin-sync commit e851a6b before this refresh.",
     "⚠️ Gateway service config still reports a non-standard PATH warning for /Users/claire/.nix-profile/bin; doctor/repair remains queued.",
     "⚠️ James public release gate is unchanged: handball stays NO-SHIP until served-runtime sequence-gap guard evidence plus reconnect E2E proof are produced.",
-    "✅ Admin dashboard JSON refreshed for Mike in this run."
+    "✅ Admin dashboard JSON refreshed for Mike in this run.",
+    "Morning report updated: 2026-04-29 03:00 AEST"
   ],
   "agents": [
     "🧭 Claire — orchestration, governance, release control",
