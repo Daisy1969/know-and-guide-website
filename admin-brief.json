@@ -48,11 +48,12 @@
   "releaseGate": "James approval state: FAIL / NO-SHIP for public handball release pending a clean pinned commit plus served-runtime sequence-gap and reconnect recovery proof. Admin dashboard content updates (Mike-only) remain exempt and can ship.",
   "priorities": [
     "OpenClaw Setup Service APAC (Priority #1): turn the execution pack into live pricing, pilot, KPI, and launch operations movement.",
+    "Mike in India / knowandguide.com: establish the India content lane, keep the admin brief fresh, and prepare the site structure for ongoing India updates.",
     "India Travel Assistant: complete custom-domain cutover and auth/storage hardening before Mike's India move.",
     "Keep the handball public release frozen until James receives a reproducible proof bundle and can re-audit to PASS."
   ],
   "agentToday": [
-    "Claire — hold the operating cadence, keep governance tight, and maintain Mike's admin visibility at 03:00 AEST.",
+    "Claire — hold the operating cadence, keep governance tight, maintain Mike's admin visibility at 03:00 AEST, and keep the Mike in India lane organised.",
     "James — preserve the public ship gate on evidence only and re-audit within SLA once a pinned proof bundle arrives.",
     "Bob — package the handball runtime fixes into a clean reproducible commit for audit.",
     "Nikey — verify backend sequence-gap and reconnect correctness on the exact release candidate commit.",
@@ -78,6 +79,7 @@
     "admin.html — admin dashboard shell",
     "js/admin-dashboard.js — auth + rendering logic",
     "admin-brief.json — dashboard morning brief data source",
+    "blog/mike-in-india.html — India move / operating lane article",
     "handball-watch.html — public spectator experience",
     "_control/ — retained local audit artifacts",
     "handball-agent-watch/ — embedded watch runtime assets"
