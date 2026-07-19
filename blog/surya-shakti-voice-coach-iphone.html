@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Surya Shakti Voice Coach for iPhone | Know &amp; Guide</title>
+    <meta name="description" content="A private native iPhone prototype that guides an existing Surya Shakti practitioner through English and Sanskrit pose prompts, voice recognition, cycle tracking, and pronunciation feedback.">
+    <meta property="og:title" content="Building a Surya Shakti Voice Coach for iPhone">
+    <meta property="og:description" content="A personal native iPhone practice companion with Sanskrit repetition, cycle tracking, AirPods support, and pronunciation feedback. Any public release would require approval from Isha Foundation.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://knowandguide.com/blog/surya-shakti-voice-coach-iphone.html">
+    <link rel="canonical" href="https://knowandguide.com/blog/surya-shakti-voice-coach-iphone.html">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .article { max-width: 900px; margin: 4rem auto; padding: 0 2rem; }
+        .article h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); margin-bottom: .75rem; }
+        .article h2 { margin-top: 2.3rem; }
+        .article p, .article li { line-height: 1.75; color: var(--text-secondary); }
+        .article li { margin-bottom: .55rem; }
+        .meta { color: var(--text-secondary); border-bottom: 1px solid rgba(255,255,255,.12); padding-bottom: 1rem; margin-bottom: 2rem; }
+        .hero-panel { min-height: 340px; border-radius: 20px; padding: 2.2rem; margin-bottom: 2rem; display: flex; align-items: end; background: radial-gradient(circle at 50% 18%, rgba(251,146,60,.95), transparent 23%), radial-gradient(circle at 18% 70%, rgba(245,158,11,.42), transparent 30%), linear-gradient(145deg, #251106 0%, #6b2a0b 48%, #120805 100%); box-shadow: 0 24px 60px rgba(0,0,0,.32); overflow: hidden; position: relative; }
+        .hero-panel::before { content: "☀"; position: absolute; top: 1rem; right: 2rem; color: rgba(255,237,213,.92); font-size: 7rem; line-height: 1; }
+        .hero-copy { max-width: 650px; position: relative; z-index: 1; }
+        .hero-copy strong { display: block; color: #fed7aa; letter-spacing: .08em; text-transform: uppercase; font-size: .9rem; }
+        .hero-copy span { display: block; color: #fff; font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; line-height: 1.02; margin-top: .55rem; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
+        .feature { background: var(--surface-card); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: 1.15rem; }
+        .feature strong { display: block; margin-bottom: .4rem; color: var(--text-primary); }
+        .callout { border-left: 4px solid #f97316; background: rgba(194,65,12,.14); border-radius: 10px; padding: 1.2rem 1.35rem; margin: 1.5rem 0; }
+        .status { border-left-color: #f59e0b; background: rgba(245,158,11,.12); }
+        .actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+        .action { display: inline-block; padding: .85rem 1.2rem; border-radius: 9px; text-decoration: none; background: var(--primary-color); color: #fff; font-weight: 700; }
+        .action.secondary { background: var(--surface-card); border: 1px solid rgba(255,255,255,.14); color: var(--text-primary); }
+    </style>
+</head>
+<body>
+    <header>
+        <nav aria-label="Primary navigation">
+            <div class="logo"><a href="../index.html"><img src="../images/logo.png" alt="Know &amp; Guide" style="max-height: 90px;"></a></div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../academy.html">Academy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="article">
+            <div class="hero-panel" role="img" aria-label="Warm sunrise visual representing the Surya Shakti voice coach iPhone prototype">
+                <div class="hero-copy">
+                    <strong>Private native iPhone prototype</strong>
+                    <span>Surya Shakti<br>Voice Coach</span>
+                </div>
+            </div>
+
+            <h1>Building a Voice-Guided Surya Shakti Practice Companion</h1>
+            <div class="meta"><strong>Posted:</strong> July 19, 2026 &nbsp; • &nbsp; <strong>Category:</strong> Yoga Technology</div>
+
+            <p>I have been developing a private, native iPhone application to support my daily Surya Shakti practice. The purpose is simple: let the phone announce each movement in English and then Sanskrit, wait for me to repeat the Sanskrit name, and only then continue to the next movement.</p>
+
+            <p>The application is designed as a personal practice companion for someone who has already learned the process correctly. It is not intended to teach Surya Shakti, replace a qualified teacher, alter the practice, or provide independent yoga instruction.</p>
+
+            <h2>How the prototype works</h2>
+            <div class="feature-grid">
+                <div class="feature"><strong>English, then Sanskrit</strong><span>Each movement is spoken first in English and then by its Sanskrit name.</span></div>
+                <div class="feature"><strong>Listen and wait</strong><span>A short beep signals that the microphone is ready, and the app waits for the Sanskrit response.</span></div>
+                <div class="feature"><strong>Gentle correction</strong><span>Two beeps request another attempt. After two missed attempts, the Sanskrit name is spoken again before listening resumes.</span></div>
+                <div class="feature"><strong>AirPods support</strong><span>The microphone, spoken guidance, voice test, and playback test can use compatible AirPods or the iPhone.</span></div>
+                <div class="feature"><strong>Practice tracking</strong><span>The app records completed cycles, practice days, current streak, longest streak, and lifetime totals on the device.</span></div>
+                <div class="feature"><strong>Pronunciation reflection</strong><span>At the end of a session, optional AI feedback summarises which Sanskrit names may need more practice.</span></div>
+            </div>
+
+            <h2>Why I built it</h2>
+            <p>During practice, I wanted a simple hands-free rhythm: hear the movement, move into the posture, repeat the Sanskrit name, and continue without touching the screen. The application keeps the established 18-position sequence unchanged while helping me remember the names and observe my consistency over time.</p>
+
+            <p>The current build is a standalone SwiftUI iPhone application rather than a website. It runs from its own app icon, stores practice records locally, supports a manual “I said it” control when speech recognition struggles, and can use optional cloud voice and transcription services for improved recognition.</p>
+
+            <div class="callout status">
+                <strong>Current status:</strong> This is a private personal prototype. It is not an official Isha Foundation application, it is not endorsed by Isha Foundation, and it is not currently available for public download.
+            </div>
+
+            <h2>Approval before any public release</h2>
+            <p>Before making the application available to other people, I intend to seek written approval from Isha Foundation. Only if that approval is granted would I consider offering the iPhone application free of charge.</p>
+
+            <p>I would also follow any guidance provided about naming, presentation, pronunciation, teaching boundaries, intellectual property, privacy, safety, and whether an application of this kind should be released at all.</p>
+
+            <div class="callout">
+                <strong>Official reference:</strong> Learn more from Isha Foundation’s article, <a href="https://isha.sadhguru.org/en/wisdom/article/classical-yoga-surya-kriya-and-surya-shakti" target="_blank" rel="noopener noreferrer">Classical Yoga: Surya Kriya and Surya Shakti</a>.
+            </div>
+
+            <h2>Respecting the practice</h2>
+            <p>The technology is intended to support memory and pronunciation, not to reinterpret the practice. Anyone interested in learning Surya Shakti should use official Isha Foundation information and receive appropriate instruction rather than relying on an app or an online sequence guide.</p>
+
+            <p>I will continue testing the private version on my own iPhone, particularly the AirPods microphone route, Sanskrit speech recognition, spoken prompts, repetition logic, cycle counting, and end-of-session feedback.</p>
+
+            <div class="actions">
+                <a class="action" href="https://isha.sadhguru.org/en/wisdom/article/classical-yoga-surya-kriya-and-surya-shakti" target="_blank" rel="noopener noreferrer">Visit the Official Isha Reference</a>
+                <a class="action secondary" href="../index.html#blog">Return to Blog</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Know &amp; Guide. All rights reserved.</p>
+    </footer>
+</body>
+</html>
