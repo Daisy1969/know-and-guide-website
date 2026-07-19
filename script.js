@@ -1,6 +1,232 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("Know & Guide Website Loaded");
 
+    const navLinks = document.querySelector(".nav-links");
+
+    if (navLinks) {
+        const navStyles = document.createElement("style");
+        navStyles.id = "learning-hubs-navigation-styles";
+        navStyles.textContent = `
+            .nav-links {
+                align-items: center;
+            }
+
+            .learning-hubs-item {
+                position: relative;
+            }
+
+            .learning-hubs-toggle {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.35rem;
+                padding: 0;
+                border: 0;
+                background: transparent;
+                color: var(--gray-600);
+                font: inherit;
+                font-size: 0.95rem;
+                font-weight: 500;
+                line-height: 1.6;
+                cursor: pointer;
+                transition: color 0.2s;
+            }
+
+            .learning-hubs-toggle:hover,
+            .learning-hubs-toggle:focus-visible,
+            .learning-hubs-toggle[aria-expanded="true"] {
+                color: var(--primary);
+            }
+
+            .learning-hubs-toggle:focus-visible {
+                outline: 3px solid rgba(79, 70, 229, 0.25);
+                outline-offset: 5px;
+                border-radius: 0.25rem;
+            }
+
+            .learning-hubs-chevron {
+                display: inline-block;
+                font-size: 0.75rem;
+                transition: transform 0.2s ease;
+            }
+
+            .learning-hubs-toggle[aria-expanded="true"] .learning-hubs-chevron {
+                transform: rotate(180deg);
+            }
+
+            .learning-hubs-menu {
+                position: absolute;
+                top: calc(100% + 0.85rem);
+                left: 50%;
+                z-index: 300;
+                display: none;
+                width: min(520px, calc(100vw - 2rem));
+                padding: 1rem;
+                transform: translateX(-50%);
+                grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+                gap: 0.75rem;
+                background: var(--white);
+                border: 1px solid var(--gray-200);
+                border-radius: 0.9rem;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .learning-hubs-item.is-open .learning-hubs-menu {
+                display: grid;
+            }
+
+            .learning-hubs-menu::before {
+                content: "";
+                position: absolute;
+                top: -0.45rem;
+                left: 50%;
+                width: 0.8rem;
+                height: 0.8rem;
+                transform: translateX(-50%) rotate(45deg);
+                background: var(--white);
+                border-top: 1px solid var(--gray-200);
+                border-left: 1px solid var(--gray-200);
+            }
+
+            .hub-group {
+                position: relative;
+                display: grid;
+                align-content: start;
+                gap: 0.2rem;
+                padding: 0.45rem;
+                border-radius: 0.65rem;
+            }
+
+            .hub-group + .hub-group {
+                background: var(--gray-100);
+            }
+
+            .hub-group-title {
+                padding: 0.35rem 0.55rem 0.45rem;
+                color: var(--dark);
+                font-size: 0.72rem;
+                font-weight: 800;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+            }
+
+            .nav-links .learning-hubs-menu a {
+                display: block;
+                padding: 0.58rem 0.65rem;
+                border-radius: 0.5rem;
+                color: var(--gray-600);
+                font-size: 0.9rem;
+                line-height: 1.3;
+                white-space: nowrap;
+            }
+
+            .nav-links .learning-hubs-menu a:hover,
+            .nav-links .learning-hubs-menu a:focus-visible {
+                color: var(--primary);
+                background: #eef2ff;
+            }
+
+            .nav-links .learning-hubs-menu a:focus-visible {
+                outline: 2px solid rgba(79, 70, 229, 0.35);
+                outline-offset: 1px;
+            }
+
+            @media (max-width: 768px) {
+                .learning-hubs-toggle {
+                    font-size: 0.85rem;
+                }
+
+                .learning-hubs-menu {
+                    width: min(360px, calc(100vw - 1.5rem));
+                    grid-template-columns: 1fr;
+                }
+
+                .learning-hubs-menu::before {
+                    left: 50%;
+                }
+
+                .nav-links .learning-hubs-menu a {
+                    white-space: normal;
+                }
+            }
+        `;
+
+        document.head.appendChild(navStyles);
+
+        navLinks.innerHTML = `
+            <li><a href="/#home">Home</a></li>
+            <li class="learning-hubs-item">
+                <button class="learning-hubs-toggle" type="button" aria-expanded="false" aria-controls="learning-hubs-menu" aria-haspopup="true">
+                    <span>Learning Hubs</span>
+                    <span class="learning-hubs-chevron" aria-hidden="true">▼</span>
+                </button>
+                <div class="learning-hubs-menu" id="learning-hubs-menu" role="menu" aria-label="Learning Hubs">
+                    <div class="hub-group">
+                        <span class="hub-group-title">Learning &amp; Education</span>
+                        <a href="/academy.html" role="menuitem">K&amp;G Academy</a>
+                        <a href="/school/year9-maths/week1.html" role="menuitem">Year 9 Maths Hub</a>
+                        <a href="/dr-k-curriculum.html" role="menuitem">Dr. K&rsquo;s Hub</a>
+                        <a href="/neuro-hub.html" role="menuitem">Neuro Hub</a>
+                        <a href="/india.html" role="menuitem">India Learning Hub</a>
+                    </div>
+                    <div class="hub-group">
+                        <span class="hub-group-title">Projects &amp; Development</span>
+                        <a href="/blog/youth-headwear.html" role="menuitem">SNC Youth Headwear</a>
+                        <a href="/cloud-roadmap.html" role="menuitem">K&amp;G Roadmap</a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="/#blog">Blog</a></li>
+            <li><a href="/admin.html">Admin</a></li>
+            <li>
+                <a href="https://etherealchronicler.com/page" target="_blank" rel="noopener noreferrer" class="cart-link" aria-label="Shopping Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </a>
+            </li>
+        `;
+
+        const hubsItem = navLinks.querySelector(".learning-hubs-item");
+        const hubsToggle = navLinks.querySelector(".learning-hubs-toggle");
+        const hubsMenu = navLinks.querySelector(".learning-hubs-menu");
+
+        const closeHubsMenu = ({ returnFocus = false } = {}) => {
+            hubsItem.classList.remove("is-open");
+            hubsToggle.setAttribute("aria-expanded", "false");
+            if (returnFocus) hubsToggle.focus();
+        };
+
+        const openHubsMenu = () => {
+            hubsItem.classList.add("is-open");
+            hubsToggle.setAttribute("aria-expanded", "true");
+        };
+
+        hubsToggle.addEventListener("click", () => {
+            const isOpen = hubsToggle.getAttribute("aria-expanded") === "true";
+            if (isOpen) {
+                closeHubsMenu();
+            } else {
+                openHubsMenu();
+            }
+        });
+
+        hubsMenu.addEventListener("click", (event) => {
+            if (event.target.closest("a")) closeHubsMenu();
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!hubsItem.contains(event.target)) closeHubsMenu();
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && hubsItem.classList.contains("is-open")) {
+                closeHubsMenu({ returnFocus: true });
+            }
+        });
+    }
+
     const blogContainer = document.getElementById("blog-container");
     if (!blogContainer) return;
 
