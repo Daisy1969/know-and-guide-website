@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cortex Manifesto | Cortex OS</title>
+    <meta name="description" content="Paper 1 of the Cortex OS research programme: a manifesto for AI-native computing.">
+    <link rel="canonical" href="https://knowandguide.com/cortex-manifesto.html">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .paper-hero { padding:6rem 1.5rem 3.5rem; background:linear-gradient(145deg,#0f172a,#1e1b4b); color:#fff; }
+        .paper-wrap { width:min(900px,100%); margin:0 auto; }
+        .paper-label { color:#a5b4fc; font-weight:800; text-transform:uppercase; letter-spacing:.12em; font-size:.75rem; }
+        .paper-hero h1 { font-size:clamp(2.4rem,6vw,4.8rem); line-height:1; margin:.7rem 0 1rem; }
+        .paper-hero p { color:#dbeafe; font-size:1.15rem; line-height:1.7; }
+        .meta { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.5rem; }
+        .meta span { padding:.35rem .65rem; border:1px solid rgba(255,255,255,.25); border-radius:999px; font-size:.78rem; }
+        .paper-body { padding:4rem 1.5rem 6rem; }
+        .paper-body article { width:min(900px,100%); margin:0 auto; color:#1e293b; }
+        .paper-body h2 { margin:3.2rem 0 1rem; font-size:clamp(1.55rem,3vw,2.25rem); }
+        .paper-body h3 { margin:2rem 0 .65rem; }
+        .paper-body p,.paper-body li { font-size:1.04rem; line-height:1.85; color:#475569; }
+        .paper-body blockquote { margin:2rem 0; padding:1.3rem 1.5rem; border-left:4px solid #4f46e5; background:#eef2ff; color:#312e81; font-size:1.2rem; font-weight:600; }
+        .paper-body ul,.paper-body ol { padding-left:1.4rem; }
+        .abstract { padding:1.5rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:.8rem; }
+        .back-link { display:inline-block; margin-bottom:1.5rem; color:#4338ca; font-weight:800; }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header>
+        <nav aria-label="Primary navigation">
+            <div class="logo"><a href="/"><img src="images/logo.png" alt="Know & Guide" style="max-height:90px;"></a></div>
+            <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/cortex-os.html">Cortex OS</a></li></ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="paper-hero">
+            <div class="paper-wrap">
+                <p class="paper-label">Cortex OS · Paper 1</p>
+                <h1>The Cortex Manifesto</h1>
+                <p>Towards AI-native computing: a research proposal for systems organised around intelligence and human intent.</p>
+                <div class="meta"><span>CORTEX-WP-001</span><span>Version 1.0.0-draft</span><span>Research Proposal</span><span>July 2026</span></div>
+            </div>
+        </section>
+
+        <section class="paper-body">
+            <article>
+                <a class="back-link" href="cortex-os.html">← Return to Cortex OS</a>
+
+                <div class="abstract">
+                    <h2 style="margin-top:0;">Abstract</h2>
+                    <p>Computing has reached an architectural transition point. For more than seventy years, computer systems have been designed around deterministic execution: hardware executes instructions, operating systems allocate resources, applications perform specialised tasks, and humans coordinate those applications through graphical interfaces.</p>
+                    <p>Artificial intelligence has emerged as a new computational paradigm, yet most systems continue to treat AI as another application inside an operating system that was never designed for adaptive reasoning. This paper proposes a different premise: instead of adapting AI to existing operating systems, future computing systems should be designed around intelligence itself.</p>
+                    <p>We call this paradigm <strong>AI-native computing</strong>. Cortex OS is not presented as a finished operating system, but as a research programme exploring architectures in which reasoning becomes a first-class system capability while deterministic control remains foundational.</p>
+                </div>
+
+                <h2>1. Historical context</h2>
+                <p>Every major shift in computing has changed the primary abstraction presented to people. Early computers exposed hardware directly. Operating systems abstracted hardware. Graphical interfaces abstracted operating systems. The Internet abstracted individual computers. Cloud computing abstracted infrastructure.</p>
+                <p>Artificial intelligence may now abstract software itself. Current operating systems assume that people launch applications to perform tasks. Increasingly, people express intentions rather than application-specific commands. The existing software stack reflects assumptions that no longer align with this emerging mode of interaction.</p>
+
+                <h2>2. The central hypothesis</h2>
+                <blockquote>Intelligence should become the organising principle of future computing systems rather than another software application.</blockquote>
+                <p>This hypothesis does not imply removing deterministic software. It proposes reorganising system architecture around adaptive reasoning while preserving deterministic execution wherever correctness, safety and reproducibility are essential.</p>
+
+                <h2>3. Intelligence is not an application</h2>
+                <p>Current AI systems typically exist as applications. The operating system remains unaware of goals, context, priorities and intent. As a result, AI systems repeatedly reconstruct information that already exists elsewhere in the device.</p>
+                <p>Cortex OS proposes that intelligence participate directly in system coordination. Rather than asking which application should perform a task, the system should first ask what objective the user is trying to achieve. Applications become implementation details. Intent becomes the primary computational object.</p>
+
+                <h2>4. From applications to cognitive services</h2>
+                <p>Traditional operating systems organise software into independent applications. Cortex OS proposes a set of specialised cognitive services, including communication, memory, planning, security, environmental awareness, learning and system management.</p>
+                <p>Each service maintains expertise within its own domain while cooperating through structured interfaces. No individual service is assumed to possess complete knowledge. Collective reasoning emerges through coordination.</p>
+
+                <h2>5. Distributed cognition</h2>
+                <p>Biological nervous systems distribute intelligence. Reflexes occur without conscious thought. Motor control operates independently from language. Memory is distributed across specialised structures. Human cognition scales because autonomy exists at multiple levels simultaneously.</p>
+                <p>Cortex OS adopts this principle. Specialist cognitive components operate semi-independently while remaining coordinated through higher-level executive reasoning. Higher layers define intent; lower layers execute domain-specific behaviour locally.</p>
+
+                <h2>6. Determinism and adaptation</h2>
+                <p>Adaptive systems introduce uncertainty. Operating systems require predictability. These objectives should not be treated as mutually exclusive.</p>
+                <p>Deterministic components remain responsible for scheduling, memory protection, hardware isolation, security boundaries, resource allocation and physical device control. Adaptive components remain responsible for planning, interpretation, optimisation, personalisation and goal management.</p>
+                <p>The AI may decide what should happen. Trusted deterministic services decide whether and how that action may safely occur.</p>
+
+                <h2>7. Human-centred computing</h2>
+                <p>Future computing should minimise cognitive friction. People increasingly describe intentions rather than software procedures. A request such as “prepare tomorrow's presentation” should not require the user to manually coordinate files, calendars, research tools, design software and communications.</p>
+                <p>An AI-native system interprets the objective, coordinates available resources, asks for clarification where necessary, and explains consequential decisions. The computer evolves from a tool requiring constant supervision into a collaborative reasoning system.</p>
+
+                <h2>8. Hardware must evolve</h2>
+                <p>Software architecture cannot fully realise AI-native computing without corresponding hardware evolution. Future devices may contain specialised processors for language, perception, memory, planning, security and sensor integration.</p>
+                <p>These processors could cooperate through high-bandwidth interconnects and shared memory while preserving deterministic system control. This remains a research hypothesis requiring simulation, prototyping and measurement.</p>
+
+                <h2>9. Research principles</h2>
+                <ol>
+                    <li>Reasoning should exist as close as practical to the problem it solves.</li>
+                    <li>Deterministic behaviour must remain verifiable.</li>
+                    <li>Learning should be observable, auditable and reversible.</li>
+                    <li>Privacy should default to local computation whenever feasible.</li>
+                    <li>Specialisation should replace unnecessary generalisation.</li>
+                    <li>Human intent should become the primary interface.</li>
+                    <li>Hardware and software should be designed together rather than independently.</li>
+                    <li>Every architectural claim should be testable through implementation.</li>
+                </ol>
+
+                <h2>10. Research methodology</h2>
+                <p>Cortex OS is an iterative research programme rather than a fixed specification. Every significant architectural proposal should progress through conceptual formulation, technical specification, prototype implementation and experimental evaluation.</p>
+                <p>Claims unsupported by experimentation remain hypotheses rather than conclusions. Project documents should explicitly classify material as established engineering, inspired design, hypothesis, experimental result, prototype behaviour or future vision.</p>
+
+                <h2>11. Limitations</h2>
+                <p>This manifesto does not claim that current operating systems should be replaced immediately, nor that probabilistic AI can safely perform every operating-system function. Trust, verification, scheduling, energy efficiency, hardware support and safe adaptation remain open research problems.</p>
+                <p>A practical first prototype may use an existing Linux kernel and unlockable Android hardware. This does not define the final architecture; it provides a measurable platform for testing cognitive services before attempting custom hardware or a new kernel.</p>
+
+                <h2>12. Call for collaboration</h2>
+                <p>The transition to AI-native computing cannot be achieved by advances in language models alone. It requires collaboration among operating-system researchers, AI scientists, hardware architects, embedded-systems engineers, security specialists, interaction designers and ethicists.</p>
+                <p>Cortex OS provides a common architectural language through which ideas may be evaluated, challenged, implemented, improved or rejected.</p>
+
+                <h2>Conclusion</h2>
+                <p>Computing has always advanced by changing its organising abstractions. The next abstraction may not be the application, the file or even the operating system. It may be intent.</p>
+                <p>Cortex OS proposes that intelligence become a native property of computing rather than an optional feature layered onto existing architectures. Whether that vision proves correct is less important than investigating it rigorously.</p>
+                <blockquote>The purpose of this manifesto is not to declare the future. It is to begin building it.</blockquote>
+            </article>
+        </section>
+    </main>
+
+    <footer><p>&copy; 2026 Know &amp; Guide. Cortex OS research programme.</p></footer>
+    <script src="script.js"></script>
+</body>
+</html>
