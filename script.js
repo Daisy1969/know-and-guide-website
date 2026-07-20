@@ -7,157 +7,63 @@ document.addEventListener("DOMContentLoaded", () => {
         const navStyles = document.createElement("style");
         navStyles.id = "learning-hubs-navigation-styles";
         navStyles.textContent = `
-            .nav-links {
-                align-items: center;
-            }
-
-            .learning-hubs-item {
-                position: relative;
-            }
-
+            .nav-links { align-items: center; }
+            .learning-hubs-item { position: relative; }
             .learning-hubs-toggle {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.35rem;
-                padding: 0;
-                border: 0;
-                background: transparent;
-                color: var(--gray-600);
-                font: inherit;
-                font-size: 0.95rem;
-                font-weight: 500;
-                line-height: 1.6;
-                cursor: pointer;
-                transition: color 0.2s;
+                display: inline-flex; align-items: center; gap: .35rem; padding: 0; border: 0;
+                background: transparent; color: var(--gray-600); font: inherit; font-size: .95rem;
+                font-weight: 500; line-height: 1.6; cursor: pointer; transition: color .2s;
             }
-
             .learning-hubs-toggle:hover,
             .learning-hubs-toggle:focus-visible,
-            .learning-hubs-toggle[aria-expanded="true"] {
-                color: var(--primary);
-            }
-
+            .learning-hubs-toggle[aria-expanded="true"] { color: var(--primary); }
             .learning-hubs-toggle:focus-visible {
-                outline: 3px solid rgba(79, 70, 229, 0.25);
-                outline-offset: 5px;
-                border-radius: 0.25rem;
+                outline: 3px solid rgba(79,70,229,.25); outline-offset: 5px; border-radius: .25rem;
             }
-
-            .learning-hubs-chevron {
-                display: inline-block;
-                font-size: 0.75rem;
-                transition: transform 0.2s ease;
-            }
-
-            .learning-hubs-toggle[aria-expanded="true"] .learning-hubs-chevron {
-                transform: rotate(180deg);
-            }
-
+            .learning-hubs-chevron { display: inline-block; font-size: .75rem; transition: transform .2s ease; }
+            .learning-hubs-toggle[aria-expanded="true"] .learning-hubs-chevron { transform: rotate(180deg); }
             .learning-hubs-menu {
-                position: absolute;
-                top: calc(100% + 0.85rem);
-                left: 50%;
-                z-index: 300;
-                display: none;
-                width: min(520px, calc(100vw - 2rem));
-                padding: 1rem;
-                transform: translateX(-50%);
-                grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-                gap: 0.75rem;
-                background: var(--white);
-                border: 1px solid var(--gray-200);
-                border-radius: 0.9rem;
+                position: absolute; top: calc(100% + .85rem); left: 50%; z-index: 300; display: none;
+                width: min(560px, calc(100vw - 2rem)); padding: 1rem; transform: translateX(-50%);
+                grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: .75rem;
+                background: var(--white); border: 1px solid var(--gray-200); border-radius: .9rem;
                 box-shadow: var(--shadow-lg);
             }
-
-            .learning-hubs-item.is-open .learning-hubs-menu {
-                display: grid;
-            }
-
+            .learning-hubs-item.is-open .learning-hubs-menu { display: grid; }
             .learning-hubs-menu::before {
-                content: "";
-                position: absolute;
-                top: -0.45rem;
-                left: 50%;
-                width: 0.8rem;
-                height: 0.8rem;
-                transform: translateX(-50%) rotate(45deg);
-                background: var(--white);
-                border-top: 1px solid var(--gray-200);
-                border-left: 1px solid var(--gray-200);
+                content: ""; position: absolute; top: -.45rem; left: 50%; width: .8rem; height: .8rem;
+                transform: translateX(-50%) rotate(45deg); background: var(--white);
+                border-top: 1px solid var(--gray-200); border-left: 1px solid var(--gray-200);
             }
-
-            .hub-group {
-                position: relative;
-                display: grid;
-                align-content: start;
-                gap: 0.2rem;
-                padding: 0.45rem;
-                border-radius: 0.65rem;
-            }
-
-            .hub-group + .hub-group {
-                background: var(--gray-100);
-            }
-
+            .hub-group { position: relative; display: grid; align-content: start; gap: .2rem; padding: .45rem; border-radius: .65rem; }
+            .hub-group + .hub-group { background: var(--gray-100); }
             .hub-group-title {
-                padding: 0.35rem 0.55rem 0.45rem;
-                color: var(--dark);
-                font-size: 0.72rem;
-                font-weight: 800;
-                letter-spacing: 0.06em;
-                text-transform: uppercase;
+                padding: .35rem .55rem .45rem; color: var(--dark); font-size: .72rem; font-weight: 800;
+                letter-spacing: .06em; text-transform: uppercase;
             }
-
             .nav-links .learning-hubs-menu a {
-                display: block;
-                padding: 0.58rem 0.65rem;
-                border-radius: 0.5rem;
-                color: var(--gray-600);
-                font-size: 0.9rem;
-                line-height: 1.3;
-                white-space: nowrap;
+                display: block; padding: .58rem .65rem; border-radius: .5rem; color: var(--gray-600);
+                font-size: .9rem; line-height: 1.3; white-space: nowrap;
             }
-
             .nav-links .learning-hubs-menu a:hover,
+            .nav-links .learning-hubs-menu a:focus-visible { color: var(--primary); background: #eef2ff; }
             .nav-links .learning-hubs-menu a:focus-visible {
-                color: var(--primary);
-                background: #eef2ff;
+                outline: 2px solid rgba(79,70,229,.35); outline-offset: 1px;
             }
-
-            .nav-links .learning-hubs-menu a:focus-visible {
-                outline: 2px solid rgba(79, 70, 229, 0.35);
-                outline-offset: 1px;
-            }
-
+            .cortex-nav-link { font-weight: 800 !important; color: #4338ca !important; }
             @media (max-width: 768px) {
-                .learning-hubs-toggle {
-                    font-size: 0.85rem;
-                }
-
-                .learning-hubs-menu {
-                    width: min(360px, calc(100vw - 1.5rem));
-                    grid-template-columns: 1fr;
-                }
-
-                .learning-hubs-menu::before {
-                    left: 50%;
-                }
-
-                .nav-links .learning-hubs-menu a {
-                    white-space: normal;
-                }
+                .learning-hubs-toggle { font-size: .85rem; }
+                .learning-hubs-menu { width: min(360px, calc(100vw - 1.5rem)); grid-template-columns: 1fr; }
+                .nav-links .learning-hubs-menu a { white-space: normal; }
             }
         `;
-
         document.head.appendChild(navStyles);
 
         navLinks.innerHTML = `
             <li><a href="/#home">Home</a></li>
             <li class="learning-hubs-item">
                 <button class="learning-hubs-toggle" type="button" aria-expanded="false" aria-controls="learning-hubs-menu" aria-haspopup="true">
-                    <span>Learning Hubs</span>
-                    <span class="learning-hubs-chevron" aria-hidden="true">▼</span>
+                    <span>Learning Hubs</span><span class="learning-hubs-chevron" aria-hidden="true">▼</span>
                 </button>
                 <div class="learning-hubs-menu" id="learning-hubs-menu" role="menu" aria-label="Learning Hubs">
                     <div class="hub-group">
@@ -169,7 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         <a href="/india.html" role="menuitem">India Learning Hub</a>
                     </div>
                     <div class="hub-group">
-                        <span class="hub-group-title">Projects &amp; Development</span>
+                        <span class="hub-group-title">Projects &amp; Research</span>
+                        <a class="cortex-nav-link" href="/cortex-os.html" role="menuitem">Cortex OS Research</a>
                         <a href="/blog/youth-headwear.html" role="menuitem">SNC Youth Headwear</a>
                         <a href="/cloud-roadmap.html" role="menuitem">K&amp;G Roadmap</a>
                     </div>
@@ -180,8 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <li>
                 <a href="https://etherealchronicler.com/page" target="_blank" rel="noopener noreferrer" class="cart-link" aria-label="Shopping Cart">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
+                        <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
                 </a>
@@ -191,39 +97,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const hubsItem = navLinks.querySelector(".learning-hubs-item");
         const hubsToggle = navLinks.querySelector(".learning-hubs-toggle");
         const hubsMenu = navLinks.querySelector(".learning-hubs-menu");
-
         const closeHubsMenu = ({ returnFocus = false } = {}) => {
             hubsItem.classList.remove("is-open");
             hubsToggle.setAttribute("aria-expanded", "false");
             if (returnFocus) hubsToggle.focus();
         };
-
         const openHubsMenu = () => {
             hubsItem.classList.add("is-open");
             hubsToggle.setAttribute("aria-expanded", "true");
         };
-
         hubsToggle.addEventListener("click", () => {
-            const isOpen = hubsToggle.getAttribute("aria-expanded") === "true";
-            if (isOpen) {
-                closeHubsMenu();
-            } else {
-                openHubsMenu();
-            }
+            hubsToggle.getAttribute("aria-expanded") === "true" ? closeHubsMenu() : openHubsMenu();
         });
-
-        hubsMenu.addEventListener("click", (event) => {
-            if (event.target.closest("a")) closeHubsMenu();
-        });
-
-        document.addEventListener("click", (event) => {
-            if (!hubsItem.contains(event.target)) closeHubsMenu();
-        });
-
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape" && hubsItem.classList.contains("is-open")) {
-                closeHubsMenu({ returnFocus: true });
-            }
+        hubsMenu.addEventListener("click", event => { if (event.target.closest("a")) closeHubsMenu(); });
+        document.addEventListener("click", event => { if (!hubsItem.contains(event.target)) closeHubsMenu(); });
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && hubsItem.classList.contains("is-open")) closeHubsMenu({ returnFocus: true });
         });
     }
 
@@ -232,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const addBlogCard = ({ id, ariaLabel, html, href }) => {
         if (document.getElementById(id)) return;
-
         const card = document.createElement("div");
         card.id = id;
         card.className = "blog-card";
@@ -240,34 +128,32 @@ document.addEventListener("DOMContentLoaded", () => {
         card.setAttribute("role", "article");
         card.setAttribute("aria-label", ariaLabel);
         card.innerHTML = html;
-
-        card.addEventListener("click", (event) => {
-            if (event.target.closest("a")) return;
-            window.location.href = href;
+        card.addEventListener("click", event => {
+            if (!event.target.closest("a")) window.location.href = href;
         });
-
         blogContainer.prepend(card);
     };
+
+    addBlogCard({
+        id: "cortex-os-blog-card",
+        ariaLabel: "Cortex OS research programme",
+        href: "cortex-os.html",
+        html: `
+            <div class="blog-image" style="background:radial-gradient(circle at 25% 25%,rgba(99,102,241,.95),transparent 34%),radial-gradient(circle at 78% 28%,rgba(14,165,233,.65),transparent 31%),linear-gradient(145deg,#070b18 0%,#1e1b4b 55%,#0b1022 100%);height:200px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;color:#fff;text-align:center;padding:1rem;">
+                <div><div style="font-size:2.6rem;margin-bottom:.35rem;">◉</div><div style="font-size:1.7rem;font-weight:800;line-height:1.1;">Cortex OS</div><div style="font-size:.9rem;color:#c7d2fe;margin-top:.4rem;letter-spacing:.05em;text-transform:uppercase;">AI-Native Computing</div></div>
+            </div>
+            <div class="blog-content"><h3>Cortex OS Research Programme</h3><p class="date">July 20, 2026</p><p>Read the manifesto for an intelligence-first operating system built around distributed cognition, local autonomy and deterministic safety.</p><a href="cortex-os.html" class="read-more">Explore Cortex OS &rarr;</a></div>`
+    });
 
     addBlogCard({
         id: "tarot-quest-blog-card",
         ariaLabel: "Tarot Quest Galactic Edition blog update",
         href: "blog/tarot-quest-galactic-edition.html",
         html: `
-            <div class="blog-image"
-                style="background: radial-gradient(circle at 25% 25%, rgba(168,85,247,.95), transparent 34%), radial-gradient(circle at 78% 28%, rgba(245,158,11,.78), transparent 31%), linear-gradient(145deg, #09011b 0%, #23104d 48%, #050713 100%); height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px 8px 0 0; color: #fff; text-align: center; padding: 1rem;">
-                <div>
-                    <div style="font-size: 2.6rem; margin-bottom: .35rem;">✦</div>
-                    <div style="font-size: 1.65rem; font-weight: 800; line-height: 1.1;">Tarot Quest</div>
-                    <div style="font-size: .95rem; color: #fde68a; margin-top: .4rem; letter-spacing: .05em; text-transform: uppercase;">Galactic Edition</div>
-                </div>
+            <div class="blog-image" style="background:radial-gradient(circle at 25% 25%,rgba(168,85,247,.95),transparent 34%),radial-gradient(circle at 78% 28%,rgba(245,158,11,.78),transparent 31%),linear-gradient(145deg,#09011b 0%,#23104d 48%,#050713 100%);height:200px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;color:#fff;text-align:center;padding:1rem;">
+                <div><div style="font-size:2.6rem;margin-bottom:.35rem;">✦</div><div style="font-size:1.65rem;font-weight:800;line-height:1.1;">Tarot Quest</div><div style="font-size:.95rem;color:#fde68a;margin-top:.4rem;letter-spacing:.05em;text-transform:uppercase;">Galactic Edition</div></div>
             </div>
-            <div class="blog-content">
-                <h3>Tarot Quest: Galactic Edition</h3>
-                <p class="date">July 18, 2026</p>
-                <p>Learn all 78 tarot cards through galactic artwork, guided lessons, quizzes, spoken coaching, readings, and a private journal.</p>
-                <a href="blog/tarot-quest-galactic-edition.html" class="read-more">Read More &rarr;</a>
-            </div>`
+            <div class="blog-content"><h3>Tarot Quest: Galactic Edition</h3><p class="date">July 18, 2026</p><p>Learn all 78 tarot cards through galactic artwork, guided lessons, quizzes, spoken coaching, readings, and a private journal.</p><a href="blog/tarot-quest-galactic-edition.html" class="read-more">Read More &rarr;</a></div>`
     });
 
     addBlogCard({
@@ -275,19 +161,9 @@ document.addEventListener("DOMContentLoaded", () => {
         ariaLabel: "Surya Shakti voice coach iPhone prototype blog update",
         href: "blog/surya-shakti-voice-coach-iphone.html",
         html: `
-            <div class="blog-image"
-                style="background: radial-gradient(circle at 50% 28%, rgba(251,146,60,.98), transparent 24%), radial-gradient(circle at 18% 78%, rgba(245,158,11,.42), transparent 30%), linear-gradient(145deg, #251106 0%, #6b2a0b 48%, #120805 100%); height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 8px 8px 0 0; color: #fff; text-align: center; padding: 1rem;">
-                <div>
-                    <div style="font-size: 3rem; margin-bottom: .25rem; color: #ffedd5;">☀</div>
-                    <div style="font-size: 1.55rem; font-weight: 800; line-height: 1.1;">Surya Shakti</div>
-                    <div style="font-size: .92rem; color: #fed7aa; margin-top: .4rem; letter-spacing: .05em; text-transform: uppercase;">iPhone Voice Coach</div>
-                </div>
+            <div class="blog-image" style="background:radial-gradient(circle at 50% 28%,rgba(251,146,60,.98),transparent 24%),radial-gradient(circle at 18% 78%,rgba(245,158,11,.42),transparent 30%),linear-gradient(145deg,#251106 0%,#6b2a0b 48%,#120805 100%);height:200px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;color:#fff;text-align:center;padding:1rem;">
+                <div><div style="font-size:3rem;margin-bottom:.25rem;color:#ffedd5;">☀</div><div style="font-size:1.55rem;font-weight:800;line-height:1.1;">Surya Shakti</div><div style="font-size:.92rem;color:#fed7aa;margin-top:.4rem;letter-spacing:.05em;text-transform:uppercase;">iPhone Voice Coach</div></div>
             </div>
-            <div class="blog-content">
-                <h3>Building a Surya Shakti Voice Coach for iPhone</h3>
-                <p class="date">July 19, 2026</p>
-                <p>A private native iPhone practice companion with English and Sanskrit prompts, voice recognition, cycle tracking, AirPods support, and pronunciation feedback.</p>
-                <a href="blog/surya-shakti-voice-coach-iphone.html" class="read-more">Read More &rarr;</a>
-            </div>`
+            <div class="blog-content"><h3>Building a Surya Shakti Voice Coach for iPhone</h3><p class="date">July 19, 2026</p><p>A private native iPhone practice companion with English and Sanskrit prompts, voice recognition, cycle tracking, AirPods support, and pronunciation feedback.</p><a href="blog/surya-shakti-voice-coach-iphone.html" class="read-more">Read More &rarr;</a></div>`
     });
 });
