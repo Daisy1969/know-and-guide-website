@@ -135,6 +135,18 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     addBlogCard({
+        id: "paper-fleet-duel-blog-card",
+        ariaLabel: "Paper Fleet Duel iPhone game development blog",
+        href: "blog/paper-fleet-duel.html",
+        html: `
+            <div class="blog-image" style="background:repeating-linear-gradient(0deg,transparent 0 28px,rgba(92,132,170,.18) 29px 30px),linear-gradient(90deg,transparent 49.6%,rgba(23,35,59,.72) 49.7% 50.3%,transparent 50.4%),linear-gradient(145deg,#faf4e6 0%,#efe2c8 100%);height:200px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;color:#17233b;text-align:center;padding:1rem;position:relative;overflow:hidden;">
+                <div style="position:absolute;width:70%;height:4px;background:#b4232e;transform:rotate(-20deg);border-radius:99px;"></div>
+                <div style="position:relative;padding:.75rem 1rem;background:rgba(255,255,255,.88);border:1px solid rgba(99,80,49,.2);border-radius:10px;"><div style="font-size:1.8rem;font-weight:800;line-height:1.05;">Paper Fleet Duel</div><div style="font-size:.82rem;color:#b4232e;margin-top:.35rem;letter-spacing:.06em;text-transform:uppercase;">Flick • Move • Sink</div></div>
+            </div>
+            <div class="blog-content"><h3>Paper Fleet Duel: From Pen-and-Paper to iPhone</h3><p class="date">July 25, 2026</p><p>An old biro-and-paper battleship game becomes a tactile iPhone duel with finger flicks, moving fleets, local multiplayer, levels and deliberately imperfect AI.</p><a href="blog/paper-fleet-duel.html" class="read-more">Read the Development Story &rarr;</a></div>`
+    });
+
+    addBlogCard({
         id: "cortex-os-blog-card",
         ariaLabel: "Cortex OS research programme",
         href: "cortex-os.html",
