@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Fleet Duel: From Pen-and-Paper Game to iPhone | Know &amp; Guide</title>
+    <meta name="description" content="How an old pen-and-paper battleship game became Paper Fleet Duel, a tactile iPhone strategy game with flick attacks, moving ships, local multiplayer, AI opponents, levels, and fleet upgrades.">
+    <meta property="og:title" content="Paper Fleet Duel: From Pen-and-Paper Game to iPhone">
+    <meta property="og:description" content="Recreating a childhood paper battleship game as a tactile iPhone strategy game with flick attacks, moving fleets, local multiplayer, and deliberately imperfect AI.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://knowandguide.com/blog/paper-fleet-duel.html">
+    <link rel="canonical" href="https://knowandguide.com/blog/paper-fleet-duel.html">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet">
+    <style>
+        .article { max-width: 920px; margin: 4rem auto; padding: 0 2rem; }
+        .article h1 { color: var(--dark); font-size: clamp(2.25rem, 5vw, 3.8rem); line-height: 1.04; margin: 0 0 .8rem; letter-spacing: -.035em; }
+        .article h2 { color: var(--dark); margin-top: 2.6rem; }
+        .article p, .article li { color: var(--gray-600); line-height: 1.78; }
+        .article li { margin-bottom: .6rem; }
+        .meta { color: var(--gray-600); border-bottom: 1px solid var(--gray-200); padding-bottom: 1rem; margin-bottom: 2rem; }
+        .fleet-hero { position: relative; min-height: 390px; margin-bottom: 2.25rem; border-radius: 22px; overflow: hidden; background: #f7f0df; box-shadow: 0 26px 65px rgba(15,23,42,.24); border: 1px solid #d7c9ab; }
+        .fleet-hero::before { content: ""; position: absolute; inset: 0; opacity: .38; background: repeating-linear-gradient(0deg, transparent 0 29px, rgba(55,102,142,.18) 30px 31px), linear-gradient(90deg, transparent 49.7%, rgba(28,44,67,.72) 49.8% 50.2%, transparent 50.3%); }
+        .fleet-hero::after { content: ""; position: absolute; width: 56%; height: 4px; left: 22%; top: 49%; border-radius: 99px; background: #b4232e; transform: rotate(-23deg); box-shadow: 0 0 0 1px rgba(125,20,29,.12); }
+        .fleet-copy { position: absolute; z-index: 3; left: 7%; bottom: 9%; max-width: 560px; padding: 1.1rem 1.3rem; border-radius: 14px; background: rgba(255,255,255,.88); backdrop-filter: blur(6px); border: 1px solid rgba(101,84,56,.2); }
+        .fleet-copy strong { color: #b4232e; display: block; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
+        .fleet-copy span { color: #17233b; display: block; font-size: clamp(2rem, 5vw, 4.2rem); font-weight: 800; line-height: .96; margin-top: .4rem; }
+        .ship { position: absolute; z-index: 2; display: flex; align-items: center; gap: 8px; color: #17233b; transform-origin: left center; }
+        .ship::before { content: "❮"; font-size: 1.35rem; font-weight: 800; }
+        .dot { width: 14px; height: 14px; border-radius: 50%; background: currentColor; box-shadow: 0 1px 2px rgba(0,0,0,.25); }
+        .ship-one { right: 12%; top: 18%; transform: rotate(18deg); }
+        .ship-two { right: 18%; top: 35%; transform: rotate(-8deg); }
+        .ship-three { left: 12%; top: 18%; color: #b4232e; transform: rotate(12deg); }
+        .shot-start { position: absolute; z-index: 3; right: 18%; bottom: 18%; width: 22px; height: 22px; border-radius: 50%; background: rgba(180,35,46,.2); border: 3px solid #b4232e; }
+        .shot-start::after { content: "Flick"; position: absolute; top: 25px; left: -8px; color: #b4232e; font-size: .72rem; font-weight: 800; text-transform: uppercase; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1.6rem 0 2rem; }
+        .feature { background: var(--white); border: 1px solid var(--gray-200); border-radius: 14px; padding: 1.2rem; box-shadow: var(--shadow-sm); }
+        .feature strong { display: block; color: var(--dark); margin-bottom: .45rem; }
+        .feature span { color: var(--gray-600); line-height: 1.55; }
+        .callout { margin: 1.7rem 0; padding: 1.25rem 1.4rem; border-radius: 12px; border-left: 4px solid #b4232e; background: #fff1f2; color: #4c1d24; }
+        .callout.ai { border-left-color: var(--primary); background: #eef2ff; color: #312e81; }
+        .roadmap { counter-reset: stage; list-style: none; padding: 0; }
+        .roadmap li { position: relative; padding: .95rem 1rem .95rem 3.5rem; margin-bottom: .8rem; border-radius: 12px; background: var(--white); border: 1px solid var(--gray-200); }
+        .roadmap li::before { counter-increment: stage; content: counter(stage); position: absolute; left: 1rem; top: .9rem; width: 1.7rem; height: 1.7rem; display: grid; place-items: center; border-radius: 50%; background: var(--primary); color: var(--white); font-size: .8rem; font-weight: 800; }
+        .actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2.2rem; }
+        .action { display: inline-block; padding: .9rem 1.2rem; border-radius: 9px; text-decoration: none; background: var(--primary); color: var(--white); font-weight: 700; }
+        .action:hover { background: var(--primary-dark); }
+        .action.secondary { background: var(--white); border: 1px solid var(--gray-200); color: var(--dark); }
+        @media (max-width: 600px) {
+            .article { padding: 0 1rem; margin-top: 2rem; }
+            .fleet-hero { min-height: 440px; }
+            .fleet-copy { left: 5%; right: 5%; bottom: 6%; }
+            .ship-one { right: 8%; }
+            .ship-three { left: 7%; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header>
+        <nav aria-label="Primary navigation">
+            <div class="logo"><a href="../index.html"><img src="../images/logo.png" alt="Know &amp; Guide" style="max-height: 90px;"></a></div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../academy.html">Academy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <article class="article">
+            <div class="fleet-hero" role="img" aria-label="A sheet of lined paper divided into two fleets, with dot ships, pointed bows and a red flick-shot line crossing the centre">
+                <div class="ship ship-one"><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+                <div class="ship ship-two"><i class="dot"></i><i class="dot"></i></div>
+                <div class="ship ship-three"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
+                <div class="shot-start"></div>
+                <div class="fleet-copy">
+                    <strong>An old paper game, rebuilt for touch</strong>
+                    <span>Paper Fleet Duel</span>
+                </div>
+            </div>
+
+            <h1>Turning a Pen-and-Paper Battleship Game into an iPhone Duel</h1>
+            <div class="meta"><strong>Posted:</strong> July 25, 2026 &nbsp; • &nbsp; <strong>Category:</strong> Game Development</div>
+
+            <p>Paper Fleet Duel began with a game I remember playing using nothing more than an A4 sheet of paper and a biro. We drew a line through the middle of the page, placed dots on each side to represent ships, and took turns making a pen flick toward the opposing fleet.</p>
+
+            <p>A single dot was a small ship. Two nearby dots made a larger ship, and four dots formed the battleship. If the ink line crossed a dot, the ship was hit. Cross every dot belonging to a ship and it was sunk. The aim was to sink the opposing fleet before your own disappeared under a web of hand-drawn attack lines.</p>
+
+            <div class="callout">
+                <strong>The key design idea:</strong> this should still feel like a finger, a pen and a piece of paper—not like a conventional tap-to-target Battleship game.
+            </div>
+
+            <h2>Recreating the flick</h2>
+            <p>In the iPhone version, the player places a finger on their own half of the paper and flicks toward the opponent. The starting position affects the power of the attack: the farther the finger begins from the centre line, the more force the shot receives.</p>
+
+            <p>Once the push begins, the direction is locked from the first instant of movement. The player cannot steer the line after launch. It travels across the paper, and any ship dots it crosses are damaged. This preserves the risk, imperfection and satisfaction of the original biro flick.</p>
+
+            <div class="feature-grid">
+                <div class="feature"><strong>One or two players</strong><span>Play locally against another person or choose an AI captain.</span></div>
+                <div class="feature"><strong>Tactile attacks</strong><span>Finger position, initial direction and flick force determine the shot.</span></div>
+                <div class="feature"><strong>Living fleets</strong><span>Ships can move inside their own waters, while some remain anchored.</span></div>
+                <div class="feature"><strong>Real boat movement</strong><span>A visible bow marks the front. Ships travel forward and larger vessels turn slowly.</span></div>
+                <div class="feature"><strong>Campaign progression</strong><span>Early levels begin with three ships before growing toward the full fleet.</span></div>
+                <div class="feature"><strong>Local identity</strong><span>Captain, AI and second-player names, levels, scores and progress are saved on the device.</span></div>
+            </div>
+
+            <h2>Ships that behave like boats</h2>
+            <p>The latest movement system gives each ship a defined front. A small chevron sits ahead of the leading dot to show the bow. Movement follows that heading, so ships travel forward rather than sliding sideways or instantly reversing.</p>
+
+            <p>Small craft can turn more sharply. Two-dot ships have a much smaller steering limit, and the four-dot battleship changes direction only gradually. A ship may stay anchored during a turn, while another begins moving during an attack. This makes the paper battlefield feel alive without losing the simplicity of dots and lines.</p>
+
+            <h2>Levels, credits and building a fleet</h2>
+            <p>The campaign is designed to teach the game gradually. Level 1 begins with two large ships and one small ship. Each level adds more vessels until Level 6 reaches the original full fleet size. Later levels can enlarge the playing surface, creating more room for movement and longer-range flicks.</p>
+
+            <ol class="roadmap">
+                <li><strong>Start small:</strong> learn the flick with a three-ship fleet.</li>
+                <li><strong>Earn points:</strong> score by hitting and sinking enemy ships and winning matches.</li>
+                <li><strong>Choose upgrades:</strong> spend earned credits on additional ships for future levels.</li>
+                <li><strong>Keep progressing:</strong> completed levels, player names, credits and high scores remain stored locally.</li>
+            </ol>
+
+            <h2>An AI that is allowed to miss</h2>
+            <p>The opponent uses lightweight offline game logic rather than a large language model. It evaluates the board and selects a plausible flick, but deliberate aiming error keeps it from feeling unnaturally perfect. Easier captains make wider mistakes, while higher difficulties become more focused without turning into guaranteed-hit machines.</p>
+
+            <div class="callout ai">
+                <strong>Why not use an LLM for aiming?</strong> A shot is a geometry and probability problem. The smaller offline system responds immediately, works on older supported iPhones, needs no internet connection and can be tuned to play fairly. A future on-device language model could still give an AI captain more personality and dialogue.
+            </div>
+
+            <h2>Where the project is now</h2>
+            <p>Paper Fleet Duel is currently an active SwiftUI iPhone prototype. Version 3.1 adds visible bows, forward-only movement, gradual steering for larger ships, saved names for the AI and second player, and softer AI accuracy. It also retains automated checks for the important turn handover between Player One, Player Two and the AI.</p>
+
+            <p>The next stage is continued play-testing: finding the right balance between flick skill, ship movement, fleet size, campaign rewards and AI difficulty. The goal is a game that feels immediately understandable to anyone who once drew ships on paper, while still having enough strategy to reward another match.</p>
+
+            <div class="actions">
+                <a class="action" href="mailto:info@knowandguide.com?subject=Paper%20Fleet%20Duel%20Feedback">Share Game Feedback</a>
+                <a class="action secondary" href="../index.html#blog">Return to Latest Updates</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Know &amp; Guide. All rights reserved.</p>
+    </footer>
+    <script src="../script.js" defer></script>
+</body>
+</html>
