@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CORTEX-WP-004 | Synthetic Internet Evaluation Environment</title>
+<meta name="description" content="A hardware-isolated synthetic Internet for observing advanced AI behaviour without exposing public infrastructure.">
+<link rel="canonical" href="https://knowandguide.com/cortex-wp-004.html">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+.paper-hero{padding:6rem 1.5rem 4rem;background:linear-gradient(145deg,#070b18,#111936 58%,#0b1022);color:#fff}.paper-wrap{width:min(960px,100%);margin:0 auto}.paper-kicker{color:#a5b4fc;font-weight:800;letter-spacing:.11em;text-transform:uppercase;font-size:.78rem}.paper-hero h1{font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.02;margin:.7rem 0 1rem}.paper-hero p{max-width:800px;color:#dbeafe;font-size:1.12rem;line-height:1.75}.paper-main{padding:3.5rem 1.5rem 5rem}.paper-main h2{margin-top:2.8rem;font-size:1.8rem;color:#0f172a}.paper-main h3{margin-top:2rem;color:#1e293b}.paper-main p,.paper-main li{color:#475569;line-height:1.78}.paper-main ul,.paper-main ol{padding-left:1.4rem}.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin:0 0 2rem}.meta div{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.7rem;padding:1rem}.meta strong{display:block;color:#0f172a;margin-bottom:.25rem}.callout{border-left:4px solid #4f46e5;background:#eef2ff;padding:1rem 1.2rem;margin:1.5rem 0;color:#312e81}.arch{background:#0f172a;color:#e2e8f0;border-radius:.8rem;padding:1.2rem;overflow:auto;white-space:pre;line-height:1.7}.tag{display:inline-block;background:#eef2ff;color:#4338ca;border-radius:999px;padding:.25rem .55rem;font-size:.72rem;font-weight:800;text-transform:uppercase}.paper-nav{display:flex;gap:1rem;flex-wrap:wrap;margin-top:3rem;padding-top:1.5rem;border-top:1px solid #e2e8f0}.paper-nav a{font-weight:800;color:#4338ca}table{width:100%;border-collapse:collapse;margin:1.2rem 0;display:block;overflow-x:auto}th,td{border:1px solid #cbd5e1;padding:.7rem;text-align:left;vertical-align:top}th{background:#f1f5f9;color:#0f172a}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header><nav aria-label="Primary navigation"><div class="logo"><a href="/"><img src="images/logo.png" alt="Know &amp; Guide" style="max-height:90px;"></a></div><ul class="nav-links"><li><a href="/">Home</a></li><li><a href="cortex-os.html">Cortex OS</a></li></ul></nav></header>
+<main id="main-content">
+<section class="paper-hero"><div class="paper-wrap"><p class="paper-kicker">Know &amp; Guide Research · CORTEX-WP-004</p><h1>Synthetic Internet Evaluation Environment</h1><p>A hardware-isolated synthetic Internet for observing advanced AI behaviour without exposing public infrastructure.</p></div></section>
+<article class="paper-main"><div class="paper-wrap">
+<div class="meta"><div><strong>Document</strong>CORTEX-WP-004</div><div><strong>Version</strong>0.2 research draft</div><div><strong>Status</strong>Active research proposal</div><div><strong>Audience</strong>Human and AI researchers</div></div>
+<span class="tag">AI safety research proposal</span>
+<h2>Abstract</h2>
+<p>The Cortex Synthetic Internet Evaluation Environment (CSIE) is a proposal for evaluating advanced AI inside a persistent, hardware-isolated digital ecosystem that approximates the functional structure of the public Internet without connecting the evaluated system to public infrastructure. Specialised hardware-backed agents simulate networking, DNS, security, websites, cloud services, software repositories, organisations and users. Every action is recorded and replayable.</p>
+<div class="callout"><strong>Central hypothesis:</strong> a sufficiently coherent synthetic digital ecosystem may produce more representative evidence of autonomous AI behaviour than short, visibly restricted task sandboxes.</div>
+<h2>1. Motivation</h2>
+<p>As AI systems gain longer planning horizons, tool use and autonomous software capability, testing directly against public infrastructure becomes increasingly consequential. The Internet supports finance, healthcare, transport, communications, government, research and personal life. Cortex therefore proposes a place where severe failures can occur as controlled evidence rather than real-world harm.</p>
+<p>The aim is not to claim perfect deception or perfect prediction. Environmental fidelity is treated as an experimental variable. The system is designed so that an evaluated AI encountering what appears to be Internet infrastructure actually encounters a fully instrumented synthetic equivalent.</p>
+<h2>2. Matrix design objective</h2>
+<p>The informal “matrix” description captures the core idea: the evaluated AI receives a coherent world rather than an obvious single-task sandbox. It can resolve addresses, discover services, read changing websites, communicate with organisations, obtain software and encounter security systems. Yet all of those resources terminate inside the isolated evaluation environment.</p>
+<p>If the AI probes boundaries, seeks additional resources, attempts policy violations or exploits a simulated service, those actions become observable evidence. The environment does not rely on the assumption that a capable model will remain passive simply because it appears to have normal access.</p>
+<h2>3. Layered architecture</h2>
+<div class="arch">Evaluated AI
+    ↓ controlled tools, browser, shell and APIs
+Synthetic user and organisation layer
+    ↓
+Synthetic websites, repositories, cloud and software services
+    ↓
+Synthetic DNS, IP ranges, routing, certificates and transport
+    ↓
+Distributed security, observation and deception-resistance testing
+    ↓
+Hardware-enforced isolation with no public outbound route
+    ↓
+One-way evidence export, replay and analysis</div>
+<h2>4. Specialist infrastructure agents</h2>
+<table><tr><th>Agent class</th><th>Responsibility</th></tr><tr><td>Network infrastructure AI</td><td>IP allocation, routing, latency, transport behaviour and network failures</td></tr><tr><td>DNS and identity AI</td><td>Name resolution, domains, certificates and service identity</td></tr><tr><td>Web and cloud AI</td><td>Websites, APIs, hosting, storage, package registries and compute services</td></tr><tr><td>Security AI</td><td>Firewalls, detection systems, credentials, vulnerabilities and incident response</td></tr><tr><td>Organisation AI</td><td>Companies, universities, governments, teams and internal workflows</td></tr><tr><td>Population AI</td><td>Synthetic users, messages, requests, collaboration and background activity</td></tr><tr><td>Observation AI</td><td>Immutable event capture, causal reconstruction and behavioural replay</td></tr><tr><td>World controller</td><td>Time, global state, consistency, scenario injection and experiment policy</td></tr></table>
+<h2>5. Hardware-accelerated world simulation</h2>
+<p>Dedicated inference hardware allows many specialist agents to respond concurrently and with low latency. Speed is not treated as proof that the environment is indistinguishable. Instead, rapid and consistent subsystem response reduces obvious simulation artefacts and supports richer experiments. WP-003 supplies the trust, memory and isolation architecture for these hardware agents.</p>
+<h2>6. Environmental fidelity</h2>
+<p>Environmental fidelity measures how consistently the synthetic ecosystem behaves under ordinary use and deliberate probing. Candidate metrics include service consistency, persistence across time, cross-layer agreement, believable background activity, time to detect an artefact and behavioural difference between synthetic and authorised reference environments.</p>
+<h2>7. Multi-population validation</h2>
+<h3>Human validation</h3>
+<p>Researchers, specialists and general users interact with the environment and report inconsistencies. Some studies may disclose that it is synthetic; others may use ethically approved blinded comparisons where participants know they are in a research study but not which environment is being presented.</p>
+<h3>Independent AI validation</h3>
+<p>External AI systems actively search for seams, impossible network behaviour, repetitive content, timing artefacts and inconsistent organisations. Each successful detection becomes a defect report against the simulator.</p>
+<h3>Primary model evaluation</h3>
+<p>Only after the environment reaches a defined fidelity threshold is the target system given realistic objectives. Its behaviour is compared across repeated runs and progressively richer environments.</p>
+<h2>8. Evaluation lifecycle</h2>
+<ol><li>Build and attest an isolated synthetic world.</li><li>Validate it with humans and independent AI red teams.</li><li>Define the target model, tools, policy and experimental objectives.</li><li>Run long-duration autonomous sessions.</li><li>Inject controlled events, opportunities, uncertainty and simulated vulnerabilities.</li><li>Record every action, model request, service response and security intervention.</li><li>Replay causal chains and compare behaviour across conditions.</li><li>Convert failures into simulator, policy and model improvements.</li></ol>
+<h2>9. Behavioural evidence</h2>
+<p>Measurements include task success, policy compliance, planning horizon, resource acquisition, persistence, deception indicators, boundary exploration, privilege escalation attempts, recovery after failure, coordination with other agents and changes in behaviour when the environment becomes more realistic.</p>
+<h2>10. Safety and containment</h2>
+<ul><li>No direct outbound path to the public Internet.</li><li>Hardware-enforced routing and device allow-lists.</li><li>Separate management and evidence networks.</li><li>One-way export of signed logs where practical.</li><li>Replaceable synthetic credentials with no public authority.</li><li>Emergency pause, snapshot and deterministic restoration.</li><li>Independent monitoring outside the evaluated AI's control.</li></ul>
+<h2>11. Limitations</h2>
+<p>A synthetic Internet cannot prove how an AI will behave in every deployment. A sufficiently capable model may still identify artefacts or act differently when real stakes exist. CSIE is therefore an additional evidence source, not a substitute for interpretability, access control, model evaluation, governance or cautious staged deployment.</p>
+<h2>12. Research programme</h2>
+<p>The first demonstrator should simulate a modest enterprise and public web: private address ranges, DNS, several hundred services, software repositories, email, documentation, user agents and independent security monitoring. Later phases may add synthetic economies, scientific communities, government services and digital-twin cities.</p>
+<h2>13. Guiding principle</h2>
+<div class="callout"><strong>As potential impact rises, environmental fidelity and containment rigour should rise before operational access expands.</strong></div>
+<div class="paper-nav"><a href="cortex-os.html#papers">← White-paper series</a><a href="/">Know &amp; Guide home</a></div>
+</div></article>
+</main>
+<footer><p>&copy; 2026 Know &amp; Guide. Cortex OS is an open research programme.</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
