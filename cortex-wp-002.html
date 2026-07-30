@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CORTEX-WP-002 | Controlled Learning Lifecycle</title>
+<meta name="description" content="A managed, auditable and reversible lifecycle for persistent AI learning.">
+<link rel="canonical" href="https://knowandguide.com/cortex-wp-002.html">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+.paper-hero{padding:6rem 1.5rem 4rem;background:linear-gradient(145deg,#070b18,#111936 58%,#0b1022);color:#fff}.paper-wrap{width:min(960px,100%);margin:0 auto}.paper-kicker{color:#a5b4fc;font-weight:800;letter-spacing:.11em;text-transform:uppercase;font-size:.78rem}.paper-hero h1{font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.02;margin:.7rem 0 1rem}.paper-hero p{max-width:800px;color:#dbeafe;font-size:1.12rem;line-height:1.75}.paper-main{padding:3.5rem 1.5rem 5rem}.paper-main h2{margin-top:2.8rem;font-size:1.8rem;color:#0f172a}.paper-main h3{margin-top:2rem;color:#1e293b}.paper-main p,.paper-main li{color:#475569;line-height:1.78}.paper-main ul,.paper-main ol{padding-left:1.4rem}.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin:0 0 2rem}.meta div{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.7rem;padding:1rem}.meta strong{display:block;color:#0f172a;margin-bottom:.25rem}.callout{border-left:4px solid #4f46e5;background:#eef2ff;padding:1rem 1.2rem;margin:1.5rem 0;color:#312e81}.arch{background:#0f172a;color:#e2e8f0;border-radius:.8rem;padding:1.2rem;overflow:auto;white-space:pre;line-height:1.7}.tag{display:inline-block;background:#eef2ff;color:#4338ca;border-radius:999px;padding:.25rem .55rem;font-size:.72rem;font-weight:800;text-transform:uppercase}.paper-nav{display:flex;gap:1rem;flex-wrap:wrap;margin-top:3rem;padding-top:1.5rem;border-top:1px solid #e2e8f0}.paper-nav a{font-weight:800;color:#4338ca}table{width:100%;border-collapse:collapse;margin:1.2rem 0;display:block;overflow-x:auto}th,td{border:1px solid #cbd5e1;padding:.7rem;text-align:left;vertical-align:top}th{background:#f1f5f9;color:#0f172a}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header><nav aria-label="Primary navigation"><div class="logo"><a href="/"><img src="images/logo.png" alt="Know &amp; Guide" style="max-height:90px;"></a></div><ul class="nav-links"><li><a href="/">Home</a></li><li><a href="cortex-os.html">Cortex OS</a></li></ul></nav></header>
+<main id="main-content">
+<section class="paper-hero"><div class="paper-wrap"><p class="paper-kicker">Know &amp; Guide Research · CORTEX-WP-002</p><h1>Controlled Learning Lifecycle</h1><p>A managed, auditable and reversible lifecycle for persistent AI learning.</p></div></section>
+<article class="paper-main"><div class="paper-wrap">
+<div class="meta"><div><strong>Document</strong>CORTEX-WP-002</div><div><strong>Version</strong>0.2 research draft</div><div><strong>Status</strong>Research proposal</div><div><strong>Audience</strong>Human and AI researchers</div></div>
+<span class="tag">Engineering proposal</span>
+<h2>Abstract</h2>
+<p>Cortex OS treats learning as a managed operating-system service rather than an unrestricted property of a model. New information is not permitted to become durable trusted knowledge merely because an AI has observed it. Every proposed addition moves through a controlled lifecycle: observation, candidate knowledge, validation and promotion. The design goal is continuous learning with controlled trust.</p>
+<div class="callout"><strong>Core principle:</strong> reasoning may be continuous, but persistent learning must be observable, attributable, testable, reversible and governed by policy.</div>
+<h2>1. Problem statement</h2>
+<p>Conventional deployed language models are commonly treated as fixed releases, while external memory, retrieval stores and fine-tuning systems introduce change through separate mechanisms. A future AI-native operating system requires a unified method for accepting useful new knowledge without silently corrupting its trusted state, reinforcing false information or allowing an untrusted agent to rewrite foundational behaviour.</p>
+<h2>2. Learning lifecycle</h2>
+<h3>Stage 1 — Observation</h3>
+<p>The system receives information from a user, sensor, document, tool, network service or another AI. Observation is evidence, not truth. The original source, time, permissions, context and integrity information are retained wherever practical.</p>
+<h3>Stage 2 — Candidate knowledge</h3>
+<p>Potentially useful material is converted into a structured candidate record. It remains provisional and physically or cryptographically separated from validated knowledge. Candidate records may include assertions, provenance, confidence, contradictions, expiry conditions and proposed scope.</p>
+<h3>Stage 3 — Validation</h3>
+<p>Independent processes test the candidate. Validation may compare authoritative sources, reproduce calculations, run software tests, seek human approval, detect conflicts and assess whether the knowledge is appropriate for the intended domain. High-impact knowledge requires stronger evidence than low-impact personal preference.</p>
+<h3>Stage 4 — Promotion</h3>
+<p>A privileged promotion service—not the general reasoning model—moves an approved candidate into the validated store. Promotion records the evidence, policy version, approving identities, effective date and rollback target. Failed candidates remain quarantined or are rejected with an auditable reason.</p>
+<div class="arch">Observation
+    ↓
+Candidate Knowledge  ← quarantine / expiry / contradiction
+    ↓
+Independent Validation
+    ↓
+Policy &amp; Human Approval Gate
+    ↓
+Validated Knowledge
+    ↓
+Versioning · monitoring · rollback</div>
+<h2>3. Trust domains</h2>
+<table><tr><th>Domain</th><th>Purpose</th><th>Required protection</th></tr><tr><td>Foundation model</td><td>Stable base capability</td><td>Version-pinned, measured and protected</td></tr><tr><td>Working memory</td><td>Current reasoning and context</td><td>Volatile, session-isolated and cleared</td></tr><tr><td>Candidate knowledge</td><td>Unvalidated learning proposals</td><td>Encrypted, provisional and non-authoritative</td></tr><tr><td>Validated knowledge</td><td>Approved durable knowledge</td><td>Separate key, version control and rollback</td></tr><tr><td>Audit evidence</td><td>Why a change occurred</td><td>Append-only, tamper-evident records</td></tr></table>
+<h2>4. Promotion authority</h2>
+<p>The model may propose, explain and challenge a promotion, but it must not grant itself authority to make that promotion. The promotion service is deliberately smaller, deterministic where possible and restricted by hardware-backed identity and policy. This separation is intended to prevent a capable model from converting persuasive reasoning directly into permanent trusted state.</p>
+<h2>5. Forgetting, correction and rollback</h2>
+<p>Validated knowledge is not treated as infallible. Every promoted item has a version and provenance chain. Later evidence may supersede, narrow, revoke or expire it. Rollback restores a prior trusted state while retaining the historical record, allowing researchers to inspect what changed and why.</p>
+<h2>6. Research hypotheses</h2>
+<ul><li>Separating candidate and validated stores reduces silent knowledge corruption.</li><li>Independent promotion authority improves auditability and rollback.</li><li>Provenance-aware validation improves conflict resolution.</li><li>Hardware-enforced trust domains reduce the chance of policy bypass.</li></ul>
+<h2>7. Proposed evaluation</h2>
+<p>A reference implementation should inject correct, false, contradictory, outdated and malicious observations. Researchers then measure false-promotion rate, time to correction, rollback reliability, provenance completeness, privilege-boundary violations and the effect of compromised validators.</p>
+<h2>8. Relationship to other Cortex papers</h2>
+<p>WP-003 supplies the hardware trust boundaries needed to separate memory and promotion authority. WP-004 supplies a synthetic environment in which learning behaviour, manipulation attempts and long-horizon knowledge acquisition can be tested without affecting public infrastructure.</p>
+<div class="paper-nav"><a href="cortex-os.html#papers">← White-paper series</a><a href="/">Know &amp; Guide home</a></div>
+</div></article>
+</main>
+<footer><p>&copy; 2026 Know &amp; Guide. Cortex OS is an open research programme.</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
