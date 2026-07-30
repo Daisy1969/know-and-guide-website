@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CORTEX-WP-003 | AI-Native Hardware Architecture</title>
+<meta name="description" content="Hardware-enforced trust, model execution, memory separation and controlled knowledge promotion.">
+<link rel="canonical" href="https://knowandguide.com/cortex-wp-003.html">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+.paper-hero{padding:6rem 1.5rem 4rem;background:linear-gradient(145deg,#070b18,#111936 58%,#0b1022);color:#fff}.paper-wrap{width:min(960px,100%);margin:0 auto}.paper-kicker{color:#a5b4fc;font-weight:800;letter-spacing:.11em;text-transform:uppercase;font-size:.78rem}.paper-hero h1{font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.02;margin:.7rem 0 1rem}.paper-hero p{max-width:800px;color:#dbeafe;font-size:1.12rem;line-height:1.75}.paper-main{padding:3.5rem 1.5rem 5rem}.paper-main h2{margin-top:2.8rem;font-size:1.8rem;color:#0f172a}.paper-main h3{margin-top:2rem;color:#1e293b}.paper-main p,.paper-main li{color:#475569;line-height:1.78}.paper-main ul,.paper-main ol{padding-left:1.4rem}.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;margin:0 0 2rem}.meta div{background:#f8fafc;border:1px solid #e2e8f0;border-radius:.7rem;padding:1rem}.meta strong{display:block;color:#0f172a;margin-bottom:.25rem}.callout{border-left:4px solid #4f46e5;background:#eef2ff;padding:1rem 1.2rem;margin:1.5rem 0;color:#312e81}.arch{background:#0f172a;color:#e2e8f0;border-radius:.8rem;padding:1.2rem;overflow:auto;white-space:pre;line-height:1.7}.tag{display:inline-block;background:#eef2ff;color:#4338ca;border-radius:999px;padding:.25rem .55rem;font-size:.72rem;font-weight:800;text-transform:uppercase}.paper-nav{display:flex;gap:1rem;flex-wrap:wrap;margin-top:3rem;padding-top:1.5rem;border-top:1px solid #e2e8f0}.paper-nav a{font-weight:800;color:#4338ca}table{width:100%;border-collapse:collapse;margin:1.2rem 0;display:block;overflow-x:auto}th,td{border:1px solid #cbd5e1;padding:.7rem;text-align:left;vertical-align:top}th{background:#f1f5f9;color:#0f172a}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header><nav aria-label="Primary navigation"><div class="logo"><a href="/"><img src="images/logo.png" alt="Know &amp; Guide" style="max-height:90px;"></a></div><ul class="nav-links"><li><a href="/">Home</a></li><li><a href="cortex-os.html">Cortex OS</a></li></ul></nav></header>
+<main id="main-content">
+<section class="paper-hero"><div class="paper-wrap"><p class="paper-kicker">Know &amp; Guide Research · CORTEX-WP-003</p><h1>AI-Native Hardware Architecture</h1><p>Hardware-enforced trust, model execution, memory separation and controlled knowledge promotion.</p></div></section>
+<article class="paper-main"><div class="paper-wrap">
+<div class="meta"><div><strong>Document</strong>CORTEX-WP-003</div><div><strong>Version</strong>0.2 research draft</div><div><strong>Status</strong>Architecture research draft</div><div><strong>Audience</strong>Human and AI researchers</div></div>
+<span class="tag">Hardware architecture</span>
+<h2>Abstract</h2>
+<p>This paper proposes an AI-native hardware architecture in which immutable trust, protected model execution, volatile reasoning, controlled learning memory and independent security monitoring are separate physical or cryptographic domains. It also records the Cortex model-in-silicon direction: a normal computer accesses a local AI appliance through PCIe/CXL or private Ethernet, while fixed model weights execute inside an attested model-specific fabric.</p>
+<div class="callout"><strong>Design objective:</strong> high AI performance must not require surrendering control of boot, memory, credentials, knowledge promotion or audit to the reasoning model itself.</div>
+<h2>1. Architectural principles</h2>
+<ul><li>Immutable root of trust and measured boot.</li><li>Foundation model identity bound to a specific signed release.</li><li>Volatile, session-isolated reasoning memory.</li><li>Physical or cryptographic separation of candidate and validated knowledge.</li><li>Signed, replaceable skills rather than permanently fused tools.</li><li>Independent security and promotion controllers.</li><li>Complete audit trails, rollback and recovery.</li></ul>
+<h2>2. Logical hardware stack</h2>
+<div class="arch">Normal computer or local network
+          ↓  PCIe / CXL / private Ethernet
+Host gateway and policy interface
+          ↓
+Independent control &amp; security subsystem
+   ↙             ↓                 ↘
+Model-specific   ECC reasoning     Signed skills
+weight fabric    and context       and tools
+          ↓
+Encrypted candidate knowledge
+          ↓  privileged validation gate
+Versioned validated knowledge
+          ↓
+Append-only audit and rollback</div>
+<h2>3. Immutable trust foundation</h2>
+<p>A first-stage security controller verifies boot firmware, runtime components, model identity, skill indexes and validated-knowledge roots before ordinary sessions are enabled. The system produces an attestation report so a host can determine exactly which hardware, model mapping and policy set it is using.</p>
+<h2>4. Model-specific silicon</h2>
+<p>The long-term Cortex design follows the model-in-silicon principle demonstrated by highly specialised inference hardware: place fixed model weights beside the arithmetic that consumes them rather than repeatedly transporting every weight from distant memory. Cortex treats the user-visible “chip” as one logical accelerator appliance, which may contain multiple replaceable model-tile boards rather than one monolithic die.</p>
+<p>Fixed model weights, tensor schedules and model identity belong in the protected model fabric. Prompts, conversations, reasoning state, skills, credentials, adapters and learned knowledge remain writable because they change during operation.</p>
+<h2>5. Dynamic memory hierarchy</h2>
+<table><tr><th>Tier</th><th>Contents</th><th>Trust treatment</th></tr><tr><td>Tile registers/SRAM</td><td>Current tensor and routing state</td><td>Local, short-lived</td></tr><tr><td>ECC reasoning memory</td><td>Context, intermediate reasoning and tool state</td><td>Session isolated; cleared on release</td></tr><tr><td>Candidate store</td><td>Unvalidated observations and learning proposals</td><td>Encrypted; provisional identity</td></tr><tr><td>Validated store</td><td>Approved durable knowledge</td><td>Separate key and promotion authority</td></tr><tr><td>Audit store</td><td>Measurements, decisions and evidence</td><td>Append-only hash chain</td></tr></table>
+<h2>6. Skills and tool execution</h2>
+<p>Skills are signed, versioned packages stored outside the fixed model fabric. When the model requests a tool, the control subsystem verifies identity, permissions and policy before executing it inside a sandbox or delegating it to the host. Tool output returns to volatile context, and an audit digest records the interaction.</p>
+<h2>7. Independent security monitor</h2>
+<p>The security monitor has its own identity, memory and observation path. It can restrict credentials, network routes, devices and validated knowledge even when the main model requests access. A failed signature, stale firmware counter or policy mismatch places the appliance into a diagnostic and recovery state rather than releasing protected resources.</p>
+<h2>8. Prototype and full-appliance tracks</h2>
+<p>The Cortex hardware programme separates a lower-cost trust-and-control prototype from the final model-in-silicon appliance. The prototype tests attestation, signed skills, memory separation, promotion controls and local model emulation. The full appliance requires model-specific silicon, large ECC dynamic memory, high-speed host interfaces and a verified licence for the selected open-weight model.</p>
+<h2>9. Research questions</h2>
+<ul><li>Can a physically separated promotion controller resist attempts by the main model to alter validated knowledge?</li><li>What model functions should be fixed in silicon and which must remain software-defined?</li><li>How should replaceable model tiles preserve attestation and rollback?</li><li>Can dedicated hardware agents provide the low-latency infrastructure required by WP-004's synthetic Internet?</li></ul>
+<h2>10. Relationship to WP-004</h2>
+<p>WP-004 extends this hardware pattern into a contained digital world. Dedicated infrastructure agents may operate network routing, DNS, web services, security, organisations and synthetic users quickly enough to maintain a coherent environment for the AI being evaluated.</p>
+<div class="paper-nav"><a href="cortex-os.html#papers">← White-paper series</a><a href="/">Know &amp; Guide home</a></div>
+</div></article>
+</main>
+<footer><p>&copy; 2026 Know &amp; Guide. Cortex OS is an open research programme.</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
