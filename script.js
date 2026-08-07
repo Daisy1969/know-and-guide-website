@@ -135,6 +135,17 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     addBlogCard({
+        id: "two-moon-rising-blog-card",
+        ariaLabel: "Two Moon Rising book outline",
+        href: "blog/two-moon-rising.html",
+        html: `
+            <div class="blog-image" style="background:radial-gradient(circle at 22% 27%,#fff8dc 0 7%,#ffd66d 8%,transparent 17%),radial-gradient(circle at 76% 29%,#f8fbff 0 9%,#a5b4fc 10%,transparent 21%),radial-gradient(circle at 50% 118%,rgba(79,70,229,.58),transparent 43%),linear-gradient(150deg,#050817 0%,#15123c 52%,#090b1a 100%);height:200px;display:flex;align-items:flex-end;justify-content:center;border-radius:8px 8px 0 0;color:#fff;text-align:center;padding:1rem;">
+                <div style="padding:.65rem .9rem;background:rgba(5,8,23,.68);border:1px solid rgba(199,210,254,.22);border-radius:10px;backdrop-filter:blur(5px);"><div style="font-size:1.8rem;font-weight:800;line-height:1.05;">Two Moon Rising</div><div style="font-size:.82rem;color:#c7d2fe;margin-top:.35rem;letter-spacing:.06em;text-transform:uppercase;">Book Outline</div></div>
+            </div>
+            <div class="blog-content"><h3>Two Moon Rising — A Book Outline in Development</h3><p class="date">August 7, 2026</p><p>A new book project shared at the outline stage so readers, collaborators and future-facing thinkers can explore the concept as it develops.</p><a href="blog/two-moon-rising.html" class="read-more">Explore the Outline &rarr;</a></div>`
+    });
+
+    addBlogCard({
         id: "paper-fleet-duel-blog-card",
         ariaLabel: "Paper Fleet Duel iPhone game development blog",
         href: "blog/paper-fleet-duel.html",
