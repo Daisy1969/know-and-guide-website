@@ -135,40 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     addBlogCard({
-        id: "two-moon-rising-blog-card",
-        ariaLabel: "Two Moon Rising book outline",
-        href: "blog/two-moon-rising.html",
-        html: `
-            <div class="blog-image" style="background:radial-gradient(circle at 22% 27%,#fff8dc 0 7%,#ffd66d 8%,transparent 17%),radial-gradient(circle at 76% 29%,#f8fbff 0 9%,#a5b4fc 10%,transparent 21%),radial-gradient(circle at 50% 118%,rgba(79,70,229,.58),transparent 43%),linear-gradient(150deg,#050817 0%,#15123c 52%,#090b1a 100%);height:200px;display:flex;align-items:flex-end;justify-content:center;border-radius:8px 8px 0 0;color:#fff;text-align:center;padding:1rem;">
-                <div style="padding:.65rem .9rem;background:rgba(5,8,23,.68);border:1px solid rgba(199,210,254,.22);border-radius:10px;backdrop-filter:blur(5px);"><div style="font-size:1.8rem;font-weight:800;line-height:1.05;">Two Moon Rising</div><div style="font-size:.82rem;color:#c7d2fe;margin-top:.35rem;letter-spacing:.06em;text-transform:uppercase;">Book Outline</div></div>
-            </div>
-            <div class="blog-content"><h3>Two Moon Rising — A Book Outline in Development</h3><p class="date">August 7, 2026</p><p>A new book project shared at the outline stage so readers, collaborators and future-facing thinkers can explore the concept as it develops.</p><a href="blog/two-moon-rising.html" class="read-more">Explore the Outline &rarr;</a></div>`
-    });
-
-    addBlogCard({
-        id: "paper-fleet-duel-blog-card",
-        ariaLabel: "Paper Fleet Duel iPhone game development blog",
-        href: "blog/paper-fleet-duel.html",
-        html: `
-            <div class="blog-image" style="background:repeating-linear-gradient(0deg,transparent 0 28px,rgba(92,132,170,.18) 29px 30px),linear-gradient(90deg,transparent 49.6%,rgba(23,35,59,.72) 49.7% 50.3%,transparent 50.4%),linear-gradient(145deg,#faf4e6 0%,#efe2c8 100%);height:200px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;color:#17233b;text-align:center;padding:1rem;position:relative;overflow:hidden;">
-                <div style="position:absolute;width:70%;height:4px;background:#b4232e;transform:rotate(-20deg);border-radius:99px;"></div>
-                <div style="position:relative;padding:.75rem 1rem;background:rgba(255,255,255,.88);border:1px solid rgba(99,80,49,.2);border-radius:10px;"><div style="font-size:1.8rem;font-weight:800;line-height:1.05;">Paper Fleet Duel</div><div style="font-size:.82rem;color:#b4232e;margin-top:.35rem;letter-spacing:.06em;text-transform:uppercase;">Flick • Move • Sink</div></div>
-            </div>
-            <div class="blog-content"><h3>Paper Fleet Duel: From Pen-and-Paper to iPhone</h3><p class="date">July 25, 2026</p><p>An old biro-and-paper battleship game becomes a tactile iPhone duel with finger flicks, moving fleets, local multiplayer, levels and deliberately imperfect AI.</p><a href="blog/paper-fleet-duel.html" class="read-more">Read the Development Story &rarr;</a></div>`
-    });
-
-    addBlogCard({
-        id: "cortex-os-blog-card",
-        ariaLabel: "Cortex OS research programme",
-        href: "cortex-os.html",
-        html: `
-            <div class="blog-image" style="background:radial-gradient(circle at 25% 25%,rgba(99,102,241,.95),transparent 34%),radial-gradient(circle at 78% 28%,rgba(14,165,233,.65),transparent 31%),linear-gradient(145deg,#070b18 0%,#1e1b4b 55%,#0b1022 100%);height:200px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;color:#fff;text-align:center;padding:1rem;">
-                <div><div style="font-size:2.6rem;margin-bottom:.35rem;">◉</div><div style="font-size:1.7rem;font-weight:800;line-height:1.1;">Cortex OS</div><div style="font-size:.9rem;color:#c7d2fe;margin-top:.4rem;letter-spacing:.05em;text-transform:uppercase;">AI-Native Computing</div></div>
-            </div>
-            <div class="blog-content"><h3>Cortex OS Research Programme</h3><p class="date">July 20, 2026</p><p>Read the manifesto for an intelligence-first operating system built around distributed cognition, local autonomy and deterministic safety.</p><a href="cortex-os.html" class="read-more">Explore Cortex OS &rarr;</a></div>`
-    });
-
-    addBlogCard({
         id: "tarot-quest-blog-card",
         ariaLabel: "Tarot Quest Galactic Edition blog update",
         href: "blog/tarot-quest-galactic-edition.html",
@@ -188,5 +154,40 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div><div style="font-size:3rem;margin-bottom:.25rem;color:#ffedd5;">☀</div><div style="font-size:1.55rem;font-weight:800;line-height:1.1;">Surya Shakti</div><div style="font-size:.92rem;color:#fed7aa;margin-top:.4rem;letter-spacing:.05em;text-transform:uppercase;">iPhone Voice Coach</div></div>
             </div>
             <div class="blog-content"><h3>Building a Surya Shakti Voice Coach for iPhone</h3><p class="date">July 19, 2026</p><p>A private native iPhone practice companion with English and Sanskrit prompts, voice recognition, cycle tracking, AirPods support, and pronunciation feedback.</p><a href="blog/surya-shakti-voice-coach-iphone.html" class="read-more">Read More &rarr;</a></div>`
+    });
+
+    addBlogCard({
+        id: "cortex-os-blog-card",
+        ariaLabel: "Cortex OS research programme",
+        href: "cortex-os.html",
+        html: `
+            <div class="blog-image" style="background:radial-gradient(circle at 25% 25%,rgba(99,102,241,.95),transparent 34%),radial-gradient(circle at 78% 28%,rgba(14,165,233,.65),transparent 31%),linear-gradient(145deg,#070b18 0%,#1e1b4b 55%,#0b1022 100%);height:200px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;color:#fff;text-align:center;padding:1rem;">
+                <div><div style="font-size:2.6rem;margin-bottom:.35rem;">◉</div><div style="font-size:1.7rem;font-weight:800;line-height:1.1;">Cortex OS</div><div style="font-size:.9rem;color:#c7d2fe;margin-top:.4rem;letter-spacing:.05em;text-transform:uppercase;">AI-Native Computing</div></div>
+            </div>
+            <div class="blog-content"><h3>Cortex OS Research Programme</h3><p class="date">July 20, 2026</p><p>Read the manifesto for an intelligence-first operating system built around distributed cognition, local autonomy and deterministic safety.</p><a href="cortex-os.html" class="read-more">Explore Cortex OS &rarr;</a></div>`
+    });
+
+    addBlogCard({
+        id: "two-moon-rising-blog-card",
+        ariaLabel: "Two Moon Rising book outline",
+        href: "blog/two-moon-rising.html",
+        html: `
+            <div class="blog-image" style="background:radial-gradient(circle at 22% 27%,#fff8dc 0 7%,#ffd66d 8%,transparent 17%),radial-gradient(circle at 76% 29%,#f8fbff 0 9%,#a5b4fc 10%,transparent 21%),radial-gradient(circle at 50% 118%,rgba(79,70,229,.58),transparent 43%),linear-gradient(150deg,#050817 0%,#15123c 52%,#090b1a 100%);height:200px;display:flex;align-items:flex-end;justify-content:center;border-radius:8px 8px 0 0;color:#fff;text-align:center;padding:1rem;">
+                <div style="padding:.65rem .9rem;background:rgba(5,8,23,.68);border:1px solid rgba(199,210,254,.22);border-radius:10px;backdrop-filter:blur(5px);"><div style="font-size:1.8rem;font-weight:800;line-height:1.05;">Two Moon Rising</div><div style="font-size:.82rem;color:#c7d2fe;margin-top:.35rem;letter-spacing:.06em;text-transform:uppercase;">Book Outline</div></div>
+            </div>
+            <div class="blog-content"><h3>Two Moon Rising — A Book Outline in Development</h3><p class="date">August 7, 2026</p><p>A new book project shared at the outline stage so readers, collaborators and future-facing thinkers can explore the concept as it develops.</p><a href="blog/two-moon-rising.html" class="read-more">Explore the Outline &rarr;</a></div>`
+    });
+
+    addBlogCard({
+        id: "paper-fleet-duel-blog-card",
+        ariaLabel: "FlickFleet App Store release — formerly Paper Fleet Duel",
+        href: "blog/paper-fleet-duel.html",
+        html: `
+            <div class="blog-image" style="background:repeating-linear-gradient(0deg,transparent 0 28px,rgba(92,132,170,.18) 29px 30px),linear-gradient(90deg,transparent 49.6%,rgba(23,35,59,.72) 49.7% 50.3%,transparent 50.4%),linear-gradient(145deg,#faf4e6 0%,#efe2c8 100%);height:200px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;color:#17233b;text-align:center;padding:1rem;position:relative;overflow:hidden;">
+                <div style="position:absolute;top:14px;right:14px;padding:.3rem .55rem;border-radius:999px;background:#111827;color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;">Now on App Store</div>
+                <div style="position:absolute;width:70%;height:4px;background:#b4232e;transform:rotate(-20deg);border-radius:99px;"></div>
+                <div style="position:relative;padding:.75rem 1rem;background:rgba(255,255,255,.9);border:1px solid rgba(99,80,49,.2);border-radius:10px;"><div style="font-size:1.8rem;font-weight:800;line-height:1.05;">FlickFleet</div><div style="font-size:.82rem;color:#b4232e;margin-top:.35rem;letter-spacing:.06em;text-transform:uppercase;">Paper Fleet Duel Released</div></div>
+            </div>
+            <div class="blog-content"><h3>Paper Fleet Duel Becomes FlickFleet — Now on the App Store</h3><p class="date">August 13, 2026</p><p>The pen-and-paper naval flick game has reached the App Store as FlickFleet, with moving ships, progression, offline AI and a refined adaptive HUD.</p><a href="blog/paper-fleet-duel.html" class="read-more">Read the Launch Story &rarr;</a><br><a href="https://apps.apple.com/app/flickfleet/id6794210416" target="_blank" rel="noopener noreferrer" class="read-more">Download FlickFleet &rarr;</a></div>`
     });
 });
