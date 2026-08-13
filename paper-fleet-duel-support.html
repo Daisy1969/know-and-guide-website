@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper Fleet Duel Support and Issues | Know &amp; Guide</title>
-    <meta name="description" content="Support, troubleshooting, privacy information, and issue reporting for Paper Fleet Duel on iPhone.">
+    <title>FlickFleet Support | Know &amp; Guide</title>
+    <meta name="description" content="Support, troubleshooting, privacy information, and issue reporting for FlickFleet, formerly developed as Paper Fleet Duel.">
     <link rel="canonical" href="https://knowandguide.com/paper-fleet-duel-support.html">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet">
@@ -14,9 +14,12 @@
         .page h2 { color: var(--dark); margin-top: 2.25rem; }
         .page p, .page li { color: var(--gray-600); line-height: 1.75; }
         .panel { background: var(--white); border: 1px solid var(--gray-200); border-radius: 14px; padding: 1.3rem; margin: 1rem 0; box-shadow: var(--shadow-sm); }
+        .release { border-left: 4px solid #16a34a; background: #f0fdf4; }
         .contact { border-left: 4px solid #b4232e; }
         .button { display: inline-block; margin: .6rem .6rem 0 0; padding: .85rem 1.15rem; border-radius: 9px; background: var(--primary); color: var(--white); text-decoration: none; font-weight: 700; }
         .button:hover { background: var(--primary-dark); }
+        .button.store { background: #000; }
+        .button.store:hover { background: #1f2937; }
         .button.issue { background: #17233b; }
         .button.issue:hover { background: #0f172a; }
         @media (max-width: 600px) { .page { margin-top: 2rem; padding: 0 1rem; } }
@@ -29,21 +32,27 @@
             <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Know &amp; Guide" style="max-height: 90px;"></a></div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="blog/paper-fleet-duel.html">Paper Fleet Duel</a></li>
+                <li><a href="blog/paper-fleet-duel.html">FlickFleet</a></li>
                 <li><a href="paper-fleet-duel-privacy.html">Privacy</a></li>
             </ul>
         </nav>
     </header>
 
     <main id="main-content" class="page">
-        <h1>Paper Fleet Duel Support</h1>
-        <p>Use this page to report a problem, suggest an improvement, or find help with the Paper Fleet Duel iPhone prototype.</p>
+        <h1>FlickFleet Support</h1>
+        <p>FlickFleet is the public App Store release of the project originally developed as <strong>Paper Fleet Duel</strong>. Use this page to download the game, report a problem, suggest an improvement, or find help.</p>
+
+        <div class="panel release">
+            <h2 style="margin-top:0;">Available on the Apple App Store</h2>
+            <p>FlickFleet App Store version 1.0 has been approved for iOS and is publicly available.</p>
+            <a class="button store" href="https://apps.apple.com/app/flickfleet/id6794210416" target="_blank" rel="noopener noreferrer">Download FlickFleet</a>
+        </div>
 
         <div class="panel contact">
             <h2 style="margin-top:0;">Report an issue</h2>
             <p>For bugs and reproducible game problems, open a GitHub issue. Please check the issue carefully before submitting because GitHub issue reports are public.</p>
-            <a class="button issue" href="https://github.com/Daisy1969/know-and-guide-website/issues/new?title=Paper%20Fleet%20Duel%20Issue&amp;body=Game%20version%3A%0AiPhone%20model%3A%0AiOS%20version%3A%0AGame%20mode%20and%20difficulty%3A%0A%0AWhat%20happened%3A%0A%0ASteps%20to%20reproduce%3A%0A1.%20%0A2.%20%0A3.%20%0A%0AWhat%20I%20expected%3A" target="_blank" rel="noopener noreferrer">Open a GitHub Issue</a>
-            <a class="button" href="mailto:winseral@knowandguide.com?subject=Paper%20Fleet%20Duel%20Support">Email Support</a>
+            <a class="button issue" href="https://github.com/Daisy1969/know-and-guide-website/issues/new?title=FlickFleet%20Issue&amp;body=Game%20version%3A%0AiPhone%20model%3A%0AiOS%20version%3A%0AGame%20mode%20and%20difficulty%3A%0A%0AWhat%20happened%3A%0A%0ASteps%20to%20reproduce%3A%0A1.%20%0A2.%20%0A3.%20%0A%0AWhat%20I%20expected%3A" target="_blank" rel="noopener noreferrer">Open a GitHub Issue</a>
+            <a class="button" href="mailto:winseral@knowandguide.com?subject=FlickFleet%20Support">Email Support</a>
             <p>When reporting a problem, include the game version, iPhone model, iOS version, game mode, AI difficulty, what happened, what you expected, and the steps needed to make it happen again. A screenshot is helpful when it does not contain private information.</p>
         </div>
 
@@ -65,8 +74,13 @@
         </div>
 
         <div class="panel">
+            <h3>Why does the HUD sometimes hide or reduce itself?</h3>
+            <p>The interface adapts to the current game state. Unavailable bonuses can be hidden, and HUD elements may minimise around ships to keep the play area clear.</p>
+        </div>
+
+        <div class="panel">
             <h3>Where are names, levels, credits and scores stored?</h3>
-            <p>Player names, the AI name, campaign progress, credits, fleet purchases and high scores are stored locally on the iPhone. The game does not require a Paper Fleet Duel account.</p>
+            <p>Player names, the AI name, campaign progress, credits, fleet purchases and high scores are stored locally on the iPhone. FlickFleet does not require a Know &amp; Guide account.</p>
         </div>
 
         <div class="panel">
@@ -74,11 +88,12 @@
             <p>Deleting the app normally removes its local data. Some information may remain in an Apple device or iCloud backup depending on your backup settings.</p>
         </div>
 
-        <h2>Prototype status</h2>
-        <p>Paper Fleet Duel is under active development. Gameplay balance, fleet movement, AI difficulty, campaign rewards and interface details may change as testing continues.</p>
+        <h2>Release status</h2>
+        <p>FlickFleet is now a released iPhone game rather than a private prototype. Development continues, so gameplay balance, fleet movement, AI difficulty, progression and interface details may still improve in future updates.</p>
 
+        <a class="button store" href="https://apps.apple.com/app/flickfleet/id6794210416" target="_blank" rel="noopener noreferrer">Open in the App Store</a>
         <a class="button" href="paper-fleet-duel-privacy.html">Read the Privacy Policy</a>
-        <a class="button" href="blog/paper-fleet-duel.html">Read the Development Blog</a>
+        <a class="button" href="blog/paper-fleet-duel.html">Read the Launch Blog</a>
     </main>
 
     <footer>
