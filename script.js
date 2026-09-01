@@ -190,4 +190,30 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="blog-content"><h3>Paper Fleet Duel Becomes FlickFleet — Now on the App Store</h3><p class="date">August 13, 2026</p><p>The pen-and-paper naval flick game has reached the App Store as FlickFleet, with moving ships, progression, offline AI and a refined adaptive HUD.</p><a href="blog/paper-fleet-duel.html" class="read-more">Read the Launch Story &rarr;</a><br><a href="https://apps.apple.com/app/flickfleet/id6794210416" target="_blank" rel="noopener noreferrer" class="read-more">Download FlickFleet &rarr;</a></div>`
     });
+
+    addBlogCard({
+        id: "starfall-interceptor-blog-card",
+        ariaLabel: "Starfall Interceptor App Store launch",
+        href: "blog/starfall-interceptor-app-store.html",
+        html: `
+            <div class="blog-image" style="background:radial-gradient(circle at 18% 22%,rgba(34,211,238,.42),transparent 28%),radial-gradient(circle at 77% 28%,rgba(168,85,247,.42),transparent 30%),radial-gradient(circle at 55% 105%,rgba(245,158,11,.28),transparent 35%),linear-gradient(155deg,#020617 0%,#071426 47%,#111827 100%);height:200px;display:flex;align-items:center;justify-content:center;border-radius:8px 8px 0 0;color:#fff;text-align:center;padding:1rem;position:relative;overflow:hidden;">
+                <div style="position:absolute;top:14px;right:14px;padding:.3rem .55rem;border-radius:999px;background:#000;color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;">Now on App Store</div>
+                <div style="position:absolute;width:55%;height:4px;left:5%;top:44%;background:linear-gradient(90deg,transparent,#e879f9,#fff);transform:rotate(-8deg);box-shadow:0 0 15px rgba(232,121,249,.75);"></div>
+                <div style="position:relative;padding:.7rem 1rem;background:rgba(2,6,23,.72);border:1px solid rgba(103,232,249,.28);border-radius:10px;"><div style="font-size:1.75rem;font-weight:800;line-height:1.05;">Starfall Interceptor</div><div style="font-size:.82rem;color:#67e8f9;margin-top:.35rem;letter-spacing:.06em;text-transform:uppercase;">Liberate • Defend • Break The Veil</div></div>
+            </div>
+            <div class="blog-content"><h3>Starfall Interceptor — From Defender Inspiration to App Store</h3><p class="date">August 25, 2026</p><p>A 30-level iPhone and iPad space campaign built around SoulHeal weapons, liberated pilots, mothership battles, upgrades and the hidden force known as The Veil.</p><a href="blog/starfall-interceptor-app-store.html" class="read-more">Read the Launch Story &rarr;</a><br><a href="https://apps.apple.com/app/starfallinterceptor/id6802985758" target="_blank" rel="noopener noreferrer" class="read-more">Download StarfallInterceptor &rarr;</a></div>`
+    });
+
+    addBlogCard({
+        id: "aussie-backyard-games-blog-card",
+        ariaLabel: "Aussie Backyard Games iPhone and iPad development blog",
+        href: "blog/aussie-backyard-games.html",
+        html: `
+            <div class="blog-image" style="background:linear-gradient(#7dd3fc 0 48%,#86efac 48% 70%,#65a30d 70% 100%);height:200px;display:flex;align-items:flex-end;justify-content:center;border-radius:8px 8px 0 0;color:#17233b;text-align:center;padding:1rem;position:relative;overflow:hidden;">
+                <div style="position:absolute;top:16px;right:20px;width:52px;height:52px;border-radius:50%;background:#fde047;box-shadow:0 0 25px rgba(253,224,71,.5);"></div>
+                <div style="position:absolute;left:8%;bottom:18%;width:45%;height:55px;border-radius:50%;background:#38bdf8;border:5px solid #e5e7eb;"></div>
+                <div style="position:relative;padding:.7rem 1rem;background:rgba(255,255,255,.88);border:1px solid rgba(22,101,52,.15);border-radius:10px;"><div style="font-size:1.7rem;font-weight:800;line-height:1.05;">Aussie Backyard Games</div><div style="font-size:.82rem;color:#166534;margin-top:.35rem;letter-spacing:.06em;text-transform:uppercase;">iPhone &amp; iPad • In Development</div></div>
+            </div>
+            <div class="blog-content"><h3>Aussie Backyard Games — Rebuilding Childhood Games for iPhone &amp; iPad</h3><p class="date">September 1, 2026</p><p>Pool whirlpools, clothesline chaos and soap-slope slides become a growing collection of physical mini-games with persistent strength, stamina, gear and a shared Backyard hub.</p><a href="blog/aussie-backyard-games.html" class="read-more">Follow the Development &rarr;</a></div>`
+    });
 });
