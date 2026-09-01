@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starfall Interceptor — From Defender Inspiration to App Store | Know &amp; Guide</title>
+    <meta name="description" content="The development story behind Starfall Interceptor, a 30-level iPhone and iPad space arcade game where the goal is to liberate mind-controlled pilots rather than destroy them.">
+    <meta property="og:title" content="Starfall Interceptor — From Defender Inspiration to App Store">
+    <meta property="og:description" content="A classic arcade idea rebuilt around liberation, SoulHeal weapons, three worlds, mothership battles and a persistent pilot career.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://knowandguide.com/blog/starfall-interceptor-app-store.html">
+    <link rel="canonical" href="https://knowandguide.com/blog/starfall-interceptor-app-store.html">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet">
+    <style>
+        .article { max-width: 940px; margin: 4rem auto; padding: 0 2rem; }
+        .article h1 { color: var(--dark); font-size: clamp(2.3rem, 5vw, 3.9rem); line-height: 1.04; margin-bottom: .8rem; }
+        .article h2 { color: var(--dark); margin-top: 2.6rem; }
+        .article p, .article li { color: var(--gray-600); line-height: 1.78; }
+        .meta { color: var(--gray-600); border-bottom: 1px solid var(--gray-200); padding-bottom: 1rem; margin-bottom: 2rem; }
+        .hero { min-height: 410px; border-radius: 24px; padding: 2.2rem; margin-bottom: 2rem; position: relative; display: flex; align-items: end; overflow: hidden; background: radial-gradient(circle at 18% 22%, rgba(34,211,238,.38), transparent 26%), radial-gradient(circle at 77% 28%, rgba(168,85,247,.35), transparent 28%), radial-gradient(circle at 55% 88%, rgba(245,158,11,.2), transparent 32%), linear-gradient(155deg,#020617 0%,#071426 47%,#111827 100%); box-shadow: 0 25px 65px rgba(15,23,42,.3); }
+        .hero::before { content: "✦  ·  ✧  ·  ✦  ·  ✧  ·  ✦"; position: absolute; top: 1.6rem; right: 1.8rem; color: rgba(255,255,255,.7); letter-spacing: .55rem; }
+        .planet { position:absolute; width:170px; height:170px; border-radius:50%; right:8%; bottom:-50px; background: radial-gradient(circle at 35% 30%, #a5f3fc 0%, #0e7490 42%, #0f172a 76%); box-shadow: 0 0 55px rgba(34,211,238,.18); }
+        .beam { position:absolute; height:4px; width:42%; left:10%; top:47%; background:linear-gradient(90deg,transparent,#e879f9,#fff); transform:rotate(-9deg); box-shadow:0 0 16px rgba(232,121,249,.8); }
+        .hero-copy { position:relative; z-index:2; max-width:700px; }
+        .hero-copy strong { display:block; color:#67e8f9; font-size:.85rem; letter-spacing:.1em; text-transform:uppercase; }
+        .hero-copy span { display:block; color:#fff; font-size:clamp(2.5rem,7vw,5.5rem); font-weight:800; line-height:.94; margin-top:.5rem; }
+        .hero-copy em { display:block; color:#fde68a; font-style:normal; font-size:1.1rem; margin-top:.85rem; }
+        .launch { border-left:4px solid #16a34a; background:#f0fdf4; border-radius:12px; padding:1.25rem 1.4rem; margin:1.6rem 0; }
+        .story { border-left:4px solid #a855f7; background:#faf5ff; border-radius:12px; padding:1.25rem 1.4rem; margin:1.6rem 0; }
+        .feature-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; margin:1.5rem 0 2rem; }
+        .feature { background:var(--white); border:1px solid var(--gray-200); border-radius:14px; padding:1.2rem; box-shadow:var(--shadow-sm); }
+        .feature strong { display:block; color:var(--dark); margin-bottom:.4rem; }
+        .timeline { list-style:none; padding:0; counter-reset:phase; }
+        .timeline li { position:relative; background:var(--white); border:1px solid var(--gray-200); border-radius:12px; padding:1rem 1rem 1rem 3.6rem; margin:.8rem 0; }
+        .timeline li::before { counter-increment:phase; content:counter(phase); position:absolute; left:1rem; top:1rem; width:1.75rem; height:1.75rem; display:grid; place-items:center; border-radius:50%; background:#111827; color:#fff; font-weight:800; font-size:.8rem; }
+        .actions { display:flex; flex-wrap:wrap; gap:.8rem; margin-top:2rem; }
+        .action { display:inline-block; padding:.9rem 1.2rem; border-radius:9px; text-decoration:none; background:var(--primary); color:#fff; font-weight:700; }
+        .action.store { background:#000; }
+        .action.secondary { background:#17233b; }
+        @media (max-width:600px) { .article { padding:0 1rem; margin-top:2rem; } .hero { min-height:440px; padding:1.4rem; } .planet { width:120px; height:120px; } }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header>
+        <nav aria-label="Primary navigation">
+            <div class="logo"><a href="../index.html"><img src="../images/logo.png" alt="Know &amp; Guide" style="max-height:90px;"></a></div>
+            <ul class="nav-links">
+                <li><a href="../index.html#home">Home</a></li>
+                <li><a href="../index.html#blog">Blog</a></li>
+                <li><a href="../starfall-interceptor.html">Starfall Interceptor</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <article class="article">
+            <div class="hero" role="img" aria-label="Deep-space scene with a glowing planet and a SoulHeal beam crossing the starfield">
+                <div class="beam"></div>
+                <div class="planet"></div>
+                <div class="hero-copy">
+                    <strong>App Store launch</strong>
+                    <span>Starfall<br>Interceptor</span>
+                    <em>You are not here to destroy them. You are here to set them free.</em>
+                </div>
+            </div>
+
+            <h1>Starfall Interceptor: Turning a Classic Space-Shooter Idea into a Game About Liberation</h1>
+            <div class="meta"><strong>Released:</strong> August 25, 2026 &nbsp; • &nbsp; <strong>Category:</strong> iOS Game Development</div>
+
+            <div class="launch">
+                <strong>StarfallInterceptor version 1.0 is now available on the Apple App Store.</strong>
+                <p>The finished release supports iPhone and iPad and takes the player through a thirty-level campaign across three worlds.</p>
+                <a class="action store" href="https://apps.apple.com/app/starfallinterceptor/id6802985758" target="_blank" rel="noopener noreferrer">Download StarfallInterceptor</a>
+            </div>
+
+            <p>Starfall Interceptor started with a familiar arcade question: what would a modern iPhone game inspired by the speed and pressure of classic horizontal shooters feel like? The interesting part came when the usual premise was turned around.</p>
+
+            <p>Instead of assuming every alien ship should be destroyed, Starfall asks the player to discover what is really happening. The pilots attacking the planet are being controlled by an ancient force called <strong>The Veil</strong>. The player's primary weapon, the <strong>SoulHeal laser</strong>, is therefore a liberation tool. Hit a controlled ship enough times and the pilot is released from the Veil's influence, the craft changes into a bright liberation state, and it leaves the battle rather than exploding as another enemy kill.</p>
+
+            <div class="story">
+                <strong>The central design decision changed the whole game.</strong>
+                <p>Once the goal became liberation rather than destruction, score, sound, animation, enemy behaviour, boss design and even the story all had to support that idea. Liberated pilots acknowledge the player, while civilians and buildings below the battle become people and places worth protecting rather than background decoration.</p>
+            </div>
+
+            <h2>What made it into the released game</h2>
+            <div class="feature-grid">
+                <div class="feature"><strong>SoulHeal combat</strong><span>Enemy ships can be freed from the Veil instead of simply destroyed.</span></div>
+                <div class="feature"><strong>Three worlds, thirty levels</strong><span>The campaign grows from the opening planet into new fleets, colour families and escalating formations.</span></div>
+                <div class="feature"><strong>Mothership battles</strong><span>Major encounters use large multi-part structures with changing vulnerabilities and attack patterns.</span></div>
+                <div class="feature"><strong>Hyperdrive</strong><span>A powerful temporary burst gives the player a way to escape pressure and reposition during difficult battles.</span></div>
+                <div class="feature"><strong>Persistent upgrades</strong><span>Star Credits improve shields, regeneration, weapons, thrust and Hyperdrive cooling over the pilot's career.</span></div>
+                <div class="feature"><strong>Beginner, Normal and Expert</strong><span>The same campaign can be replayed with different speed and aggression profiles.</span></div>
+                <div class="feature"><strong>Civilians and buildings</strong><span>Protecting the ground matters. The battle is happening over a living world, not an empty scrolling backdrop.</span></div>
+                <div class="feature"><strong>Swappable controls</strong><span>Joystick and FIRE/HYPER positions can be reversed for left- or right-handed players.</span></div>
+                <div class="feature"><strong>Dynamic audio</strong><span>Calm and battle music, lasers, impacts, Hyperdrive and liberated-pilot voices help communicate the state of the fight.</span></div>
+            </div>
+
+            <h2>How the campaign grew</h2>
+            <ol class="timeline">
+                <li><strong>Build the feel first.</strong> The early work concentrated on joystick movement, the centred player ship, continuous world scrolling and a laser that felt immediate.</li>
+                <li><strong>Give the enemies purpose.</strong> The Veil story turned ordinary targets into controlled pilots and created the SoulHeal liberation mechanic.</li>
+                <li><strong>Make the world matter.</strong> Civilians, buildings, missiles and ground attacks gave the player reasons to defend rather than simply chase a high score.</li>
+                <li><strong>Add progression.</strong> Shields, Star Credits, upgrades, achievements, ranks and saved career progress gave each run a longer-term purpose.</li>
+                <li><strong>Expand the universe.</strong> New planets, ship families and two very different mothership designs pushed the game toward its thirty-level structure.</li>
+                <li><strong>Finish the current frontier.</strong> Level 30 closes this campaign with the promise that more worlds remain to be liberated and that the Veil has not been completely removed.</li>
+            </ol>
+
+            <h2>A game built through iteration</h2>
+            <p>Starfall changed repeatedly during development. Camera scale, joystick sensitivity, the amount of world movement, boss size, projectile damage, tutorial behaviour, level pacing, ship art, audio, screen layout and difficulty all went through multiple passes. The goal was not to preserve the first version of the idea; it was to preserve the feeling that made the idea worth building.</p>
+
+            <p>The release also reflects a practical mobile-game philosophy: play should work offline, progress should live locally, controls should remain understandable, and the player should be able to pick up the game for a quick session without creating an account.</p>
+
+            <h2>Where Starfall goes next</h2>
+            <p>Version 1.0 completes the first three-world campaign, but the ending deliberately leaves room for more. The Veil is larger than the worlds already visited, and the existing progression system allows the player to carry score and persistent abilities into another run at a different difficulty.</p>
+
+            <p>For now, the important milestone is simpler: Starfall Interceptor has moved from prototype, to repeated Xcode testing, to App Store submission, and finally to a released iPhone and iPad game.</p>
+
+            <div class="actions">
+                <a class="action store" href="https://apps.apple.com/app/starfallinterceptor/id6802985758" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
+                <a class="action" href="../starfall-interceptor.html">Game Information</a>
+                <a class="action" href="../starfall-interceptor-support.html">Support</a>
+                <a class="action secondary" href="../starfall-interceptor-privacy.html">Privacy Policy</a>
+            </div>
+        </article>
+    </main>
+
+    <footer><p>&copy; 2026 Know &amp; Guide. All rights reserved.</p></footer>
+    <script src="../script.js" defer></script>
+</body>
+</html>
