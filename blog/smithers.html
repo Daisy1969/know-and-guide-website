@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smithers: Karma, Crafting and the Cost of Survival | Know &amp; Guide</title>
+    <meta name="description" content="Explore Smithers, a fantasy action adventure in development: real gameplay screenshots, a seven-chapter story, Karma, crafting recipes and timed lock-picking.">
+    <meta property="og:title" content="Smithers: Karma, Crafting and the Cost of Survival">
+    <meta property="og:description" content="A first look inside Smithers: her story, the world she explores, and the choices that shape her journey.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://knowandguide.com/blog/smithers.html">
+    <link rel="canonical" href="https://knowandguide.com/blog/smithers.html">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        html { scroll-padding-top: 150px; }
+        .smithers { --ink:#102d30; --gold:#a56d19; max-width:1080px; margin:3rem auto 5rem; padding:0 1.5rem; }
+        .eyebrow { color:#526e65; font-size:.85rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+        .smithers h1 { max-width:950px; font-size:clamp(2.4rem,5vw,4.6rem); line-height:1.07; letter-spacing:-.045em; color:var(--ink); margin:.7rem 0 1.2rem; }
+        .standfirst { max-width:820px; font-size:1.2rem; color:#445d5e; line-height:1.7; }
+        .meta { color:#526164; font-size:.9rem; margin:1.3rem 0 2rem; }
+        .smithers figure { margin:2rem 0; }
+        .smithers figure img { display:block; width:100%; height:auto; border-radius:12px; background:#071619; }
+        .smithers figure a { display:block; border-radius:12px; }
+        .smithers figcaption { font-size:.9rem; color:#526164; line-height:1.6; margin:.65rem .15rem 0; }
+        .body-copy { max-width:800px; margin:0 auto; }
+        .smithers h2 { margin:3.2rem 0 1rem; color:var(--ink); font-size:clamp(1.7rem,3vw,2.35rem); line-height:1.2; letter-spacing:-.025em; }
+        .smithers h3 { margin:1.4rem 0 .45rem; color:var(--ink); }
+        .smithers p,.smithers li { line-height:1.85; }
+        .smithers li { margin-bottom:.5rem; }
+        .smithers a { color:#175f62; text-underline-offset:.2em; }
+        .smithers a:focus-visible,.smithers summary:focus-visible { outline:3px solid #a56d19; outline-offset:5px; }
+        .jump-links { display:flex; flex-wrap:wrap; gap:.7rem 1.5rem; padding:1.2rem 0; margin:1.5rem 0 2rem; border-block:1px solid #cedad5; font-weight:600; }
+        .note { padding:1rem 1.25rem; border-left:4px solid var(--gold); background:#f2eee4; margin:1.7rem 0; }
+        .note p { margin:.25rem 0; }
+        .loop { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:#c9d8cf; border:1px solid #c9d8cf; border-radius:12px; overflow:hidden; margin:1.75rem 0; }
+        .loop div { padding:1.25rem; background:#edf2ee; }
+        .loop strong { display:block; color:var(--ink); margin-bottom:.4rem; }
+        .loop span { font-size:.95rem; color:#435654; line-height:1.65; }
+        .karma-scale { display:grid; grid-template-columns:repeat(3,1fr); border-radius:12px; overflow:hidden; margin:1.5rem 0; }
+        .karma-scale div { padding:1rem; text-align:center; }
+        .karma-scale strong,.karma-scale span { display:block; }
+        .karma-scale span { font-size:.9rem; margin-top:.4rem; }
+        .karma-scale .bad { background:#fbe8e3; color:#82291b; }
+        .karma-scale .neutral { background:#e9edec; color:#394847; }
+        .karma-scale .good { background:#e1f1e6; color:#205739; }
+        .recipe-list { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.5rem 0; }
+        .recipe { padding:1.2rem; border:1px solid #ccd9d2; border-radius:10px; background:white; }
+        .recipe h3 { margin:0 0 .5rem; font-size:1.05rem; }
+        .recipe p { margin:.4rem 0; font-size:.95rem; }
+        .recipe .effect { color:#39604c; }
+        .chapters { padding-left:1.4rem; }
+        .chapters li { padding:.6rem 0 .6rem .4rem; border-bottom:1px solid #dce3df; }
+        .chapters strong { color:var(--ink); }
+        details { border:1px solid #ccd9d2; padding:1rem 1.2rem; border-radius:10px; margin:1.5rem 0; background:white; }
+        summary { cursor:pointer; color:var(--ink); font-weight:600; }
+        kbd { font-family:inherit; font-size:.9em; padding:.1em .35em; border:1px solid #c5d0cd; border-bottom-width:2px; border-radius:4px; background:white; white-space:nowrap; }
+        .closing { border-top:1px solid #cedad5; margin-top:2.5rem; padding-top:1.5rem; }
+        @media(max-width:650px) {
+            .smithers { padding:0 1rem; margin-top:2rem; }
+            .loop { grid-template-columns:1fr 1fr; }
+            .recipe-list { grid-template-columns:1fr; }
+            .karma-scale div { padding:.8rem .4rem; }
+            header nav { padding:1rem; flex-wrap:wrap; gap:.5rem; }
+            header .nav-links { display:flex; gap:1rem; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header>
+        <nav aria-label="Primary navigation">
+            <div class="logo"><a href="../index.html"><img src="../images/logo.png" alt="Know &amp; Guide" style="max-height:70px;"></a></div>
+            <ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../index.html#blog">Blog</a></li><li><a href="../academy.html">Academy</a></li></ul>
+        </nav>
+    </header>
+    <main id="main-content">
+        <article class="smithers">
+            <p class="eyebrow">Development journal / First look</p>
+            <h1>Smithers: Karma, crafting and the cost of survival</h1>
+            <p class="standfirst">A young survivor returns to the place where everything was taken from her. Between the sword fights and the search for answers, every stolen treasure and carefully gathered ingredient becomes part of her journey.</p>
+            <p class="meta"><time datetime="2026-09-17">September 17, 2026</time> &nbsp;·&nbsp; Know &amp; Guide &nbsp;·&nbsp; Playable development build</p>
+            <figure>
+                <a href="../images/smithers/buried-archive.webp"><img src="../images/smithers/buried-archive.webp" width="2560" height="1440" alt="Smithers at the Archive Quartermaster, with trading and crafting prompts against a vast ruined library." fetchpriority="high"></a>
+                <figcaption>The Buried Archive: a place to trade, craft and uncover the past. In-game development capture, September 13. Select any screenshot to view it at full size.</figcaption>
+            </figure>
+            <div class="body-copy">
+                <div class="jump-links" aria-label="Article sections"><a href="#story">The story</a><a href="#playing">How it plays</a><a href="#karma">Karma</a><a href="#crafting">Crafting</a><a href="#stealing">Stealing</a><a href="#journey">The seven chapters</a></div>
+                <p><strong>Smithers is a side-scrolling fantasy action adventure being built in Unity.</strong> You guide a hooded fighter through towns, forests, caves, marshes and ruined strongholds. Combat and platforming move the adventure forward; conversations, discoveries, supplies and reputation give those encounters their context.</p>
+                <p>The interesting decisions often happen between fights. Do you spend gold on training, gather ingredients for the next stretch, or break into a private home? A useful item can solve an immediate problem while leaving Smithers with a worse reputation when she next needs a merchant.</p>
+                <section id="story">
+                    <h2>A survivor looking for the truth</h2>
+                    <p>Smithers was a child when goblins, led by an Ogre, destroyed her home and killed her family. She survived on the streets before a blind master took her in and trained her. Now she returns to discover why the attack happened and who stood behind it.</p>
+                    <p>That opening gives her skills a history: a street survivor knows how to get through a locked door; a trained fighter knows how to stand her ground. The player decides how she uses both. Her search gradually connects the ruined community to guardians, ancient seals and a struggle over a much greater gate.</p>
+                </section>
+            </div>
+            <figure>
+                <a href="../images/smithers/origin.webp"><img src="../images/smithers/origin.webp" width="2560" height="1440" loading="lazy" alt="Smithers' opening origin panel, The Night Everything Burned, explaining the attack on her childhood home."></a>
+                <figcaption>The opening story introduces Smithers before the adventure begins. Fresh in-game capture, September 17.</figcaption>
+            </figure>
+            <div class="body-copy">
+                <section id="playing">
+                    <h2>How the adventure works</h2>
+                    <p>Explore a chapter, fight its enemies, investigate its story clues and prepare for the major encounter ahead. Sword combat, throwing daggers and smoke bombs sit alongside traversal skills. Character progression runs to level 25; double jump unlocks at character level 3 and hover/glide at level 7.</p>
+                    <div class="loop" aria-label="The gameplay loop">
+                        <div><strong>01 · Explore</strong><span>Find routes, clues, resources and private dwellings.</span></div>
+                        <div><strong>02 · Prepare</strong><span>Craft supplies, visit traders and buy training.</span></div>
+                        <div><strong>03 · Confront</strong><span>Use movement and combat to overcome enemies and bosses.</span></div>
+                        <div><strong>04 · Carry forward</strong><span>Keep earned progression and face the next chapter.</span></div>
+                    </div>
+                    <p>Easy, Normal and Hell offer increasingly demanding encounters. Replaying chapters retains earned levels, gold, inventory and purchased sword training. Previously claimed discoveries and stolen valuables remain claimed, so replaying does not turn the same chest into an endless reward.</p>
+                </section>
+                <section id="karma">
+                    <h2>Karma: your choices follow you</h2>
+                    <p>Karma runs from <strong>−100 to +100</strong>, with zero as neutral. Positive Karma appears green; negative Karma appears red. Gathering natural materials has no Karma cost. Stealing a valuable costs <strong>8 Karma</strong>. Helpful actions, including lighting lamps and some survivor story interactions, can build it back up.</p>
+                    <div class="karma-scale" aria-label="Karma ranges from negative 100 through neutral zero to positive 100">
+                        <div class="bad"><strong>−100</strong><span>Negative Karma</span></div><div class="neutral"><strong>0</strong><span>Neutral</span></div><div class="good"><strong>+100</strong><span>Positive Karma</span></div>
+                    </div>
+                    <p>Reputation changes the economy. Positive Karma gradually discounts shop prices, reaching 25% off at +100. Negative Karma raises prices, and merchants refuse to trade at −50 or below.</p>
+                    <div class="note"><p><strong>A concrete example:</strong> from neutral, one theft takes Smithers to −8 Karma. A purchase with a base price of 100 gold now costs 108. Seven thefts without any positive changes take her to −56, beyond the trading cutoff. The treasure has a cost beyond the lock pick.</p></div>
+                    <p>The system also ties Smithers to the town around her: damage to its buildings can reduce Karma. Death removes positive Karma while leaving negative Karma in place. It does not erase the consequences of theft.</p>
+                </section>
+            </div>
+            <figure>
+                <a href="../images/smithers/karma-theft.webp"><img src="../images/smithers/karma-theft.webp" width="2560" height="1440" loading="lazy" alt="Smithers outside a jungle hut while a red notification reads Stolen: Silver locket, Karma minus eight."></a>
+                <figcaption>The red theft notification makes the consequence explicit: a valuable gained, eight Karma lost. September 17 development capture; the message remains visible as the capture sequence moves to the jungle hut.</figcaption>
+            </figure>
+            <div class="body-copy">
+                <section id="crafting">
+                    <h2>Crafting: turn exploration into supplies</h2>
+                    <p>Sticks, vine fibre, pine cones, flowers, cave mushrooms and well water all have a purpose. Press <kbd>F</kbd> near a resource to gather it, <kbd>C</kbd> beside a crafting table to open recipes, and <kbd>I</kbd> to inspect your traveller's bag. Use the <strong>Supplies &amp; equipment</strong> tab to consume healing items or refill ammunition.</p>
+                    <p>Most gathered resources stay depleted across scene changes; wells refill. Ingredients and finished supplies travel with you between chapters and saved sessions. These are the five recipes in the current build:</p>
+                    <div class="recipe-list">
+                        <div class="recipe"><h3>3 throwing daggers</h3><p>3 sticks + 2 vine fibre</p><p class="effect">Transfer from your bag to refill your dagger ammunition.</p></div>
+                        <div class="recipe"><h3>Healing potion</h3><p>2 red blossoms + 1 water + 1 cave mushroom</p><p class="effect">Restores 40% of maximum health.</p></div>
+                        <div class="recipe"><h3>Bandage</h3><p>2 white yarrow + 1 vine fibre</p><p class="effect">Restores 20% of maximum health.</p></div>
+                        <div class="recipe"><h3>Smoke bomb</h3><p>2 pine cones + 1 cave mushroom + 1 vine fibre</p><p class="effect">Refills the smoke-bomb ability from your bag.</p></div>
+                        <div class="recipe"><h3>Marsh tonic</h3><p>2 violet blooms + 1 white yarrow + 1 water</p><p class="effect">Clears a current slowing effect. New swamp exposure can slow you again.</p></div>
+                    </div>
+                    <p>A cave mushroom could become healing or a smoke bomb. Vine fibre is shared by several recipes. That creates a small preparation puzzle: make what solves the next problem, while keeping enough material for the route beyond it.</p>
+                </section>
+            </div>
+            <figure>
+                <a href="../images/smithers/crafting.webp"><img src="../images/smithers/crafting.webp" width="2560" height="1440" loading="lazy" alt="The Smithers crafting table showing recipes, ingredient counts, healing effects and the Supplies and equipment and Stolen goods and pins tabs."></a>
+                <figcaption>The actual crafting interface shows what each recipe needs and what it does. This September 17 capture uses an empty bag, so the buttons correctly say “Need ingredients.”</figcaption>
+            </figure>
+            <div class="body-copy">
+                <section id="stealing">
+                    <h2>Stealing starts with a timed lock</h2>
+                    <p>Private homes and jungle huts offer a different kind of challenge. Buy lock picks at a shop, approach a locked entrance and press <kbd>↑</kbd>. The current lock-picking game asks you to set individual pins and finish turning the lock before their timers expire.</p>
+                    <ol>
+                        <li><strong>Insert the pick.</strong> Hold <kbd>Space</kbd> to begin.</li>
+                        <li><strong>Choose and lift a pin.</strong> Use <kbd>A</kbd>/<kbd>D</kbd> or the left/right arrows, then hold Space.</li>
+                        <li><strong>Release on the gold line.</strong> A correctly set pin starts its own countdown.</li>
+                        <li><strong>Set the remaining pins and turn.</strong> Hold Space to finish opening the lock before a set pin drops.</li>
+                    </ol>
+                    <p>Too much force can break a pick. A timed-out pin drops without consuming one, but interrupts the turn. Chapter 1 locks have two pins; Chapter 2 locks have three. Later automatic locks become more complex. Press <kbd>Esc</kbd> to cancel safely.</p>
+                    <p>Once inside, press <kbd>T</kbd> near a valuable to steal it, or leave it alone and exit with <kbd>↑</kbd>. Unlocking a door and taking someone's property are separate actions. The Karma penalty is applied when the valuable is taken.</p>
+                    <div class="note"><p><strong>Current build detail:</strong> stolen goods are recorded in the bag with a stated value. They do not automatically become spendable gold, and selling stolen goods is not implemented yet.</p></div>
+                </section>
+            </div>
+            <figure>
+                <a href="../images/smithers/lockpicking.webp"><img src="../images/smithers/lockpicking.webp" width="2560" height="1440" loading="lazy" alt="A two-pin lock with the first pin set in green and 10.9 seconds remaining while the second pin still needs lifting."></a>
+                <figcaption>One pin set, one still to go. The green pin's countdown turns a lock into a timing puzzle. Fresh in-game capture, September 17.</figcaption>
+            </figure>
+            <figure>
+                <a href="../images/smithers/house-interior.webp"><img src="../images/smithers/house-interior.webp" width="2560" height="1440" loading="lazy" alt="Smithers inside a furnished hut beside a treasure chest, with the leave-house prompt visible."></a>
+                <figcaption>Beyond the lock is a separate interior with a valuable to take—or leave behind. Fresh in-game capture, September 17.</figcaption>
+            </figure>
+            <div class="body-copy">
+                <section id="journey">
+                    <h2>One journey, seven chapters</h2>
+                    <p>The campaign expands from a personal search into a story about power and responsibility. Its current playable route moves through seven chapters:</p>
+                    <ol class="chapters">
+                        <li><strong>Town, forest and cave.</strong> Return to the community, prepare in town and descend toward the Ogre encounter.</li>
+                        <li><strong>The dark forest and jungle.</strong> Follow the trail through a new landscape, with private huts, a market and the serpent encounter.</li>
+                        <li><strong>The Drowned Marsh.</strong> Cross dangerous wetlands, investigate the First Seal and confront Varkesh.</li>
+                        <li><strong>The Buried Archive.</strong> Search the records for the truth about Smithers' family and face the Bound Keeper.</li>
+                        <li><strong>The Broken Mountain.</strong> Climb toward an occupied sanctuary and the Black-Crystal Envoy.</li>
+                        <li><strong>The Black Citadel.</strong> Push through prison approaches and furnace yards toward the Regent of Ash.</li>
+                        <li><strong>Return to the First Gate.</strong> Come back to the ruined home ground for the final confrontation.</li>
+                    </ol>
+                    <p>Discoveries and conversations matter as well as combat. Later boss encounters require the chapter's discoveries before the confrontation can proceed. Smithers needs to understand what happened as she becomes strong enough to act on it.</p>
+                    <details>
+                        <summary>Story spoilers: the guardians, the gate and Karma's ending</summary>
+                        <p>The archive reveals that Smithers' family and her blind trainer were guardians. The mountain exposes a stolen counterseal and crystal coercion; the citadel reveals the Regent's funding of the campaign to control the greater gate. Those revelations do not excuse Varkesh's responsibility for ordering the massacre.</p>
+                        <p>Smithers returns home to close the gate, choosing guardianship over domination. The current ending text changes with Karma: at +5 or higher, it includes rebuilding and community; below that, redemption begins in greater isolation.</p>
+                    </details>
+                </section>
+            </div>
+            <figure>
+                <a href="../images/smithers/broken-mountain.webp"><img src="../images/smithers/broken-mountain.webp" width="2560" height="1440" loading="lazy" alt="Smithers in the snowy Broken Mountain facing the Black-Crystal Envoy, with a prompt to recover the relic and read the truth first."></a>
+                <figcaption>The Broken Mountain makes story discovery part of the encounter: recover the relic and learn the truth before confronting the Envoy. Development capture, September 13.</figcaption>
+            </figure>
+            <div class="body-copy">
+                <h2>Where Smithers stands today</h2>
+                <p>This is a look at a <strong>playable game in development</strong>, not a public launch announcement. The seven-chapter route and the systems described here are implemented in the current Unity project. The later chapters are a first playable pass, with further work still needed on art, encounter balance and presentation. Some survivor rescues are currently dialogue interactions rather than escort missions.</p>
+                <p>The screenshots come from the running game during development checks. Fresh captures of the origin story, crafting, lock-picking and hut sequence were taken on September 17; the two later-chapter views were captured on September 13. Values and presentation may change as the game develops.</p>
+                <p>What ties the adventure together is the relationship between its systems. Exploring gives Smithers supplies and answers. Crafting gives her ways to survive. Stealing tests what she is prepared to take from others. Karma carries those choices into the next shop—and eventually into the way her story closes.</p>
+                <p class="closing"><a href="../index.html#blog">← Back to Latest Updates</a></p>
+            </div>
+        </article>
+    </main>
+    <footer><p>&copy; 2026 Know &amp; Guide. All rights reserved.</p></footer>
+    <script src="../script.js" defer></script>
+</body>
+</html>
