@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anatomy AI Privacy Policy | Know &amp; Guide</title>
+<meta name="description" content="How Anatomy AI handles local study progress, narration, optional AI questions, support messages and your privacy choices.">
+<link rel="canonical" href="https://knowandguide.com/anatomy-ai-privacy.html">
+<style>
+:root{color-scheme:light;--ink:#153047;--muted:#465c68;--teal:#006b73;--line:#d4e3e5;--paper:#fff;--bg:#f3f7f8}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.7 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--teal);text-underline-offset:3px;overflow-wrap:anywhere}a:focus-visible{outline:3px solid var(--teal);outline-offset:5px}header,footer{max-width:960px;margin:auto;padding:24px}nav{display:flex;gap:20px;flex-wrap:wrap;align-items:center}.brand{font-weight:800;margin-right:auto;text-decoration:none}main{max-width:900px;margin:0 auto 40px;padding:36px;background:var(--paper);border:1px solid var(--line);border-radius:20px}h1{font-size:clamp(2rem,6vw,3rem);line-height:1.15;margin:12px 0}h2{font-size:1.4rem;line-height:1.3;margin-top:32px}h3{font-size:1.08rem}.eyebrow{color:var(--teal);font-size:.83rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.meta,footer{color:var(--muted);font-size:.94rem}.notice{background:#edf7f6;border-left:4px solid var(--teal);padding:16px 20px;border-radius:8px;margin:24px 0}li{margin:6px 0}code{font-size:.92em}footer{border-top:1px solid var(--line)}@media(max-width:600px){main{padding:24px 20px;margin:0 12px 28px}header,footer{padding:20px}nav{gap:14px}}
+</style>
+</head>
+<body>
+<header><nav aria-label="Website navigation"><a class="brand" href="/">Know &amp; Guide</a><a href="anatomy-ai-support.html">Anatomy AI support</a><a href="#contact">Privacy contact</a></nav></header>
+<main id="main">
+<p class="eyebrow">Anatomy AI · iPhone &amp; iPad</p>
+<h1>Privacy policy</h1>
+<p class="meta">Effective: 23 September 2026 · Applies to Anatomy AI version 1.0</p>
+<p>Anatomy AI is an anatomy-learning application provided by Michael Harvey through Know &amp; Guide. This policy describes the app's study features, optional connected teacher and support contact. Privacy questions can be sent to <a href="mailto:winseral@knowandguide.com?subject=Anatomy%20AI%20privacy">winseral@knowandguide.com</a>.</p>
+<div class="notice"><strong>At a glance:</strong> Study progress is stored on your device. Bundled lessons, quizzes and spoken explanations do not require an AI server. Questions go to an external teacher only when you configure a connection and give permission. Do not enter identifying client information or medical records.</div>
+<h2>1. Study information on your device</h2>
+<p>The app stores learning progress, bookmarks, reviewed steps, quiz and revision results, review dates, completed fictional-case identifiers, preferences and the last selected study area. It also stores your teacher choice, optional backend address and permission receipt. A backend access token is held in the iOS Keychain; an AI provider API key is not bundled in the app.</p>
+<p>These records provide study and connection features. They are not automatically uploaded as a student profile. Device backups may include app data according to your Apple settings. Exported progress files go to a location or service you choose. Teacher chat text and client worksheet text are not written into the app's progress backup.</p>
+<h2>2. Offline teaching, Apple AI and narration</h2>
+<p>The offline guide uses bundled material. On supported devices, the Apple on-device teacher processes a question locally to select a lesson topic; the app supplies authored learning text. These modes do not send your question to a Know &amp; Guide teacher server.</p>
+<p>Lesson narration uses Apple's system speech synthesis and bundled scripts. The app does not record microphone audio or implement camera, contacts, location or HealthKit access. System keyboard dictation and Apple service features are governed by your device settings and Apple's policies.</p>
+<h2>3. Optional connected teacher</h2>
+<p>Version 1.0 does not ship with a preconfigured hosted teacher address. You can configure a compatible backend and approve that destination. When you send a connected question, the app sends your question, recent conversation, selected lesson or structure, learning context and any scenario text included with the request. Anything you type, including health-related information, may be transmitted; the app's warning is not automatic redaction.</p>
+<p>The backend receives authentication and network information needed to serve the request. The supplied reference backend forwards the teaching request to OpenAI. A custom backend may use different operators or providers: verify the actual recipient, hosting location, privacy notice and retention arrangements before connecting. Do not approve an unknown service. The app's permission receipt is tied to the destination, named provider and notice version.</p>
+<p>A connection test sends your access token to the configured backend, but not a study question. Switching back to the offline guide or revoking permission stops future teacher-question transfers; it does not undo requests already sent.</p>
+<h2>4. Retention and third-party processing</h2>
+<ul>
+<li><strong>Local progress and preferences:</strong> retained until reset, removed or replaced by you. Backups and exports have their own retention settings.</li>
+<li><strong>Teacher conversations:</strong> held in app memory while the teacher sheet is active, not deliberately persisted as chat history by this app. Your explicit sharing can create a separate copy.</li>
+<li><strong>Reference backend:</strong> does not implement a conversation database or write prompts and replies to application logs. Requests are processed in memory; access tokens and in-memory usage limits support authentication and rate limiting. A hosting service or modified backend can have additional logs and retention.</li>
+<li><strong>OpenAI:</strong> the reference backend uses <code>store: false</code> for response application state. This does not disable all provider logging. OpenAI documents default abuse-monitoring retention of up to 30 days, with stated exceptions and account-specific controls. See <a href="https://developers.openai.com/api/docs/guides/your-data">OpenAI API data controls</a>.</li>
+</ul>
+<p>External services may process information outside your country. There is no blanket zero-retention or healthcare-compliance promise. Ask the configured backend's operator about its actual host, processing countries, retention and deletion procedure. This website is not an AI backend and publishing this policy does not activate a connected teacher service.</p>
+<h2>5. Your choices, access and deletion</h2>
+<p>In the app's Settings you can export or reset learning progress, revoke connected-teacher permission, or remove the saved backend address and token. Deleting the app does not reliably remove Keychain records or copies held in system backups. Use the remove-connection control before uninstalling to clear the saved token. Delete exported files and backups separately through their storage providers.</p>
+<p>For access, correction, deletion or a privacy complaint relating to information you supplied to Know &amp; Guide, email the contact below. For information sent to another backend, contact that operator; we cannot directly erase records in an independently operated service. Do not include passwords, access tokens or client medical records in a request.</p>
+<h2>6. Support messages, this website and sharing</h2>
+<p>If you email us, we receive the contact details, message, device information and attachments you choose to send. We use them to answer your request, investigate faults or content concerns and keep the relevant correspondence. Retention depends on the unresolved support issue and any applicable record-keeping requirements; you may request deletion. Email-provider handling and backups are separate from the app's local storage.</p>
+<p>These privacy and support pages are static pages hosted through GitHub Pages. The host can process normal website requests and technical data, including IP addresses, under the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub privacy statement</a>. These two pages include no analytics scripts, advertising, forms, external fonts or tracking cookies of their own.</p>
+<p>The app includes no advertising or analytics SDK. Opening an external link or using the share sheet sends you to a service you choose, whose own privacy terms apply. App distribution and Apple-managed diagnostics are subject to your Apple settings and Apple's policies.</p>
+<h2>7. Sensitive information and younger learners</h2>
+<p>Anatomy AI is a study aid, not a client-record system, diagnostic service or emergency service. Use fictional or de-identified study examples. Younger learners should use the app with suitable adult or instructor guidance and should not put personal information into teacher questions or support messages. Contact us about information sent in error.</p>
+<h2>8. Policy changes</h2>
+<p>Updates to this policy will appear here with a revised effective date. Material changes to connected processing require updated disclosures and, where appropriate, renewed permission. Details of any future Know &amp; Guide hosted teacher must be disclosed before that service is enabled.</p>
+<h2 id="contact">Contact</h2>
+<p>Michael Harvey · Know &amp; Guide<br>Email: <a href="mailto:winseral@knowandguide.com?subject=Anatomy%20AI%20privacy">winseral@knowandguide.com</a><br><a href="anatomy-ai-support.html">Anatomy AI support and troubleshooting</a></p>
+</main>
+<footer>© 2026 Know &amp; Guide · <a href="/">Home</a> · <a href="anatomy-ai-support.html">Support</a></footer>
+</body></html>
