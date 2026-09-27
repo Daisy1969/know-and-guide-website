@@ -220,3 +220,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const smithersCard = document.getElementById("smithers-blog-card");
     if (smithersCard) blogContainer.prepend(smithersCard);
 });
+
+// Anatomy AI: announce the submission without implying Apple approval or availability.
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("blog-container");
+    if (!container || document.getElementById("anatomy-ai-blog-card")) return;
+    const card = document.createElement("article");
+    card.id = "anatomy-ai-blog-card";
+    card.className = "blog-card";
+    card.setAttribute("aria-labelledby", "anatomy-ai-card-title");
+    card.innerHTML = `
+        <div class="blog-image" style="min-height:200px;display:flex;flex-direction:column;justify-content:center;gap:.65rem;padding:1.5rem;background:#102d38;color:#fff;border-radius:8px 8px 0 0;">
+            <span style="font-size:.74rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#a5eff0;">iPhone &amp; iPad · Version 1.0</span>
+            <span style="font-size:2rem;font-weight:800;line-height:1.1;">Anatomy AI</span>
+            <span style="font-size:.95rem;line-height:1.5;color:#e4f5f6;">Explore. Understand. Practise. Revisit.</span>
+            <span style="font-size:.78rem;font-weight:700;color:#ffe4ac;">Submitted to Apple · Approval pending</span>
+        </div>
+        <div class="blog-content">
+            <h3 id="anatomy-ai-card-title"><a href="/blog/anatomy-ai.html" style="color:inherit;text-decoration:none;">Anatomy AI: From Looking at the Body to Understanding It</a></h3>
+            <p class="date"><time datetime="2026-09-27">September 27, 2026</time></p>
+            <p>Six body regions, narrated movement and palpation study, quizzes and a lesson-aware AI teacher. Meet the app submitted to Apple for review.</p>
+            <a href="/blog/anatomy-ai.html" class="read-more">Explore Anatomy AI &rarr;</a>
+        </div>`;
+    container.prepend(card);
+});
