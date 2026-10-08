@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+  <title id="title">A proposed robotic hand with seven local controllers</title>
+  <desc id="desc">Vision and planning on a computer, a wrist node, a palm coordinator and five digit controllers. Each digit has its own local sensing and actuation loop. The proposed first version uses wired coordination.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0c1631"/><stop offset="1" stop-color="#201b4e"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#a5b4fc" stroke-opacity=".07"/></pattern>
+  </defs>
+  <rect width="1200" height="780" fill="url(#bg)"/>
+  <rect width="1200" height="780" fill="url(#grid)"/>
+  <g font-family="Inter,Arial,sans-serif" text-anchor="middle">
+    <text x="600" y="64" fill="#a5b4fc" font-size="19" letter-spacing="3">A FUTURE ROBOTICS PROJECT</text>
+    <text x="600" y="111" fill="#fff" font-size="38" font-weight="700">Local feedback. Coordinated grasping.</text>
+    <g stroke="#6477a8" stroke-width="3" fill="none">
+      <path d="M600 231v32M600 341v32M600 467v53M180 559v-39h840v39M390 520v39M600 520v39M810 520v39"/>
+    </g>
+    <rect x="360" y="154" width="480" height="77" rx="15" fill="#263454" stroke="#7588bd"/>
+    <text x="600" y="186" fill="#fff" font-size="23" font-weight="700">Vision &amp; task planning</text>
+    <text x="600" y="212" fill="#c7d2fe" font-size="17">Computer / camera / external training</text>
+    <rect x="425" y="263" width="350" height="78" rx="15" fill="#263454" stroke="#7588bd"/>
+    <text x="600" y="296" fill="#fff" font-size="23" font-weight="700">Wrist node</text>
+    <text x="600" y="322" fill="#c7d2fe" font-size="17">Hand-to-arm coordination</text>
+    <rect x="350" y="373" width="500" height="94" rx="15" fill="#3c3588" stroke="#a5b4fc" stroke-width="2"/>
+    <text x="600" y="411" fill="#fff" font-size="27" font-weight="700">Palm coordinator</text>
+    <text x="600" y="442" fill="#e0e7ff" font-size="18">Grasp posture + shared force limits</text>
+    <rect x="871" y="485" width="241" height="32" rx="16" fill="#102b37"/>
+    <text x="991" y="507" fill="#99f6e4" font-size="16">Wired coordination bus</text>
+    <g fill="#162f41" stroke="#5eead4" stroke-width="2">
+      <rect x="89" y="559" width="182" height="101" rx="14"/>
+      <rect x="299" y="559" width="182" height="101" rx="14"/>
+      <rect x="509" y="559" width="182" height="101" rx="14"/>
+      <rect x="719" y="559" width="182" height="101" rx="14"/>
+      <rect x="929" y="559" width="182" height="101" rx="14"/>
+    </g>
+    <g fill="#fff" font-size="23" font-weight="700">
+      <text x="180" y="595">Thumb</text><text x="390" y="595">Index</text><text x="600" y="595">Middle</text><text x="810" y="595">Ring</text><text x="1020" y="595">Little</text>
+    </g>
+    <g fill="#99f6e4" font-size="17">
+      <text x="180" y="624">Sense + control</text><text x="390" y="624">Sense + control</text><text x="600" y="624">Sense + control</text><text x="810" y="624">Sense + control</text><text x="1020" y="624">Sense + control</text>
+    </g>
+    <text x="600" y="705" fill="#e0e7ff" font-size="20">Each digit: sensor feedback → bounded actuator command → local feedback</text>
+    <text x="600" y="747" fill="#a5b4fc" font-size="16">CONCEPT SCHEMATIC · FIVE DIGITS + PALM + WRIST = SEVEN LOCAL NODES</text>
+  </g>
+</svg>

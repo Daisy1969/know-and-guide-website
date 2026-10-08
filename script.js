@@ -244,3 +244,10 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>`;
     container.prepend(card);
 });
+
+// Keep the October robotics proposal first after the older dynamic cards load.
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("blog-container");
+    const card = document.getElementById("robotic-hand-blog-card");
+    if (container && card) container.prepend(card);
+});
