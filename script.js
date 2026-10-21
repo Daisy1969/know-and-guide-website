@@ -216,9 +216,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="blog-content"><h3>Aussie Backyard Games — Rebuilding Childhood Games for iPhone &amp; iPad</h3><p class="date">September 1, 2026</p><p>Pool whirlpools, clothesline chaos and soap-slope slides become a growing collection of physical mini-games with persistent strength, stamina, gear and a shared Backyard hub.</p><a href="blog/aussie-backyard-games.html" class="read-more">Follow the Development &rarr;</a></div>`
     });
-    // Keep the newest static article first after the older dynamic cards are added.
-    const smithersCard = document.getElementById("smithers-blog-card");
-    if (smithersCard) blogContainer.prepend(smithersCard);
 });
 
 // Anatomy AI: announce the submission without implying Apple approval or availability.
@@ -245,9 +242,9 @@ document.addEventListener("DOMContentLoaded", () => {
     container.prepend(card);
 });
 
-// Keep the October robotics proposal first after the older dynamic cards load.
+// Keep the October 21 Smithers update first after all older dynamic cards load.
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("blog-container");
-    const card = document.getElementById("robotic-hand-blog-card");
+    const card = document.getElementById("smithers-blog-card");
     if (container && card) container.prepend(card);
 });
