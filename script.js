@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.prepend(card);
 });
 
-// Keep the October 21 Smithers update first after all older dynamic cards load.
+// Keep the October 23 Smithers visual update first after all older dynamic cards load.
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("blog-container");
     const card = document.getElementById("smithers-blog-card");
