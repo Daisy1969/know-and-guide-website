@@ -242,9 +242,9 @@ document.addEventListener("DOMContentLoaded", () => {
     container.prepend(card);
 });
 
-// Keep the October 23 Smithers visual update first after all older dynamic cards load.
+// Keep the newest launch first after all older dynamic cards load.
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("blog-container");
-    const card = document.getElementById("smithers-blog-card");
+    const card = document.getElementById("witching-hour-blog-card") || document.getElementById("smithers-blog-card");
     if (container && card) container.prepend(card);
 });

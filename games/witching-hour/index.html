@@ -1,0 +1,356 @@
+<!doctype html>
+<!--
+Witching Hour — Copyright (c) 2026 Michael Harvey. MIT License.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions: The above copyright notice and this
+permission notice shall be included in all copies or substantial portions of
+the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#15111f">
+  <meta name="description" content="Take a little midnight flight. A free Halloween broomstick adventure with enchanted clouds, mischievous ghosts, and boulder-throwing yetis.">
+  <title>Witching Hour — Play Free | Know &amp; Guide</title>
+  <link rel="canonical" href="https://knowandguide.com/games/witching-hour/">
+  <meta property="og:title" content="Witching Hour — A Free Halloween Broomstick Game">
+  <meta property="og:description" content="Tap to fly, dodge ghosts and boulder-throwing yetis, and beat three increasingly tricky levels. Play free on your phone or computer.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://knowandguide.com/games/witching-hour/">
+  <meta property="og:site_name" content="Know &amp; Guide">
+  <meta property="og:image" content="https://knowandguide.com/images/witching-hour-preview.jpg">
+  <meta property="og:image:alt" content="Witching Hour: a witch flying a broom beneath a full moon, with ghosts and a yeti in a purple Halloween sky.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Witching Hour — Play Free">
+  <meta name="twitter:description" content="A little Halloween magic. Three levels, tap-to-fly controls, ghosts, yetis and shrinking cloud gaps.">
+  <meta name="twitter:image" content="https://knowandguide.com/images/witching-hour-preview.jpg">
+  <style>
+    :root{color-scheme:dark;--bg:#15111f;--panel:#1e182b;--cream:#f5eee1;--muted:#afa5bd;--orange:#ffa15c;--green:#c6edbd;--line:#ffffff12}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--cream);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible,canvas:focus-visible{outline:3px solid var(--green);outline-offset:5px}button{color:inherit}a{color:inherit;text-decoration:none}button:disabled{cursor:default}.icon{width:20px;height:20px;display:inline-block;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.defs{position:absolute;width:0;height:0;overflow:hidden}
+    .site-header{height:92px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(5.2vw,24px)}.brand{display:flex;align-items:center;gap:12px;font-family:Georgia,'Times New Roman',serif;font-size:23px;letter-spacing:-.8px}.brand-mark{color:var(--orange);width:31px;height:36px}.brand span em{font-style:normal;color:var(--orange)}.header-links{display:flex;align-items:center;gap:30px;font-size:12px;color:#c3b9cf}.header-links a:hover{color:var(--orange)}.free-note{display:flex;gap:8px;align-items:center;font-size:10px;letter-spacing:1.4px;text-transform:uppercase}.free-note i{width:5px;height:5px;background:var(--green);border-radius:100%;box-shadow:0 0 8px #c6edbd55}.header-play{padding:12px 19px;background:#ffffff06;border:1px solid #ffffff20;border-radius:6px;display:flex;gap:14px;align-items:center}.header-play:hover{border-color:var(--orange)}
+    main{max-width:1512px;margin:auto;padding:45px max(5.2vw,24px) 0}.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:29px}.eyebrow{color:var(--orange);font-size:10px;letter-spacing:2.5px;font-weight:600;text-transform:uppercase;display:flex;align-items:center;gap:9px;margin:0 0 13px}.eyebrow .icon{width:13px;height:13px}h1{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-size:clamp(46px,5vw,72px);line-height:1;letter-spacing:-3.5px;margin:0}h1 em{font-weight:400;color:var(--orange)}.intro-copy{max-width:336px;color:var(--muted);font-size:13px;line-height:1.8;margin:0 0 1px}.intro-copy strong{color:#e7ddee;font-weight:400}
+    .game-shell{border:1px solid #83749540;border-radius:12px;overflow:hidden;background:#1b1529;box-shadow:0 22px 80px #00000024;position:relative;scroll-margin-top:16px}.game-toolbar{display:flex;justify-content:space-between;align-items:center;background:#211a30;height:50px;padding:0 20px}.scene-name{display:flex;align-items:center;gap:10px;font-size:9px;letter-spacing:1.8px;font-weight:600;color:#c7bbd7}.scene-name .icon{width:16px;height:16px;color:var(--orange)}.toolbar-actions{display:flex;align-items:center;gap:7px}.tool-btn{width:32px;height:31px;border:0;background:transparent;border-radius:5px;color:#c8bdd5;display:grid;place-items:center}.tool-btn:hover{background:#ffffff0c;color:var(--orange)}.tool-btn .icon{width:17px;height:17px}.sound-button{width:auto;display:flex;gap:7px;font-size:10px;padding:0 9px}.toolbar-divider{height:15px;width:1px;background:#ffffff18;margin:0 5px}.stage{position:relative;aspect-ratio:1440/680;overflow:hidden;isolation:isolate;background:#1b1430}canvas{display:block;width:100%;height:100%;touch-action:none;outline:none}.stage::after{pointer-events:none;position:absolute;inset:0;content:"";box-shadow:inset 0 0 100px #110b2022}.menu{position:absolute;z-index:3;left:5.3%;top:15%;width:34%;max-width:430px}.menu-kicker{display:flex;align-items:center;gap:8px;color:#c8deb7;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin:0 0 21px}.menu-kicker::before{content:"";width:19px;height:1px;background:#c8deb7}.menu h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(28px,3.35vw,49px);line-height:1.13;font-weight:400;letter-spacing:-1.5px;margin:0 0 17px}.menu h2 em{color:#e2bcee;font-weight:400}.menu p{color:#c0b2ce;font-size:12px;line-height:1.85;max-width:300px;margin:0 0 23px}.primary{border:1px solid #ffb984;background:var(--orange);color:#291b20;padding:16px 24px;border-radius:6px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:26px;box-shadow:0 3px 0 #b95d33,0 7px 26px #ff9c4124;transition:transform .15s,background .15s}.primary:hover{background:#ffb37a;transform:translateY(-2px)}.primary:active{transform:translateY(2px)}.primary .icon{width:18px;height:18px}.menu-hint{display:block;color:#9f8eaf;font-size:9px;letter-spacing:.2px;margin-top:18px}.menu-hint kbd{font:inherit;color:#dccce9}.menu-stamp{position:absolute;right:3%;bottom:7%;z-index:2;text-align:center;color:#c4b0d2;font-size:8px;letter-spacing:2px;line-height:1.8;transform:rotate(-7deg)}.menu-stamp .icon{display:block;margin:auto auto 8px;width:24px;height:24px;color:#d5b0e6}.game-bottom{height:47px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:#211a30;font-size:10px;color:#b7abc4}.control-hints{display:flex;align-items:center;gap:21px}.control-hints span{display:flex;align-items:center;gap:7px}kbd{font-family:Arial,sans-serif;font-size:9px;min-width:22px;display:inline-block;text-align:center;border:1px solid #ffffff20;border-radius:4px;line-height:20px;padding:0 6px;color:#ddcfe8;background:#ffffff04}.personal-best{display:flex;align-items:center;gap:7px;font-size:9px}.personal-best .icon{color:var(--orange);width:13px;height:13px}.personal-best b{color:var(--cream);font-weight:400}
+    .hud{position:absolute;z-index:2;left:3%;right:3%;top:5%;display:flex;align-items:flex-start;justify-content:space-between;pointer-events:none}.hud[hidden],.menu[hidden],.overlay[hidden],.touch-controls[hidden],.flight-progress[hidden],.menu-stamp[hidden],.toast[hidden]{display:none}.hud-left{display:flex;gap:24px}.hud-label{display:block;font-size:8px;letter-spacing:1.7px;color:#beafcf;margin-bottom:6px}.hud-value{font-size:24px;font-weight:500;font-variant-numeric:tabular-nums;font-family:Georgia,serif}.hud-value small{font:10px Arial;color:#aa99bc}.charms .hud-value{color:#f1d58e}.hearts{color:#f2a88c;font-size:21px;letter-spacing:4px}.hud-right{text-align:right}.hud-right .hud-label{color:#d2bce4}.flight-progress{position:absolute;bottom:17px;left:34%;right:34%;z-index:2;text-align:center;pointer-events:none}.progress-caption{font-size:8px;text-transform:uppercase;letter-spacing:1.7px;color:#cfbddf;margin-bottom:8px}.progress-track{height:3px;border-radius:3px;background:#ffffff20;position:relative;overflow:visible}.progress-fill{height:100%;background:#ddb9ed;border-radius:3px;width:0;position:relative}.progress-fill::after{content:"✦";position:absolute;right:-5px;top:-8px;color:#eac7ef;font-size:15px}.progress-track::after{content:"☾";position:absolute;right:-15px;top:-10px;font-size:19px;color:#e9d9a0}.toast{position:absolute;z-index:2;top:23%;left:50%;transform:translateX(-50%);font-size:12px;color:#ecdfb4;pointer-events:none;white-space:nowrap;text-shadow:0 2px 10px #190e28}.overlay{position:absolute;z-index:5;inset:0;background:#160e29b8;backdrop-filter:blur(7px);display:grid;place-items:center;text-align:center;padding:22px}.overlay-card{max-width:410px}.overlay-symbol{width:45px;height:45px;color:var(--orange);margin-bottom:18px}.overlay h2{font-family:Georgia,serif;font-size:40px;font-weight:400;letter-spacing:-1.5px;margin:0 0 12px}.overlay p{font-size:12px;color:#c9bcd4;line-height:1.8;margin:0 0 22px}.results{display:flex;justify-content:center;gap:35px;margin:22px 0 28px}.results strong{display:block;font:28px Georgia;color:#f5db9a;margin-bottom:6px}.results span{color:#c4b2d3;letter-spacing:1.4px;text-transform:uppercase;font-size:8px}.secondary{display:block;margin:18px auto 0;border:0;background:none;color:#c8b9d4;font-size:11px;padding:8px}.secondary:hover{color:var(--orange)}.touch-controls{position:absolute;left:3%;right:3%;bottom:5%;z-index:4;display:flex;justify-content:space-between;pointer-events:none}.flight-btn{pointer-events:auto;width:61px;height:61px;border:1px solid #e1c9f14a;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:#372642b8;backdrop-filter:blur(4px);touch-action:none;user-select:none;-webkit-user-select:none;color:#f5e4ff;font-size:7px;letter-spacing:1px}.flight-btn:active,.flight-btn.held{background:#865497a0}.flight-btn .icon{width:24px;height:24px}.spell-button{color:#c6edbd;border-color:#c6edbd60;background:#244035a0}.spell-button:disabled{opacity:.45}.spell-button .icon{width:22px;height:22px}.touch-controls .rise-button{visibility:hidden}@media(pointer:coarse){.touch-controls .rise-button{visibility:visible}}
+    .info-strip{display:grid;grid-template-columns:1fr 1fr 1fr;margin:29px 0 0;padding-bottom:32px;border-bottom:1px solid var(--line);gap:30px}.info-item{display:flex;align-items:center;gap:15px}.info-illustration{width:40px;height:40px;flex-shrink:0;color:#ccb4df;display:grid;place-items:center}.info-illustration .icon{width:28px;height:28px}.info-item:nth-child(2) .info-illustration{color:#bcd9b5}.info-item:nth-child(3) .info-illustration{color:#f4be82}.info-item h3{font-family:Georgia,serif;font-size:17px;font-weight:400;margin:0 0 6px;letter-spacing:-.25px}.info-item p{font-size:10px;color:var(--muted);line-height:1.6;margin:0}.footer{display:flex;justify-content:space-between;align-items:center;max-width:1512px;margin:auto;padding:22px max(5.2vw,24px) 27px;color:#887d97;font-size:9px}.footer-note{display:flex;align-items:center;gap:7px}.footer-note .icon{height:12px;width:12px}.footer em{font-style:normal;color:#bda7cb}.how-to{margin:0 0 24px}.how-to summary{font-size:11px;color:#c9b8d5;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;padding:18px 0 0}.how-to summary .icon{width:14px;height:14px}.how-to[open] summary{color:var(--orange)}.how-to-content{padding:15px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:26px;color:#b9abc5;font-size:12px;line-height:1.8}.how-to-content p{margin:0}.how-to-content strong{color:#eee3f2;font-weight:500}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.game-shell:fullscreen{width:100vw;height:100dvh;border:0;border-radius:0;display:flex;flex-direction:column;justify-content:center;background:#130d20}.game-shell:fullscreen .stage{width:100%;height:auto;max-height:calc(100dvh - 97px);aspect-ratio:1440/680}.game-shell:fullscreen canvas{object-fit:contain}.game-shell:fullscreen .game-toolbar,.game-shell:fullscreen .game-bottom{flex-shrink:0}
+    @media(min-width:1650px){main{padding-left:78px;padding-right:78px}.footer{padding-left:78px;padding-right:78px}}@media(max-width:800px){.site-header{height:72px}.header-links{gap:20px}.free-note{display:none}main{padding-top:29px}.intro{align-items:flex-start;gap:20px;margin-bottom:24px}.intro-copy{max-width:270px;font-size:11px}h1{font-size:49px}.eyebrow{font-size:8px;letter-spacing:2px}.stage{aspect-ratio:1440/780}.menu{top:13%;width:37%;left:5%}.menu h2{font-size:30px;letter-spacing:-1px}.menu p{font-size:10px;line-height:1.7;margin-bottom:18px}.menu-kicker{font-size:7px;letter-spacing:1px;margin-bottom:15px}.primary{padding:12px 17px;font-size:10px;gap:18px}.menu-hint{font-size:8px;margin-top:13px}.menu-stamp{font-size:6px;bottom:6%}.game-toolbar{padding:0 13px}.scene-name{font-size:8px;letter-spacing:1px}.info-strip{gap:12px}.info-item{gap:8px}.info-item h3{font-size:15px}.info-item p{font-size:9px}.info-illustration{width:29px}.info-illustration .icon{width:23px}.control-hints{gap:13px}.control-hints span{font-size:9px}.hud-value{font-size:20px}.hearts{font-size:17px}.hud-left{gap:18px}.hud-label{font-size:7px}.progress-caption{font-size:7px}.flight-btn{height:48px;width:48px;font-size:6px}.flight-btn .icon{height:18px;width:18px}.overlay h2{font-size:33px}.overlay p{font-size:11px}.overlay-symbol{margin-bottom:10px;width:30px;height:30px}.results{margin:16px 0 20px}}
+    @media(max-width:540px){.site-header{padding:0 20px;height:68px}.brand{font-size:21px;gap:9px}.brand-mark{width:25px}.header-links{gap:14px;font-size:10px}.header-play{padding:10px 11px;gap:10px}.header-links>a:first-child{display:none}main{padding:27px 15px 0}.intro{display:block;margin-bottom:22px;padding:0 5px}.eyebrow{margin-bottom:12px}h1{font-size:49px;letter-spacing:-2.7px}.intro-copy{max-width:340px;margin-top:13px;font-size:11px;line-height:1.65}.stage{aspect-ratio:9/11;min-height:390px}.game-toolbar{height:45px;padding:0 11px}.scene-name{font-size:7px;gap:6px}.scene-name .icon{width:13px}.sound-button{font-size:0;gap:0;width:28px;padding:0}.toolbar-actions{gap:3px}.tool-btn{width:28px}.toolbar-divider{margin:0 2px}.menu{left:7%;top:8%;width:83%;max-width:310px}.menu-kicker{margin-bottom:12px;font-size:8px}.menu h2{font-size:34px;line-height:1.08}.menu p{max-width:260px;font-size:11px;margin-bottom:18px}.primary{font-size:11px;padding:14px 19px}.menu-hint{font-size:8px}.menu-stamp{right:6%;bottom:5%;font-size:6px;letter-spacing:1.5px}.game-bottom{height:44px;padding:0 12px;font-size:9px}.control-hints{gap:10px}.desktop-hint{display:none!important}.personal-best{font-size:8px;gap:4px}.personal-best .icon{width:11px}.hud{top:5%;left:6%;right:6%}.hud-left{gap:21px}.hud-value{font-size:23px}.hud-right{max-width:110px}.hearts{font-size:18px;letter-spacing:1px}.hud-label{font-size:7px;letter-spacing:1px}.flight-progress{bottom:27px;left:30%;right:30%}.progress-caption{font-size:6px;letter-spacing:.8px}.touch-controls{bottom:6%;left:6%;right:6%}.flight-btn{width:57px;height:57px}.flight-btn .icon{width:22px;height:22px}.flight-btn{font-size:7px}.info-strip{margin:24px 5px 0;padding-bottom:24px;grid-template-columns:1fr;gap:20px}.info-item{gap:14px}.info-illustration{width:31px}.info-item h3{font-size:17px;margin-bottom:4px}.info-item p{font-size:10px}.how-to{margin:0 5px 17px}.how-to-content{grid-template-columns:1fr;gap:12px;font-size:11px}.footer{padding:17px 20px 25px;font-size:8px;gap:15px;align-items:flex-start}.footer-note{max-width:180px;line-height:1.7}.footer>span:last-child{text-align:right;line-height:1.7}.overlay h2{font-size:35px}.overlay p{font-size:12px}.results{margin:24px 0}.toast{top:20%;font-size:10px}}
+    .results[hidden]{display:none}.mobile-hint{display:none!important}@media(pointer:coarse){.desktop-rise{display:none!important}.mobile-hint{display:flex!important}}
+    html[data-embed] .site-header,html[data-embed] .intro,html[data-embed] .info-strip,html[data-embed] .how-to,html[data-embed] .footer{display:none}html[data-embed] main{padding:0;max-width:none}html[data-embed] .game-shell{border-radius:0;border:0}html[data-embed] .stage{aspect-ratio:auto;height:calc(100dvh - 97px);min-height:280px}html[data-embed] .game-shell:fullscreen .stage{max-height:none}html[data-embed] .menu h2{font-size:clamp(28px,3.4vw,49px)}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.primary{transition:none}}
+  </style>
+</head>
+<body>
+<svg class="defs" xmlns="http://www.w3.org/2000/svg"><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 2.7 7.3L22 12l-7.3 2.7L12 22l-2.7-7.3L2 12l7.3-2.7Z"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.7 14.2A9 9 0 0 1 9.8 3.3 9 9 0 1 0 20.7 14.2Z"/><path d="M17 2v4m-2-2h4m2 4v2m-1-1h2"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol><symbol id="i-sound" viewBox="0 0 24 24"><path d="m11 5-6 4H2v6h3l6 4Z"/><path d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol><symbol id="i-mute" viewBox="0 0 24 24"><path d="m11 5-6 4H2v6h3l6 4Zm5 4 6 6m0-6-6 6"/></symbol><symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke-width="3"/></symbol><symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7M12 5v15"/></symbol><symbol id="i-ghost" viewBox="0 0 24 24"><path d="M4 21V10a8 8 0 0 1 16 0v11l-4-3-4 3-4-3Z"/><ellipse cx="9" cy="10" rx=".7" ry="1.5" fill="currentColor"/><ellipse cx="15" cy="10" rx=".7" ry="1.5" fill="currentColor"/></symbol><symbol id="i-cloud" viewBox="0 0 24 24"><path d="M6 18h12a4 4 0 0 0 .3-8 6 6 0 0 0-11.7-1A4.5 4.5 0 0 0 6 18Z"/><path d="m10 12 2-3-1 4h3l-2 3"/></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v5a5 5 0 0 1-10 0Zm0 2H3v3a4 4 0 0 0 5 4m9-7h4v3a4 4 0 0 1-5 4m-4 1v6m-4 2h8"/></symbol><symbol id="i-broom" viewBox="0 0 24 24"><path d="m21 3-9 9m-1-1 3 3-5 7-7-7 7-5Z"/><path d="m5 13 6 6m-3-8 5 5"/></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.5 4.5a5.5 5.5 0 0 0-8.5 1 5.5 5.5 0 0 0-8.5 7L12 21l8.5-8.5a5.5 5.5 0 0 0 0-8Z"/></symbol><symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 1 1 3 3v2m0 3h.01"/></symbol></svg>
+<header class="site-header"><a class="brand" href="/" aria-label="Know and Guide home"><svg class="icon brand-mark"><use href="#i-moon"/></svg><span>know &amp; guide<em> arcade</em></span></a><nav class="header-links" aria-label="Main navigation"><a href="#how-to-play" id="how-link">How to play</a><span class="free-note"><i></i>Always free to play</span><a class="header-play" href="#game">Let's fly <svg class="icon"><use href="#i-arrow"/></svg></a></nav></header>
+<main>
+  <section class="intro" aria-labelledby="page-title"><div><p class="eyebrow"><svg class="icon"><use href="#i-star"/></svg> A Halloween sky adventure</p><h1 id="page-title">Witching <em>Hour</em></h1></div><p class="intro-copy">A little magic. A little mischief.<br>One witch, one broom, and a sky full of trouble.<br><strong>How far will your courage carry you?</strong></p></section>
+  <section id="game" class="game-shell" aria-label="Witching Hour game">
+    <div class="game-toolbar"><span class="scene-name"><svg class="icon"><use href="#i-moon"/></svg><span id="scene-label">THE HAUNTED SKIES</span></span><div class="toolbar-actions"><button class="tool-btn sound-button" id="sound" aria-label="Mute sound" aria-pressed="true"><svg class="icon"><use href="#i-sound"/></svg><span id="sound-label">Sound on</span></button><span class="toolbar-divider"></span><button class="tool-btn" id="pause" aria-label="Pause game" disabled><svg class="icon"><use href="#i-pause"/></svg></button><button class="tool-btn" id="fullscreen" aria-label="Enter full screen"><svg class="icon"><use href="#i-expand"/></svg></button></div></div>
+    <div class="stage" id="stage">
+      <canvas id="sky" width="1440" height="680" tabindex="0" aria-label="Broomstick flying game. Tap Space, the up arrow, or the screen for a lift. Keep tapping to stay up. Press X to cast a spell and P to pause." aria-describedby="game-instructions"></canvas>
+      <div id="menu" class="menu"><div class="menu-kicker">3 levels · one midnight flight</div><h2>The moon is full.<br>The sky is <em>yours.</em></h2><p>Dodge storm clouds. Gather moon charms. The flight gets faster. The gaps get smaller.</p><button id="start" class="primary">Take flight <svg class="icon"><use href="#i-arrow"/></svg></button><span class="menu-hint"><kbd>Tap Space</kbd> or <kbd>tap the sky</kbd> to stay up</span></div>
+      <div class="menu-stamp" id="stamp"><svg class="icon"><use href="#i-star"/></svg>A LITTLE WICKED.<br>A LOT OF WONDER.</div>
+      <div id="hud" class="hud" hidden><div class="hud-left"><div><span class="hud-label">MIDNIGHT MILES</span><span class="hud-value" id="distance">0 <small>m</small></span></div><div class="charms"><span class="hud-label">MOON CHARMS</span><span class="hud-value" id="charms">0</span></div></div><div class="hud-right"><span class="hud-label" id="chapter">01 · THE WAKING SKY</span><span id="hearts" class="hearts" aria-label="3 hearts remaining">♥♥♥</span></div></div>
+      <div class="flight-progress" id="flight-progress" hidden><div id="progress-caption" class="progress-caption">Find the midnight moon</div><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
+      <div class="touch-controls" id="touch-controls" hidden><button class="flight-btn rise-button" id="rise" aria-label="Tap for a lift"><svg class="icon"><use href="#i-up"/></svg>TAP</button><button class="flight-btn spell-button" id="spell" aria-label="Cast a protective spell"><svg class="icon"><use href="#i-star"/></svg><span id="spell-label">SPELL · X</span></button></div>
+      <div id="toast" class="toast" hidden></div>
+      <div id="overlay" class="overlay" hidden><div class="overlay-card"><svg class="icon overlay-symbol" id="overlay-icon"><use href="#i-moon"/></svg><h2 id="overlay-title">A moment of stillness.</h2><p id="overlay-copy">Even witches need a breather.</p><div class="results" id="results" hidden><div><strong id="result-distance">0 m</strong><span>Distance</span></div><div><strong id="result-charms">0</strong><span>Charms</span></div><div><strong id="result-score">0</strong><span>Score</span></div></div><button class="primary" id="resume">Keep flying <svg class="icon"><use href="#i-arrow"/></svg></button><button class="secondary" id="back-menu">Back to the moonlight</button></div></div>
+      <span id="announcer" class="sr-only" role="status" aria-live="polite"></span>
+    </div>
+    <div class="game-bottom"><div class="control-hints"><span class="desktop-rise"><kbd>SPACE / ↑</kbd> Tap to lift</span><span class="mobile-hint"><kbd>TAP</kbd> Keep tapping to stay up</span><span class="desktop-hint"><kbd>X</kbd> Cast spell</span><span class="desktop-hint"><kbd>P</kbd> Pause</span></div><span class="personal-best"><svg class="icon"><use href="#i-trophy"/></svg> Personal best <b id="best">0</b></span></div>
+  </section>
+  <section class="info-strip" aria-label="Your adventure"><div class="info-item"><div class="info-illustration"><svg class="icon"><use href="#i-cloud"/></svg></div><div><h3>Mind the storm clouds</h3><p>Three levels. Faster flying. Ever smaller cloud gaps.</p></div></div><div class="info-item"><div class="info-illustration"><svg class="icon"><use href="#i-ghost"/></svg></div><div><h3>Meet the night shift</h3><p>Cheeky ghosts. Grumpy yetis. Very questionable aim.</p></div></div><div class="info-item"><div class="info-illustration"><svg class="icon"><use href="#i-star"/></svg></div><div><h3>Make a little magic</h3><p>Cast a spell, beat your best, and fly just a little farther.</p></div></div></section>
+  <details class="how-to" id="how-to-play"><summary><svg class="icon"><use href="#i-help"/></svg> A witch's guide to flying</summary><div class="how-to-content" id="game-instructions"><p><strong>01 / Find your rhythm.</strong> Tap Space, ↑, W, or the screen for a little lift. Keep tapping to stay up; pause your taps to drift down. Stay above the bottom storm clouds and fly through the gaps. Touching a storm cloud costs a heart.</p><p><strong>02 / Watch the locals.</strong> Dodge ghosts and the yetis' flying boulders. Press X or tap the green spell button to clear nearby trouble. Your spell recharges in five seconds; storm clouds must be dodged.</p><p><strong>03 / Beat all three levels.</strong> Each level lasts 600 m. Your broom steadily speeds up, cloud banks arrive closer together, and their openings narrow until the moon at 1,800 m. Starry violet clouds are safe and recharge spells; every eight charms restore a heart.</p></div></details>
+</main>
+<footer class="footer"><span class="footer-note"><svg class="icon"><use href="#i-heart"/></svg>Made for a little Halloween happiness.</span><span>No downloads. No sign-ups. <em>Just a little magic.</em></span></footer>
+<script>
+(() => {
+  'use strict';
+  if(new URLSearchParams(location.search).has('embed')) document.documentElement.dataset.embed='';
+  const $ = id => document.getElementById(id);
+  const canvas = $('sky'), ctx = canvas.getContext('2d', { alpha: false });
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const TAU = Math.PI * 2, GOAL = 1800, GRAVITY = 780, LIFT_VELOCITY = -265;
+  let W = 1440, H = 680, dpr = 1, portrait = false;
+  let state = 'menu', now = 0, previous = 0, worldTime = 0, menuTime = 0, distance = 0, collected = 0, score = 0, hearts = 3, best = 0, chapter = 0;
+  let invincible = 0, spellCooldown = 0, spellRing = 0, shake = 0, spawnTime = 0, charmTime = 0, cloudTime = 0, particles = [], enemies = [], rocks = [], charms = [], magicClouds = [], stormGates = [], worldScroll = 0, toastTime = 0;
+  let flying = false, liftFlash = 0;
+  const heldLiftKeys = new Set();
+  const witch = { x: 300, y: 340, vy: 0, angle: 0 };
+  const chapters = ['01 · THE WAKING SKY', '02 · GHOSTLIGHT GROVE', '03 · THE WITCHING HOUR'];
+  const stars = Array.from({length:115}, (_,i) => ({x:hash(i*7.1),y:hash(i*13.3+3)*.82,r:.45+hash(i*5.4)*1.15,a:.15+hash(i*8.2)*.6}));
+  const backgroundClouds = Array.from({length:14}, (_,i) => ({x:hash(i*2.41)*1800,y:hash(i*4.7+1),s:.6+hash(i*8.5)*1.2,speed:5+hash(i*3.9)*11}));
+  try { best = Number(localStorage.getItem('witching-hour-best')) || 0; } catch (_) {}
+  $('best').textContent = best.toLocaleString();
+  function hash(n){const v=Math.sin(n*127.1+311.7)*43758.5453;return v-Math.floor(v);}
+  function rand(a,b){return a+Math.random()*(b-a);}
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function difficulty(at=distance){
+    const progress=clamp(at/GOAL,0,1);
+    return {progress,speed:182+138*progress,gap:360-105*progress,spacing:(portrait?570:800)-(portrait?180:260)*progress,width:portrait?154:184};
+  }
+  function stormFloor(x,progress=difficulty().progress){
+    const phase=x+worldScroll*.72,pitch=137,nearest=Math.round(phase/pitch);
+    let edge=H-37-progress*26;
+    // Overlapping elliptical puffs form the same rounded rim used for collisions.
+    for(let i=nearest-1;i<=nearest+1;i++){
+      const offset=(phase-i*pitch)/91;
+      if(Math.abs(offset)<1)edge=Math.min(edge,H-37-progress*26-(78+hash(i*3.7)*18)*Math.sqrt(1-offset*offset));
+    }
+    return edge;
+  }
+  function addStormGate(x){
+    const d=difficulty(),last=stormGates[stormGates.length-1];
+    const center=last?clamp(last.center+rand(-66,66),295,365):340;
+    stormGates.push({x,center,gap:d.gap,width:d.width});
+  }
+  function stormContact(){
+    const cx=witch.x,cy=witch.y-18,r=23;
+    const bottom=stormFloor(cx);
+    if(cy+r>bottom)return {kind:'floor',edge:bottom};
+    for(const gate of stormGates){
+      // The collision core sits inside the soft, rounded cloud edges.
+      if(Math.abs(cx-gate.x)>gate.width*.36+r)continue;
+      const top=gate.center-gate.gap/2,bottom=gate.center+gate.gap/2;
+      if(cy-r<top-6)return {kind:'top',edge:top};
+      if(cy+r>bottom+6)return {kind:'bottom',edge:bottom};
+    }
+    return null;
+  }
+  function ellipse(x,y,rx,ry,fill){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,TAU);ctx.fillStyle=fill;ctx.fill();}
+  function path(d,fill,stroke,width=1){const p=new Path2D(d);if(fill){ctx.fillStyle=fill;ctx.fill(p);}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke(p);}}
+  function line(points,color,width){ctx.beginPath();ctx.moveTo(points[0],points[1]);for(let i=2;i<points.length;i+=2)ctx.lineTo(points[i],points[i+1]);ctx.lineWidth=width;ctx.strokeStyle=color;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke();}
+  function star(x,y,r,color,rotation=0){ctx.save();ctx.translate(x,y);ctx.rotate(rotation);ctx.fillStyle=color;ctx.beginPath();for(let i=0;i<8;i++){const a=i*Math.PI/4,rr=i%2?r*.28:r;ctx.lineTo(Math.cos(a)*rr,Math.sin(a)*rr);}ctx.closePath();ctx.fill();ctx.restore();}
+  function resize(){
+    const rect=canvas.getBoundingClientRect();portrait=rect.width/rect.height<1.15;H=680;W=Math.max(530,H*rect.width/rect.height);dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);
+    witch.x=portrait?W*.25:300;witch.y=clamp(witch.y,105,H-100);
+  }
+  new ResizeObserver(resize).observe($('stage'));
+  // Original music and sound effects, synthesized locally. No audio downloads.
+  class MoonMusic {
+    constructor(){this.enabled=true;this.context=null;this.master=null;this.timer=null;this.step=0;this.next=0;this.active=false;}
+    init(){if(this.context)return;const Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;try{this.context=new Audio();this.master=this.context.createGain();this.master.gain.value=.0001;this.master.connect(this.context.destination);this.timer=setInterval(()=>this.schedule(),120);}catch(_){this.enabled=false;}}
+    async start(){this.init();this.active=true;if(this.context){try{await this.context.resume();}catch(_){}this.next=this.context.currentTime+.05;this.master.gain.setTargetAtTime(this.enabled?.32:.0001,this.context.currentTime,.2);}}
+    stop(){this.active=false;if(this.context)this.master.gain.setTargetAtTime(.0001,this.context.currentTime,.12);}
+    toggle(){this.enabled=!this.enabled;if(this.context)this.master.gain.setTargetAtTime(this.enabled&&this.active?.32:.0001,this.context.currentTime,.1);return this.enabled;}
+    note(freq,start,duration,volume,type='sine',detune=0){const a=this.context;if(!a)return;const osc=a.createOscillator(),gain=a.createGain();osc.type=type;osc.frequency.value=freq;osc.detune.value=detune;gain.gain.setValueAtTime(.0001,start);gain.gain.exponentialRampToValueAtTime(Math.max(.0002,volume),start+.025);gain.gain.exponentialRampToValueAtTime(.0001,start+duration);osc.connect(gain);gain.connect(this.master);osc.start(start);osc.stop(start+duration+.05);}
+    schedule(){const a=this.context;if(!a||!this.active||!this.enabled||a.state!=='running')return;const melody=[76,0,79,78,76,0,71,0,74,0,77,76,74,0,70,0,72,0,75,74,72,0,68,0,71,0,74,72,71,0,67,0];while(this.next<a.currentTime+.35){if(this.next<a.currentTime-.2)this.next=a.currentTime+.03;const n=melody[this.step%melody.length];if(n){const f=440*2**((n-69)/12);this.note(f,this.next,1.4,.105,'sine');this.note(f*2.003,this.next,.55,.022,'triangle');}if(this.step%4===0){const bass=[40,38,36,35][Math.floor(this.step/8)%4];this.note(440*2**((bass-69)/12),this.next,2,.07,'triangle');this.note(440*2**((bass+7-69)/12),this.next,1.7,.026,'sine');}this.next+=.32;this.step++;}}
+    effect(kind){if(!this.enabled||!this.context||!this.active)return;const t=this.context.currentTime;if(kind==='charm'){this.note(783.99,t,.35,.16);this.note(1174.66,t+.08,.4,.1);}if(kind==='spell'){[261.63,392,523.25,783.99].forEach((f,i)=>this.note(f,t+i*.065,.7,.14,'triangle'));}if(kind==='hit'){this.note(82.41,t,.4,.27,'sawtooth');this.note(77.78,t+.07,.5,.18,'triangle');}if(kind==='win'){[523.25,659.25,783.99,1046.5].forEach((f,i)=>this.note(f,t+i*.16,1,.2));}if(kind==='cloud'){this.note(659.25,t,.8,.12);this.note(987.77,t+.1,.9,.1);}}
+  }
+  const audio = new MoonMusic();
+  function setToast(message,seconds=2.5){$('toast').textContent=message;$('toast').hidden=false;toastTime=seconds;$('announcer').textContent=message;}
+  function updateHud(){
+    $('distance').innerHTML=`${Math.floor(distance).toLocaleString()} <small>m</small>`;$('charms').textContent=collected;
+    $('hearts').textContent='♥'.repeat(hearts)+'♡'.repeat(3-hearts);$('hearts').setAttribute('aria-label',`${hearts} hearts remaining`);
+    $('chapter').textContent=`LEVEL ${chapter+1} OF 3`;$('scene-label').textContent=state==='menu'?'THE HAUNTED SKIES':chapters[chapter].split(' · ')[1];
+    $('progress-caption').textContent=`Level ${chapter+1} of 3 · ${Math.ceil(GOAL-distance)} m to moon`;
+    $('progress-fill').style.width=`${Math.min(100,distance/GOAL*100)}%`;
+    $('spell').disabled=spellCooldown>0;$('spell-label').textContent=spellCooldown>0?`${Math.ceil(spellCooldown)}s`:'SPELL · X';
+  }
+  function start(){
+    state='playing';distance=0;collected=0;score=0;hearts=3;chapter=0;invincible=2.4;spellCooldown=0;spellRing=0;shake=0;worldTime=0;spawnTime=4.5;charmTime=.7;cloudTime=6;witch.y=H*.48;witch.vy=0;witch.angle=0;
+    particles=[];enemies=[];rocks=[];charms=[];magicClouds=[];stormGates=[];worldScroll=0;addStormGate(witch.x+Math.max(470,W*.69));flying=false;liftFlash=0;heldLiftKeys.clear();
+    $('menu').hidden=true;$('stamp').hidden=true;$('overlay').hidden=true;$('hud').hidden=false;$('flight-progress').hidden=false;$('touch-controls').hidden=false;$('pause').disabled=false;
+    $('pause').setAttribute('aria-label','Pause game');audio.start();updateHud();setToast('Keep tapping Space or the sky to stay up!',4);canvas.focus({preventScroll:true});
+  }
+  function menu(){state='menu';audio.stop();flying=false;liftFlash=0;heldLiftKeys.clear();$('menu').hidden=false;$('stamp').hidden=false;$('overlay').hidden=true;$('hud').hidden=true;$('flight-progress').hidden=true;$('touch-controls').hidden=true;$('toast').hidden=true;$('announcer').textContent='';$('pause').disabled=true;$('pause').setAttribute('aria-label','Pause game');$('scene-label').textContent='THE HAUNTED SKIES';$('start').focus({preventScroll:true});}
+  function pause(){if(state==='playing'){state='paused';flying=false;liftFlash=0;heldLiftKeys.clear();audio.stop();$('overlay-title').textContent='A moment of stillness.';$('overlay-copy').textContent='Even witches need a breather. Your moonlight will wait.';$('results').hidden=true;$('resume').innerHTML='Keep flying <svg class="icon"><use href="#i-arrow"/></svg>';$('overlay-icon').innerHTML='<use href="#i-moon"/>';$('overlay').hidden=false;$('pause').setAttribute('aria-label','Resume game');$('resume').focus({preventScroll:true});}else if(state==='paused'){state='playing';$('overlay').hidden=true;$('pause').setAttribute('aria-label','Pause game');audio.start();canvas.focus({preventScroll:true});}}
+  function finish(won){
+    state=won?'won':'over';flying=false;liftFlash=0;heldLiftKeys.clear();$('pause').disabled=true;$('touch-controls').hidden=true;$('toast').hidden=true;
+    const total=Math.floor(distance)+score+(won?500:0);if(total>best){best=total;try{localStorage.setItem('witching-hour-best',String(best));}catch(_){}$('best').textContent=best.toLocaleString();}
+    $('overlay-title').textContent=won?'A bewitching little flight.':'A tumble in the moonlight.';
+    $('overlay-copy').textContent=won?'You reached the midnight moon! The sky is a little more magical with you in it.':'Dust off your hat. There is always a little more magic in the next flight.';
+    $('result-distance').textContent=`${Math.floor(distance).toLocaleString()} m`;$('result-charms').textContent=collected;$('result-score').textContent=total.toLocaleString();$('results').hidden=false;
+    $('resume').innerHTML=`${won?'Fly again':'One more flight'} <svg class="icon"><use href="#i-arrow"/></svg>`;$('overlay-icon').innerHTML=`<use href="#${won?'i-trophy':'i-broom'}"/>`;$('overlay').hidden=false;$('resume').focus({preventScroll:true});
+    if(won)audio.effect('win');setTimeout(()=>{if(state==='won'||state==='over')audio.stop();},1500);$('announcer').textContent=`${won?'You reached the moon!':'Flight finished.'} Score ${total}. Distance ${Math.floor(distance)} meters. ${collected} charms.`;
+  }
+  function burst(x,y,color,n=18,power=1){for(let i=0;i<n;i++){const a=rand(0,TAU),speed=rand(25,150)*power;particles.push({x,y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,life:rand(.35,.95),max:1,r:rand(1.5,4),color});}}
+  function cast(){if(state!=='playing'||spellCooldown>0)return;spellCooldown=5;spellRing=.65;audio.effect('spell');burst(witch.x,witch.y,'#c5f4a8',24,2);let banished=0;
+    enemies.forEach(e=>{if(e.type==='ghost'&&Math.hypot(e.x-witch.x,e.y-witch.y)<300){e.dead=true;burst(e.x,e.y,'#dfc4f9',20);banished++;}});
+    rocks.forEach(r=>{if(Math.hypot(r.x-witch.x,r.y-witch.y)<340){r.dead=true;burst(r.x,r.y,'#d4d0dd',12);banished++;}});score+=banished*60;if(banished)setToast(`${banished===1?'A little trouble':banished+' troubles'}… vanished. +${banished*60}`);updateHud();
+  }
+  function hit(x,y,cause=''){if(invincible>0||state!=='playing')return;hearts--;invincible=2.4;shake=.35;audio.effect('hit');burst(x,y,'#ffbc93',20,1.7);updateHud();if(hearts<=0)finish(false);else setToast(cause==='storm'?'Storm clouds bite! Follow the clear gaps.':hearts===1?'One heart left. Find eight charms to heal!':'A little bump. Keep your hat on!');}
+  function spawnEnemy(){const isYeti=Math.random()<.48;const y=isYeti?(Math.random()<.68?H-125:170):rand(155,H-180);enemies.push({type:isYeti?'yeti':'ghost',x:W+100,y,baseY:y,phase:rand(0,TAU),timer:rand(1.1,1.8),thrown:false,dead:false});}
+  function throwRock(e){const dx=witch.x-e.x,dy=witch.y-e.y,rockSpeed=300*difficulty().speed/182,travel=clamp(Math.abs(dx)/rockSpeed,.85,2.4);rocks.push({x:e.x-25,y:e.y-38,vx:dx/travel,vy:dy/travel-55,r:17,angle:0,spin:rand(-3,3),dead:false});e.thrown=true;burst(e.x-25,e.y-38,'#b9bad5',5,.4);}
+  function spawnCharms(){const y=rand(220,430);for(let i=0;i<5;i++){const x=W+65+i*59,gate=stormGates.find(g=>Math.abs(g.x-x)<g.width/2+40);charms.push({x,y:(gate?gate.center:y)+Math.sin(i*.75)*25,phase:i*.5,taken:false});}}
+  function update(dt){
+    if(state==='menu'){menuTime+=dt;return;}if(state!=='playing')return;
+    worldTime+=dt;const {speed,progress}=difficulty();worldScroll+=speed*dt;distance=Math.min(GOAL,distance+dt*speed/8.27);const nextChapter=Math.min(2,Math.floor(distance/600));if(nextChapter!==chapter){chapter=nextChapter;setToast(`Level ${chapter+1} of 3 · Faster flight, closer clouds`,3.5);}
+    invincible=Math.max(0,invincible-dt);spellCooldown=Math.max(0,spellCooldown-dt);spellRing=Math.max(0,spellRing-dt);shake=Math.max(0,shake-dt);toastTime-=dt;if(toastTime<=0)$('toast').hidden=true;
+    liftFlash=Math.max(0,liftFlash-dt);flying=liftFlash>0;witch.vy=clamp(witch.vy+GRAVITY*dt,LIFT_VELOCITY,270);witch.y+=witch.vy*dt;
+    const ceiling=100,floor=H-55;if(witch.y<ceiling){witch.y=ceiling;witch.vy=Math.max(0,witch.vy);}if(witch.y>floor){witch.y=floor;witch.vy=Math.min(0,witch.vy);}witch.angle+=(clamp(witch.vy/1100,-.23,.25)-witch.angle)*Math.min(1,dt*7);
+    for(const gate of stormGates)gate.x-=speed*dt;
+    stormGates=stormGates.filter(g=>g.x>-g.width);
+    const lastGate=stormGates[stormGates.length-1],spacing=difficulty().spacing;
+    if(!lastGate||lastGate.x<W+spacing)addStormGate(lastGate?lastGate.x+spacing:W+180);
+    const contact=stormContact();
+    if(contact&&invincible<=0){
+      hit(witch.x,witch.y,'storm');
+      if(contact.kind==='top'){witch.y=contact.edge+49;witch.vy=115;}
+      else{witch.y=contact.edge-17;witch.vy=-165;}
+      if(state!=='playing')return;
+    }
+    if(Math.random()<dt*55){particles.push({x:witch.x-62,y:witch.y+18+rand(-6,6),vx:-rand(85,180),vy:rand(-22,22),life:rand(.3,.9),max:1,r:rand(1,3),color:Math.random()<.5?'#dda9f2':'#dcdda1'});}
+    spawnTime-=dt;if(spawnTime<=0){spawnEnemy();spawnTime=rand(portrait?2.5:2.25,3.7)-chapter*.25;}
+    charmTime-=dt;if(charmTime<=0){spawnCharms();charmTime=rand(3.4,4.8);}
+    cloudTime-=dt;if(cloudTime<=0){magicClouds.push({x:W+160,y:rand(245,415),phase:rand(0,TAU),taken:false});cloudTime=rand(9,13);}
+    for(const e of enemies){e.x-=speed*dt;if(e.type==='ghost'){e.y=e.baseY+Math.sin(worldTime*1.8+e.phase)*43;if(!e.dead&&Math.hypot(e.x-witch.x,(e.y-witch.y)*.95)<51){e.dead=true;hit(e.x,e.y);}}else{e.timer-=dt;if(e.timer<=0&&e.x>witch.x+145&&e.x<W-35){throwRock(e);e.timer=rand(2.5,3.5);}if(Math.hypot(e.x-witch.x,e.y-witch.y)<62)hit(e.x,e.y);}}
+    if(state!=='playing')return;
+    for(const r of rocks){r.x+=r.vx*dt;r.y+=r.vy*dt;r.vy+=48*dt;r.angle+=r.spin*dt;if(!r.dead&&Math.hypot(r.x-witch.x,r.y-witch.y)<r.r+22){r.dead=true;hit(r.x,r.y);}}
+    if(state!=='playing')return;
+    for(const c of charms){c.x-=speed*dt;if(!c.taken&&Math.hypot(c.x-witch.x,c.y-witch.y)<41){c.taken=true;collected++;score+=100;audio.effect('charm');burst(c.x,c.y,'#f5db99',9,.6);if(collected%8===0&&hearts<3){hearts++;setToast('A little moon magic. +1 heart');burst(witch.x,witch.y,'#d0f8b6',25,1.5);}}}
+    for(const c of magicClouds){c.x-=speed*.83*dt;if(!c.taken&&Math.abs(c.x-witch.x)<95&&Math.abs(c.y-witch.y)<52){c.taken=true;spellCooldown=0;score+=75;audio.effect('cloud');setToast('Witching cloud! Spell recharged · +75');burst(witch.x,witch.y,'#d3a4f2',28,1.5);}}
+    for(const p of particles){p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt;}
+    particles=particles.filter(p=>p.life>0).slice(-220);enemies=enemies.filter(e=>e.x>-180&&!e.dead);rocks=rocks.filter(r=>r.x>-100&&r.x<W+200&&r.y<H+120&&!r.dead);charms=charms.filter(c=>c.x>-50&&!c.taken);magicClouds=magicClouds.filter(c=>c.x>-180);
+    updateHud();if(distance>=GOAL&&state==='playing')finish(true);
+  }
+  function cloud(x,y,s,fill,glow=false){ctx.save();ctx.translate(x,y);ctx.scale(s,s);if(glow){ctx.shadowColor='#ac75db';ctx.shadowBlur=22;}path('M-128 25 C-167 22 -171 -14 -139 -27 C-140 -58 -100 -68 -79 -44 C-60 -89 -5 -88 17 -48 C39 -67 84 -48 86 -19 C125 -27 154 -3 144 21 C132 51 76 48 44 45 C-12 49 -84 48 -128 25Z',fill);ctx.shadowBlur=0;ctx.restore();}
+  function moon(x,y,r){
+    const halo=ctx.createRadialGradient(x,y,r*.5,x,y,r*2.25);halo.addColorStop(0,'#d8bd9430');halo.addColorStop(.5,'#d6ad8314');halo.addColorStop(1,'#d8bd9400');ctx.fillStyle=halo;ctx.fillRect(x-r*2.3,y-r*2.3,r*4.6,r*4.6);
+    const g=ctx.createRadialGradient(x-r*.3,y-r*.35,1,x,y,r);g.addColorStop(0,'#f5e8bd');g.addColorStop(.65,'#dfcda1');g.addColorStop(1,'#bfaa88');ellipse(x,y,r,r,g);
+    ctx.save();ctx.beginPath();ctx.arc(x,y,r,0,TAU);ctx.clip();for(let i=0;i<58;i++){const a=hash(i*3.14)*TAU,rr=Math.sqrt(hash(i*4.15))*r,cr=(3+hash(i*1.73)*16)*r/130;ellipse(x+Math.cos(a)*rr,y+Math.sin(a)*rr,cr,cr*(.7+hash(i*2.6)*.5),'#867d7816');ellipse(x+Math.cos(a)*rr-cr*.15,y+Math.sin(a)*rr-cr*.25,cr*.7,cr*.7,'#ffefc512');}ctx.restore();
+    ctx.beginPath();ctx.arc(x,y,r+.7,0,TAU);ctx.strokeStyle='#fff1d146';ctx.lineWidth=1;ctx.stroke();
+  }
+  function bat(x,y,s,t){ctx.save();ctx.translate(x,y);ctx.scale(s,s);ctx.rotate(-.12);const f=Math.sin(t)*5;path(`M0 3 Q-7 ${-9-f} -25 -7 Q-21 0 -23 7 Q-16 1 -11 10 Q-6 4 0 10 Q6 4 11 10 Q16 1 23 7 Q21 0 25 -7 Q7 ${-9-f} 0 3Z`,'#1b142b');path('M-3 4 -4 -3 0 0 4 -3 3 5Z','#1b142b');ctx.restore();}
+  function drawBackground(t){
+    const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#18152e');bg.addColorStop(.48,'#302342');bg.addColorStop(.82,'#4b304e');bg.addColorStop(1,'#443347');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    const glow=ctx.createRadialGradient(W*.7,H*.62,0,W*.7,H*.62,W*.65);glow.addColorStop(0,'#bd769d17');glow.addColorStop(1,'#ad72ac00');ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
+    for(const s of stars){const a=s.a*(.75+Math.sin(t*.8+s.x*10)*.25);ellipse(s.x*W,s.y*H,s.r,s.r,`rgba(244,225,204,${a})`);if(s.r>1.3&&s.x>.36)star(s.x*W,s.y*H,3,'#f3dfbb66');}
+    const mx=portrait?W*.78:W*.755,my=portrait?H*.58:178,mr=portrait?W*.195:124;moon(mx,my,mr);
+    // Long, layered cloud banks echo the drifting formations in the reference photos.
+    for(let i=0;i<backgroundClouds.length;i++){const c=backgroundClouds[i],span=W+650,x=((c.x-t*c.speed)%span+span)%span-300;const y=75+c.y*420;cloud(x,y,c.s*(portrait?.6:1.1),i%2?'#80708d0d':'#aa82aa0b');}
+    ctx.save();ctx.globalAlpha=.55;cloud(mx+75,my+64,portrait?.85:1.55,'#6d546e65');cloud(mx-175,my+103,portrait?.65:1,'#543f606e');ctx.restore();
+    for(let i=0;i<5;i++)bat(mx-155+i*44+(Math.sin(t*.2+i)*20),my-12+Math.sin(i*2.7)*34,.42+i*.045,t*4+i);
+    // There are no mountains: the horizon is entirely soft, rolling witching clouds.
+    for(let layer=0;layer<3;layer++){const sc=[2.7,2.1,1.7][layer],yy=[H+10,H+54,H+93][layer]+(state==='menu'?0:160),speed=[12,20,32][layer],spacing=315*sc*.72;for(let i=-1;i<Math.ceil(W/spacing)+2;i++){const x=i*spacing-(t*speed%spacing);cloud(x,yy+Math.sin(i*3+layer)*27,sc,['#59405d70','#3a2a49','#241d35'][layer]);}}
+    const vignette=ctx.createLinearGradient(0,0,W,0);vignette.addColorStop(0,'#160f222b');vignette.addColorStop(.4,'#160f2200');vignette.addColorStop(1,'#160f2215');ctx.fillStyle=vignette;ctx.fillRect(0,0,W,H);
+  }
+  function drawWitch(x,y,s,angle,t){
+    ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.scale(s,s);ctx.lineJoin='round';ctx.lineCap='round';
+    // Broom: warm wood, a tied bundle of straw, and little trailing stars.
+    path('M-78 20 Q-96 5 -123 11 L-118 20 -133 24 -122 29 -130 37 Q-99 46 -78 30Z','#d8a254','#8e5c38',1.5);
+    for(let i=0;i<8;i++){const yy=14+i*3.1;line([-125+hash(i)*8,yy,-83,24+(i-3.5)*.6],i%2?'#f0c577':'#a87440',1);}
+    line([-88,23,100,7],'#442b2c',8);line([-88,21,101,5],'#b48350',5);line([-76,18,-74,28],'#f3d491',3);line([-80,18,-78,29],'#8d5338',2);
+    // Stockings and wonderfully impractical curled boots.
+    path('M-6 -5 Q-6 12 8 20 L4 47 18 48 26 18 10 1Z','#c797ad','#2c2039',2);
+    path('M18 -4 38 11 34 35 45 40 54 29 51 9 33 -11Z','#dec5b2','#2c2039',2);
+    for(let i=0;i<4;i++)line([8,23+i*6,21-i*1.5,24+i*6],'#695176',3);
+    line([36,17,50,20],'#795184',4);line([35,26,49,29],'#795184',4);
+    path('M4 43 18 44 Q23 56 36 49 Q33 63 16 59 L1 58Z','#281e35','#c098ba',1);
+    path('M32 32 46 37 Q50 46 62 39 Q59 53 44 49 L29 43Z','#281e35','#c098ba',1);
+    // A cape with a living, fluttering hem.
+    const flutter=Math.sin(t*6)*4;
+    path(`M-18 -55 Q-43 -47 -57 -25 Q-83 -29 -101 ${-12+flutter} L-83 -12 -94 2 -73 -3 -73 11 Q-46 10 -19 -13Z`,'#472b62','#a779b0',1.5);
+    path(`M-23 -49 Q-48 -33 -75 ${-17+flutter} Q-48 -21 -27 -27Z`,'#664179');
+    path('M-12 -54 Q-26 -42 -23 -22 L-34 4 Q-6 15 23 2 L7 -25 8 -50Z','#30263e','#ab84b6',1.5);
+    path('M-11 -48 -2 -31 5 -45Z','#7a5592');path('M-23 -5 Q-2 3 17 -5 L20 1 Q-2 10 -28 3Z','#775581');
+    // Copper hair, pale green face, and a determined little smile.
+    path('M-19 -89 Q-44 -79 -27 -55 L-44 -40 -26 -42 -35 -26 Q-14 -32 -10 -56 L7 -71Z','#b5714d','#633947',1.5);
+    path('M-11 -91 Q13 -98 24 -80 L24 -70 37 -64 24 -58 Q20 -44 5 -50 L-5 -57 -14 -53 -18 -67Z','#b8c995','#30243d',1.5);
+    path('M-15 -84 Q-18 -58 -32 -50 Q-12 -49 -6 -70 L-3 -87Z','#da9863');
+    ellipse(16,-74,2.4,3.2,'#2a2035');ellipse(17,-75,.7,1,'#fff1cf');line([11,-81,21,-82],'#4b3b43',1.3);path('M15 -58 Q21 -55 25 -60',null,'#665352',1.3);ellipse(22,-66,4,2.4,'#deab8c66');
+    // Bent velvet hat, moon brooch, and wide tilted brim.
+    path('M-34 -93 Q-21 -117 -23 -145 Q-5 -142 7 -125 L28 -101Z','#2c223d','#a784b6',1.7);
+    path('M-23 -145 Q-30 -146 -40 -138 Q-29 -138 -22 -131 L-16 -114 -6 -119Z','#4f365f');
+    path('M-30 -105 Q-5 -108 17 -111 L23 -102 Q-2 -93 -34 -96Z','#ac6c4e');
+    path('M-51 -93 Q-34 -104 -11 -103 Q18 -106 38 -97 Q19 -84 -14 -85 Q-39 -84 -51 -93Z','#332640','#a784b6',1.5);
+    path('M5 -108 Q-3 -105 4 -98 Q-7 -98 -7 -105 Q-5 -111 5 -108Z','#eacb82');
+    // Reaching hand holds the broom; tiny gold belt buckle.
+    path('M5 -44 Q11 -42 16 -24 L40 -8 36 -1 7 -13 -3 -31Z','#44304f','#b38eb8',1.4);ellipse(39,-4,6,5,'#bacb99');line([39,-4,45,-2],'#78886f',1);path('M-6 -8 2 -8 2 -1 -6 -1Z','#d4ac6c');
+    if(flying&&state==='playing'){star(-135,24,6,'#dff3b7',t);star(-154,18,3,'#d2b9ee',t*.7);}
+    ctx.restore();
+  }
+  function drawGhost(x,y,s,t,alpha=1){ctx.save();ctx.translate(x,y);ctx.scale(s,s);ctx.globalAlpha=alpha;ctx.shadowColor='#d6b9f8';ctx.shadowBlur=25;
+    const g=ctx.createLinearGradient(-25,-48,20,43);g.addColorStop(0,'#e3dbf1');g.addColorStop(.5,'#b6a5d5');g.addColorStop(1,'#7f669c88');const sway=Math.sin(t*3)*6;
+    path(`M-35 25 Q-36 -5 -30 -29 Q-18 -55 7 -48 Q39 -46 39 -13 Q38 11 48 ${34+sway} L28 23 21 43 6 27 -5 42 -16 28 -34 38Z`,g,'#ece2ff55',1.1);ctx.shadowBlur=0;
+    ellipse(-9,-13,5.6,8,'#3c2c58');ellipse(14,-14,5.6,8,'#3c2c58');ellipse(2,10,4.5,6.5,'#574069');ellipse(-19,2,6,3,'#ddafda55');ellipse(25,0,6,3,'#ddafda55');
+    path('M-30 -8 Q-47 -8 -46 4 Q-39 7 -31 3 M36 -10 Q51 -15 53 -2 Q46 3 38 3','#c5b3df');ctx.restore();}
+  function drawYeti(x,y,s,t,throwing=false){ctx.save();ctx.translate(x,y);ctx.scale(s,s);cloud(0,48,.75,'#67557f');cloud(5,57,.85,'#b3a0c126');
+    path('M-24 27 -29 50 -6 50 0 27 13 50 36 48 28 21Z','#a4b1c8','#3e3659',2);ellipse(-18,49,19,8,'#c4ceda');ellipse(24,47,19,8,'#c4ceda');
+    const g=ctx.createLinearGradient(-30,-50,30,40);g.addColorStop(0,'#dce0e5');g.addColorStop(.6,'#b9c8d5');g.addColorStop(1,'#8598b4');
+    path('M-40 25 -45 13 -43 -12 -35 -19 -36 -38 -26 -43 -22 -58 -10 -54 0 -66 12 -55 24 -57 29 -45 39 -38 39 -24 47 -17 43 -5 50 13 40 31 23 36 6 32 -9 37 -23 32Z',g,'#6d7394',1.5);
+    path('M-28 -35 -43 -57 -42 -28 M28 -37 42 -59 43 -28','#c0cbd8','#7d87a2',1.2);path('M-24 -28 Q0 -42 25 -27 L29 -3 Q22 11 2 11 Q-22 12 -28 -4Z','#737d9d');
+    ellipse(-13,-14,4.5,5.8,'#efe4b4');ellipse(14,-14,4.5,5.8,'#efe4b4');ellipse(-12,-13,1.6,3,'#2c2943');ellipse(13,-13,1.6,3,'#2c2943');line([-22,-24,-5,-20],'#414660',4);line([7,-20,22,-26],'#414660',4);
+    path('M-12 3 Q0 -3 14 2 L13 13 Q0 18 -12 12Z','#38364f');path('M-9 3 -4 3 -6 9Z M5 3 10 3 8 9Z','#f1e7cd');ellipse(2,-3,6,4,'#414660');
+    path('M-17 18 -13 27 -6 22 0 31 7 22 14 26 19 15Z','#e1e4e7');
+    path('M30 -12 Q56 -5 53 22 Q49 34 36 26 L23 6Z','#b8c8d7','#727f9c',1.5);
+    if(throwing){path('M-30 -13 Q-55 -37 -48 -55 Q-39 -66 -32 -49 L-17 -27Z','#c5d1dc','#727f9c',1.5);}else{path('M-30 -12 Q-59 -8 -53 -33 Q-49 -43 -36 -35 L-19 -18Z','#c5d1dc','#727f9c',1.5);drawRock(-48,-44,19,-.3);}
+    line([-44,23,-40,17],'#9aaac1',1.5);line([40,22,43,15],'#9aaac1',1.5);ctx.restore();}
+  function drawRock(x,y,r,angle){ctx.save();ctx.translate(x,y);ctx.rotate(angle);const g=ctx.createLinearGradient(-r,-r,r,r);g.addColorStop(0,'#b8acba');g.addColorStop(.5,'#7c758e');g.addColorStop(1,'#49465f');path(`M${-r} ${-r*.2} ${-r*.55} ${-r*.9} ${r*.3} ${-r} ${r*.92} ${-r*.25} ${r*.75} ${r*.6} 0 ${r} ${-r*.85} ${r*.55}Z`,g,'#d2c2d540',1.2);path(`M${-r*.55} ${-r*.85} ${-r*.2} ${-r*.15} ${r*.65} ${-r*.35} M${-r*.2} ${-r*.15} 0 ${r*.8}`,null,'#e7d6e52a',1.4);ctx.restore();}
+  function drawCharm(x,y,t){ctx.save();ctx.translate(x,y);ctx.rotate(Math.sin(t*2)*.17);ctx.shadowColor='#f2cc7e';ctx.shadowBlur=17;ellipse(0,0,13,13,'#f4cf8020');path('M5 -13 Q-9 -10 -7 2 Q-4 13 8 10 Q-3 21 -13 8 Q-22 -7 -4 -16Z','#f2d795','#fff0bb',1);ctx.shadowBlur=0;star(11,-7,4,'#f6e6b0');ctx.restore();}
+  function drawLightning(x,y,s=1){ctx.save();ctx.translate(x,y);ctx.scale(s,s);ctx.shadowColor='#ffb67f';ctx.shadowBlur=12;path('M-1 -13 -11 3 -2 3 -6 16 12 -4 3 -4 7 -13Z','#efbb8e');ctx.restore();}
+  function drawStormClouds(){
+    for(const gate of stormGates){
+      const s=gate.width/290,top=gate.center-gate.gap/2,bottom=gate.center+gate.gap/2;
+      for(let y=top-43;y>-90;y-=58)cloud(gate.x+Math.sin(y*.04)*5,y,s,'#695276');
+      for(let y=bottom+43;y<H+100;y+=58)cloud(gate.x+Math.sin(y*.04)*5,y,s,'#725779');
+      // Lit rims make the shrinking flight opening visible against the night sky.
+      ctx.save();ctx.globalAlpha=.42;cloud(gate.x,top-48,s*.91,'#a786ad');cloud(gate.x,bottom+48,s*.91,'#af88aa');ctx.restore();
+      drawLightning(gate.x-7,top-35,.7);drawLightning(gate.x-7,bottom+42,.7);
+    }
+    const gradient=ctx.createLinearGradient(0,H-145,0,H);gradient.addColorStop(0,'#96718d');gradient.addColorStop(.35,'#6b5075');gradient.addColorStop(1,'#30243f');
+    ctx.beginPath();ctx.moveTo(-10,H+10);ctx.lineTo(-10,stormFloor(-10));for(let x=0;x<=W+10;x+=8)ctx.lineTo(x,stormFloor(x));ctx.lineTo(W+10,H+10);ctx.closePath();ctx.fillStyle=gradient;ctx.fill();
+    ctx.beginPath();ctx.moveTo(0,stormFloor(0));for(let x=8;x<=W+8;x+=8)ctx.lineTo(x,stormFloor(x));ctx.strokeStyle='#deb2c67d';ctx.lineWidth=2;ctx.stroke();
+    for(let i=-1;i<W/280+1;i++){const x=i*280-(worldScroll*.72%280);drawLightning(x,stormFloor(x)+41,.62);}
+  }
+  function draw(){
+    ctx.setTransform(canvas.width/W,0,0,canvas.height/H,0,0);ctx.save();if(shake>0&&!reducedMotion)ctx.translate(rand(-4,4)*shake*3,rand(-3,3)*shake*3);
+    const t=state==='menu'?(reducedMotion?0:menuTime):worldTime;drawBackground(state==='menu'?t:worldScroll/182);
+    if(state==='menu'){
+      const wx=portrait?W*.37:W*.545,wy=portrait?H*.84:H*.55;
+      for(let i=0;i<22;i++){const xx=wx-110-i*9,yy=wy+25+Math.sin(i*.9+t*2)*15;star(xx,yy,1+hash(i)*3,`rgba(204,179,228,${.15+hash(i+4)*.5})`,i+t*.3);}
+      cloud(portrait?W*.92:W*.9,portrait?H*.84:H*.83,portrait?.8:1,'#78618466');
+      drawYeti(portrait?W*.85:W*.88,portrait?H*.86:H*.79,portrait?.68:1.12,t,false);
+      drawGhost(portrait?W*.86:W*.9,portrait?H*.72:H*.47,portrait?.56:.85,t,.83);
+      if(!portrait)drawGhost(W*.4,H*.79,.42,t+2,.35);
+      drawWitch(wx,wy+(reducedMotion?0:Math.sin(t*1.6)*9),portrait?1.02:1.58,-.055+Math.sin(t)*.025,t);
+      [0,1,2].forEach((i)=>drawCharm(wx+(portrait?88:130)+i*(portrait?43:60),wy-(portrait?100:18)-Math.sin(i*.9)*38,t+i));
+    }else{
+      drawStormClouds();
+      for(const c of magicClouds){ctx.save();ctx.globalAlpha=c.taken?.25:.72;cloud(c.x,c.y, .76,'#9568bd80',true);ctx.globalAlpha=c.taken?.15:.7;star(c.x-50,c.y-8,7,'#d1afe9',t);star(c.x+20,c.y-25,5,'#e5c5fb',-t);star(c.x+55,c.y+10,6,'#d5b6ed',t);ctx.restore();}
+      for(const c of charms)drawCharm(c.x,c.y,t+c.phase);
+      for(const e of enemies){if(e.type==='ghost')drawGhost(e.x,e.y,.86,t+e.phase);else drawYeti(e.x,e.y,.95,t,e.timer<.35||e.thrown&&e.timer>2.5);}
+      for(const r of rocks){line([r.x-r.vx*.085,r.y-r.vy*.085,r.x,r.y],'#d5c0de30',5);drawRock(r.x,r.y,r.r,r.angle);}
+      for(const p of particles){ctx.globalAlpha=clamp(p.life/p.max,0,1);star(p.x,p.y,p.r,p.color,p.life);ctx.globalAlpha=1;}
+      if(invincible>0){ctx.save();ctx.globalAlpha=.18+Math.sin(t*14)*.08;ctx.strokeStyle='#e2c5f7';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(witch.x-4,witch.y-20,65,82,witch.angle,0,TAU);ctx.stroke();ctx.restore();}
+      if(spellRing>0){ctx.save();ctx.globalAlpha=spellRing/.65;ctx.strokeStyle='#c2f1b1';ctx.lineWidth=2;ctx.beginPath();ctx.arc(witch.x,witch.y,(1-spellRing/.65)*340,0,TAU);ctx.stroke();ctx.restore();}
+      ctx.save();if(invincible>0&&Math.floor(t*14)%2===0)ctx.globalAlpha=.65;drawWitch(witch.x,witch.y,.78,witch.angle,t);ctx.restore();
+    }
+    ctx.restore();
+  }
+  function tick(ms){const dt=Math.min(.035,(ms-previous)/1000||.016);previous=ms;now=ms/1000;update(dt);draw();requestAnimationFrame(tick);}
+  $('start').addEventListener('click',start);$('resume').addEventListener('click',()=>state==='paused'?pause():start());$('back-menu').addEventListener('click',menu);$('pause').addEventListener('click',pause);$('spell').addEventListener('click',cast);
+  $('sound').addEventListener('click',()=>{const enabled=audio.toggle();$('sound').setAttribute('aria-pressed',String(enabled));$('sound').setAttribute('aria-label',enabled?'Mute sound':'Enable sound');$('sound-label').textContent=enabled?'Sound on':'Sound off';$('sound').querySelector('use').setAttribute('href',enabled?'#i-sound':'#i-mute');if(enabled&&state==='playing')audio.start();});
+  $('fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if($('game').requestFullscreen)await $('game').requestFullscreen();else{setToast('Try landscape mode for a wider view.');$('game').scrollIntoView({block:'start'});}}catch(_){setToast('Your browser does not allow full screen here.');}});
+  document.addEventListener('fullscreenchange',()=>{$('fullscreen').setAttribute('aria-label',document.fullscreenElement?'Exit full screen':'Enter full screen');resize();});
+  $('how-link').addEventListener('click',()=>{$('how-to-play').open=true;});
+  function flap(){if(state!=='playing')return;witch.vy=LIFT_VELOCITY;liftFlash=.18;flying=true;}
+  function pointerDown(e){if(state!=='playing'||e.isPrimary===false||(e.button!==undefined&&e.button!==0))return;e.preventDefault();flap();e.currentTarget.setPointerCapture?.(e.pointerId);$('rise').classList.add('held');canvas.focus({preventScroll:true});}
+  function pointerUp(){$('rise').classList.remove('held');}
+  for(const el of [canvas,$('rise')]){el.addEventListener('pointerdown',pointerDown);el.addEventListener('pointerup',pointerUp);el.addEventListener('pointercancel',pointerUp);el.addEventListener('lostpointercapture',pointerUp);}
+  window.addEventListener('pointerup',pointerUp);
+  window.addEventListener('keydown',e=>{
+    if(e.target.closest('input,textarea,select,summary'))return;
+    const gameFocused=$('game').contains(document.activeElement);if(!gameFocused)return;
+    if(['Space','ArrowUp','KeyW'].includes(e.code)){if(state==='playing'){e.preventDefault();if(!e.repeat&&!heldLiftKeys.has(e.code)){heldLiftKeys.add(e.code);flap();}}else if(e.code==='Space'&&state==='menu'&&e.target===canvas&&!e.repeat){e.preventDefault();start();heldLiftKeys.add(e.code);flap();}}
+    if(e.repeat)return;if(e.code==='KeyX'&&state==='playing'){e.preventDefault();cast();}if((e.code==='KeyP'||e.code==='Escape')&&(state==='playing'||state==='paused')){e.preventDefault();pause();}if(e.code==='KeyM'){$('sound').click();}
+  });
+  window.addEventListener('keyup',e=>{if(['Space','ArrowUp','KeyW'].includes(e.code)){heldLiftKeys.delete(e.code);if($('game').contains(document.activeElement)&&state==='playing')e.preventDefault();}});
+  window.addEventListener('blur',()=>{pointerUp();heldLiftKeys.clear();if(state==='playing')pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&state==='playing')pause();});
+  resize();requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
