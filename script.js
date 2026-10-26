@@ -245,6 +245,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // Keep the newest launch first after all older dynamic cards load.
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("blog-container");
-    const card = document.getElementById("witching-hour-blog-card") || document.getElementById("smithers-blog-card");
-    if (container && card) container.prepend(card);
+    for (const id of ["witching-hour-blog-card", "graveyard-shift-blog-card"]) {
+        const card = document.getElementById(id);
+        if (container && card) container.prepend(card);
+    }
 });
