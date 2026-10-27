@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#191620">
+  <meta name="description" content="A scarecrow, a vacuum, and a house full of animal ghosts. Explore three haunted floors, then the barnyard and paddock. A free Halloween game with an optional link to support Pariah Dog Shelter.">
+  <title>Spirit Sweeper — A Free Halloween Ghost-Hunting Game</title>
+  <link rel="canonical" href="https://knowandguide.com/games/spirit-sweeper/">
+  <meta property="og:title" content="Spirit Sweeper — A Little Haunting. A Lot of Heart.">
+  <meta property="og:description" content="A scarecrow. A vacuum. Five levels of mischievous animal ghosts. A free Halloween game inspired by tiny sheet ghosts and real paws.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://knowandguide.com/games/spirit-sweeper/">
+  <meta property="og:site_name" content="Know &amp; Guide">
+  <meta property="og:image:width" content="1078">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Patch the scarecrow with his ghost vacuum inside a three-floor haunted house full of friendly animal ghosts.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://knowandguide.com/images/spirit-sweeper-preview.jpg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg class="svg-defs" aria-hidden="true"><symbol id="ghost" viewBox="0 0 24 24"><path d="M5 21V10a7 7 0 0 1 14 0v11l-3-2-4 2-4-2Z"/><path d="M9 10v2m6-2v2"/></symbol><symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol><symbol id="sound" viewBox="0 0 24 24"><path d="m10 5-5 4H2v6h3l5 4Zm5 2a7 7 0 0 1 0 10m3-13a11 11 0 0 1 0 16"/></symbol><symbol id="heart" viewBox="0 0 24 24"><path d="M12 21 3.5 12.5a5.5 5.5 0 0 1 8.5-7 5.5 5.5 0 0 1 8.5 7Z"/></symbol><symbol id="expand" viewBox="0 0 24 24"><path d="M3 9V3h6m6 0h6v6M3 15v6h6m6 0h6v-6"/></symbol><symbol id="paw" viewBox="0 0 24 24"><ellipse cx="6" cy="7" rx="2" ry="3"/><ellipse cx="12" cy="5" rx="2" ry="3"/><ellipse cx="18" cy="7" rx="2" ry="3"/><path d="M5 17c0-4 4-8 7-8s7 4 7 8c0 5-5 2-7 2s-7 3-7-2Z"/></symbol></svg>
+<header><a class="brand" href="/" aria-label="Know &amp; Guide home"><svg><use href="#ghost"/></svg><span>know &amp; guide <em>arcade</em></span></a><nav><a href="#how-to-play">How to play</a><a href="#real-paws">Help the dogs <span>↗</span></a><span class="edition">HALLOWEEN / 03</span></nav></header>
+<main>
+  <section class="intro"><div><p class="eyebrow"><span class="spark">✦</span> THE NIGHT SHIFT HAS A NEW RECRUIT</p><h1>Spirit <em>Sweeper</em><span class="title-star">✧</span></h1></div><p class="intro-copy">One scarecrow. One slightly haunted vacuum.<br>A whole house of <strong>very unusual pets.</strong></p></section>
+  <section class="game-shell" id="game" aria-label="Spirit Sweeper game">
+    <div class="game-top"><span class="room-label"><i></i><span id="room-label">01 / THE PAWLOUR</span></span><div class="tools"><button id="sound-button" aria-pressed="true" aria-label="Turn music and sounds off"><svg><use href="#sound"/></svg><span id="sound-copy">Sound on</span></button><button id="pause-button" disabled aria-label="Pause game">Ⅱ</button><button id="full-button" aria-label="Enter full screen"><svg><use href="#expand"/></svg></button></div></div>
+    <div class="stage" id="stage">
+      <canvas id="house" width="1280" height="760" tabindex="0" aria-label="Haunted house game. Move with A and D or arrow keys. Hold Space to vacuum toward the direction you face. Z to jump. W or Up to use unlocked stairs. P to pause." aria-describedby="game-instructions"></canvas>
+      <div class="hud" id="hud" hidden><div class="hud-card"><span class="label" id="hud-location">FLOOR 1 OF 3</span><strong id="capture-count">0 <small>/ 6 ghosts</small></strong></div><div class="hud-card heat-card"><span class="label" id="vacuum-label">VACUUM READY</span><div class="heat-track"><i id="heat-fill"></i></div></div><div class="hud-card lives-card"><span class="label">COURAGE</span><span id="hearts" aria-label="3 hearts remaining">♥ ♥ ♥</span></div></div>
+      <div class="start-card" id="start-card"><span class="small-caps">A KINDER KIND OF GHOST HUNT</span><h2>A little haunting.<br>A lot of <em>heart.</em></h2><p>Meet Patch, the scarecrow.<br>Help him tidy up some spirited pets.</p><button class="primary" id="start-button">Clock in <svg><use href="#arrow"/></svg></button><span class="start-hint">Five levels · Three hearts · Absolutely no bills</span></div>
+      <div class="scene-caption" id="scene-caption"><span>THE PAWLOUR</span><p>Someone let the pets out.<br>Of the afterlife.</p></div>
+      <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+      <div class="overlay" id="overlay" hidden><div class="overlay-inner"><span class="small-caps" id="overlay-kicker">TEA BREAK</span><h2 id="overlay-title">A moment of peace.</h2><p id="overlay-copy"></p><div class="result-number" id="result-number" hidden></div><button class="primary" id="continue-button">Keep sweeping <svg><use href="#arrow"/></svg></button><button class="text-button" id="restart-button">Start a fresh shift</button></div></div>
+    </div>
+    <div class="game-bottom"><div><span><kbd>← →</kbd> Move</span><span><kbd>SPACE</kbd> Hold to vacuum</span><span><kbd>W / ↑</kbd> Stairs</span><span><kbd>Z</kbd> Jump</span></div><span class="best-label">BEST SHIFT <b id="best">0</b> ghosts</span></div>
+    <div class="touch-controls" id="touch-controls" aria-label="Touch game controls"><div><button data-action="left" aria-label="Move left">←</button><button data-action="right" aria-label="Move right">→</button></div><button data-action="stairs" aria-label="Use stairs" class="stairs-control">↗<small>STAIRS</small></button><button data-action="jump" aria-label="Jump">↑<small>JUMP</small></button><button data-action="vacuum" aria-label="Hold to vacuum" class="vacuum-control"><svg><use href="#ghost"/></svg><small>HOLD</small></button></div>
+  </section>
+  <section class="under-game"><p><span>✦</span> Catch pretend ghosts. <em>Help real paws.</em></p><a class="quick-donate" href="#real-paws">Donate to the shelter <span>↗</span></a></section>
+  <section class="route" aria-labelledby="route-title"><div class="section-heading"><p class="eyebrow">YOUR SHIFT, FLOOR BY FLOOR</p><h2 id="route-title">Every room has <em>roommates.</em></h2></div><ol id="level-list"><li class="current"><span>01 / FLOOR 1</span><h3>The Pawlour</h3><p>Cats &amp; dogs</p><i></i></li><li><span>02 / FLOOR 2</span><h3>Midnight Pantry</h3><p>Ducks &amp; mice</p><i></i></li><li><span>03 / FLOOR 3</span><h3>The Flutter Attic</h3><p>Owls &amp; bats</p><i></i></li><li><span>04 / OUTSIDE</span><h3>Moonmilk Yard</h3><p>Cows &amp; ducks</p><i></i></li><li><span>05 / OUTSIDE</span><h3>The Last Pasture</h3><p>Horses &amp; cows</p><i></i></li></ol></section>
+  <details class="guide" id="how-to-play"><summary>How to clock a good shift <span>+</span></summary><div id="game-instructions"><p><strong>01 / Face your fears.</strong> Move with ← → or A / D. Hold Space to run the vacuum in the direction you face. On a phone use the arrow buttons and hold the ghost button. You can also hold directly on the game to aim the vacuum left or right.</p><p><strong>02 / Take your time.</strong> Keep a ghost in the glowing beam until it slips into your lantern tank. Let the vacuum cool when its heat bar fills. Jump with Z or the Jump button. Avoid bumping into ghosts; you have three hearts, and recover one after each level.</p><p><strong>03 / Take the stairs.</strong> Clear the room to unlock the staircase. Walk to its glowing marker and press W / ↑ or the Stairs button. Climb all three floors, then take the back stairs outside. Finish the barnyard and paddock to complete your shift. P / Escape pauses.</p></div></details>
+  <section class="shelter" id="real-paws" aria-labelledby="shelter-title">
+    <figure class="shelter-figure">
+      <div class="shelter-photo"><img src="assets/shelter-sign.jpg" alt="Pariah Dog Shelter’s appeal to help dogs in Koh Samui through donations, sponsorship, adoption and volunteering." loading="lazy"></div>
+      <figcaption><svg aria-hidden="true"><use href="#paw"/></svg> PARIAH DOG SHELTER <span>Koh Samui, Thailand</span></figcaption>
+    </figure>
+    <div class="shelter-copy">
+      <p class="eyebrow">A LITTLE KINDNESS GOES BEYOND THE GAME</p>
+      <h2 id="shelter-title">Enjoyed the game?<br><em>Help a real dog.</em></h2>
+      <p>If Spirit Sweeper made you smile, please consider a donation to Pariah Dog Shelter in Koh Samui. Your support helps provide food, medical care and a safe place for dogs waiting for a home.</p>
+      <ul class="support-areas" aria-label="What your support helps provide"><li>Food &amp; shelter</li><li>Veterinary care</li><li>Rescue &amp; rehoming</li></ul>
+      <a class="donate-link" href="https://pariahdogsamui.com/" target="_blank" rel="noopener noreferrer">Donate to Pariah Dog Shelter <span aria-hidden="true">↗</span></a>
+      <small>Choose how to give on the shelter’s website. Every contribution is appreciated.</small>
+      <a class="help-link" href="https://pariahdogsamui.com/contact/" target="_blank" rel="noopener noreferrer">You can also sponsor, adopt or volunteer <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+</main><footer><span>know &amp; guide arcade <i>✦</i> Halloween collection</span><span>Made by Michael Harvey · 2026</span></footer>
+<script src="game.js"></script>
+</body></html>
